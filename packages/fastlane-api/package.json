@@ -1,0 +1,65 @@
+{
+  "name": "@fastlanejs/api",
+  "version": "1.1.0",
+  "description": "Tool to generate shape of fastlane actions and plugins API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhdeck/fastlane-js.git"
+  },
+  "keywords": [
+    "fastlane",
+    "javascript"
+  ],
+  "author": "Ray Deck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rhdeck/fastlane-js/issues"
+  },
+  "homepage": "https://github.com/rhdeck/fastlane-js/packages/fastlane-api#readme",
+  "dependencies": {
+    "@prettier/plugin-ruby": "^0.18.1",
+    "commander": "^5.1.0",
+    "mustache": "^4.0.1",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "tmp": "^0.2.0",
+    "yaml": "^1.9.2"
+  },
+  "codegen": {
+    "actions": [
+      "action_name",
+      "description",
+      "details",
+      "name",
+      "return_type",
+      "return_value",
+      "sample_return_value"
+    ],
+    "options": [
+      "allow_shell_conversion",
+      "code_gen_default_value",
+      "code_gen_sensitive",
+      "conflict_block",
+      "conflicting_options",
+      "data_type",
+      "default_value",
+      "default_value_dynamic",
+      "deprecated",
+      "description",
+      "display_in_shell",
+      "env_name",
+      "is_string",
+      "key",
+      "optional",
+      "sensitive",
+      "short_option",
+      "skip_type_validation",
+      "verify_block"
+    ]
+  },
+  "bin": "./bin.js"
+}

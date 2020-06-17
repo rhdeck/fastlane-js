@@ -1,0 +1,615 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>HockeyOptions | fastlanejs</title>
+	<meta name="description" content="Documentation for fastlanejs">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">fastlanejs</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_index_.html">&quot;index&quot;</a>
+				</li>
+				<li>
+					<a href="_index_.hockeyoptions.html">HockeyOptions</a>
+				</li>
+			</ul>
+			<h1>Interface HockeyOptions</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>interface</dt>
+						<dd><p>HockeyOptions</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} apk Path to your APK file</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} apiToken API Token for Hockey Access</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} ipa Path to your IPA file. Optional if you use the <em>gym</em> or <em>xcodebuild</em> action. For Mac zip the .app. For Android provide path to .apk file. In addition you could use this to upload .msi, .zip, .pkg, etc if you use the &#39;create_update&#39; mechanism</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} dsym Path to your symbols file. For iOS and Mac provide path to app.dSYM.zip. For Android provide path to mappings.txt file</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} createUpdate Set true if you want to create then update your app as opposed to just upload it. You will need the &#39;public_identifier&#39;, &#39;bundle_version&#39; and &#39;bundle_short_version&#39;</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} notes Beta Notes</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} notify Notify testers? &quot;1&quot; for yes</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} status Download status: &quot;1&quot; = No user can download; &quot;2&quot; = Available for download (only possible with full-access token)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} createStatus Download status for initial version creation when create_update is true: &quot;1&quot; = No user can download; &quot;2&quot; = Available for download (only possible with full-access token)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} notesType Notes type for your :notes, &quot;0&quot; = Textile, &quot;1&quot; = Markdown (default)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} releaseType Release type of the app: &quot;0&quot; = Beta (default), &quot;1&quot; = Store, &quot;2&quot; = Alpha, &quot;3&quot; = Enterprise</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} mandatory Set to &quot;1&quot; to make this update mandatory</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} teams Comma separated list of team ID numbers to which this build will be restricted</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} users Comma separated list of user ID numbers to which this build will be restricted</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} tags Comma separated list of tags which will receive access to the build</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} bundleShortVersion The bundle_short_version of your application, required when using <code>create_update</code></p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} bundleVersion The bundle_version of your application, required when using <code>create_update</code></p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} publicIdentifier App id of the app you are targeting, usually you won&#39;t need this value. Required, if <code>upload_dsym_only</code> set to <code>true</code></p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} commitSha The Git commit SHA for this build</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} repositoryUrl The URL of your source repository</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} buildServerUrl The URL of the build job on your build server</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} uploadDsymOnly Flag to upload only the dSYM file to hockey app</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} ownerId ID for the owner of the app</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} strategy Strategy: &#39;add&#39; = to add the build as a new build even if it has the same build number (default); &#39;replace&#39; = to replace a build with the same build number</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} timeout Request timeout in seconds</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} bypassCdn Flag to bypass Hockey CDN when it uploads successfully but reports error</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} dsaSignature DSA signature for sparkle updates for macOS</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">HockeyOptions</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#apitoken" class="tsd-kind-icon">api<wbr>Token</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#apk" class="tsd-kind-icon">apk</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#buildserverurl" class="tsd-kind-icon">build<wbr>Server<wbr>Url</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#bundleshortversion" class="tsd-kind-icon">bundle<wbr>Short<wbr>Version</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#bundleversion" class="tsd-kind-icon">bundle<wbr>Version</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#bypasscdn" class="tsd-kind-icon">bypass<wbr>Cdn</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#commitsha" class="tsd-kind-icon">commit<wbr>Sha</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#createstatus" class="tsd-kind-icon">create<wbr>Status</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#createupdate" class="tsd-kind-icon">create<wbr>Update</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#dsasignature" class="tsd-kind-icon">dsa<wbr>Signature</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#dsym" class="tsd-kind-icon">dsym</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#ipa" class="tsd-kind-icon">ipa</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#mandatory" class="tsd-kind-icon">mandatory</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#notes" class="tsd-kind-icon">notes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#notestype" class="tsd-kind-icon">notes<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#notify" class="tsd-kind-icon">notify</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#ownerid" class="tsd-kind-icon">owner<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#publicidentifier" class="tsd-kind-icon">public<wbr>Identifier</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#releasetype" class="tsd-kind-icon">release<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#repositoryurl" class="tsd-kind-icon">repository<wbr>Url</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#status" class="tsd-kind-icon">status</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#strategy" class="tsd-kind-icon">strategy</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#tags" class="tsd-kind-icon">tags</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#teams" class="tsd-kind-icon">teams</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#timeout" class="tsd-kind-icon">timeout</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#uploaddsymonly" class="tsd-kind-icon">upload<wbr>Dsym<wbr>Only</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.hockeyoptions.html#users" class="tsd-kind-icon">users</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="apitoken" class="tsd-anchor"></a>
+					<h3>api<wbr>Token</h3>
+					<div class="tsd-signature tsd-kind-icon">api<wbr>Token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2423</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="apk" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> apk</h3>
+					<div class="tsd-signature tsd-kind-icon">apk<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2422</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="buildserverurl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> build<wbr>Server<wbr>Url</h3>
+					<div class="tsd-signature tsd-kind-icon">build<wbr>Server<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2442</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="bundleshortversion" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> bundle<wbr>Short<wbr>Version</h3>
+					<div class="tsd-signature tsd-kind-icon">bundle<wbr>Short<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2437</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="bundleversion" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> bundle<wbr>Version</h3>
+					<div class="tsd-signature tsd-kind-icon">bundle<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2438</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="bypasscdn" class="tsd-anchor"></a>
+					<h3>bypass<wbr>Cdn</h3>
+					<div class="tsd-signature tsd-kind-icon">bypass<wbr>Cdn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2447</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="commitsha" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> commit<wbr>Sha</h3>
+					<div class="tsd-signature tsd-kind-icon">commit<wbr>Sha<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2440</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="createstatus" class="tsd-anchor"></a>
+					<h3>create<wbr>Status</h3>
+					<div class="tsd-signature tsd-kind-icon">create<wbr>Status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2430</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="createupdate" class="tsd-anchor"></a>
+					<h3>create<wbr>Update</h3>
+					<div class="tsd-signature tsd-kind-icon">create<wbr>Update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2426</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="dsasignature" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> dsa<wbr>Signature</h3>
+					<div class="tsd-signature tsd-kind-icon">dsa<wbr>Signature<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2448</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="dsym" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> dsym</h3>
+					<div class="tsd-signature tsd-kind-icon">dsym<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2425</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="ipa" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> ipa</h3>
+					<div class="tsd-signature tsd-kind-icon">ipa<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2424</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="mandatory" class="tsd-anchor"></a>
+					<h3>mandatory</h3>
+					<div class="tsd-signature tsd-kind-icon">mandatory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2433</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="notes" class="tsd-anchor"></a>
+					<h3>notes</h3>
+					<div class="tsd-signature tsd-kind-icon">notes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2427</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="notestype" class="tsd-anchor"></a>
+					<h3>notes<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">notes<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2431</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="notify" class="tsd-anchor"></a>
+					<h3>notify</h3>
+					<div class="tsd-signature tsd-kind-icon">notify<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2428</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="ownerid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> owner<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">owner<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2444</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="publicidentifier" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> public<wbr>Identifier</h3>
+					<div class="tsd-signature tsd-kind-icon">public<wbr>Identifier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2439</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="releasetype" class="tsd-anchor"></a>
+					<h3>release<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">release<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2432</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="repositoryurl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> repository<wbr>Url</h3>
+					<div class="tsd-signature tsd-kind-icon">repository<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2441</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="status" class="tsd-anchor"></a>
+					<h3>status</h3>
+					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2429</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="strategy" class="tsd-anchor"></a>
+					<h3>strategy</h3>
+					<div class="tsd-signature tsd-kind-icon">strategy<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2445</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="tags" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tags</h3>
+					<div class="tsd-signature tsd-kind-icon">tags<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2436</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="teams" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> teams</h3>
+					<div class="tsd-signature tsd-kind-icon">teams<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2434</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="timeout" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> timeout</h3>
+					<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2446</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="uploaddsymonly" class="tsd-anchor"></a>
+					<h3>upload<wbr>Dsym<wbr>Only</h3>
+					<div class="tsd-signature tsd-kind-icon">upload<wbr>Dsym<wbr>Only<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2443</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="users" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> users</h3>
+					<div class="tsd-signature tsd-kind-icon">users<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2435</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_index_.html">&quot;index&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_index_.hockeyoptions.html" class="tsd-kind-icon">Hockey<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#apitoken" class="tsd-kind-icon">api<wbr>Token</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#apk" class="tsd-kind-icon">apk</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#buildserverurl" class="tsd-kind-icon">build<wbr>Server<wbr>Url</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#bundleshortversion" class="tsd-kind-icon">bundle<wbr>Short<wbr>Version</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#bundleversion" class="tsd-kind-icon">bundle<wbr>Version</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#bypasscdn" class="tsd-kind-icon">bypass<wbr>Cdn</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#commitsha" class="tsd-kind-icon">commit<wbr>Sha</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#createstatus" class="tsd-kind-icon">create<wbr>Status</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#createupdate" class="tsd-kind-icon">create<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#dsasignature" class="tsd-kind-icon">dsa<wbr>Signature</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#dsym" class="tsd-kind-icon">dsym</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#ipa" class="tsd-kind-icon">ipa</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#mandatory" class="tsd-kind-icon">mandatory</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#notes" class="tsd-kind-icon">notes</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#notestype" class="tsd-kind-icon">notes<wbr>Type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#notify" class="tsd-kind-icon">notify</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#ownerid" class="tsd-kind-icon">owner<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#publicidentifier" class="tsd-kind-icon">public<wbr>Identifier</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#releasetype" class="tsd-kind-icon">release<wbr>Type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#repositoryurl" class="tsd-kind-icon">repository<wbr>Url</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#status" class="tsd-kind-icon">status</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#strategy" class="tsd-kind-icon">strategy</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#tags" class="tsd-kind-icon">tags</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#teams" class="tsd-kind-icon">teams</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#timeout" class="tsd-kind-icon">timeout</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#uploaddsymonly" class="tsd-kind-icon">upload<wbr>Dsym<wbr>Only</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.hockeyoptions.html#users" class="tsd-kind-icon">users</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

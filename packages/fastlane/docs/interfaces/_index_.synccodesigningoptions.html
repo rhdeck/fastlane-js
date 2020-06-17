@@ -1,0 +1,751 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>SyncCodeSigningOptions | fastlanejs</title>
+	<meta name="description" content="Documentation for fastlanejs">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">fastlanejs</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_index_.html">&quot;index&quot;</a>
+				</li>
+				<li>
+					<a href="_index_.synccodesigningoptions.html">SyncCodeSigningOptions</a>
+				</li>
+			</ul>
+			<h1>Interface SyncCodeSigningOptions</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>interface</dt>
+						<dd><p>SyncCodeSigningOptions</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} type Define the profile type, can be appstore, adhoc, development, enterprise, developer_id</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string[]} additionalCertTypes Create additional cert types needed for macOS installers (valid values: mac_installer_distribution, developer_id_installer)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} readonly Only fetch existing certificates and profiles, don&#39;t generate new ones</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} generateAppleCerts Create a certificate type for Xcode 11 and later (Apple Development or Apple Distribution)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} skipProvisioningProfiles Skip syncing provisioning profiles</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string[]} appIdentifier The bundle identifier(s) of your app (comma-separated)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} username Your Apple ID Username</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} teamId The ID of your Developer Portal team if you&#39;re in multiple teams</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} teamName The name of your Developer Portal team if you&#39;re in multiple teams</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} storageMode Define where you want to store your certificates</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} gitUrl URL to the git repo containing all the certificates</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} gitBranch Specific git branch to use</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} gitFullName git user full name to commit</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} gitUserEmail git user email to commit</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} shallowClone Make a shallow clone of the repository (truncate the history to 1 revision)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} cloneBranchDirectly Clone just the branch specified, instead of the whole repo. This requires that the branch already exists. Otherwise the command will fail</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} gitBasicAuthorization Use a basic authorization header to access the git repo (e.g.: access via HTTPS, GitHub Actions, etc), usually a string in Base64</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} gitBearerAuthorization Use a bearer authorization header to access the git repo (e.g.: access to an Azure Devops repository), usually a string in Base64</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} googleCloudBucketName Name of the Google Cloud Storage bucket to use</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} googleCloudKeysFile Path to the gc_keys.json file</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} googleCloudProjectId ID of the Google Cloud project to use for authentication</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} s3Region Name of the S3 region</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} s3AccessKey S3 access key</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} s3SecretAccessKey S3 secret access key</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} s3Bucket Name of the S3 bucket</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} keychainName Keychain the items should be imported to</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} keychainPassword This might be required the first time you access certificates on a new mac. For the login/default keychain this is your account password</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} force Renew the provisioning profiles every time you run match</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} forceForNewDevices Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile type &#39;appstore&#39;</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} skipConfirmation Disables confirmation prompts during nuke, answering them with yes</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} skipDocs Skip generation of a README.md for the created git repository</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} platform Set the provisioning profile&#39;s platform to work with (i.e. ios, tvos, macos)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} templateName The name of provisioning profile template. If the developer account has provisioning profile templates (aka: custom entitlements), the template name can be found by inspecting the Entitlements drop-down while creating/editing a provisioning profile (e.g. &quot;Apple Pay Pass Suppression Development&quot;)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} outputPath Path in which to export certificates, key and profile</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} verbose Print out extra information and all commands</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">SyncCodeSigningOptions</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#additionalcerttypes" class="tsd-kind-icon">additional<wbr>Cert<wbr>Types</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#appidentifier" class="tsd-kind-icon">app<wbr>Identifier</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#clonebranchdirectly" class="tsd-kind-icon">clone<wbr>Branch<wbr>Directly</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#force" class="tsd-kind-icon">force</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#forcefornewdevices" class="tsd-kind-icon">force<wbr>For<wbr>New<wbr>Devices</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#generateapplecerts" class="tsd-kind-icon">generate<wbr>Apple<wbr>Certs</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#gitbasicauthorization" class="tsd-kind-icon">git<wbr>Basic<wbr>Authorization</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#gitbearerauthorization" class="tsd-kind-icon">git<wbr>Bearer<wbr>Authorization</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#gitbranch" class="tsd-kind-icon">git<wbr>Branch</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#gitfullname" class="tsd-kind-icon">git<wbr>Full<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#giturl" class="tsd-kind-icon">git<wbr>Url</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#gituseremail" class="tsd-kind-icon">git<wbr>User<wbr>Email</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#googlecloudbucketname" class="tsd-kind-icon">google<wbr>Cloud<wbr>Bucket<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#googlecloudkeysfile" class="tsd-kind-icon">google<wbr>Cloud<wbr>Keys<wbr>File</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#googlecloudprojectid" class="tsd-kind-icon">google<wbr>Cloud<wbr>Project<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#keychainname" class="tsd-kind-icon">keychain<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#keychainpassword" class="tsd-kind-icon">keychain<wbr>Password</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#outputpath" class="tsd-kind-icon">output<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#platform" class="tsd-kind-icon">platform</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#readonly" class="tsd-kind-icon">readonly</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#s3accesskey" class="tsd-kind-icon">s3<wbr>Access<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#s3bucket" class="tsd-kind-icon">s3<wbr>Bucket</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#s3region" class="tsd-kind-icon">s3<wbr>Region</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#s3secretaccesskey" class="tsd-kind-icon">s3<wbr>Secret<wbr>Access<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#shallowclone" class="tsd-kind-icon">shallow<wbr>Clone</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#skipconfirmation" class="tsd-kind-icon">skip<wbr>Confirmation</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#skipdocs" class="tsd-kind-icon">skip<wbr>Docs</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#skipprovisioningprofiles" class="tsd-kind-icon">skip<wbr>Provisioning<wbr>Profiles</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#storagemode" class="tsd-kind-icon">storage<wbr>Mode</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#teamid" class="tsd-kind-icon">team<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#teamname" class="tsd-kind-icon">team<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#templatename" class="tsd-kind-icon">template<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#username" class="tsd-kind-icon">username</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.synccodesigningoptions.html#verbose" class="tsd-kind-icon">verbose</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="additionalcerttypes" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> additional<wbr>Cert<wbr>Types</h3>
+					<div class="tsd-signature tsd-kind-icon">additional<wbr>Cert<wbr>Types<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4428</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="appidentifier" class="tsd-anchor"></a>
+					<h3>app<wbr>Identifier</h3>
+					<div class="tsd-signature tsd-kind-icon">app<wbr>Identifier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4432</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="clonebranchdirectly" class="tsd-anchor"></a>
+					<h3>clone<wbr>Branch<wbr>Directly</h3>
+					<div class="tsd-signature tsd-kind-icon">clone<wbr>Branch<wbr>Directly<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4442</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="force" class="tsd-anchor"></a>
+					<h3>force</h3>
+					<div class="tsd-signature tsd-kind-icon">force<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4454</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="forcefornewdevices" class="tsd-anchor"></a>
+					<h3>force<wbr>For<wbr>New<wbr>Devices</h3>
+					<div class="tsd-signature tsd-kind-icon">force<wbr>For<wbr>New<wbr>Devices<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4455</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="generateapplecerts" class="tsd-anchor"></a>
+					<h3>generate<wbr>Apple<wbr>Certs</h3>
+					<div class="tsd-signature tsd-kind-icon">generate<wbr>Apple<wbr>Certs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4430</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="gitbasicauthorization" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> git<wbr>Basic<wbr>Authorization</h3>
+					<div class="tsd-signature tsd-kind-icon">git<wbr>Basic<wbr>Authorization<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4443</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="gitbearerauthorization" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> git<wbr>Bearer<wbr>Authorization</h3>
+					<div class="tsd-signature tsd-kind-icon">git<wbr>Bearer<wbr>Authorization<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4444</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="gitbranch" class="tsd-anchor"></a>
+					<h3>git<wbr>Branch</h3>
+					<div class="tsd-signature tsd-kind-icon">git<wbr>Branch<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4438</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="gitfullname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> git<wbr>Full<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">git<wbr>Full<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4439</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="giturl" class="tsd-anchor"></a>
+					<h3>git<wbr>Url</h3>
+					<div class="tsd-signature tsd-kind-icon">git<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4437</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="gituseremail" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> git<wbr>User<wbr>Email</h3>
+					<div class="tsd-signature tsd-kind-icon">git<wbr>User<wbr>Email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4440</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="googlecloudbucketname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> google<wbr>Cloud<wbr>Bucket<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">google<wbr>Cloud<wbr>Bucket<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4445</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="googlecloudkeysfile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> google<wbr>Cloud<wbr>Keys<wbr>File</h3>
+					<div class="tsd-signature tsd-kind-icon">google<wbr>Cloud<wbr>Keys<wbr>File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4446</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="googlecloudprojectid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> google<wbr>Cloud<wbr>Project<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">google<wbr>Cloud<wbr>Project<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4447</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="keychainname" class="tsd-anchor"></a>
+					<h3>keychain<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">keychain<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4452</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="keychainpassword" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> keychain<wbr>Password</h3>
+					<div class="tsd-signature tsd-kind-icon">keychain<wbr>Password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4453</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="outputpath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> output<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">output<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4460</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="platform" class="tsd-anchor"></a>
+					<h3>platform</h3>
+					<div class="tsd-signature tsd-kind-icon">platform<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4458</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="readonly" class="tsd-anchor"></a>
+					<h3>readonly</h3>
+					<div class="tsd-signature tsd-kind-icon">readonly<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4429</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="s3accesskey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> s3<wbr>Access<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">s3<wbr>Access<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4449</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="s3bucket" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> s3<wbr>Bucket</h3>
+					<div class="tsd-signature tsd-kind-icon">s3<wbr>Bucket<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4451</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="s3region" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> s3<wbr>Region</h3>
+					<div class="tsd-signature tsd-kind-icon">s3<wbr>Region<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4448</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="s3secretaccesskey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> s3<wbr>Secret<wbr>Access<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">s3<wbr>Secret<wbr>Access<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4450</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="shallowclone" class="tsd-anchor"></a>
+					<h3>shallow<wbr>Clone</h3>
+					<div class="tsd-signature tsd-kind-icon">shallow<wbr>Clone<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4441</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="skipconfirmation" class="tsd-anchor"></a>
+					<h3>skip<wbr>Confirmation</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Confirmation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4456</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="skipdocs" class="tsd-anchor"></a>
+					<h3>skip<wbr>Docs</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Docs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4457</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="skipprovisioningprofiles" class="tsd-anchor"></a>
+					<h3>skip<wbr>Provisioning<wbr>Profiles</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Provisioning<wbr>Profiles<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4431</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="storagemode" class="tsd-anchor"></a>
+					<h3>storage<wbr>Mode</h3>
+					<div class="tsd-signature tsd-kind-icon">storage<wbr>Mode<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4436</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="teamid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> team<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">team<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4434</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="teamname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> team<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">team<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4435</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="templatename" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> template<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">template<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4459</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="type" class="tsd-anchor"></a>
+					<h3>type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4427</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="username" class="tsd-anchor"></a>
+					<h3>username</h3>
+					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4433</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="verbose" class="tsd-anchor"></a>
+					<h3>verbose</h3>
+					<div class="tsd-signature tsd-kind-icon">verbose<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:4461</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_index_.html">&quot;index&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_index_.synccodesigningoptions.html" class="tsd-kind-icon">Sync<wbr>Code<wbr>Signing<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#additionalcerttypes" class="tsd-kind-icon">additional<wbr>Cert<wbr>Types</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#appidentifier" class="tsd-kind-icon">app<wbr>Identifier</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#clonebranchdirectly" class="tsd-kind-icon">clone<wbr>Branch<wbr>Directly</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#force" class="tsd-kind-icon">force</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#forcefornewdevices" class="tsd-kind-icon">force<wbr>For<wbr>New<wbr>Devices</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#generateapplecerts" class="tsd-kind-icon">generate<wbr>Apple<wbr>Certs</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#gitbasicauthorization" class="tsd-kind-icon">git<wbr>Basic<wbr>Authorization</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#gitbearerauthorization" class="tsd-kind-icon">git<wbr>Bearer<wbr>Authorization</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#gitbranch" class="tsd-kind-icon">git<wbr>Branch</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#gitfullname" class="tsd-kind-icon">git<wbr>Full<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#giturl" class="tsd-kind-icon">git<wbr>Url</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#gituseremail" class="tsd-kind-icon">git<wbr>User<wbr>Email</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#googlecloudbucketname" class="tsd-kind-icon">google<wbr>Cloud<wbr>Bucket<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#googlecloudkeysfile" class="tsd-kind-icon">google<wbr>Cloud<wbr>Keys<wbr>File</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#googlecloudprojectid" class="tsd-kind-icon">google<wbr>Cloud<wbr>Project<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#keychainname" class="tsd-kind-icon">keychain<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#keychainpassword" class="tsd-kind-icon">keychain<wbr>Password</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#outputpath" class="tsd-kind-icon">output<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#platform" class="tsd-kind-icon">platform</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#readonly" class="tsd-kind-icon">readonly</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#s3accesskey" class="tsd-kind-icon">s3<wbr>Access<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#s3bucket" class="tsd-kind-icon">s3<wbr>Bucket</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#s3region" class="tsd-kind-icon">s3<wbr>Region</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#s3secretaccesskey" class="tsd-kind-icon">s3<wbr>Secret<wbr>Access<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#shallowclone" class="tsd-kind-icon">shallow<wbr>Clone</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#skipconfirmation" class="tsd-kind-icon">skip<wbr>Confirmation</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#skipdocs" class="tsd-kind-icon">skip<wbr>Docs</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#skipprovisioningprofiles" class="tsd-kind-icon">skip<wbr>Provisioning<wbr>Profiles</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#storagemode" class="tsd-kind-icon">storage<wbr>Mode</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#teamid" class="tsd-kind-icon">team<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#teamname" class="tsd-kind-icon">team<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#templatename" class="tsd-kind-icon">template<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#type" class="tsd-kind-icon">type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#username" class="tsd-kind-icon">username</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.synccodesigningoptions.html#verbose" class="tsd-kind-icon">verbose</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

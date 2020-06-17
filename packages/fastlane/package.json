@@ -1,0 +1,47 @@
+{
+  "name": "fastlanejs",
+  "version": "2.146.1",
+  "description": "typed interface to Fastlane",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "mkdir src ; node setversion.js &&  yarn -s generator > src/index.ts && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhdeck/fastlane-js.git"
+  },
+  "keywords": [
+    "fastlane"
+  ],
+  "author": "Ray Deck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rhdeck/fastlane-js/issues"
+  },
+  "homepage": "https://github.com/rhdeck/fastlane-js#readme",
+  "devDependencies": {
+    "@fastlanejs/api": "../fastlane-api",
+    "@fastlanejs/generator": "../make-fastlane",
+    "@raydeck/livelink": "^1.3.4",
+    "@types/node": "^14.0.13",
+    "@typescript-eslint/eslint-plugin": "^3.3.0",
+    "@typescript-eslint/parser": "^3.3.0",
+    "eslint": "^7.2.0",
+    "jsdoc": "^3.6.4",
+    "jsdoc-to-markdown": "^6.0.1",
+    "tsc": "^1.20150623.0",
+    "typedoc": "^0.17.7",
+    "typescript": "^3.9.5"
+  },
+  "liveLink": {
+    "liveLinks": {
+      "@fastlanejs/generator": "../make-fastlane",
+      "@fastlanejs/base": "../fastlane-base"
+    }
+  },
+  "dependencies": {
+    "@fastlanejs/base": "../fastlane-base"
+  }
+}

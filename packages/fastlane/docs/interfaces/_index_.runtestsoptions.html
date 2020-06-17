@@ -1,0 +1,1176 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>RunTestsOptions | fastlanejs</title>
+	<meta name="description" content="Documentation for fastlanejs">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">fastlanejs</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_index_.html">&quot;index&quot;</a>
+				</li>
+				<li>
+					<a href="_index_.runtestsoptions.html">RunTestsOptions</a>
+				</li>
+			</ul>
+			<h1>Interface RunTestsOptions</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>interface</dt>
+						<dd><p>RunTestsOptions</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} workspace Path to the workspace file</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} project Path to the project file</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} scheme The project&#39;s scheme. Make sure it&#39;s marked as <code>Shared</code></p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} device The name of the simulator type you want to run tests on (e.g. &#39;iPhone 6&#39;)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string[]} devices Array of devices to run the tests on (e.g. [&#39;iPhone 6&#39;, &#39;iPad Air&#39;])</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} skipDetectDevices Should skip auto detecting of devices if none were specified</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} forceQuitSimulator Enabling this option will automatically killall Simulator processes before the run</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} resetSimulator Enabling this option will automatically erase the simulator before running the application</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} disableSlideToType Enabling this option will disable the simulator from showing the &#39;Slide to type&#39; prompt</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} prelaunchSimulator Enabling this option will launch the first simulator prior to calling any xcodebuild command</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} reinstallApp Enabling this option will automatically uninstall the application before running it</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} appIdentifier The bundle identifier of the app to uninstall (only needed when enabling reinstall_app)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} onlyTesting Array of strings matching Test Bundle/Test Suite/Test Cases to run</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} skipTesting Array of strings matching Test Bundle/Test Suite/Test Cases to skip</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} testplan The testplan associated with the scheme that should be used for testing</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} xctestrun Run tests using the provided <code>.xctestrun</code> file</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} toolchain The toolchain that should be used for building the application (e.g. <code>com.apple.dt.toolchain.Swift_2_3, org.swift.30p620160816a</code>)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} clean Should the project be cleaned before building it?</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} codeCoverage Should code coverage be generated? (Xcode 7 and up)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} addressSanitizer Should the address sanitizer be turned on?</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} threadSanitizer Should the thread sanitizer be turned on?</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} openReport Should the HTML report be opened when tests are completed?</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} outputDirectory The directory in which all reports will be stored</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} outputStyle Define how the output should look like. Valid values are: standard, basic, rspec, or raw (disables xcpretty)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} outputTypes Comma separated list of the output types (e.g. html, junit, json-compilation-database)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} outputFiles Comma separated list of the output files, corresponding to the types provided by :output_types (order should match). If specifying an output type of json-compilation-database with :use_clang_report_name enabled, that option will take precedence</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} buildlogPath The directory where to store the raw log</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} includeSimulatorLogs If the logs generated by the app (e.g. using NSLog, perror, etc.) in the Simulator should be written to the output_directory</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} suppressXcodeOutput Suppress the output of xcodebuild to stdout. Output is still saved in buildlog_path</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} formatter A custom xcpretty formatter to use</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} xcprettyArgs Pass in xcpretty additional command line arguments (e.g. &#39;--test --no-color&#39; or &#39;--tap --no-utf&#39;)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} derivedDataPath The directory where build products and other derived data will go</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} shouldZipBuildProducts Should zip the derived data build products and place in output path?</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} resultBundle Should an Xcode result bundle be generated in the output directory</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} useClangReportName Generate the json compilation database with clang naming convention (compile_commands.json)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} concurrentWorkers Specify the exact number of test runners that will be spawned during parallel testing. Equivalent to -parallel-testing-worker-count</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} maxConcurrentSimulators Constrain the number of simulator devices on which to test concurrently. Equivalent to -maximum-concurrent-test-simulator-destinations</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} disableConcurrentTesting Do not run test bundles in parallel on the specified destinations. Testing will occur on each destination serially. Equivalent to -disable-concurrent-testing</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} skipBuild Should debug build be skipped before test build?</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} testWithoutBuilding Test without building, requires a derived data path</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} buildForTesting Build for testing only, does not run tests</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} sdk The SDK that should be used for building the application</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} configuration The configuration to use when building the app. Defaults to &#39;Release&#39;</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} xcargs Pass additional arguments to xcodebuild. Be sure to quote the setting names and values e.g. OTHER_LDFLAGS=&quot;-ObjC -lstdc++&quot;</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} xcconfig Use an extra XCCONFIG file to build your app</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} appName App name to use in slack message and logfile name</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} deploymentTargetVersion Target version of the app being build or tested. Used to filter out simulator version</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} slackUrl Create an Incoming WebHook for your Slack group to post results there</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} slackChannel #channel or @username</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} slackMessage The message included with each message posted to slack</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} slackUseWebhookConfiguredUsernameAndIcon Use webhook&#39;s default username and icon settings? (true/false)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} slackUsername Overrides the webhook&#39;s username property if slack_use_webhook_configured_username_and_icon is false</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} slackIconUrl Overrides the webhook&#39;s image property if slack_use_webhook_configured_username_and_icon is false</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} skipSlack Don&#39;t publish to slack, even when an URL is given</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} slackOnlyOnFailure Only post on Slack if the tests fail</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} destination Use only if you&#39;re a pro, use the other options instead</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} customReportFileName <strong>DEPRECATED!</strong> Use <code>--output_files</code> instead - Sets custom full report file name when generating a single report</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} xcodebuildCommand Allows for override of the default <code>xcodebuild</code> command</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} clonedSourcePackagesPath Sets a custom path for Swift Package Manager dependencies</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} failBuild Should this step stop the build if the tests fail? Set this to false if you&#39;re using trainer</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">RunTestsOptions</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#addresssanitizer" class="tsd-kind-icon">address<wbr>Sanitizer</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#appidentifier" class="tsd-kind-icon">app<wbr>Identifier</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#appname" class="tsd-kind-icon">app<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#buildfortesting" class="tsd-kind-icon">build<wbr>For<wbr>Testing</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#buildlogpath" class="tsd-kind-icon">buildlog<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#clean" class="tsd-kind-icon">clean</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#clonedsourcepackagespath" class="tsd-kind-icon">cloned<wbr>Source<wbr>Packages<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#codecoverage" class="tsd-kind-icon">code<wbr>Coverage</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#concurrentworkers" class="tsd-kind-icon">concurrent<wbr>Workers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#configuration" class="tsd-kind-icon">configuration</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#customreportfilename" class="tsd-kind-icon">custom<wbr>Report<wbr>File<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#deploymenttargetversion" class="tsd-kind-icon">deployment<wbr>Target<wbr>Version</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#deriveddatapath" class="tsd-kind-icon">derived<wbr>Data<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#destination" class="tsd-kind-icon">destination</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#device" class="tsd-kind-icon">device</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#devices" class="tsd-kind-icon">devices</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#disableconcurrenttesting" class="tsd-kind-icon">disable<wbr>Concurrent<wbr>Testing</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#disableslidetotype" class="tsd-kind-icon">disable<wbr>Slide<wbr>ToType</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#failbuild" class="tsd-kind-icon">fail<wbr>Build</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#forcequitsimulator" class="tsd-kind-icon">force<wbr>Quit<wbr>Simulator</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#formatter" class="tsd-kind-icon">formatter</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#includesimulatorlogs" class="tsd-kind-icon">include<wbr>Simulator<wbr>Logs</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#maxconcurrentsimulators" class="tsd-kind-icon">max<wbr>Concurrent<wbr>Simulators</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#onlytesting" class="tsd-kind-icon">only<wbr>Testing</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#openreport" class="tsd-kind-icon">open<wbr>Report</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#outputdirectory" class="tsd-kind-icon">output<wbr>Directory</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#outputfiles" class="tsd-kind-icon">output<wbr>Files</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#outputstyle" class="tsd-kind-icon">output<wbr>Style</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#outputtypes" class="tsd-kind-icon">output<wbr>Types</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#prelaunchsimulator" class="tsd-kind-icon">prelaunch<wbr>Simulator</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#project" class="tsd-kind-icon">project</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#reinstallapp" class="tsd-kind-icon">reinstall<wbr>App</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#resetsimulator" class="tsd-kind-icon">reset<wbr>Simulator</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#resultbundle" class="tsd-kind-icon">result<wbr>Bundle</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#scheme" class="tsd-kind-icon">scheme</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#sdk" class="tsd-kind-icon">sdk</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#shouldzipbuildproducts" class="tsd-kind-icon">should<wbr>Zip<wbr>Build<wbr>Products</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#skipbuild" class="tsd-kind-icon">skip<wbr>Build</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#skipdetectdevices" class="tsd-kind-icon">skip<wbr>Detect<wbr>Devices</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#skipslack" class="tsd-kind-icon">skip<wbr>Slack</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#skiptesting" class="tsd-kind-icon">skip<wbr>Testing</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#slackchannel" class="tsd-kind-icon">slack<wbr>Channel</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#slackiconurl" class="tsd-kind-icon">slack<wbr>Icon<wbr>Url</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#slackmessage" class="tsd-kind-icon">slack<wbr>Message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#slackonlyonfailure" class="tsd-kind-icon">slack<wbr>Only<wbr>OnFailure</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#slackurl" class="tsd-kind-icon">slack<wbr>Url</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#slackusewebhookconfiguredusernameandicon" class="tsd-kind-icon">slack<wbr>Use<wbr>Webhook<wbr>Configured<wbr>Username<wbr>And<wbr>Icon</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#slackusername" class="tsd-kind-icon">slack<wbr>Username</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#suppressxcodeoutput" class="tsd-kind-icon">suppress<wbr>Xcode<wbr>Output</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#testwithoutbuilding" class="tsd-kind-icon">test<wbr>Without<wbr>Building</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#testplan" class="tsd-kind-icon">testplan</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#threadsanitizer" class="tsd-kind-icon">thread<wbr>Sanitizer</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#toolchain" class="tsd-kind-icon">toolchain</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#useclangreportname" class="tsd-kind-icon">use<wbr>Clang<wbr>Report<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#workspace" class="tsd-kind-icon">workspace</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#xcargs" class="tsd-kind-icon">xcargs</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#xcconfig" class="tsd-kind-icon">xcconfig</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#xcodebuildcommand" class="tsd-kind-icon">xcodebuild<wbr>Command</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#xcprettyargs" class="tsd-kind-icon">xcpretty<wbr>Args</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.runtestsoptions.html#xctestrun" class="tsd-kind-icon">xctestrun</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="addresssanitizer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> address<wbr>Sanitizer</h3>
+					<div class="tsd-signature tsd-kind-icon">address<wbr>Sanitizer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3527</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="appidentifier" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> app<wbr>Identifier</h3>
+					<div class="tsd-signature tsd-kind-icon">app<wbr>Identifier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3519</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="appname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> app<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">app<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3553</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="buildfortesting" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> build<wbr>For<wbr>Testing</h3>
+					<div class="tsd-signature tsd-kind-icon">build<wbr>For<wbr>Testing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3548</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="buildlogpath" class="tsd-anchor"></a>
+					<h3>buildlog<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">buildlog<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3534</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="clean" class="tsd-anchor"></a>
+					<h3>clean</h3>
+					<div class="tsd-signature tsd-kind-icon">clean<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3525</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="clonedsourcepackagespath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> cloned<wbr>Source<wbr>Packages<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">cloned<wbr>Source<wbr>Packages<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3566</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="codecoverage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> code<wbr>Coverage</h3>
+					<div class="tsd-signature tsd-kind-icon">code<wbr>Coverage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3526</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="concurrentworkers" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> concurrent<wbr>Workers</h3>
+					<div class="tsd-signature tsd-kind-icon">concurrent<wbr>Workers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3543</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="configuration" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> configuration</h3>
+					<div class="tsd-signature tsd-kind-icon">configuration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3550</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="customreportfilename" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> custom<wbr>Report<wbr>File<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">custom<wbr>Report<wbr>File<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3564</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="deploymenttargetversion" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> deployment<wbr>Target<wbr>Version</h3>
+					<div class="tsd-signature tsd-kind-icon">deployment<wbr>Target<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3554</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="deriveddatapath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> derived<wbr>Data<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">derived<wbr>Data<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3539</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="destination" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> destination</h3>
+					<div class="tsd-signature tsd-kind-icon">destination<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3563</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="device" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> device</h3>
+					<div class="tsd-signature tsd-kind-icon">device<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3511</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="devices" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> devices</h3>
+					<div class="tsd-signature tsd-kind-icon">devices<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3512</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="disableconcurrenttesting" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> disable<wbr>Concurrent<wbr>Testing</h3>
+					<div class="tsd-signature tsd-kind-icon">disable<wbr>Concurrent<wbr>Testing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3545</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="disableslidetotype" class="tsd-anchor"></a>
+					<h3>disable<wbr>Slide<wbr>ToType</h3>
+					<div class="tsd-signature tsd-kind-icon">disable<wbr>Slide<wbr>ToType<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3516</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="failbuild" class="tsd-anchor"></a>
+					<h3>fail<wbr>Build</h3>
+					<div class="tsd-signature tsd-kind-icon">fail<wbr>Build<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3567</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="forcequitsimulator" class="tsd-anchor"></a>
+					<h3>force<wbr>Quit<wbr>Simulator</h3>
+					<div class="tsd-signature tsd-kind-icon">force<wbr>Quit<wbr>Simulator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3514</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="formatter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> formatter</h3>
+					<div class="tsd-signature tsd-kind-icon">formatter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3537</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="includesimulatorlogs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> include<wbr>Simulator<wbr>Logs</h3>
+					<div class="tsd-signature tsd-kind-icon">include<wbr>Simulator<wbr>Logs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3535</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="maxconcurrentsimulators" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> max<wbr>Concurrent<wbr>Simulators</h3>
+					<div class="tsd-signature tsd-kind-icon">max<wbr>Concurrent<wbr>Simulators<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3544</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="onlytesting" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> only<wbr>Testing</h3>
+					<div class="tsd-signature tsd-kind-icon">only<wbr>Testing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3520</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="openreport" class="tsd-anchor"></a>
+					<h3>open<wbr>Report</h3>
+					<div class="tsd-signature tsd-kind-icon">open<wbr>Report<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3529</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="outputdirectory" class="tsd-anchor"></a>
+					<h3>output<wbr>Directory</h3>
+					<div class="tsd-signature tsd-kind-icon">output<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3530</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="outputfiles" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> output<wbr>Files</h3>
+					<div class="tsd-signature tsd-kind-icon">output<wbr>Files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3533</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="outputstyle" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> output<wbr>Style</h3>
+					<div class="tsd-signature tsd-kind-icon">output<wbr>Style<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3531</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="outputtypes" class="tsd-anchor"></a>
+					<h3>output<wbr>Types</h3>
+					<div class="tsd-signature tsd-kind-icon">output<wbr>Types<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3532</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="prelaunchsimulator" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> prelaunch<wbr>Simulator</h3>
+					<div class="tsd-signature tsd-kind-icon">prelaunch<wbr>Simulator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3517</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="project" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> project</h3>
+					<div class="tsd-signature tsd-kind-icon">project<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3509</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="reinstallapp" class="tsd-anchor"></a>
+					<h3>reinstall<wbr>App</h3>
+					<div class="tsd-signature tsd-kind-icon">reinstall<wbr>App<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3518</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="resetsimulator" class="tsd-anchor"></a>
+					<h3>reset<wbr>Simulator</h3>
+					<div class="tsd-signature tsd-kind-icon">reset<wbr>Simulator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3515</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="resultbundle" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> result<wbr>Bundle</h3>
+					<div class="tsd-signature tsd-kind-icon">result<wbr>Bundle<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3541</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="scheme" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> scheme</h3>
+					<div class="tsd-signature tsd-kind-icon">scheme<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3510</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="sdk" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> sdk</h3>
+					<div class="tsd-signature tsd-kind-icon">sdk<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3549</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="shouldzipbuildproducts" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> should<wbr>Zip<wbr>Build<wbr>Products</h3>
+					<div class="tsd-signature tsd-kind-icon">should<wbr>Zip<wbr>Build<wbr>Products<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3540</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="skipbuild" class="tsd-anchor"></a>
+					<h3>skip<wbr>Build</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Build<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3546</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="skipdetectdevices" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> skip<wbr>Detect<wbr>Devices</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Detect<wbr>Devices<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3513</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="skipslack" class="tsd-anchor"></a>
+					<h3>skip<wbr>Slack</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Slack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3561</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="skiptesting" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> skip<wbr>Testing</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Testing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3521</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="slackchannel" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> slack<wbr>Channel</h3>
+					<div class="tsd-signature tsd-kind-icon">slack<wbr>Channel<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3556</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="slackiconurl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> slack<wbr>Icon<wbr>Url</h3>
+					<div class="tsd-signature tsd-kind-icon">slack<wbr>Icon<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3560</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="slackmessage" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> slack<wbr>Message</h3>
+					<div class="tsd-signature tsd-kind-icon">slack<wbr>Message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3557</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="slackonlyonfailure" class="tsd-anchor"></a>
+					<h3>slack<wbr>Only<wbr>OnFailure</h3>
+					<div class="tsd-signature tsd-kind-icon">slack<wbr>Only<wbr>OnFailure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3562</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="slackurl" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> slack<wbr>Url</h3>
+					<div class="tsd-signature tsd-kind-icon">slack<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3555</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="slackusewebhookconfiguredusernameandicon" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> slack<wbr>Use<wbr>Webhook<wbr>Configured<wbr>Username<wbr>And<wbr>Icon</h3>
+					<div class="tsd-signature tsd-kind-icon">slack<wbr>Use<wbr>Webhook<wbr>Configured<wbr>Username<wbr>And<wbr>Icon<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3558</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="slackusername" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> slack<wbr>Username</h3>
+					<div class="tsd-signature tsd-kind-icon">slack<wbr>Username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3559</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="suppressxcodeoutput" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> suppress<wbr>Xcode<wbr>Output</h3>
+					<div class="tsd-signature tsd-kind-icon">suppress<wbr>Xcode<wbr>Output<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3536</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="testwithoutbuilding" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> test<wbr>Without<wbr>Building</h3>
+					<div class="tsd-signature tsd-kind-icon">test<wbr>Without<wbr>Building<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3547</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="testplan" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> testplan</h3>
+					<div class="tsd-signature tsd-kind-icon">testplan<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3522</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="threadsanitizer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> thread<wbr>Sanitizer</h3>
+					<div class="tsd-signature tsd-kind-icon">thread<wbr>Sanitizer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3528</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="toolchain" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> toolchain</h3>
+					<div class="tsd-signature tsd-kind-icon">toolchain<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3524</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="useclangreportname" class="tsd-anchor"></a>
+					<h3>use<wbr>Clang<wbr>Report<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">use<wbr>Clang<wbr>Report<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3542</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="workspace" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> workspace</h3>
+					<div class="tsd-signature tsd-kind-icon">workspace<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3508</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="xcargs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> xcargs</h3>
+					<div class="tsd-signature tsd-kind-icon">xcargs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3551</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="xcconfig" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> xcconfig</h3>
+					<div class="tsd-signature tsd-kind-icon">xcconfig<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3552</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="xcodebuildcommand" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> xcodebuild<wbr>Command</h3>
+					<div class="tsd-signature tsd-kind-icon">xcodebuild<wbr>Command<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3565</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="xcprettyargs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> xcpretty<wbr>Args</h3>
+					<div class="tsd-signature tsd-kind-icon">xcpretty<wbr>Args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3538</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="xctestrun" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> xctestrun</h3>
+					<div class="tsd-signature tsd-kind-icon">xctestrun<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3523</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_index_.html">&quot;index&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_index_.runtestsoptions.html" class="tsd-kind-icon">Run<wbr>Tests<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#addresssanitizer" class="tsd-kind-icon">address<wbr>Sanitizer</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#appidentifier" class="tsd-kind-icon">app<wbr>Identifier</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#appname" class="tsd-kind-icon">app<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#buildfortesting" class="tsd-kind-icon">build<wbr>For<wbr>Testing</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#buildlogpath" class="tsd-kind-icon">buildlog<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#clean" class="tsd-kind-icon">clean</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#clonedsourcepackagespath" class="tsd-kind-icon">cloned<wbr>Source<wbr>Packages<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#codecoverage" class="tsd-kind-icon">code<wbr>Coverage</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#concurrentworkers" class="tsd-kind-icon">concurrent<wbr>Workers</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#configuration" class="tsd-kind-icon">configuration</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#customreportfilename" class="tsd-kind-icon">custom<wbr>Report<wbr>File<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#deploymenttargetversion" class="tsd-kind-icon">deployment<wbr>Target<wbr>Version</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#deriveddatapath" class="tsd-kind-icon">derived<wbr>Data<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#destination" class="tsd-kind-icon">destination</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#device" class="tsd-kind-icon">device</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#devices" class="tsd-kind-icon">devices</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#disableconcurrenttesting" class="tsd-kind-icon">disable<wbr>Concurrent<wbr>Testing</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#disableslidetotype" class="tsd-kind-icon">disable<wbr>Slide<wbr>ToType</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#failbuild" class="tsd-kind-icon">fail<wbr>Build</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#forcequitsimulator" class="tsd-kind-icon">force<wbr>Quit<wbr>Simulator</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#formatter" class="tsd-kind-icon">formatter</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#includesimulatorlogs" class="tsd-kind-icon">include<wbr>Simulator<wbr>Logs</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#maxconcurrentsimulators" class="tsd-kind-icon">max<wbr>Concurrent<wbr>Simulators</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#onlytesting" class="tsd-kind-icon">only<wbr>Testing</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#openreport" class="tsd-kind-icon">open<wbr>Report</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#outputdirectory" class="tsd-kind-icon">output<wbr>Directory</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#outputfiles" class="tsd-kind-icon">output<wbr>Files</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#outputstyle" class="tsd-kind-icon">output<wbr>Style</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#outputtypes" class="tsd-kind-icon">output<wbr>Types</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#prelaunchsimulator" class="tsd-kind-icon">prelaunch<wbr>Simulator</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#project" class="tsd-kind-icon">project</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#reinstallapp" class="tsd-kind-icon">reinstall<wbr>App</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#resetsimulator" class="tsd-kind-icon">reset<wbr>Simulator</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#resultbundle" class="tsd-kind-icon">result<wbr>Bundle</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#scheme" class="tsd-kind-icon">scheme</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#sdk" class="tsd-kind-icon">sdk</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#shouldzipbuildproducts" class="tsd-kind-icon">should<wbr>Zip<wbr>Build<wbr>Products</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#skipbuild" class="tsd-kind-icon">skip<wbr>Build</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#skipdetectdevices" class="tsd-kind-icon">skip<wbr>Detect<wbr>Devices</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#skipslack" class="tsd-kind-icon">skip<wbr>Slack</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#skiptesting" class="tsd-kind-icon">skip<wbr>Testing</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#slackchannel" class="tsd-kind-icon">slack<wbr>Channel</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#slackiconurl" class="tsd-kind-icon">slack<wbr>Icon<wbr>Url</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#slackmessage" class="tsd-kind-icon">slack<wbr>Message</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#slackonlyonfailure" class="tsd-kind-icon">slack<wbr>Only<wbr>OnFailure</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#slackurl" class="tsd-kind-icon">slack<wbr>Url</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#slackusewebhookconfiguredusernameandicon" class="tsd-kind-icon">slack<wbr>Use<wbr>Webhook<wbr>Configured<wbr>Username<wbr>And<wbr>Icon</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#slackusername" class="tsd-kind-icon">slack<wbr>Username</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#suppressxcodeoutput" class="tsd-kind-icon">suppress<wbr>Xcode<wbr>Output</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#testwithoutbuilding" class="tsd-kind-icon">test<wbr>Without<wbr>Building</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#testplan" class="tsd-kind-icon">testplan</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#threadsanitizer" class="tsd-kind-icon">thread<wbr>Sanitizer</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#toolchain" class="tsd-kind-icon">toolchain</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#useclangreportname" class="tsd-kind-icon">use<wbr>Clang<wbr>Report<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#workspace" class="tsd-kind-icon">workspace</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#xcargs" class="tsd-kind-icon">xcargs</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#xcconfig" class="tsd-kind-icon">xcconfig</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#xcodebuildcommand" class="tsd-kind-icon">xcodebuild<wbr>Command</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#xcprettyargs" class="tsd-kind-icon">xcpretty<wbr>Args</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.runtestsoptions.html#xctestrun" class="tsd-kind-icon">xctestrun</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

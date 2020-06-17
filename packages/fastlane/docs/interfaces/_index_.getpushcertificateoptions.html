@@ -1,0 +1,394 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>GetPushCertificateOptions | fastlanejs</title>
+	<meta name="description" content="Documentation for fastlanejs">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">fastlanejs</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_index_.html">&quot;index&quot;</a>
+				</li>
+				<li>
+					<a href="_index_.getpushcertificateoptions.html">GetPushCertificateOptions</a>
+				</li>
+			</ul>
+			<h1>Interface GetPushCertificateOptions</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>interface</dt>
+						<dd><p>GetPushCertificateOptions</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} development Renew the development push certificate instead of the production one</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} websitePush Create a Website Push certificate</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} generateP12 Generate a p12 file additionally to a PEM file</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} activeDaysLimit If the current certificate is active for less than this number of days, generate a new one</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} force Create a new push certificate, even if the current one is active for 30 (or PEM_ACTIVE_DAYS_LIMIT) more days</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} savePrivateKey Set to save the private RSA key</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} appIdentifier The bundle identifier of your app</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} username Your Apple ID Username</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} teamId The ID of your Developer Portal team if you&#39;re in multiple teams</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} teamName The name of your Developer Portal team if you&#39;re in multiple teams</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} p12Password The password that is used for your p12 file</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} pemName The file name of the generated .pem file</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} outputPath The path to a directory in which all certificates and private keys should be stored</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} newProfile Block that is called if there is a new profile</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">GetPushCertificateOptions</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#activedayslimit" class="tsd-kind-icon">active<wbr>Days<wbr>Limit</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#appidentifier" class="tsd-kind-icon">app<wbr>Identifier</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#development" class="tsd-kind-icon">development</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#force" class="tsd-kind-icon">force</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#generatep12" class="tsd-kind-icon">generate<wbr>P12</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#newprofile" class="tsd-kind-icon">new<wbr>Profile</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#outputpath" class="tsd-kind-icon">output<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#p12password" class="tsd-kind-icon">p12<wbr>Password</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#pemname" class="tsd-kind-icon">pem<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#saveprivatekey" class="tsd-kind-icon">save<wbr>Private<wbr>Key</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#teamid" class="tsd-kind-icon">team<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#teamname" class="tsd-kind-icon">team<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#username" class="tsd-kind-icon">username</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.getpushcertificateoptions.html#websitepush" class="tsd-kind-icon">website<wbr>Push</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="activedayslimit" class="tsd-anchor"></a>
+					<h3>active<wbr>Days<wbr>Limit</h3>
+					<div class="tsd-signature tsd-kind-icon">active<wbr>Days<wbr>Limit<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2081</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="appidentifier" class="tsd-anchor"></a>
+					<h3>app<wbr>Identifier</h3>
+					<div class="tsd-signature tsd-kind-icon">app<wbr>Identifier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2084</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="development" class="tsd-anchor"></a>
+					<h3>development</h3>
+					<div class="tsd-signature tsd-kind-icon">development<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2078</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="force" class="tsd-anchor"></a>
+					<h3>force</h3>
+					<div class="tsd-signature tsd-kind-icon">force<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2082</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="generatep12" class="tsd-anchor"></a>
+					<h3>generate<wbr>P12</h3>
+					<div class="tsd-signature tsd-kind-icon">generate<wbr>P12<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2080</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="newprofile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> new<wbr>Profile</h3>
+					<div class="tsd-signature tsd-kind-icon">new<wbr>Profile<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2091</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="outputpath" class="tsd-anchor"></a>
+					<h3>output<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">output<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2090</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="p12password" class="tsd-anchor"></a>
+					<h3>p12<wbr>Password</h3>
+					<div class="tsd-signature tsd-kind-icon">p12<wbr>Password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2088</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="pemname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> pem<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">pem<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2089</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="saveprivatekey" class="tsd-anchor"></a>
+					<h3>save<wbr>Private<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">save<wbr>Private<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2083</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="teamid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> team<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">team<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2086</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="teamname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> team<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">team<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2087</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="username" class="tsd-anchor"></a>
+					<h3>username</h3>
+					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2085</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="websitepush" class="tsd-anchor"></a>
+					<h3>website<wbr>Push</h3>
+					<div class="tsd-signature tsd-kind-icon">website<wbr>Push<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2079</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_index_.html">&quot;index&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_index_.getpushcertificateoptions.html" class="tsd-kind-icon">Get<wbr>Push<wbr>Certificate<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#activedayslimit" class="tsd-kind-icon">active<wbr>Days<wbr>Limit</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#appidentifier" class="tsd-kind-icon">app<wbr>Identifier</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#development" class="tsd-kind-icon">development</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#force" class="tsd-kind-icon">force</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#generatep12" class="tsd-kind-icon">generate<wbr>P12</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#newprofile" class="tsd-kind-icon">new<wbr>Profile</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#outputpath" class="tsd-kind-icon">output<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#p12password" class="tsd-kind-icon">p12<wbr>Password</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#pemname" class="tsd-kind-icon">pem<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#saveprivatekey" class="tsd-kind-icon">save<wbr>Private<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#teamid" class="tsd-kind-icon">team<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#teamname" class="tsd-kind-icon">team<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#username" class="tsd-kind-icon">username</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.getpushcertificateoptions.html#websitepush" class="tsd-kind-icon">website<wbr>Push</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

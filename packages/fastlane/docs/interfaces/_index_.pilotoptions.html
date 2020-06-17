@@ -1,0 +1,724 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>PilotOptions | fastlanejs</title>
+	<meta name="description" content="Documentation for fastlanejs">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">fastlanejs</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_index_.html">&quot;index&quot;</a>
+				</li>
+				<li>
+					<a href="_index_.pilotoptions.html">PilotOptions</a>
+				</li>
+			</ul>
+			<h1>Interface PilotOptions</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>interface</dt>
+						<dd><p>PilotOptions</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} username Your Apple ID Username</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} appIdentifier The bundle identifier of the app to upload or manage testers (optional)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} appPlatform The platform to use (optional)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} appleId Apple ID property in the App Information section in App Store Connect</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} ipa Path to the ipa file to upload</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} demoAccountRequired Do you need a demo account when Apple does review?</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{{string: string}} betaAppReviewInfo Beta app review information for contact info and demo account</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{{string: string}} localizedAppInfo Localized beta app test info for description, feedback email, marketing url, and privacy policy</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} betaAppDescription Provide the &#39;Beta App Description&#39; when uploading a new build</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} betaAppFeedbackEmail Provide the beta app email when uploading a new build</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{{string: string}} localizedBuildInfo Localized beta app test info for what&#39;s new</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} changelog Provide the &#39;What to Test&#39; text when uploading a new build. <code>skip_waiting_for_build_processing: false</code> is required to set the changelog</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} skipSubmission Skip the distributing action of pilot and only upload the ipa file</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} skipWaitingForBuildProcessing If set to true, the <code>distribute_external</code> option won&#39;t work and no build will be distributed to testers. (You might want to use this option if you are using this action on CI and have to pay for &#39;minutes used&#39; on your CI plan). If set to <code>true</code> and a changelog is provided, it will partially wait for the build to appear on AppStore Connect so the changelog can be set, and skip the remaining processing steps</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} updateBuildInfoOnUpload <strong>DEPRECATED!</strong> Update build info immediately after validation. This is deprecated and will be removed in a future release. App Store Connect no longer supports setting build info until after build processing has completed, which is when build info is updated by default</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} usesNonExemptEncryption Provide the &#39;Uses Non-Exempt Encryption&#39; for export compliance. This is used if there is &#39;ITSAppUsesNonExemptEncryption&#39; is not set in the Info.plist</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} distributeExternal Should the build be distributed to external testers?</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} notifyExternalTesters Should notify external testers?</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} appVersion The version number of the application build to distribute. If the version number is not specified, then the most recent build uploaded to TestFlight will be distributed. If specified, the most recent build for the version number will be distributed</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} buildNumber The build number of the application build to distribute. If the build number is not specified, the most recent build is distributed</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} firstName The tester&#39;s first name</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} lastName The tester&#39;s last name</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} email The tester&#39;s email</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} testersFilePath Path to a CSV file of testers</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string[]} groups Associate tester to one group or more by group name / group id. E.g. <code>-g &quot;Team 1&quot;,&quot;Team 2&quot;</code></p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} teamId The ID of your App Store Connect team if you&#39;re in multiple teams</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} teamName The name of your App Store Connect team if you&#39;re in multiple teams</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} devPortalTeamId The short ID of your team in the developer portal, if you&#39;re in multiple teams. Different from your iTC team ID!</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} itcProvider The provider short name to be used with the iTMSTransporter to identify your team. This value will override the automatically detected provider short name. To get provider short name run <code>pathToXcode.app/Contents/Applications/Application\ Loader.app/Contents/itms/bin/iTMSTransporter -m provider -u &#39;USERNAME&#39; -p &#39;PASSWORD&#39; -account_type itunes_connect -v off</code>. The short names of providers should be listed in the second column</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} waitProcessingInterval Interval in seconds to wait for App Store Connect processing</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} waitForUploadedBuild <strong>DEPRECATED!</strong> No longer needed with the transition over to the App Store Connect API - Use version info from uploaded ipa file to determine what build to use for distribution. If set to false, latest processing or any latest build will be used</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} rejectBuildWaitingForReview Expire previous if it&#39;s &#39;waiting for review&#39;</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">PilotOptions</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#appidentifier" class="tsd-kind-icon">app<wbr>Identifier</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#appplatform" class="tsd-kind-icon">app<wbr>Platform</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#appversion" class="tsd-kind-icon">app<wbr>Version</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#appleid" class="tsd-kind-icon">apple<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#betaappdescription" class="tsd-kind-icon">beta<wbr>App<wbr>Description</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#betaappfeedbackemail" class="tsd-kind-icon">beta<wbr>App<wbr>Feedback<wbr>Email</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#betaappreviewinfo" class="tsd-kind-icon">beta<wbr>App<wbr>Review<wbr>Info</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#buildnumber" class="tsd-kind-icon">build<wbr>Number</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#changelog" class="tsd-kind-icon">changelog</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#demoaccountrequired" class="tsd-kind-icon">demo<wbr>Account<wbr>Required</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#devportalteamid" class="tsd-kind-icon">dev<wbr>Portal<wbr>Team<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#distributeexternal" class="tsd-kind-icon">distribute<wbr>External</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#email" class="tsd-kind-icon">email</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#firstname" class="tsd-kind-icon">first<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#groups" class="tsd-kind-icon">groups</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#ipa" class="tsd-kind-icon">ipa</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#itcprovider" class="tsd-kind-icon">itc<wbr>Provider</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#lastname" class="tsd-kind-icon">last<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#localizedappinfo" class="tsd-kind-icon">localized<wbr>App<wbr>Info</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#localizedbuildinfo" class="tsd-kind-icon">localized<wbr>Build<wbr>Info</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#notifyexternaltesters" class="tsd-kind-icon">notify<wbr>External<wbr>Testers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#rejectbuildwaitingforreview" class="tsd-kind-icon">reject<wbr>Build<wbr>Waiting<wbr>For<wbr>Review</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#skipsubmission" class="tsd-kind-icon">skip<wbr>Submission</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#skipwaitingforbuildprocessing" class="tsd-kind-icon">skip<wbr>Waiting<wbr>For<wbr>Build<wbr>Processing</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#teamid" class="tsd-kind-icon">team<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#teamname" class="tsd-kind-icon">team<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#testersfilepath" class="tsd-kind-icon">testers<wbr>File<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#updatebuildinfoonupload" class="tsd-kind-icon">update<wbr>Build<wbr>Info<wbr>OnUpload</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#username" class="tsd-kind-icon">username</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#usesnonexemptencryption" class="tsd-kind-icon">uses<wbr>Non<wbr>Exempt<wbr>Encryption</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#waitforuploadedbuild" class="tsd-kind-icon">wait<wbr>For<wbr>Uploaded<wbr>Build</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.pilotoptions.html#waitprocessinginterval" class="tsd-kind-icon">wait<wbr>Processing<wbr>Interval</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="appidentifier" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> app<wbr>Identifier</h3>
+					<div class="tsd-signature tsd-kind-icon">app<wbr>Identifier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3055</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="appplatform" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> app<wbr>Platform</h3>
+					<div class="tsd-signature tsd-kind-icon">app<wbr>Platform<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3056</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="appversion" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> app<wbr>Version</h3>
+					<div class="tsd-signature tsd-kind-icon">app<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3072</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="appleid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> apple<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">apple<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3057</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="betaappdescription" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> beta<wbr>App<wbr>Description</h3>
+					<div class="tsd-signature tsd-kind-icon">beta<wbr>App<wbr>Description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3062</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="betaappfeedbackemail" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> beta<wbr>App<wbr>Feedback<wbr>Email</h3>
+					<div class="tsd-signature tsd-kind-icon">beta<wbr>App<wbr>Feedback<wbr>Email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3063</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="betaappreviewinfo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> beta<wbr>App<wbr>Review<wbr>Info</h3>
+					<div class="tsd-signature tsd-kind-icon">beta<wbr>App<wbr>Review<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>string<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3060</li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>string<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="buildnumber" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> build<wbr>Number</h3>
+					<div class="tsd-signature tsd-kind-icon">build<wbr>Number<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3073</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="changelog" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> changelog</h3>
+					<div class="tsd-signature tsd-kind-icon">changelog<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3065</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="demoaccountrequired" class="tsd-anchor"></a>
+					<h3>demo<wbr>Account<wbr>Required</h3>
+					<div class="tsd-signature tsd-kind-icon">demo<wbr>Account<wbr>Required<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3059</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="devportalteamid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> dev<wbr>Portal<wbr>Team<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">dev<wbr>Portal<wbr>Team<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3081</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="distributeexternal" class="tsd-anchor"></a>
+					<h3>distribute<wbr>External</h3>
+					<div class="tsd-signature tsd-kind-icon">distribute<wbr>External<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3070</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="email" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> email</h3>
+					<div class="tsd-signature tsd-kind-icon">email<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3076</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="firstname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> first<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">first<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3074</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="groups" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> groups</h3>
+					<div class="tsd-signature tsd-kind-icon">groups<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3078</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="ipa" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> ipa</h3>
+					<div class="tsd-signature tsd-kind-icon">ipa<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3058</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="itcprovider" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> itc<wbr>Provider</h3>
+					<div class="tsd-signature tsd-kind-icon">itc<wbr>Provider<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3082</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="lastname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> last<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3075</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="localizedappinfo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> localized<wbr>App<wbr>Info</h3>
+					<div class="tsd-signature tsd-kind-icon">localized<wbr>App<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>string<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3061</li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>string<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="localizedbuildinfo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> localized<wbr>Build<wbr>Info</h3>
+					<div class="tsd-signature tsd-kind-icon">localized<wbr>Build<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>string<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3064</li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>string<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="notifyexternaltesters" class="tsd-anchor"></a>
+					<h3>notify<wbr>External<wbr>Testers</h3>
+					<div class="tsd-signature tsd-kind-icon">notify<wbr>External<wbr>Testers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3071</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="rejectbuildwaitingforreview" class="tsd-anchor"></a>
+					<h3>reject<wbr>Build<wbr>Waiting<wbr>For<wbr>Review</h3>
+					<div class="tsd-signature tsd-kind-icon">reject<wbr>Build<wbr>Waiting<wbr>For<wbr>Review<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3085</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="skipsubmission" class="tsd-anchor"></a>
+					<h3>skip<wbr>Submission</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Submission<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3066</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="skipwaitingforbuildprocessing" class="tsd-anchor"></a>
+					<h3>skip<wbr>Waiting<wbr>For<wbr>Build<wbr>Processing</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Waiting<wbr>For<wbr>Build<wbr>Processing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3067</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="teamid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> team<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">team<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3079</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="teamname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> team<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">team<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3080</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="testersfilepath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> testers<wbr>File<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">testers<wbr>File<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3077</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="updatebuildinfoonupload" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> update<wbr>Build<wbr>Info<wbr>OnUpload</h3>
+					<div class="tsd-signature tsd-kind-icon">update<wbr>Build<wbr>Info<wbr>OnUpload<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3068</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="username" class="tsd-anchor"></a>
+					<h3>username</h3>
+					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3054</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="usesnonexemptencryption" class="tsd-anchor"></a>
+					<h3>uses<wbr>Non<wbr>Exempt<wbr>Encryption</h3>
+					<div class="tsd-signature tsd-kind-icon">uses<wbr>Non<wbr>Exempt<wbr>Encryption<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3069</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="waitforuploadedbuild" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> wait<wbr>For<wbr>Uploaded<wbr>Build</h3>
+					<div class="tsd-signature tsd-kind-icon">wait<wbr>For<wbr>Uploaded<wbr>Build<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3084</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="waitprocessinginterval" class="tsd-anchor"></a>
+					<h3>wait<wbr>Processing<wbr>Interval</h3>
+					<div class="tsd-signature tsd-kind-icon">wait<wbr>Processing<wbr>Interval<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3083</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_index_.html">&quot;index&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_index_.pilotoptions.html" class="tsd-kind-icon">Pilot<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#appidentifier" class="tsd-kind-icon">app<wbr>Identifier</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#appplatform" class="tsd-kind-icon">app<wbr>Platform</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#appversion" class="tsd-kind-icon">app<wbr>Version</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#appleid" class="tsd-kind-icon">apple<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#betaappdescription" class="tsd-kind-icon">beta<wbr>App<wbr>Description</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#betaappfeedbackemail" class="tsd-kind-icon">beta<wbr>App<wbr>Feedback<wbr>Email</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#betaappreviewinfo" class="tsd-kind-icon">beta<wbr>App<wbr>Review<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#buildnumber" class="tsd-kind-icon">build<wbr>Number</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#changelog" class="tsd-kind-icon">changelog</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#demoaccountrequired" class="tsd-kind-icon">demo<wbr>Account<wbr>Required</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#devportalteamid" class="tsd-kind-icon">dev<wbr>Portal<wbr>Team<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#distributeexternal" class="tsd-kind-icon">distribute<wbr>External</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#email" class="tsd-kind-icon">email</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#firstname" class="tsd-kind-icon">first<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#groups" class="tsd-kind-icon">groups</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#ipa" class="tsd-kind-icon">ipa</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#itcprovider" class="tsd-kind-icon">itc<wbr>Provider</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#lastname" class="tsd-kind-icon">last<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#localizedappinfo" class="tsd-kind-icon">localized<wbr>App<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#localizedbuildinfo" class="tsd-kind-icon">localized<wbr>Build<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#notifyexternaltesters" class="tsd-kind-icon">notify<wbr>External<wbr>Testers</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#rejectbuildwaitingforreview" class="tsd-kind-icon">reject<wbr>Build<wbr>Waiting<wbr>For<wbr>Review</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#skipsubmission" class="tsd-kind-icon">skip<wbr>Submission</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#skipwaitingforbuildprocessing" class="tsd-kind-icon">skip<wbr>Waiting<wbr>For<wbr>Build<wbr>Processing</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#teamid" class="tsd-kind-icon">team<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#teamname" class="tsd-kind-icon">team<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#testersfilepath" class="tsd-kind-icon">testers<wbr>File<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#updatebuildinfoonupload" class="tsd-kind-icon">update<wbr>Build<wbr>Info<wbr>OnUpload</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#username" class="tsd-kind-icon">username</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#usesnonexemptencryption" class="tsd-kind-icon">uses<wbr>Non<wbr>Exempt<wbr>Encryption</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#waitforuploadedbuild" class="tsd-kind-icon">wait<wbr>For<wbr>Uploaded<wbr>Build</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.pilotoptions.html#waitprocessinginterval" class="tsd-kind-icon">wait<wbr>Processing<wbr>Interval</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

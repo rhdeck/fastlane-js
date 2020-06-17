@@ -1,0 +1,530 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ScreengrabOptions | fastlanejs</title>
+	<meta name="description" content="Documentation for fastlanejs">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">fastlanejs</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_index_.html">&quot;index&quot;</a>
+				</li>
+				<li>
+					<a href="_index_.screengraboptions.html">ScreengrabOptions</a>
+				</li>
+			</ul>
+			<h1>Interface ScreengrabOptions</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>interface</dt>
+						<dd><p>ScreengrabOptions</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} androidHome Path to the root of your Android SDK installation, e.g. ~/tools/android-sdk-macosx</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} buildToolsVersion The Android build tools version to use, e.g. &#39;23.0.2&#39;</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string[]} locales A list of locales which should be used</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} clearPreviousScreenshots Enabling this option will automatically clear previously generated screenshots before running screengrab</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} outputDirectory The directory where to store the screenshots</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} skipOpenSummary Don&#39;t open the summary after running <em>screengrab</em></p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} appPackageName The package name of the app under test (e.g. com.yourcompany.yourapp)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} testsPackageName The package name of the tests bundle (e.g. com.yourcompany.yourapp.test)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string[]} useTestsInPackages Only run tests in these Java packages</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string[]} useTestsInClasses Only run tests in these Java classes</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string[]} launchArguments Additional launch arguments</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} testInstrumentationRunner The fully qualified class name of your test instrumentation runner</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} endingLocale Return the device to this locale after running tests</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} useAdbRoot Restarts the adb daemon using <code>adb root</code> to allow access to screenshots directories on device. Use if getting &#39;Permission denied&#39; errors</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} appApkPath The path to the APK for the app under test</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} testsApkPath The path to the APK for the the tests bundle</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} specificDevice Use the device or emulator with the given serial number or qualifier</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} deviceType Type of device used for screenshots. Matches Google Play Types (phone, sevenInch, tenInch, tv, wear)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} exitOnTestFailure Whether or not to exit Screengrab on test failure. Exiting on failure will not copy sceenshots to local machine nor open sceenshots summary</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} reinstallApp Enabling this option will automatically uninstall the application before running it</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{boolean} useTimestampSuffix Add timestamp suffix to screenshot filename</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} adbHost Configure the host used by adb to connect, allows running on remote devices farm</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">ScreengrabOptions</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#adbhost" class="tsd-kind-icon">adb<wbr>Host</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#androidhome" class="tsd-kind-icon">android<wbr>Home</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#appapkpath" class="tsd-kind-icon">app<wbr>Apk<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#apppackagename" class="tsd-kind-icon">app<wbr>Package<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#buildtoolsversion" class="tsd-kind-icon">build<wbr>Tools<wbr>Version</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#clearpreviousscreenshots" class="tsd-kind-icon">clear<wbr>Previous<wbr>Screenshots</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#devicetype" class="tsd-kind-icon">device<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#endinglocale" class="tsd-kind-icon">ending<wbr>Locale</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#exitontestfailure" class="tsd-kind-icon">exit<wbr>OnTest<wbr>Failure</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#launcharguments" class="tsd-kind-icon">launch<wbr>Arguments</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#locales" class="tsd-kind-icon">locales</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#outputdirectory" class="tsd-kind-icon">output<wbr>Directory</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#reinstallapp" class="tsd-kind-icon">reinstall<wbr>App</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#skipopensummary" class="tsd-kind-icon">skip<wbr>Open<wbr>Summary</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#specificdevice" class="tsd-kind-icon">specific<wbr>Device</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#testinstrumentationrunner" class="tsd-kind-icon">test<wbr>Instrumentation<wbr>Runner</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#testsapkpath" class="tsd-kind-icon">tests<wbr>Apk<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#testspackagename" class="tsd-kind-icon">tests<wbr>Package<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#useadbroot" class="tsd-kind-icon">use<wbr>Adb<wbr>Root</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#usetestsinclasses" class="tsd-kind-icon">use<wbr>Tests<wbr>InClasses</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#usetestsinpackages" class="tsd-kind-icon">use<wbr>Tests<wbr>InPackages</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.screengraboptions.html#usetimestampsuffix" class="tsd-kind-icon">use<wbr>Timestamp<wbr>Suffix</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="adbhost" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> adb<wbr>Host</h3>
+					<div class="tsd-signature tsd-kind-icon">adb<wbr>Host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3804</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="androidhome" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> android<wbr>Home</h3>
+					<div class="tsd-signature tsd-kind-icon">android<wbr>Home<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3783</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="appapkpath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> app<wbr>Apk<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">app<wbr>Apk<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3797</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="apppackagename" class="tsd-anchor"></a>
+					<h3>app<wbr>Package<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">app<wbr>Package<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3789</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="buildtoolsversion" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> build<wbr>Tools<wbr>Version</h3>
+					<div class="tsd-signature tsd-kind-icon">build<wbr>Tools<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3784</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="clearpreviousscreenshots" class="tsd-anchor"></a>
+					<h3>clear<wbr>Previous<wbr>Screenshots</h3>
+					<div class="tsd-signature tsd-kind-icon">clear<wbr>Previous<wbr>Screenshots<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3786</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="devicetype" class="tsd-anchor"></a>
+					<h3>device<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">device<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3800</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="endinglocale" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> ending<wbr>Locale</h3>
+					<div class="tsd-signature tsd-kind-icon">ending<wbr>Locale<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3795</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="exitontestfailure" class="tsd-anchor"></a>
+					<h3>exit<wbr>OnTest<wbr>Failure</h3>
+					<div class="tsd-signature tsd-kind-icon">exit<wbr>OnTest<wbr>Failure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3801</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="launcharguments" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> launch<wbr>Arguments</h3>
+					<div class="tsd-signature tsd-kind-icon">launch<wbr>Arguments<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3793</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="locales" class="tsd-anchor"></a>
+					<h3>locales</h3>
+					<div class="tsd-signature tsd-kind-icon">locales<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3785</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="outputdirectory" class="tsd-anchor"></a>
+					<h3>output<wbr>Directory</h3>
+					<div class="tsd-signature tsd-kind-icon">output<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3787</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="reinstallapp" class="tsd-anchor"></a>
+					<h3>reinstall<wbr>App</h3>
+					<div class="tsd-signature tsd-kind-icon">reinstall<wbr>App<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3802</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="skipopensummary" class="tsd-anchor"></a>
+					<h3>skip<wbr>Open<wbr>Summary</h3>
+					<div class="tsd-signature tsd-kind-icon">skip<wbr>Open<wbr>Summary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3788</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="specificdevice" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> specific<wbr>Device</h3>
+					<div class="tsd-signature tsd-kind-icon">specific<wbr>Device<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3799</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="testinstrumentationrunner" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> test<wbr>Instrumentation<wbr>Runner</h3>
+					<div class="tsd-signature tsd-kind-icon">test<wbr>Instrumentation<wbr>Runner<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3794</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="testsapkpath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tests<wbr>Apk<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">tests<wbr>Apk<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3798</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="testspackagename" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tests<wbr>Package<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">tests<wbr>Package<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3790</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="useadbroot" class="tsd-anchor"></a>
+					<h3>use<wbr>Adb<wbr>Root</h3>
+					<div class="tsd-signature tsd-kind-icon">use<wbr>Adb<wbr>Root<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3796</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="usetestsinclasses" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> use<wbr>Tests<wbr>InClasses</h3>
+					<div class="tsd-signature tsd-kind-icon">use<wbr>Tests<wbr>InClasses<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3792</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="usetestsinpackages" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> use<wbr>Tests<wbr>InPackages</h3>
+					<div class="tsd-signature tsd-kind-icon">use<wbr>Tests<wbr>InPackages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3791</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="usetimestampsuffix" class="tsd-anchor"></a>
+					<h3>use<wbr>Timestamp<wbr>Suffix</h3>
+					<div class="tsd-signature tsd-kind-icon">use<wbr>Timestamp<wbr>Suffix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:3803</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_index_.html">&quot;index&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_index_.screengraboptions.html" class="tsd-kind-icon">Screengrab<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#adbhost" class="tsd-kind-icon">adb<wbr>Host</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#androidhome" class="tsd-kind-icon">android<wbr>Home</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#appapkpath" class="tsd-kind-icon">app<wbr>Apk<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#apppackagename" class="tsd-kind-icon">app<wbr>Package<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#buildtoolsversion" class="tsd-kind-icon">build<wbr>Tools<wbr>Version</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#clearpreviousscreenshots" class="tsd-kind-icon">clear<wbr>Previous<wbr>Screenshots</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#devicetype" class="tsd-kind-icon">device<wbr>Type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#endinglocale" class="tsd-kind-icon">ending<wbr>Locale</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#exitontestfailure" class="tsd-kind-icon">exit<wbr>OnTest<wbr>Failure</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#launcharguments" class="tsd-kind-icon">launch<wbr>Arguments</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#locales" class="tsd-kind-icon">locales</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#outputdirectory" class="tsd-kind-icon">output<wbr>Directory</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#reinstallapp" class="tsd-kind-icon">reinstall<wbr>App</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#skipopensummary" class="tsd-kind-icon">skip<wbr>Open<wbr>Summary</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#specificdevice" class="tsd-kind-icon">specific<wbr>Device</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#testinstrumentationrunner" class="tsd-kind-icon">test<wbr>Instrumentation<wbr>Runner</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#testsapkpath" class="tsd-kind-icon">tests<wbr>Apk<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#testspackagename" class="tsd-kind-icon">tests<wbr>Package<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#useadbroot" class="tsd-kind-icon">use<wbr>Adb<wbr>Root</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#usetestsinclasses" class="tsd-kind-icon">use<wbr>Tests<wbr>InClasses</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#usetestsinpackages" class="tsd-kind-icon">use<wbr>Tests<wbr>InPackages</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.screengraboptions.html#usetimestampsuffix" class="tsd-kind-icon">use<wbr>Timestamp<wbr>Suffix</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

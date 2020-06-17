@@ -1,0 +1,24 @@
+{
+  "name": "@fastlanejs/generator",
+  "version": "2.146.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "fastlane-api": "^1.1.0",
+    "prettier": "^2.0.5",
+    "title-case": "^3.0.2"
+  },
+  "dependencies": {
+    "@fastlanejs/api": "../fastlane-api",
+    "@raydeck/fastlane": "^2.0.0",
+    "commander": "^5.1.0",
+    "yaml": "^1.9.2"
+  },
+  "bin": "./make.js"
+}

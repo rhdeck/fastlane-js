@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es2015",
+    "allowJs": true,
+    "module": "es2015",
+    "lib": ["es2018", "es2015"],
+    "strict": true,
+    "noEmitOnError": false,
+    "sourceMap": false,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "dist",
+    "strictNullChecks": false,
+    "rootDir": "src"
+  },
+  "include": ["src/*.ts"]
+  //   "files": ["src/index.ts"]
+}

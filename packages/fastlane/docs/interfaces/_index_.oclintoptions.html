@@ -1,0 +1,479 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>OclintOptions | fastlanejs</title>
+	<meta name="description" content="Documentation for fastlanejs">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">fastlanejs</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_index_.html">&quot;index&quot;</a>
+				</li>
+				<li>
+					<a href="_index_.oclintoptions.html">OclintOptions</a>
+				</li>
+			</ul>
+			<h1>Interface OclintOptions</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<dl class="tsd-comment-tags">
+						<dt>interface</dt>
+						<dd><p>OclintOptions</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} oclintPath The path to oclint binary</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} compileCommands The json compilation database, use xctool reporter &#39;json-compilation-database&#39;</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} selectReqex Select all files matching this reqex</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} selectRegex Select all files matching this regex</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} excludeRegex Exclude all files matching this regex</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} reportType The type of the report (default: html)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} reportPath The reports file path</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} listEnabledRules List enabled rules</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} rc Override the default behavior of rules</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} thresholds List of rule thresholds to override the default behavior of rules</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} enableRules List of rules to pick explicitly</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} disableRules List of rules to disable</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} maxPriority1 The max allowed number of priority 1 violations</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} maxPriority2 The max allowed number of priority 2 violations</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} maxPriority3 The max allowed number of priority 3 violations</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} enableClangStaticAnalyzer Enable Clang Static Analyzer, and integrate results into OCLint report</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} enableGlobalAnalysis Compile every source, and analyze across global contexts (depends on number of source files, could results in high memory load)</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{any} allowDuplicatedViolations Allow duplicated violations in the OCLint report</p>
+						</dd>
+						<dt>property</dt>
+						<dd><p>{string} extraArg Additional argument to append to the compiler command line</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">OclintOptions</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#allowduplicatedviolations" class="tsd-kind-icon">allow<wbr>Duplicated<wbr>Violations</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#compilecommands" class="tsd-kind-icon">compile<wbr>Commands</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#disablerules" class="tsd-kind-icon">disable<wbr>Rules</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#enableclangstaticanalyzer" class="tsd-kind-icon">enable<wbr>Clang<wbr>Static<wbr>Analyzer</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#enableglobalanalysis" class="tsd-kind-icon">enable<wbr>Global<wbr>Analysis</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#enablerules" class="tsd-kind-icon">enable<wbr>Rules</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#excluderegex" class="tsd-kind-icon">exclude<wbr>Regex</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#extraarg" class="tsd-kind-icon">extra<wbr>Arg</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#listenabledrules" class="tsd-kind-icon">list<wbr>Enabled<wbr>Rules</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#maxpriority1" class="tsd-kind-icon">max<wbr>Priority1</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#maxpriority2" class="tsd-kind-icon">max<wbr>Priority2</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#maxpriority3" class="tsd-kind-icon">max<wbr>Priority3</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#oclintpath" class="tsd-kind-icon">oclint<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#rc" class="tsd-kind-icon">rc</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#reportpath" class="tsd-kind-icon">report<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#reporttype" class="tsd-kind-icon">report<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#selectregex" class="tsd-kind-icon">select<wbr>Regex</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#selectreqex" class="tsd-kind-icon">select<wbr>Reqex</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_.oclintoptions.html#thresholds" class="tsd-kind-icon">thresholds</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="allowduplicatedviolations" class="tsd-anchor"></a>
+					<h3>allow<wbr>Duplicated<wbr>Violations</h3>
+					<div class="tsd-signature tsd-kind-icon">allow<wbr>Duplicated<wbr>Violations<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2951</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="compilecommands" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> compile<wbr>Commands</h3>
+					<div class="tsd-signature tsd-kind-icon">compile<wbr>Commands<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2935</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="disablerules" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> disable<wbr>Rules</h3>
+					<div class="tsd-signature tsd-kind-icon">disable<wbr>Rules<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2945</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="enableclangstaticanalyzer" class="tsd-anchor"></a>
+					<h3>enable<wbr>Clang<wbr>Static<wbr>Analyzer</h3>
+					<div class="tsd-signature tsd-kind-icon">enable<wbr>Clang<wbr>Static<wbr>Analyzer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2949</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="enableglobalanalysis" class="tsd-anchor"></a>
+					<h3>enable<wbr>Global<wbr>Analysis</h3>
+					<div class="tsd-signature tsd-kind-icon">enable<wbr>Global<wbr>Analysis<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2950</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="enablerules" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> enable<wbr>Rules</h3>
+					<div class="tsd-signature tsd-kind-icon">enable<wbr>Rules<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2944</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="excluderegex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> exclude<wbr>Regex</h3>
+					<div class="tsd-signature tsd-kind-icon">exclude<wbr>Regex<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2938</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="extraarg" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> extra<wbr>Arg</h3>
+					<div class="tsd-signature tsd-kind-icon">extra<wbr>Arg<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2952</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="listenabledrules" class="tsd-anchor"></a>
+					<h3>list<wbr>Enabled<wbr>Rules</h3>
+					<div class="tsd-signature tsd-kind-icon">list<wbr>Enabled<wbr>Rules<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2941</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="maxpriority1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> max<wbr>Priority1</h3>
+					<div class="tsd-signature tsd-kind-icon">max<wbr>Priority1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2946</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="maxpriority2" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> max<wbr>Priority2</h3>
+					<div class="tsd-signature tsd-kind-icon">max<wbr>Priority2<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2947</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="maxpriority3" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> max<wbr>Priority3</h3>
+					<div class="tsd-signature tsd-kind-icon">max<wbr>Priority3<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2948</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="oclintpath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> oclint<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">oclint<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2934</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="rc" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> rc</h3>
+					<div class="tsd-signature tsd-kind-icon">rc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2942</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="reportpath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> report<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">report<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2940</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="reporttype" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> report<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">report<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2939</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="selectregex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> select<wbr>Regex</h3>
+					<div class="tsd-signature tsd-kind-icon">select<wbr>Regex<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2937</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="selectreqex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> select<wbr>Reqex</h3>
+					<div class="tsd-signature tsd-kind-icon">select<wbr>Reqex<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2936</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="thresholds" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> thresholds</h3>
+					<div class="tsd-signature tsd-kind-icon">thresholds<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/index.ts:2943</li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_index_.html">&quot;index&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_index_.oclintoptions.html" class="tsd-kind-icon">Oclint<wbr>Options</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#allowduplicatedviolations" class="tsd-kind-icon">allow<wbr>Duplicated<wbr>Violations</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#compilecommands" class="tsd-kind-icon">compile<wbr>Commands</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#disablerules" class="tsd-kind-icon">disable<wbr>Rules</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#enableclangstaticanalyzer" class="tsd-kind-icon">enable<wbr>Clang<wbr>Static<wbr>Analyzer</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#enableglobalanalysis" class="tsd-kind-icon">enable<wbr>Global<wbr>Analysis</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#enablerules" class="tsd-kind-icon">enable<wbr>Rules</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#excluderegex" class="tsd-kind-icon">exclude<wbr>Regex</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#extraarg" class="tsd-kind-icon">extra<wbr>Arg</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#listenabledrules" class="tsd-kind-icon">list<wbr>Enabled<wbr>Rules</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#maxpriority1" class="tsd-kind-icon">max<wbr>Priority1</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#maxpriority2" class="tsd-kind-icon">max<wbr>Priority2</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#maxpriority3" class="tsd-kind-icon">max<wbr>Priority3</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#oclintpath" class="tsd-kind-icon">oclint<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#rc" class="tsd-kind-icon">rc</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#reportpath" class="tsd-kind-icon">report<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#reporttype" class="tsd-kind-icon">report<wbr>Type</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#selectregex" class="tsd-kind-icon">select<wbr>Regex</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#selectreqex" class="tsd-kind-icon">select<wbr>Reqex</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_.oclintoptions.html#thresholds" class="tsd-kind-icon">thresholds</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
