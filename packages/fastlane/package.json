@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "mkdir src ; node setversion.js &&  yarn -s generator > src/index.ts && tsc"
+    "build": "node setversion.js &&  yarn -s generator > src/index.ts && tsc"
   },
   "repository": {
     "type": "git",
