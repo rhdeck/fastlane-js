@@ -5287,9 +5287,6 @@ interface ZipOptions {
   symlinks?: boolean;
 }
 
-/** Private converter for AdbOptions
- * @param  options - Source object as provided by consumer
- */
 function convertAdbOptions(options: AdbOptions) {
   return {
     serial: options.serial,
@@ -5298,27 +5295,18 @@ function convertAdbOptions(options: AdbOptions) {
   };
 }
 
-/** Private converter for AdbDevicesOptions
- * @param  options - Source object as provided by consumer
- */
 function convertAdbDevicesOptions(options: AdbDevicesOptions) {
   return {
     adb_path: options.adbPath,
   };
 }
 
-/** Private converter for AddExtraPlatformsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertAddExtraPlatformsOptions(options: AddExtraPlatformsOptions) {
   return {
     platforms: options.platforms,
   };
 }
 
-/** Private converter for AddGitTagOptions
- * @param  options - Source object as provided by consumer
- */
 function convertAddGitTagOptions(options: AddGitTagOptions) {
   return {
     tag: options.tag,
@@ -5333,9 +5321,6 @@ function convertAddGitTagOptions(options: AddGitTagOptions) {
   };
 }
 
-/** Private converter for AppStoreBuildNumberOptions
- * @param  options - Source object as provided by consumer
- */
 function convertAppStoreBuildNumberOptions(
   options: AppStoreBuildNumberOptions
 ) {
@@ -5351,9 +5336,6 @@ function convertAppStoreBuildNumberOptions(
   };
 }
 
-/** Private converter for AppaloosaOptions
- * @param  options - Source object as provided by consumer
- */
 function convertAppaloosaOptions(options: AppaloosaOptions) {
   return {
     binary: options.binary,
@@ -5367,9 +5349,6 @@ function convertAppaloosaOptions(options: AppaloosaOptions) {
   };
 }
 
-/** Private converter for AppetizeOptions
- * @param  options - Source object as provided by consumer
- */
 function convertAppetizeOptions(options: AppetizeOptions) {
   return {
     api_host: options.apiHost,
@@ -5382,9 +5361,6 @@ function convertAppetizeOptions(options: AppetizeOptions) {
   };
 }
 
-/** Private converter for AppetizeViewingUrlGeneratorOptions
- * @param  options - Source object as provided by consumer
- */
 function convertAppetizeViewingUrlGeneratorOptions(
   options: AppetizeViewingUrlGeneratorOptions
 ) {
@@ -5403,9 +5379,6 @@ function convertAppetizeViewingUrlGeneratorOptions(
   };
 }
 
-/** Private converter for AppiumOptions
- * @param  options - Source object as provided by consumer
- */
 function convertAppiumOptions(options: AppiumOptions) {
   return {
     platform: options.platform,
@@ -5420,9 +5393,6 @@ function convertAppiumOptions(options: AppiumOptions) {
   };
 }
 
-/** Private converter for AppledocOptions
- * @param  options - Source object as provided by consumer
- */
 function convertAppledocOptions(options: AppledocOptions) {
   return {
     input: options.input,
@@ -5473,9 +5443,6 @@ function convertAppledocOptions(options: AppledocOptions) {
   };
 }
 
-/** Private converter for AppstoreOptions
- * @param  options - Source object as provided by consumer
- */
 function convertAppstoreOptions(options: AppstoreOptions) {
   return {
     username: options.username,
@@ -5543,9 +5510,6 @@ function convertAppstoreOptions(options: AppstoreOptions) {
   };
 }
 
-/** Private converter for ApteligentOptions
- * @param  options - Source object as provided by consumer
- */
 function convertApteligentOptions(options: ApteligentOptions) {
   return {
     dsym: options.dsym,
@@ -5554,9 +5518,6 @@ function convertApteligentOptions(options: ApteligentOptions) {
   };
 }
 
-/** Private converter for ArtifactoryOptions
- * @param  options - Source object as provided by consumer
- */
 function convertArtifactoryOptions(options: ArtifactoryOptions) {
   return {
     file: options.file,
@@ -5576,9 +5537,6 @@ function convertArtifactoryOptions(options: ArtifactoryOptions) {
   };
 }
 
-/** Private converter for AutomaticCodeSigningOptions
- * @param  options - Source object as provided by consumer
- */
 function convertAutomaticCodeSigningOptions(
   options: AutomaticCodeSigningOptions
 ) {
@@ -5594,18 +5552,12 @@ function convertAutomaticCodeSigningOptions(
   };
 }
 
-/** Private converter for BackupFileOptions
- * @param  options - Source object as provided by consumer
- */
 function convertBackupFileOptions(options: BackupFileOptions) {
   return {
     path: options.path,
   };
 }
 
-/** Private converter for BackupXcarchiveOptions
- * @param  options - Source object as provided by consumer
- */
 function convertBackupXcarchiveOptions(options: BackupXcarchiveOptions) {
   return {
     xcarchive: options.xcarchive,
@@ -5616,9 +5568,6 @@ function convertBackupXcarchiveOptions(options: BackupXcarchiveOptions) {
   };
 }
 
-/** Private converter for BadgeOptions
- * @param  options - Source object as provided by consumer
- */
 function convertBadgeOptions(options: BadgeOptions) {
   return {
     dark: options.dark,
@@ -5635,9 +5584,6 @@ function convertBadgeOptions(options: BadgeOptions) {
   };
 }
 
-/** Private converter for BuildAndUploadToAppetizeOptions
- * @param  options - Source object as provided by consumer
- */
 function convertBuildAndUploadToAppetizeOptions(
   options: BuildAndUploadToAppetizeOptions
 ) {
@@ -5650,9 +5596,6 @@ function convertBuildAndUploadToAppetizeOptions(
   };
 }
 
-/** Private converter for BuildAndroidAppOptions
- * @param  options - Source object as provided by consumer
- */
 function convertBuildAndroidAppOptions(options: BuildAndroidAppOptions) {
   return {
     task: options.task,
@@ -5670,9 +5613,6 @@ function convertBuildAndroidAppOptions(options: BuildAndroidAppOptions) {
   };
 }
 
-/** Private converter for BuildAppOptions
- * @param  options - Source object as provided by consumer
- */
 function convertBuildAppOptions(options: BuildAppOptions) {
   return {
     workspace: options.workspace,
@@ -5722,9 +5662,6 @@ function convertBuildAppOptions(options: BuildAppOptions) {
   };
 }
 
-/** Private converter for BuildIosAppOptions
- * @param  options - Source object as provided by consumer
- */
 function convertBuildIosAppOptions(options: BuildIosAppOptions) {
   return {
     workspace: options.workspace,
@@ -5771,9 +5708,6 @@ function convertBuildIosAppOptions(options: BuildIosAppOptions) {
   };
 }
 
-/** Private converter for BuildMacAppOptions
- * @param  options - Source object as provided by consumer
- */
 function convertBuildMacAppOptions(options: BuildMacAppOptions) {
   return {
     workspace: options.workspace,
@@ -5821,9 +5755,6 @@ function convertBuildMacAppOptions(options: BuildMacAppOptions) {
   };
 }
 
-/** Private converter for BundleInstallOptions
- * @param  options - Source object as provided by consumer
- */
 function convertBundleInstallOptions(options: BundleInstallOptions) {
   return {
     binstubs: options.binstubs,
@@ -5847,9 +5778,6 @@ function convertBundleInstallOptions(options: BundleInstallOptions) {
   };
 }
 
-/** Private converter for CaptureAndroidScreenshotsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCaptureAndroidScreenshotsOptions(
   options: CaptureAndroidScreenshotsOptions
 ) {
@@ -5879,9 +5807,6 @@ function convertCaptureAndroidScreenshotsOptions(
   };
 }
 
-/** Private converter for CaptureIosScreenshotsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCaptureIosScreenshotsOptions(
   options: CaptureIosScreenshotsOptions
 ) {
@@ -5926,9 +5851,6 @@ function convertCaptureIosScreenshotsOptions(
   };
 }
 
-/** Private converter for CaptureScreenshotsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCaptureScreenshotsOptions(options: CaptureScreenshotsOptions) {
   return {
     workspace: options.workspace,
@@ -5971,9 +5893,6 @@ function convertCaptureScreenshotsOptions(options: CaptureScreenshotsOptions) {
   };
 }
 
-/** Private converter for CarthageOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCarthageOptions(options: CarthageOptions) {
   return {
     command: options.command,
@@ -5999,9 +5918,6 @@ function convertCarthageOptions(options: CarthageOptions) {
   };
 }
 
-/** Private converter for CertOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCertOptions(options: CertOptions) {
   return {
     development: options.development,
@@ -6019,9 +5935,6 @@ function convertCertOptions(options: CertOptions) {
   };
 }
 
-/** Private converter for ChangelogFromGitCommitsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertChangelogFromGitCommitsOptions(
   options: ChangelogFromGitCommitsOptions
 ) {
@@ -6040,9 +5953,6 @@ function convertChangelogFromGitCommitsOptions(
   };
 }
 
-/** Private converter for ChatworkOptions
- * @param  options - Source object as provided by consumer
- */
 function convertChatworkOptions(options: ChatworkOptions) {
   return {
     api_token: options.apiToken,
@@ -6052,9 +5962,6 @@ function convertChatworkOptions(options: ChatworkOptions) {
   };
 }
 
-/** Private converter for CheckAppStoreMetadataOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCheckAppStoreMetadataOptions(
   options: CheckAppStoreMetadataOptions
 ) {
@@ -6078,9 +5985,6 @@ function convertCheckAppStoreMetadataOptions(
   };
 }
 
-/** Private converter for CleanBuildArtifactsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCleanBuildArtifactsOptions(
   options: CleanBuildArtifactsOptions
 ) {
@@ -6089,9 +5993,6 @@ function convertCleanBuildArtifactsOptions(
   };
 }
 
-/** Private converter for CleanCocoapodsCacheOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCleanCocoapodsCacheOptions(
   options: CleanCocoapodsCacheOptions
 ) {
@@ -6100,27 +6001,18 @@ function convertCleanCocoapodsCacheOptions(
   };
 }
 
-/** Private converter for ClearDerivedDataOptions
- * @param  options - Source object as provided by consumer
- */
 function convertClearDerivedDataOptions(options: ClearDerivedDataOptions) {
   return {
     derived_data_path: options.derivedDataPath,
   };
 }
 
-/** Private converter for ClipboardOptions
- * @param  options - Source object as provided by consumer
- */
 function convertClipboardOptions(options: ClipboardOptions) {
   return {
     value: options.value,
   };
 }
 
-/** Private converter for ClocOptions
- * @param  options - Source object as provided by consumer
- */
 function convertClocOptions(options: ClocOptions) {
   return {
     binary_path: options.binaryPath,
@@ -6131,9 +6023,6 @@ function convertClocOptions(options: ClocOptions) {
   };
 }
 
-/** Private converter for CocoapodsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCocoapodsOptions(options: CocoapodsOptions) {
   return {
     repo_update: options.repoUpdate,
@@ -6151,9 +6040,6 @@ function convertCocoapodsOptions(options: CocoapodsOptions) {
   };
 }
 
-/** Private converter for CommitGithubFileOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCommitGithubFileOptions(options: CommitGithubFileOptions) {
   return {
     repository_name: options.repositoryName,
@@ -6166,9 +6052,6 @@ function convertCommitGithubFileOptions(options: CommitGithubFileOptions) {
   };
 }
 
-/** Private converter for CommitVersionBumpOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCommitVersionBumpOptions(options: CommitVersionBumpOptions) {
   return {
     message: options.message,
@@ -6181,9 +6064,6 @@ function convertCommitVersionBumpOptions(options: CommitVersionBumpOptions) {
   };
 }
 
-/** Private converter for CopyArtifactsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCopyArtifactsOptions(options: CopyArtifactsOptions) {
   return {
     keep_original: options.keepOriginal,
@@ -6193,9 +6073,6 @@ function convertCopyArtifactsOptions(options: CopyArtifactsOptions) {
   };
 }
 
-/** Private converter for CrashlyticsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCrashlyticsOptions(options: CrashlyticsOptions) {
   return {
     ipa_path: options.ipaPath,
@@ -6212,9 +6089,6 @@ function convertCrashlyticsOptions(options: CrashlyticsOptions) {
   };
 }
 
-/** Private converter for CreateAppOnManagedPlayStoreOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCreateAppOnManagedPlayStoreOptions(
   options: CreateAppOnManagedPlayStoreOptions
 ) {
@@ -6230,9 +6104,6 @@ function convertCreateAppOnManagedPlayStoreOptions(
   };
 }
 
-/** Private converter for CreateAppOnlineOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCreateAppOnlineOptions(options: CreateAppOnlineOptions) {
   return {
     username: options.username,
@@ -6257,9 +6128,6 @@ function convertCreateAppOnlineOptions(options: CreateAppOnlineOptions) {
   };
 }
 
-/** Private converter for CreateKeychainOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCreateKeychainOptions(options: CreateKeychainOptions) {
   return {
     name: options.name,
@@ -6275,9 +6143,6 @@ function convertCreateKeychainOptions(options: CreateKeychainOptions) {
   };
 }
 
-/** Private converter for CreatePullRequestOptions
- * @param  options - Source object as provided by consumer
- */
 function convertCreatePullRequestOptions(options: CreatePullRequestOptions) {
   return {
     api_token: options.apiToken,
@@ -6296,9 +6161,6 @@ function convertCreatePullRequestOptions(options: CreatePullRequestOptions) {
   };
 }
 
-/** Private converter for DangerOptions
- * @param  options - Source object as provided by consumer
- */
 function convertDangerOptions(options: DangerOptions) {
   return {
     use_bundle_exec: options.useBundleExec,
@@ -6315,23 +6177,14 @@ function convertDangerOptions(options: DangerOptions) {
   };
 }
 
-/** Private converter for DebugOptions
- * @param  options - Source object as provided by consumer
- */
 function convertDebugOptions(options: DebugOptions) {
   return {};
 }
 
-/** Private converter for DefaultPlatformOptions
- * @param  options - Source object as provided by consumer
- */
 function convertDefaultPlatformOptions(options: DefaultPlatformOptions) {
   return {};
 }
 
-/** Private converter for DeleteKeychainOptions
- * @param  options - Source object as provided by consumer
- */
 function convertDeleteKeychainOptions(options: DeleteKeychainOptions) {
   return {
     name: options.name,
@@ -6339,9 +6192,6 @@ function convertDeleteKeychainOptions(options: DeleteKeychainOptions) {
   };
 }
 
-/** Private converter for DeliverOptions
- * @param  options - Source object as provided by consumer
- */
 function convertDeliverOptions(options: DeliverOptions) {
   return {
     username: options.username,
@@ -6409,9 +6259,6 @@ function convertDeliverOptions(options: DeliverOptions) {
   };
 }
 
-/** Private converter for DeploygateOptions
- * @param  options - Source object as provided by consumer
- */
 function convertDeploygateOptions(options: DeploygateOptions) {
   return {
     api_token: options.apiToken,
@@ -6426,27 +6273,18 @@ function convertDeploygateOptions(options: DeploygateOptions) {
   };
 }
 
-/** Private converter for DotgpgEnvironmentOptions
- * @param  options - Source object as provided by consumer
- */
 function convertDotgpgEnvironmentOptions(options: DotgpgEnvironmentOptions) {
   return {
     dotgpg_file: options.dotgpgFile,
   };
 }
 
-/** Private converter for DownloadOptions
- * @param  options - Source object as provided by consumer
- */
 function convertDownloadOptions(options: DownloadOptions) {
   return {
     url: options.url,
   };
 }
 
-/** Private converter for DownloadDsymsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertDownloadDsymsOptions(options: DownloadDsymsOptions) {
   return {
     username: options.username,
@@ -6463,9 +6301,6 @@ function convertDownloadDsymsOptions(options: DownloadDsymsOptions) {
   };
 }
 
-/** Private converter for DownloadFromPlayStoreOptions
- * @param  options - Source object as provided by consumer
- */
 function convertDownloadFromPlayStoreOptions(
   options: DownloadFromPlayStoreOptions
 ) {
@@ -6483,9 +6318,6 @@ function convertDownloadFromPlayStoreOptions(
   };
 }
 
-/** Private converter for DsymZipOptions
- * @param  options - Source object as provided by consumer
- */
 function convertDsymZipOptions(options: DsymZipOptions) {
   return {
     archive_path: options.archivePath,
@@ -6494,43 +6326,28 @@ function convertDsymZipOptions(options: DsymZipOptions) {
   };
 }
 
-/** Private converter for EchoOptions
- * @param  options - Source object as provided by consumer
- */
 function convertEchoOptions(options: EchoOptions) {
   return {
     message: options.message,
   };
 }
 
-/** Private converter for EnsureBundleExecOptions
- * @param  options - Source object as provided by consumer
- */
 function convertEnsureBundleExecOptions(options: EnsureBundleExecOptions) {
   return {};
 }
 
-/** Private converter for EnsureEnvVarsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertEnsureEnvVarsOptions(options: EnsureEnvVarsOptions) {
   return {
     env_vars: options.envVars,
   };
 }
 
-/** Private converter for EnsureGitBranchOptions
- * @param  options - Source object as provided by consumer
- */
 function convertEnsureGitBranchOptions(options: EnsureGitBranchOptions) {
   return {
     branch: options.branch,
   };
 }
 
-/** Private converter for EnsureGitStatusCleanOptions
- * @param  options - Source object as provided by consumer
- */
 function convertEnsureGitStatusCleanOptions(
   options: EnsureGitStatusCleanOptions
 ) {
@@ -6540,9 +6357,6 @@ function convertEnsureGitStatusCleanOptions(
   };
 }
 
-/** Private converter for EnsureNoDebugCodeOptions
- * @param  options - Source object as provided by consumer
- */
 function convertEnsureNoDebugCodeOptions(options: EnsureNoDebugCodeOptions) {
   return {
     text: options.text,
@@ -6554,9 +6368,6 @@ function convertEnsureNoDebugCodeOptions(options: EnsureNoDebugCodeOptions) {
   };
 }
 
-/** Private converter for EnsureXcodeVersionOptions
- * @param  options - Source object as provided by consumer
- */
 function convertEnsureXcodeVersionOptions(options: EnsureXcodeVersionOptions) {
   return {
     version: options.version,
@@ -6564,9 +6375,6 @@ function convertEnsureXcodeVersionOptions(options: EnsureXcodeVersionOptions) {
   };
 }
 
-/** Private converter for EnvironmentVariableOptions
- * @param  options - Source object as provided by consumer
- */
 function convertEnvironmentVariableOptions(
   options: EnvironmentVariableOptions
 ) {
@@ -6577,9 +6385,6 @@ function convertEnvironmentVariableOptions(
   };
 }
 
-/** Private converter for ErbOptions
- * @param  options - Source object as provided by consumer
- */
 function convertErbOptions(options: ErbOptions) {
   return {
     template: options.template,
@@ -6588,16 +6393,10 @@ function convertErbOptions(options: ErbOptions) {
   };
 }
 
-/** Private converter for FastlaneVersionOptions
- * @param  options - Source object as provided by consumer
- */
 function convertFastlaneVersionOptions(options: FastlaneVersionOptions) {
   return {};
 }
 
-/** Private converter for FlockOptions
- * @param  options - Source object as provided by consumer
- */
 function convertFlockOptions(options: FlockOptions) {
   return {
     message: options.message,
@@ -6606,9 +6405,6 @@ function convertFlockOptions(options: FlockOptions) {
   };
 }
 
-/** Private converter for FrameScreenshotsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertFrameScreenshotsOptions(options: FrameScreenshotsOptions) {
   return {
     white: options.white,
@@ -6631,9 +6427,6 @@ function convertFrameScreenshotsOptions(options: FrameScreenshotsOptions) {
   };
 }
 
-/** Private converter for FrameitOptions
- * @param  options - Source object as provided by consumer
- */
 function convertFrameitOptions(options: FrameitOptions) {
   return {
     white: options.white,
@@ -6656,16 +6449,10 @@ function convertFrameitOptions(options: FrameitOptions) {
   };
 }
 
-/** Private converter for GcovrOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGcovrOptions(options: GcovrOptions) {
   return {};
 }
 
-/** Private converter for GetBuildNumberOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGetBuildNumberOptions(options: GetBuildNumberOptions) {
   return {
     xcodeproj: options.xcodeproj,
@@ -6674,9 +6461,6 @@ function convertGetBuildNumberOptions(options: GetBuildNumberOptions) {
   };
 }
 
-/** Private converter for GetBuildNumberRepositoryOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGetBuildNumberRepositoryOptions(
   options: GetBuildNumberRepositoryOptions
 ) {
@@ -6685,9 +6469,6 @@ function convertGetBuildNumberRepositoryOptions(
   };
 }
 
-/** Private converter for GetCertificatesOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGetCertificatesOptions(options: GetCertificatesOptions) {
   return {
     development: options.development,
@@ -6705,9 +6486,6 @@ function convertGetCertificatesOptions(options: GetCertificatesOptions) {
   };
 }
 
-/** Private converter for GetGithubReleaseOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGetGithubReleaseOptions(options: GetGithubReleaseOptions) {
   return {
     url: options.url,
@@ -6717,9 +6495,6 @@ function convertGetGithubReleaseOptions(options: GetGithubReleaseOptions) {
   };
 }
 
-/** Private converter for GetInfoPlistValueOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGetInfoPlistValueOptions(options: GetInfoPlistValueOptions) {
   return {
     key: options.key,
@@ -6727,9 +6502,6 @@ function convertGetInfoPlistValueOptions(options: GetInfoPlistValueOptions) {
   };
 }
 
-/** Private converter for GetIpaInfoPlistValueOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGetIpaInfoPlistValueOptions(
   options: GetIpaInfoPlistValueOptions
 ) {
@@ -6739,9 +6511,6 @@ function convertGetIpaInfoPlistValueOptions(
   };
 }
 
-/** Private converter for GetManagedPlayStorePublishingRightsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGetManagedPlayStorePublishingRightsOptions(
   options: GetManagedPlayStorePublishingRightsOptions
 ) {
@@ -6751,9 +6520,6 @@ function convertGetManagedPlayStorePublishingRightsOptions(
   };
 }
 
-/** Private converter for GetProvisioningProfileOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGetProvisioningProfileOptions(
   options: GetProvisioningProfileOptions
 ) {
@@ -6782,9 +6548,6 @@ function convertGetProvisioningProfileOptions(
   };
 }
 
-/** Private converter for GetPushCertificateOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGetPushCertificateOptions(options: GetPushCertificateOptions) {
   return {
     development: options.development,
@@ -6804,9 +6567,6 @@ function convertGetPushCertificateOptions(options: GetPushCertificateOptions) {
   };
 }
 
-/** Private converter for GetVersionNumberOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGetVersionNumberOptions(options: GetVersionNumberOptions) {
   return {
     xcodeproj: options.xcodeproj,
@@ -6815,9 +6575,6 @@ function convertGetVersionNumberOptions(options: GetVersionNumberOptions) {
   };
 }
 
-/** Private converter for GitAddOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGitAddOptions(options: GitAddOptions) {
   return {
     path: options.path,
@@ -6826,16 +6583,10 @@ function convertGitAddOptions(options: GitAddOptions) {
   };
 }
 
-/** Private converter for GitBranchOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGitBranchOptions(options: GitBranchOptions) {
   return {};
 }
 
-/** Private converter for GitCommitOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGitCommitOptions(options: GitCommitOptions) {
   return {
     path: options.path,
@@ -6845,18 +6596,12 @@ function convertGitCommitOptions(options: GitCommitOptions) {
   };
 }
 
-/** Private converter for GitPullOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGitPullOptions(options: GitPullOptions) {
   return {
     only_tags: options.onlyTags,
   };
 }
 
-/** Private converter for GitSubmoduleUpdateOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGitSubmoduleUpdateOptions(options: GitSubmoduleUpdateOptions) {
   return {
     recursive: options.recursive,
@@ -6864,9 +6609,6 @@ function convertGitSubmoduleUpdateOptions(options: GitSubmoduleUpdateOptions) {
   };
 }
 
-/** Private converter for GitTagExistsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGitTagExistsOptions(options: GitTagExistsOptions) {
   return {
     tag: options.tag,
@@ -6875,9 +6617,6 @@ function convertGitTagExistsOptions(options: GitTagExistsOptions) {
   };
 }
 
-/** Private converter for GithubApiOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGithubApiOptions(options: GithubApiOptions) {
   return {
     server_url: options.serverUrl,
@@ -6893,9 +6632,6 @@ function convertGithubApiOptions(options: GithubApiOptions) {
   };
 }
 
-/** Private converter for GooglePlayTrackVersionCodesOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGooglePlayTrackVersionCodesOptions(
   options: GooglePlayTrackVersionCodesOptions
 ) {
@@ -6911,9 +6647,6 @@ function convertGooglePlayTrackVersionCodesOptions(
   };
 }
 
-/** Private converter for GradleOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGradleOptions(options: GradleOptions) {
   return {
     task: options.task,
@@ -6931,9 +6664,6 @@ function convertGradleOptions(options: GradleOptions) {
   };
 }
 
-/** Private converter for GymOptions
- * @param  options - Source object as provided by consumer
- */
 function convertGymOptions(options: GymOptions) {
   return {
     workspace: options.workspace,
@@ -6983,18 +6713,12 @@ function convertGymOptions(options: GymOptions) {
   };
 }
 
-/** Private converter for HgAddTagOptions
- * @param  options - Source object as provided by consumer
- */
 function convertHgAddTagOptions(options: HgAddTagOptions) {
   return {
     tag: options.tag,
   };
 }
 
-/** Private converter for HgCommitVersionBumpOptions
- * @param  options - Source object as provided by consumer
- */
 function convertHgCommitVersionBumpOptions(
   options: HgCommitVersionBumpOptions
 ) {
@@ -7007,18 +6731,12 @@ function convertHgCommitVersionBumpOptions(
   };
 }
 
-/** Private converter for HgEnsureCleanStatusOptions
- * @param  options - Source object as provided by consumer
- */
 function convertHgEnsureCleanStatusOptions(
   options: HgEnsureCleanStatusOptions
 ) {
   return {};
 }
 
-/** Private converter for HgPushOptions
- * @param  options - Source object as provided by consumer
- */
 function convertHgPushOptions(options: HgPushOptions) {
   return {
     force: options.force,
@@ -7026,9 +6744,6 @@ function convertHgPushOptions(options: HgPushOptions) {
   };
 }
 
-/** Private converter for HipchatOptions
- * @param  options - Source object as provided by consumer
- */
 function convertHipchatOptions(options: HipchatOptions) {
   return {
     message: options.message,
@@ -7045,9 +6760,6 @@ function convertHipchatOptions(options: HipchatOptions) {
   };
 }
 
-/** Private converter for HockeyOptions
- * @param  options - Source object as provided by consumer
- */
 function convertHockeyOptions(options: HockeyOptions) {
   return {
     apk: options.apk,
@@ -7080,9 +6792,6 @@ function convertHockeyOptions(options: HockeyOptions) {
   };
 }
 
-/** Private converter for IftttOptions
- * @param  options - Source object as provided by consumer
- */
 function convertIftttOptions(options: IftttOptions) {
   return {
     api_key: options.apiKey,
@@ -7093,16 +6802,10 @@ function convertIftttOptions(options: IftttOptions) {
   };
 }
 
-/** Private converter for ImportOptions
- * @param  options - Source object as provided by consumer
- */
 function convertImportOptions(options: ImportOptions) {
   return {};
 }
 
-/** Private converter for ImportCertificateOptions
- * @param  options - Source object as provided by consumer
- */
 function convertImportCertificateOptions(options: ImportCertificateOptions) {
   return {
     certificate_path: options.certificatePath,
@@ -7114,9 +6817,6 @@ function convertImportCertificateOptions(options: ImportCertificateOptions) {
   };
 }
 
-/** Private converter for ImportFromGitOptions
- * @param  options - Source object as provided by consumer
- */
 function convertImportFromGitOptions(options: ImportFromGitOptions) {
   return {
     url: options.url,
@@ -7127,9 +6827,6 @@ function convertImportFromGitOptions(options: ImportFromGitOptions) {
   };
 }
 
-/** Private converter for IncrementBuildNumberOptions
- * @param  options - Source object as provided by consumer
- */
 function convertIncrementBuildNumberOptions(
   options: IncrementBuildNumberOptions
 ) {
@@ -7139,9 +6836,6 @@ function convertIncrementBuildNumberOptions(
   };
 }
 
-/** Private converter for IncrementVersionNumberOptions
- * @param  options - Source object as provided by consumer
- */
 function convertIncrementVersionNumberOptions(
   options: IncrementVersionNumberOptions
 ) {
@@ -7152,9 +6846,6 @@ function convertIncrementVersionNumberOptions(
   };
 }
 
-/** Private converter for InstallOnDeviceOptions
- * @param  options - Source object as provided by consumer
- */
 function convertInstallOnDeviceOptions(options: InstallOnDeviceOptions) {
   return {
     extra: options.extra,
@@ -7164,9 +6855,6 @@ function convertInstallOnDeviceOptions(options: InstallOnDeviceOptions) {
   };
 }
 
-/** Private converter for InstallProvisioningProfileOptions
- * @param  options - Source object as provided by consumer
- */
 function convertInstallProvisioningProfileOptions(
   options: InstallProvisioningProfileOptions
 ) {
@@ -7175,9 +6863,6 @@ function convertInstallProvisioningProfileOptions(
   };
 }
 
-/** Private converter for InstallXcodePluginOptions
- * @param  options - Source object as provided by consumer
- */
 function convertInstallXcodePluginOptions(options: InstallXcodePluginOptions) {
   return {
     url: options.url,
@@ -7185,9 +6870,6 @@ function convertInstallXcodePluginOptions(options: InstallXcodePluginOptions) {
   };
 }
 
-/** Private converter for InstallrOptions
- * @param  options - Source object as provided by consumer
- */
 function convertInstallrOptions(options: InstallrOptions) {
   return {
     api_token: options.apiToken,
@@ -7198,9 +6880,6 @@ function convertInstallrOptions(options: InstallrOptions) {
   };
 }
 
-/** Private converter for IpaOptions
- * @param  options - Source object as provided by consumer
- */
 function convertIpaOptions(options: IpaOptions) {
   return {
     workspace: options.workspace,
@@ -7219,25 +6898,16 @@ function convertIpaOptions(options: IpaOptions) {
   };
 }
 
-/** Private converter for IsCiOptions
- * @param  options - Source object as provided by consumer
- */
 function convertIsCiOptions(options: IsCiOptions) {
   return {};
 }
 
-/** Private converter for JazzyOptions
- * @param  options - Source object as provided by consumer
- */
 function convertJazzyOptions(options: JazzyOptions) {
   return {
     config: options.config,
   };
 }
 
-/** Private converter for JiraOptions
- * @param  options - Source object as provided by consumer
- */
 function convertJiraOptions(options: JiraOptions) {
   return {
     url: options.url,
@@ -7249,32 +6919,20 @@ function convertJiraOptions(options: JiraOptions) {
   };
 }
 
-/** Private converter for LaneContextOptions
- * @param  options - Source object as provided by consumer
- */
 function convertLaneContextOptions(options: LaneContextOptions) {
   return {};
 }
 
-/** Private converter for LastGitCommitOptions
- * @param  options - Source object as provided by consumer
- */
 function convertLastGitCommitOptions(options: LastGitCommitOptions) {
   return {};
 }
 
-/** Private converter for LastGitTagOptions
- * @param  options - Source object as provided by consumer
- */
 function convertLastGitTagOptions(options: LastGitTagOptions) {
   return {
     pattern: options.pattern,
   };
 }
 
-/** Private converter for LatestTestflightBuildNumberOptions
- * @param  options - Source object as provided by consumer
- */
 function convertLatestTestflightBuildNumberOptions(
   options: LatestTestflightBuildNumberOptions
 ) {
@@ -7290,9 +6948,6 @@ function convertLatestTestflightBuildNumberOptions(
   };
 }
 
-/** Private converter for LcovOptions
- * @param  options - Source object as provided by consumer
- */
 function convertLcovOptions(options: LcovOptions) {
   return {
     project_name: options.projectName,
@@ -7302,9 +6957,6 @@ function convertLcovOptions(options: LcovOptions) {
   };
 }
 
-/** Private converter for MailgunOptions
- * @param  options - Source object as provided by consumer
- */
 function convertMailgunOptions(options: MailgunOptions) {
   return {
     mailgun_sandbox_domain: options.mailgunSandboxDomain,
@@ -7326,9 +6978,6 @@ function convertMailgunOptions(options: MailgunOptions) {
   };
 }
 
-/** Private converter for MakeChangelogFromJenkinsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertMakeChangelogFromJenkinsOptions(
   options: MakeChangelogFromJenkinsOptions
 ) {
@@ -7338,9 +6987,6 @@ function convertMakeChangelogFromJenkinsOptions(
   };
 }
 
-/** Private converter for MatchOptions
- * @param  options - Source object as provided by consumer
- */
 function convertMatchOptions(options: MatchOptions) {
   return {
     type: options.type,
@@ -7381,16 +7027,10 @@ function convertMatchOptions(options: MatchOptions) {
   };
 }
 
-/** Private converter for MinFastlaneVersionOptions
- * @param  options - Source object as provided by consumer
- */
 function convertMinFastlaneVersionOptions(options: MinFastlaneVersionOptions) {
   return {};
 }
 
-/** Private converter for ModifyServicesOptions
- * @param  options - Source object as provided by consumer
- */
 function convertModifyServicesOptions(options: ModifyServicesOptions) {
   return {
     username: options.username,
@@ -7401,9 +7041,6 @@ function convertModifyServicesOptions(options: ModifyServicesOptions) {
   };
 }
 
-/** Private converter for NexusUploadOptions
- * @param  options - Source object as provided by consumer
- */
 function convertNexusUploadOptions(options: NexusUploadOptions) {
   return {
     file: options.file,
@@ -7426,9 +7063,6 @@ function convertNexusUploadOptions(options: NexusUploadOptions) {
   };
 }
 
-/** Private converter for NotarizeOptions
- * @param  options - Source object as provided by consumer
- */
 function convertNotarizeOptions(options: NotarizeOptions) {
   return {
     package: options.package,
@@ -7441,9 +7075,6 @@ function convertNotarizeOptions(options: NotarizeOptions) {
   };
 }
 
-/** Private converter for NotificationOptions
- * @param  options - Source object as provided by consumer
- */
 function convertNotificationOptions(options: NotificationOptions) {
   return {
     title: options.title,
@@ -7458,25 +7089,16 @@ function convertNotificationOptions(options: NotificationOptions) {
   };
 }
 
-/** Private converter for NotifyOptions
- * @param  options - Source object as provided by consumer
- */
 function convertNotifyOptions(options: NotifyOptions) {
   return {};
 }
 
-/** Private converter for NumberOfCommitsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertNumberOfCommitsOptions(options: NumberOfCommitsOptions) {
   return {
     all: options.all,
   };
 }
 
-/** Private converter for OclintOptions
- * @param  options - Source object as provided by consumer
- */
 function convertOclintOptions(options: OclintOptions) {
   return {
     oclint_path: options.oclintPath,
@@ -7501,9 +7123,6 @@ function convertOclintOptions(options: OclintOptions) {
   };
 }
 
-/** Private converter for OnesignalOptions
- * @param  options - Source object as provided by consumer
- */
 function convertOnesignalOptions(options: OnesignalOptions) {
   return {
     app_id: options.appId,
@@ -7517,25 +7136,16 @@ function convertOnesignalOptions(options: OnesignalOptions) {
   };
 }
 
-/** Private converter for OptOutCrashReportingOptions
- * @param  options - Source object as provided by consumer
- */
 function convertOptOutCrashReportingOptions(
   options: OptOutCrashReportingOptions
 ) {
   return {};
 }
 
-/** Private converter for OptOutUsageOptions
- * @param  options - Source object as provided by consumer
- */
 function convertOptOutUsageOptions(options: OptOutUsageOptions) {
   return {};
 }
 
-/** Private converter for PemOptions
- * @param  options - Source object as provided by consumer
- */
 function convertPemOptions(options: PemOptions) {
   return {
     development: options.development,
@@ -7555,9 +7165,6 @@ function convertPemOptions(options: PemOptions) {
   };
 }
 
-/** Private converter for PilotOptions
- * @param  options - Source object as provided by consumer
- */
 function convertPilotOptions(options: PilotOptions) {
   return {
     username: options.username,
@@ -7595,9 +7202,6 @@ function convertPilotOptions(options: PilotOptions) {
   };
 }
 
-/** Private converter for PodLibLintOptions
- * @param  options - Source object as provided by consumer
- */
 function convertPodLibLintOptions(options: PodLibLintOptions) {
   return {
     use_bundle_exec: options.useBundleExec,
@@ -7623,9 +7227,6 @@ function convertPodLibLintOptions(options: PodLibLintOptions) {
   };
 }
 
-/** Private converter for PodPushOptions
- * @param  options - Source object as provided by consumer
- */
 function convertPodPushOptions(options: PodPushOptions) {
   return {
     use_bundle_exec: options.useBundleExec,
@@ -7642,9 +7243,6 @@ function convertPodPushOptions(options: PodPushOptions) {
   };
 }
 
-/** Private converter for PodioItemOptions
- * @param  options - Source object as provided by consumer
- */
 function convertPodioItemOptions(options: PodioItemOptions) {
   return {
     client_id: options.clientId,
@@ -7657,9 +7255,6 @@ function convertPodioItemOptions(options: PodioItemOptions) {
   };
 }
 
-/** Private converter for PrecheckOptions
- * @param  options - Source object as provided by consumer
- */
 function convertPrecheckOptions(options: PrecheckOptions) {
   return {
     app_identifier: options.appIdentifier,
@@ -7681,18 +7276,12 @@ function convertPrecheckOptions(options: PrecheckOptions) {
   };
 }
 
-/** Private converter for PrintlnOptions
- * @param  options - Source object as provided by consumer
- */
 function convertPrintlnOptions(options: PrintlnOptions) {
   return {
     message: options.message,
   };
 }
 
-/** Private converter for ProduceOptions
- * @param  options - Source object as provided by consumer
- */
 function convertProduceOptions(options: ProduceOptions) {
   return {
     username: options.username,
@@ -7717,9 +7306,6 @@ function convertProduceOptions(options: ProduceOptions) {
   };
 }
 
-/** Private converter for PromptOptions
- * @param  options - Source object as provided by consumer
- */
 function convertPromptOptions(options: PromptOptions) {
   return {
     text: options.text,
@@ -7730,9 +7316,6 @@ function convertPromptOptions(options: PromptOptions) {
   };
 }
 
-/** Private converter for PushGitTagsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertPushGitTagsOptions(options: PushGitTagsOptions) {
   return {
     force: options.force,
@@ -7741,9 +7324,6 @@ function convertPushGitTagsOptions(options: PushGitTagsOptions) {
   };
 }
 
-/** Private converter for PushToGitRemoteOptions
- * @param  options - Source object as provided by consumer
- */
 function convertPushToGitRemoteOptions(options: PushToGitRemoteOptions) {
   return {
     local_branch: options.localBranch,
@@ -7757,36 +7337,24 @@ function convertPushToGitRemoteOptions(options: PushToGitRemoteOptions) {
   };
 }
 
-/** Private converter for PutsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertPutsOptions(options: PutsOptions) {
   return {
     message: options.message,
   };
 }
 
-/** Private converter for ReadPodspecOptions
- * @param  options - Source object as provided by consumer
- */
 function convertReadPodspecOptions(options: ReadPodspecOptions) {
   return {
     path: options.path,
   };
 }
 
-/** Private converter for RecreateSchemesOptions
- * @param  options - Source object as provided by consumer
- */
 function convertRecreateSchemesOptions(options: RecreateSchemesOptions) {
   return {
     project: options.project,
   };
 }
 
-/** Private converter for RegisterDeviceOptions
- * @param  options - Source object as provided by consumer
- */
 function convertRegisterDeviceOptions(options: RegisterDeviceOptions) {
   return {
     name: options.name,
@@ -7797,9 +7365,6 @@ function convertRegisterDeviceOptions(options: RegisterDeviceOptions) {
   };
 }
 
-/** Private converter for RegisterDevicesOptions
- * @param  options - Source object as provided by consumer
- */
 function convertRegisterDevicesOptions(options: RegisterDevicesOptions) {
   return {
     devices: options.devices,
@@ -7811,9 +7376,6 @@ function convertRegisterDevicesOptions(options: RegisterDevicesOptions) {
   };
 }
 
-/** Private converter for ResetGitRepoOptions
- * @param  options - Source object as provided by consumer
- */
 function convertResetGitRepoOptions(options: ResetGitRepoOptions) {
   return {
     files: options.files,
@@ -7824,9 +7386,6 @@ function convertResetGitRepoOptions(options: ResetGitRepoOptions) {
   };
 }
 
-/** Private converter for ResetSimulatorContentsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertResetSimulatorContentsOptions(
   options: ResetSimulatorContentsOptions
 ) {
@@ -7836,9 +7395,6 @@ function convertResetSimulatorContentsOptions(
   };
 }
 
-/** Private converter for ResignOptions
- * @param  options - Source object as provided by consumer
- */
 function convertResignOptions(options: ResignOptions) {
   return {
     ipa: options.ipa,
@@ -7855,25 +7411,16 @@ function convertResignOptions(options: ResignOptions) {
   };
 }
 
-/** Private converter for RestoreFileOptions
- * @param  options - Source object as provided by consumer
- */
 function convertRestoreFileOptions(options: RestoreFileOptions) {
   return {
     path: options.path,
   };
 }
 
-/** Private converter for RocketOptions
- * @param  options - Source object as provided by consumer
- */
 function convertRocketOptions(options: RocketOptions) {
   return {};
 }
 
-/** Private converter for RsyncOptions
- * @param  options - Source object as provided by consumer
- */
 function convertRsyncOptions(options: RsyncOptions) {
   return {
     extra: options.extra,
@@ -7882,16 +7429,10 @@ function convertRsyncOptions(options: RsyncOptions) {
   };
 }
 
-/** Private converter for RubyVersionOptions
- * @param  options - Source object as provided by consumer
- */
 function convertRubyVersionOptions(options: RubyVersionOptions) {
   return {};
 }
 
-/** Private converter for RunTestsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertRunTestsOptions(options: RunTestsOptions) {
   return {
     workspace: options.workspace,
@@ -7958,9 +7499,6 @@ function convertRunTestsOptions(options: RunTestsOptions) {
   };
 }
 
-/** Private converter for S3Options
- * @param  options - Source object as provided by consumer
- */
 function convertS3Options(options: S3Options) {
   return {
     ipa: options.ipa,
@@ -7982,9 +7520,6 @@ function convertS3Options(options: S3Options) {
   };
 }
 
-/** Private converter for SayOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSayOptions(options: SayOptions) {
   return {
     text: options.text,
@@ -7992,9 +7527,6 @@ function convertSayOptions(options: SayOptions) {
   };
 }
 
-/** Private converter for ScanOptions
- * @param  options - Source object as provided by consumer
- */
 function convertScanOptions(options: ScanOptions) {
   return {
     workspace: options.workspace,
@@ -8061,9 +7593,6 @@ function convertScanOptions(options: ScanOptions) {
   };
 }
 
-/** Private converter for ScpOptions
- * @param  options - Source object as provided by consumer
- */
 function convertScpOptions(options: ScpOptions) {
   return {
     username: options.username,
@@ -8075,9 +7604,6 @@ function convertScpOptions(options: ScpOptions) {
   };
 }
 
-/** Private converter for ScreengrabOptions
- * @param  options - Source object as provided by consumer
- */
 function convertScreengrabOptions(options: ScreengrabOptions) {
   return {
     android_home: options.androidHome,
@@ -8105,9 +7631,6 @@ function convertScreengrabOptions(options: ScreengrabOptions) {
   };
 }
 
-/** Private converter for SetBuildNumberRepositoryOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSetBuildNumberRepositoryOptions(
   options: SetBuildNumberRepositoryOptions
 ) {
@@ -8117,9 +7640,6 @@ function convertSetBuildNumberRepositoryOptions(
   };
 }
 
-/** Private converter for SetChangelogOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSetChangelogOptions(options: SetChangelogOptions) {
   return {
     app_identifier: options.appIdentifier,
@@ -8132,9 +7652,6 @@ function convertSetChangelogOptions(options: SetChangelogOptions) {
   };
 }
 
-/** Private converter for SetGithubReleaseOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSetGithubReleaseOptions(options: SetGithubReleaseOptions) {
   return {
     repository_name: options.repositoryName,
@@ -8150,9 +7667,6 @@ function convertSetGithubReleaseOptions(options: SetGithubReleaseOptions) {
   };
 }
 
-/** Private converter for SetInfoPlistValueOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSetInfoPlistValueOptions(options: SetInfoPlistValueOptions) {
   return {
     key: options.key,
@@ -8163,9 +7677,6 @@ function convertSetInfoPlistValueOptions(options: SetInfoPlistValueOptions) {
   };
 }
 
-/** Private converter for SetPodKeyOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSetPodKeyOptions(options: SetPodKeyOptions) {
   return {
     use_bundle_exec: options.useBundleExec,
@@ -8175,9 +7686,6 @@ function convertSetPodKeyOptions(options: SetPodKeyOptions) {
   };
 }
 
-/** Private converter for SetupCiOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSetupCiOptions(options: SetupCiOptions) {
   return {
     force: options.force,
@@ -8185,18 +7693,12 @@ function convertSetupCiOptions(options: SetupCiOptions) {
   };
 }
 
-/** Private converter for SetupCircleCiOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSetupCircleCiOptions(options: SetupCircleCiOptions) {
   return {
     force: options.force,
   };
 }
 
-/** Private converter for SetupJenkinsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSetupJenkinsOptions(options: SetupJenkinsOptions) {
   return {
     force: options.force,
@@ -8213,18 +7715,12 @@ function convertSetupJenkinsOptions(options: SetupJenkinsOptions) {
   };
 }
 
-/** Private converter for SetupTravisOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSetupTravisOptions(options: SetupTravisOptions) {
   return {
     force: options.force,
   };
 }
 
-/** Private converter for ShOptions
- * @param  options - Source object as provided by consumer
- */
 function convertShOptions(options: ShOptions) {
   return {
     command: options.command,
@@ -8233,9 +7729,6 @@ function convertShOptions(options: ShOptions) {
   };
 }
 
-/** Private converter for SighOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSighOptions(options: SighOptions) {
   return {
     adhoc: options.adhoc,
@@ -8262,16 +7755,10 @@ function convertSighOptions(options: SighOptions) {
   };
 }
 
-/** Private converter for SkipDocsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSkipDocsOptions(options: SkipDocsOptions) {
   return {};
 }
 
-/** Private converter for SlackOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSlackOptions(options: SlackOptions) {
   return {
     message: options.message,
@@ -8291,9 +7778,6 @@ function convertSlackOptions(options: SlackOptions) {
   };
 }
 
-/** Private converter for SlatherOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSlatherOptions(options: SlatherOptions) {
   return {
     build_directory: options.buildDirectory,
@@ -8328,9 +7812,6 @@ function convertSlatherOptions(options: SlatherOptions) {
   };
 }
 
-/** Private converter for SnapshotOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSnapshotOptions(options: SnapshotOptions) {
   return {
     workspace: options.workspace,
@@ -8373,9 +7854,6 @@ function convertSnapshotOptions(options: SnapshotOptions) {
   };
 }
 
-/** Private converter for SonarOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSonarOptions(options: SonarOptions) {
   return {
     project_configuration_path: options.projectConfigurationPath,
@@ -8396,9 +7874,6 @@ function convertSonarOptions(options: SonarOptions) {
   };
 }
 
-/** Private converter for SpaceshipLogsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSpaceshipLogsOptions(options: SpaceshipLogsOptions) {
   return {
     latest: options.latest,
@@ -8409,9 +7884,6 @@ function convertSpaceshipLogsOptions(options: SpaceshipLogsOptions) {
   };
 }
 
-/** Private converter for SplunkmintOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSplunkmintOptions(options: SplunkmintOptions) {
   return {
     dsym: options.dsym,
@@ -8426,9 +7898,6 @@ function convertSplunkmintOptions(options: SplunkmintOptions) {
   };
 }
 
-/** Private converter for SpmOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSpmOptions(options: SpmOptions) {
   return {
     command: options.command,
@@ -8442,9 +7911,6 @@ function convertSpmOptions(options: SpmOptions) {
   };
 }
 
-/** Private converter for SshOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSshOptions(options: SshOptions) {
   return {
     username: options.username,
@@ -8456,9 +7922,6 @@ function convertSshOptions(options: SshOptions) {
   };
 }
 
-/** Private converter for SupplyOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSupplyOptions(options: SupplyOptions) {
   return {
     package_name: options.packageName,
@@ -8498,9 +7961,6 @@ function convertSupplyOptions(options: SupplyOptions) {
   };
 }
 
-/** Private converter for SwiftlintOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSwiftlintOptions(options: SwiftlintOptions) {
   return {
     mode: options.mode,
@@ -8520,9 +7980,6 @@ function convertSwiftlintOptions(options: SwiftlintOptions) {
   };
 }
 
-/** Private converter for SyncCodeSigningOptions
- * @param  options - Source object as provided by consumer
- */
 function convertSyncCodeSigningOptions(options: SyncCodeSigningOptions) {
   return {
     type: options.type,
@@ -8563,23 +8020,14 @@ function convertSyncCodeSigningOptions(options: SyncCodeSigningOptions) {
   };
 }
 
-/** Private converter for TeamIdOptions
- * @param  options - Source object as provided by consumer
- */
 function convertTeamIdOptions(options: TeamIdOptions) {
   return {};
 }
 
-/** Private converter for TeamNameOptions
- * @param  options - Source object as provided by consumer
- */
 function convertTeamNameOptions(options: TeamNameOptions) {
   return {};
 }
 
-/** Private converter for TestfairyOptions
- * @param  options - Source object as provided by consumer
- */
 function convertTestfairyOptions(options: TestfairyOptions) {
   return {
     api_key: options.apiKey,
@@ -8598,9 +8046,6 @@ function convertTestfairyOptions(options: TestfairyOptions) {
   };
 }
 
-/** Private converter for TestflightOptions
- * @param  options - Source object as provided by consumer
- */
 function convertTestflightOptions(options: TestflightOptions) {
   return {
     username: options.username,
@@ -8638,9 +8083,6 @@ function convertTestflightOptions(options: TestflightOptions) {
   };
 }
 
-/** Private converter for TryoutsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertTryoutsOptions(options: TryoutsOptions) {
   return {
     app_id: options.appId,
@@ -8653,9 +8095,6 @@ function convertTryoutsOptions(options: TryoutsOptions) {
   };
 }
 
-/** Private converter for TwitterOptions
- * @param  options - Source object as provided by consumer
- */
 function convertTwitterOptions(options: TwitterOptions) {
   return {
     consumer_key: options.consumerKey,
@@ -8666,16 +8105,10 @@ function convertTwitterOptions(options: TwitterOptions) {
   };
 }
 
-/** Private converter for TypetalkOptions
- * @param  options - Source object as provided by consumer
- */
 function convertTypetalkOptions(options: TypetalkOptions) {
   return {};
 }
 
-/** Private converter for UnlockKeychainOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUnlockKeychainOptions(options: UnlockKeychainOptions) {
   return {
     path: options.path,
@@ -8685,9 +8118,6 @@ function convertUnlockKeychainOptions(options: UnlockKeychainOptions) {
   };
 }
 
-/** Private converter for UpdateAppGroupIdentifiersOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdateAppGroupIdentifiersOptions(
   options: UpdateAppGroupIdentifiersOptions
 ) {
@@ -8697,9 +8127,6 @@ function convertUpdateAppGroupIdentifiersOptions(
   };
 }
 
-/** Private converter for UpdateAppIdentifierOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdateAppIdentifierOptions(
   options: UpdateAppIdentifierOptions
 ) {
@@ -8710,9 +8137,6 @@ function convertUpdateAppIdentifierOptions(
   };
 }
 
-/** Private converter for UpdateCodeSigningSettingsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdateCodeSigningSettingsOptions(
   options: UpdateCodeSigningSettingsOptions
 ) {
@@ -8729,9 +8153,6 @@ function convertUpdateCodeSigningSettingsOptions(
   };
 }
 
-/** Private converter for UpdateFastlaneOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdateFastlaneOptions(options: UpdateFastlaneOptions) {
   return {
     no_update: options.noUpdate,
@@ -8739,9 +8160,6 @@ function convertUpdateFastlaneOptions(options: UpdateFastlaneOptions) {
   };
 }
 
-/** Private converter for UpdateIcloudContainerIdentifiersOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdateIcloudContainerIdentifiersOptions(
   options: UpdateIcloudContainerIdentifiersOptions
 ) {
@@ -8751,9 +8169,6 @@ function convertUpdateIcloudContainerIdentifiersOptions(
   };
 }
 
-/** Private converter for UpdateInfoPlistOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdateInfoPlistOptions(options: UpdateInfoPlistOptions) {
   return {
     xcodeproj: options.xcodeproj,
@@ -8765,9 +8180,6 @@ function convertUpdateInfoPlistOptions(options: UpdateInfoPlistOptions) {
   };
 }
 
-/** Private converter for UpdateKeychainAccessGroupsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdateKeychainAccessGroupsOptions(
   options: UpdateKeychainAccessGroupsOptions
 ) {
@@ -8777,9 +8189,6 @@ function convertUpdateKeychainAccessGroupsOptions(
   };
 }
 
-/** Private converter for UpdatePlistOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdatePlistOptions(options: UpdatePlistOptions) {
   return {
     plist_path: options.plistPath,
@@ -8787,9 +8196,6 @@ function convertUpdatePlistOptions(options: UpdatePlistOptions) {
   };
 }
 
-/** Private converter for UpdateProjectCodeSigningOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdateProjectCodeSigningOptions(
   options: UpdateProjectCodeSigningOptions
 ) {
@@ -8800,9 +8206,6 @@ function convertUpdateProjectCodeSigningOptions(
   };
 }
 
-/** Private converter for UpdateProjectProvisioningOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdateProjectProvisioningOptions(
   options: UpdateProjectProvisioningOptions
 ) {
@@ -8817,9 +8220,6 @@ function convertUpdateProjectProvisioningOptions(
   };
 }
 
-/** Private converter for UpdateProjectTeamOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdateProjectTeamOptions(options: UpdateProjectTeamOptions) {
   return {
     path: options.path,
@@ -8828,9 +8228,6 @@ function convertUpdateProjectTeamOptions(options: UpdateProjectTeamOptions) {
   };
 }
 
-/** Private converter for UpdateUrbanAirshipConfigurationOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdateUrbanAirshipConfigurationOptions(
   options: UpdateUrbanAirshipConfigurationOptions
 ) {
@@ -8844,9 +8241,6 @@ function convertUpdateUrbanAirshipConfigurationOptions(
   };
 }
 
-/** Private converter for UpdateUrlSchemesOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUpdateUrlSchemesOptions(options: UpdateUrlSchemesOptions) {
   return {
     path: options.path,
@@ -8855,9 +8249,6 @@ function convertUpdateUrlSchemesOptions(options: UpdateUrlSchemesOptions) {
   };
 }
 
-/** Private converter for UploadSymbolsToCrashlyticsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUploadSymbolsToCrashlyticsOptions(
   options: UploadSymbolsToCrashlyticsOptions
 ) {
@@ -8873,9 +8264,6 @@ function convertUploadSymbolsToCrashlyticsOptions(
   };
 }
 
-/** Private converter for UploadSymbolsToSentryOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUploadSymbolsToSentryOptions(
   options: UploadSymbolsToSentryOptions
 ) {
@@ -8890,9 +8278,6 @@ function convertUploadSymbolsToSentryOptions(
   };
 }
 
-/** Private converter for UploadToAppStoreOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUploadToAppStoreOptions(options: UploadToAppStoreOptions) {
   return {
     username: options.username,
@@ -8960,9 +8345,6 @@ function convertUploadToAppStoreOptions(options: UploadToAppStoreOptions) {
   };
 }
 
-/** Private converter for UploadToPlayStoreOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUploadToPlayStoreOptions(options: UploadToPlayStoreOptions) {
   return {
     package_name: options.packageName,
@@ -9002,9 +8384,6 @@ function convertUploadToPlayStoreOptions(options: UploadToPlayStoreOptions) {
   };
 }
 
-/** Private converter for UploadToPlayStoreInternalAppSharingOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUploadToPlayStoreInternalAppSharingOptions(
   options: UploadToPlayStoreInternalAppSharingOptions
 ) {
@@ -9021,9 +8400,6 @@ function convertUploadToPlayStoreInternalAppSharingOptions(
   };
 }
 
-/** Private converter for UploadToTestflightOptions
- * @param  options - Source object as provided by consumer
- */
 function convertUploadToTestflightOptions(options: UploadToTestflightOptions) {
   return {
     username: options.username,
@@ -9061,9 +8437,6 @@ function convertUploadToTestflightOptions(options: UploadToTestflightOptions) {
   };
 }
 
-/** Private converter for ValidatePlayStoreJsonKeyOptions
- * @param  options - Source object as provided by consumer
- */
 function convertValidatePlayStoreJsonKeyOptions(
   options: ValidatePlayStoreJsonKeyOptions
 ) {
@@ -9075,9 +8448,6 @@ function convertValidatePlayStoreJsonKeyOptions(
   };
 }
 
-/** Private converter for VerifyBuildOptions
- * @param  options - Source object as provided by consumer
- */
 function convertVerifyBuildOptions(options: VerifyBuildOptions) {
   return {
     provisioning_type: options.provisioningType,
@@ -9091,25 +8461,16 @@ function convertVerifyBuildOptions(options: VerifyBuildOptions) {
   };
 }
 
-/** Private converter for VerifyPodKeysOptions
- * @param  options - Source object as provided by consumer
- */
 function convertVerifyPodKeysOptions(options: VerifyPodKeysOptions) {
   return {};
 }
 
-/** Private converter for VerifyXcodeOptions
- * @param  options - Source object as provided by consumer
- */
 function convertVerifyXcodeOptions(options: VerifyXcodeOptions) {
   return {
     xcode_path: options.xcodePath,
   };
 }
 
-/** Private converter for VersionBumpPodspecOptions
- * @param  options - Source object as provided by consumer
- */
 function convertVersionBumpPodspecOptions(options: VersionBumpPodspecOptions) {
   return {
     path: options.path,
@@ -9120,9 +8481,6 @@ function convertVersionBumpPodspecOptions(options: VersionBumpPodspecOptions) {
   };
 }
 
-/** Private converter for VersionGetPodspecOptions
- * @param  options - Source object as provided by consumer
- */
 function convertVersionGetPodspecOptions(options: VersionGetPodspecOptions) {
   return {
     path: options.path,
@@ -9130,37 +8488,22 @@ function convertVersionGetPodspecOptions(options: VersionGetPodspecOptions) {
   };
 }
 
-/** Private converter for XcarchiveOptions
- * @param  options - Source object as provided by consumer
- */
 function convertXcarchiveOptions(options: XcarchiveOptions) {
   return {};
 }
 
-/** Private converter for XcbuildOptions
- * @param  options - Source object as provided by consumer
- */
 function convertXcbuildOptions(options: XcbuildOptions) {
   return {};
 }
 
-/** Private converter for XccleanOptions
- * @param  options - Source object as provided by consumer
- */
 function convertXccleanOptions(options: XccleanOptions) {
   return {};
 }
 
-/** Private converter for XcexportOptions
- * @param  options - Source object as provided by consumer
- */
 function convertXcexportOptions(options: XcexportOptions) {
   return {};
 }
 
-/** Private converter for XcodeInstallOptions
- * @param  options - Source object as provided by consumer
- */
 function convertXcodeInstallOptions(options: XcodeInstallOptions) {
   return {
     version: options.version,
@@ -9169,16 +8512,10 @@ function convertXcodeInstallOptions(options: XcodeInstallOptions) {
   };
 }
 
-/** Private converter for XcodeSelectOptions
- * @param  options - Source object as provided by consumer
- */
 function convertXcodeSelectOptions(options: XcodeSelectOptions) {
   return {};
 }
 
-/** Private converter for XcodeServerGetAssetsOptions
- * @param  options - Source object as provided by consumer
- */
 function convertXcodeServerGetAssetsOptions(
   options: XcodeServerGetAssetsOptions
 ) {
@@ -9194,46 +8531,28 @@ function convertXcodeServerGetAssetsOptions(
   };
 }
 
-/** Private converter for XcodebuildOptions
- * @param  options - Source object as provided by consumer
- */
 function convertXcodebuildOptions(options: XcodebuildOptions) {
   return {};
 }
 
-/** Private converter for XcovOptions
- * @param  options - Source object as provided by consumer
- */
 function convertXcovOptions(options: XcovOptions) {
   return {};
 }
 
-/** Private converter for XctestOptions
- * @param  options - Source object as provided by consumer
- */
 function convertXctestOptions(options: XctestOptions) {
   return {};
 }
 
-/** Private converter for XctoolOptions
- * @param  options - Source object as provided by consumer
- */
 function convertXctoolOptions(options: XctoolOptions) {
   return {};
 }
 
-/** Private converter for XcversionOptions
- * @param  options - Source object as provided by consumer
- */
 function convertXcversionOptions(options: XcversionOptions) {
   return {
     version: options.version,
   };
 }
 
-/** Private converter for ZipOptions
- * @param  options - Source object as provided by consumer
- */
 function convertZipOptions(options: ZipOptions) {
   return {
     path: options.path,
@@ -9243,6 +8562,8 @@ function convertZipOptions(options: ZipOptions) {
     symlinks: options.symlinks,
   };
 }
+/** Main Class
+ */
 class Fastlane extends FastlaneBase {
   /** Run ADB Actions
    */
