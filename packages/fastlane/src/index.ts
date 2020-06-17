@@ -5287,6 +5287,9 @@ interface ZipOptions {
   symlinks?: boolean;
 }
 
+/* Convert AdbOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertAdbOptions(options: AdbOptions) {
   return {
     serial: options.serial,
@@ -5295,18 +5298,27 @@ function convertAdbOptions(options: AdbOptions) {
   };
 }
 
+/* Convert AdbDevicesOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertAdbDevicesOptions(options: AdbDevicesOptions) {
   return {
     adb_path: options.adbPath,
   };
 }
 
+/* Convert AddExtraPlatformsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertAddExtraPlatformsOptions(options: AddExtraPlatformsOptions) {
   return {
     platforms: options.platforms,
   };
 }
 
+/* Convert AddGitTagOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertAddGitTagOptions(options: AddGitTagOptions) {
   return {
     tag: options.tag,
@@ -5321,6 +5333,9 @@ function convertAddGitTagOptions(options: AddGitTagOptions) {
   };
 }
 
+/* Convert AppStoreBuildNumberOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertAppStoreBuildNumberOptions(
   options: AppStoreBuildNumberOptions
 ) {
@@ -5336,6 +5351,9 @@ function convertAppStoreBuildNumberOptions(
   };
 }
 
+/* Convert AppaloosaOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertAppaloosaOptions(options: AppaloosaOptions) {
   return {
     binary: options.binary,
@@ -5349,6 +5367,9 @@ function convertAppaloosaOptions(options: AppaloosaOptions) {
   };
 }
 
+/* Convert AppetizeOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertAppetizeOptions(options: AppetizeOptions) {
   return {
     api_host: options.apiHost,
@@ -5361,6 +5382,9 @@ function convertAppetizeOptions(options: AppetizeOptions) {
   };
 }
 
+/* Convert AppetizeViewingUrlGeneratorOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertAppetizeViewingUrlGeneratorOptions(
   options: AppetizeViewingUrlGeneratorOptions
 ) {
@@ -5379,6 +5403,9 @@ function convertAppetizeViewingUrlGeneratorOptions(
   };
 }
 
+/* Convert AppiumOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertAppiumOptions(options: AppiumOptions) {
   return {
     platform: options.platform,
@@ -5393,6 +5420,9 @@ function convertAppiumOptions(options: AppiumOptions) {
   };
 }
 
+/* Convert AppledocOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertAppledocOptions(options: AppledocOptions) {
   return {
     input: options.input,
@@ -5443,6 +5473,9 @@ function convertAppledocOptions(options: AppledocOptions) {
   };
 }
 
+/* Convert AppstoreOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertAppstoreOptions(options: AppstoreOptions) {
   return {
     username: options.username,
@@ -5510,6 +5543,9 @@ function convertAppstoreOptions(options: AppstoreOptions) {
   };
 }
 
+/* Convert ApteligentOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertApteligentOptions(options: ApteligentOptions) {
   return {
     dsym: options.dsym,
@@ -5518,6 +5554,9 @@ function convertApteligentOptions(options: ApteligentOptions) {
   };
 }
 
+/* Convert ArtifactoryOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertArtifactoryOptions(options: ArtifactoryOptions) {
   return {
     file: options.file,
@@ -5537,6 +5576,9 @@ function convertArtifactoryOptions(options: ArtifactoryOptions) {
   };
 }
 
+/* Convert AutomaticCodeSigningOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertAutomaticCodeSigningOptions(
   options: AutomaticCodeSigningOptions
 ) {
@@ -5552,12 +5594,18 @@ function convertAutomaticCodeSigningOptions(
   };
 }
 
+/* Convert BackupFileOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertBackupFileOptions(options: BackupFileOptions) {
   return {
     path: options.path,
   };
 }
 
+/* Convert BackupXcarchiveOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertBackupXcarchiveOptions(options: BackupXcarchiveOptions) {
   return {
     xcarchive: options.xcarchive,
@@ -5568,6 +5616,9 @@ function convertBackupXcarchiveOptions(options: BackupXcarchiveOptions) {
   };
 }
 
+/* Convert BadgeOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertBadgeOptions(options: BadgeOptions) {
   return {
     dark: options.dark,
@@ -5584,6 +5635,9 @@ function convertBadgeOptions(options: BadgeOptions) {
   };
 }
 
+/* Convert BuildAndUploadToAppetizeOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertBuildAndUploadToAppetizeOptions(
   options: BuildAndUploadToAppetizeOptions
 ) {
@@ -5596,6 +5650,9 @@ function convertBuildAndUploadToAppetizeOptions(
   };
 }
 
+/* Convert BuildAndroidAppOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertBuildAndroidAppOptions(options: BuildAndroidAppOptions) {
   return {
     task: options.task,
@@ -5613,6 +5670,9 @@ function convertBuildAndroidAppOptions(options: BuildAndroidAppOptions) {
   };
 }
 
+/* Convert BuildAppOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertBuildAppOptions(options: BuildAppOptions) {
   return {
     workspace: options.workspace,
@@ -5662,6 +5722,9 @@ function convertBuildAppOptions(options: BuildAppOptions) {
   };
 }
 
+/* Convert BuildIosAppOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertBuildIosAppOptions(options: BuildIosAppOptions) {
   return {
     workspace: options.workspace,
@@ -5708,6 +5771,9 @@ function convertBuildIosAppOptions(options: BuildIosAppOptions) {
   };
 }
 
+/* Convert BuildMacAppOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertBuildMacAppOptions(options: BuildMacAppOptions) {
   return {
     workspace: options.workspace,
@@ -5755,6 +5821,9 @@ function convertBuildMacAppOptions(options: BuildMacAppOptions) {
   };
 }
 
+/* Convert BundleInstallOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertBundleInstallOptions(options: BundleInstallOptions) {
   return {
     binstubs: options.binstubs,
@@ -5778,6 +5847,9 @@ function convertBundleInstallOptions(options: BundleInstallOptions) {
   };
 }
 
+/* Convert CaptureAndroidScreenshotsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCaptureAndroidScreenshotsOptions(
   options: CaptureAndroidScreenshotsOptions
 ) {
@@ -5807,6 +5879,9 @@ function convertCaptureAndroidScreenshotsOptions(
   };
 }
 
+/* Convert CaptureIosScreenshotsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCaptureIosScreenshotsOptions(
   options: CaptureIosScreenshotsOptions
 ) {
@@ -5851,6 +5926,9 @@ function convertCaptureIosScreenshotsOptions(
   };
 }
 
+/* Convert CaptureScreenshotsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCaptureScreenshotsOptions(options: CaptureScreenshotsOptions) {
   return {
     workspace: options.workspace,
@@ -5893,6 +5971,9 @@ function convertCaptureScreenshotsOptions(options: CaptureScreenshotsOptions) {
   };
 }
 
+/* Convert CarthageOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCarthageOptions(options: CarthageOptions) {
   return {
     command: options.command,
@@ -5918,6 +5999,9 @@ function convertCarthageOptions(options: CarthageOptions) {
   };
 }
 
+/* Convert CertOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCertOptions(options: CertOptions) {
   return {
     development: options.development,
@@ -5935,6 +6019,9 @@ function convertCertOptions(options: CertOptions) {
   };
 }
 
+/* Convert ChangelogFromGitCommitsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertChangelogFromGitCommitsOptions(
   options: ChangelogFromGitCommitsOptions
 ) {
@@ -5953,6 +6040,9 @@ function convertChangelogFromGitCommitsOptions(
   };
 }
 
+/* Convert ChatworkOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertChatworkOptions(options: ChatworkOptions) {
   return {
     api_token: options.apiToken,
@@ -5962,6 +6052,9 @@ function convertChatworkOptions(options: ChatworkOptions) {
   };
 }
 
+/* Convert CheckAppStoreMetadataOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCheckAppStoreMetadataOptions(
   options: CheckAppStoreMetadataOptions
 ) {
@@ -5985,6 +6078,9 @@ function convertCheckAppStoreMetadataOptions(
   };
 }
 
+/* Convert CleanBuildArtifactsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCleanBuildArtifactsOptions(
   options: CleanBuildArtifactsOptions
 ) {
@@ -5993,6 +6089,9 @@ function convertCleanBuildArtifactsOptions(
   };
 }
 
+/* Convert CleanCocoapodsCacheOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCleanCocoapodsCacheOptions(
   options: CleanCocoapodsCacheOptions
 ) {
@@ -6001,18 +6100,27 @@ function convertCleanCocoapodsCacheOptions(
   };
 }
 
+/* Convert ClearDerivedDataOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertClearDerivedDataOptions(options: ClearDerivedDataOptions) {
   return {
     derived_data_path: options.derivedDataPath,
   };
 }
 
+/* Convert ClipboardOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertClipboardOptions(options: ClipboardOptions) {
   return {
     value: options.value,
   };
 }
 
+/* Convert ClocOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertClocOptions(options: ClocOptions) {
   return {
     binary_path: options.binaryPath,
@@ -6023,6 +6131,9 @@ function convertClocOptions(options: ClocOptions) {
   };
 }
 
+/* Convert CocoapodsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCocoapodsOptions(options: CocoapodsOptions) {
   return {
     repo_update: options.repoUpdate,
@@ -6040,6 +6151,9 @@ function convertCocoapodsOptions(options: CocoapodsOptions) {
   };
 }
 
+/* Convert CommitGithubFileOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCommitGithubFileOptions(options: CommitGithubFileOptions) {
   return {
     repository_name: options.repositoryName,
@@ -6052,6 +6166,9 @@ function convertCommitGithubFileOptions(options: CommitGithubFileOptions) {
   };
 }
 
+/* Convert CommitVersionBumpOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCommitVersionBumpOptions(options: CommitVersionBumpOptions) {
   return {
     message: options.message,
@@ -6064,6 +6181,9 @@ function convertCommitVersionBumpOptions(options: CommitVersionBumpOptions) {
   };
 }
 
+/* Convert CopyArtifactsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCopyArtifactsOptions(options: CopyArtifactsOptions) {
   return {
     keep_original: options.keepOriginal,
@@ -6073,6 +6193,9 @@ function convertCopyArtifactsOptions(options: CopyArtifactsOptions) {
   };
 }
 
+/* Convert CrashlyticsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCrashlyticsOptions(options: CrashlyticsOptions) {
   return {
     ipa_path: options.ipaPath,
@@ -6089,6 +6212,9 @@ function convertCrashlyticsOptions(options: CrashlyticsOptions) {
   };
 }
 
+/* Convert CreateAppOnManagedPlayStoreOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCreateAppOnManagedPlayStoreOptions(
   options: CreateAppOnManagedPlayStoreOptions
 ) {
@@ -6104,6 +6230,9 @@ function convertCreateAppOnManagedPlayStoreOptions(
   };
 }
 
+/* Convert CreateAppOnlineOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCreateAppOnlineOptions(options: CreateAppOnlineOptions) {
   return {
     username: options.username,
@@ -6128,6 +6257,9 @@ function convertCreateAppOnlineOptions(options: CreateAppOnlineOptions) {
   };
 }
 
+/* Convert CreateKeychainOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCreateKeychainOptions(options: CreateKeychainOptions) {
   return {
     name: options.name,
@@ -6143,6 +6275,9 @@ function convertCreateKeychainOptions(options: CreateKeychainOptions) {
   };
 }
 
+/* Convert CreatePullRequestOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertCreatePullRequestOptions(options: CreatePullRequestOptions) {
   return {
     api_token: options.apiToken,
@@ -6161,6 +6296,9 @@ function convertCreatePullRequestOptions(options: CreatePullRequestOptions) {
   };
 }
 
+/* Convert DangerOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertDangerOptions(options: DangerOptions) {
   return {
     use_bundle_exec: options.useBundleExec,
@@ -6177,14 +6315,23 @@ function convertDangerOptions(options: DangerOptions) {
   };
 }
 
+/* Convert DebugOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertDebugOptions(options: DebugOptions) {
   return {};
 }
 
+/* Convert DefaultPlatformOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertDefaultPlatformOptions(options: DefaultPlatformOptions) {
   return {};
 }
 
+/* Convert DeleteKeychainOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertDeleteKeychainOptions(options: DeleteKeychainOptions) {
   return {
     name: options.name,
@@ -6192,6 +6339,9 @@ function convertDeleteKeychainOptions(options: DeleteKeychainOptions) {
   };
 }
 
+/* Convert DeliverOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertDeliverOptions(options: DeliverOptions) {
   return {
     username: options.username,
@@ -6259,6 +6409,9 @@ function convertDeliverOptions(options: DeliverOptions) {
   };
 }
 
+/* Convert DeploygateOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertDeploygateOptions(options: DeploygateOptions) {
   return {
     api_token: options.apiToken,
@@ -6273,18 +6426,27 @@ function convertDeploygateOptions(options: DeploygateOptions) {
   };
 }
 
+/* Convert DotgpgEnvironmentOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertDotgpgEnvironmentOptions(options: DotgpgEnvironmentOptions) {
   return {
     dotgpg_file: options.dotgpgFile,
   };
 }
 
+/* Convert DownloadOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertDownloadOptions(options: DownloadOptions) {
   return {
     url: options.url,
   };
 }
 
+/* Convert DownloadDsymsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertDownloadDsymsOptions(options: DownloadDsymsOptions) {
   return {
     username: options.username,
@@ -6301,6 +6463,9 @@ function convertDownloadDsymsOptions(options: DownloadDsymsOptions) {
   };
 }
 
+/* Convert DownloadFromPlayStoreOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertDownloadFromPlayStoreOptions(
   options: DownloadFromPlayStoreOptions
 ) {
@@ -6318,6 +6483,9 @@ function convertDownloadFromPlayStoreOptions(
   };
 }
 
+/* Convert DsymZipOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertDsymZipOptions(options: DsymZipOptions) {
   return {
     archive_path: options.archivePath,
@@ -6326,28 +6494,43 @@ function convertDsymZipOptions(options: DsymZipOptions) {
   };
 }
 
+/* Convert EchoOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertEchoOptions(options: EchoOptions) {
   return {
     message: options.message,
   };
 }
 
+/* Convert EnsureBundleExecOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertEnsureBundleExecOptions(options: EnsureBundleExecOptions) {
   return {};
 }
 
+/* Convert EnsureEnvVarsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertEnsureEnvVarsOptions(options: EnsureEnvVarsOptions) {
   return {
     env_vars: options.envVars,
   };
 }
 
+/* Convert EnsureGitBranchOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertEnsureGitBranchOptions(options: EnsureGitBranchOptions) {
   return {
     branch: options.branch,
   };
 }
 
+/* Convert EnsureGitStatusCleanOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertEnsureGitStatusCleanOptions(
   options: EnsureGitStatusCleanOptions
 ) {
@@ -6357,6 +6540,9 @@ function convertEnsureGitStatusCleanOptions(
   };
 }
 
+/* Convert EnsureNoDebugCodeOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertEnsureNoDebugCodeOptions(options: EnsureNoDebugCodeOptions) {
   return {
     text: options.text,
@@ -6368,6 +6554,9 @@ function convertEnsureNoDebugCodeOptions(options: EnsureNoDebugCodeOptions) {
   };
 }
 
+/* Convert EnsureXcodeVersionOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertEnsureXcodeVersionOptions(options: EnsureXcodeVersionOptions) {
   return {
     version: options.version,
@@ -6375,6 +6564,9 @@ function convertEnsureXcodeVersionOptions(options: EnsureXcodeVersionOptions) {
   };
 }
 
+/* Convert EnvironmentVariableOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertEnvironmentVariableOptions(
   options: EnvironmentVariableOptions
 ) {
@@ -6385,6 +6577,9 @@ function convertEnvironmentVariableOptions(
   };
 }
 
+/* Convert ErbOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertErbOptions(options: ErbOptions) {
   return {
     template: options.template,
@@ -6393,10 +6588,16 @@ function convertErbOptions(options: ErbOptions) {
   };
 }
 
+/* Convert FastlaneVersionOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertFastlaneVersionOptions(options: FastlaneVersionOptions) {
   return {};
 }
 
+/* Convert FlockOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertFlockOptions(options: FlockOptions) {
   return {
     message: options.message,
@@ -6405,6 +6606,9 @@ function convertFlockOptions(options: FlockOptions) {
   };
 }
 
+/* Convert FrameScreenshotsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertFrameScreenshotsOptions(options: FrameScreenshotsOptions) {
   return {
     white: options.white,
@@ -6427,6 +6631,9 @@ function convertFrameScreenshotsOptions(options: FrameScreenshotsOptions) {
   };
 }
 
+/* Convert FrameitOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertFrameitOptions(options: FrameitOptions) {
   return {
     white: options.white,
@@ -6449,10 +6656,16 @@ function convertFrameitOptions(options: FrameitOptions) {
   };
 }
 
+/* Convert GcovrOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGcovrOptions(options: GcovrOptions) {
   return {};
 }
 
+/* Convert GetBuildNumberOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGetBuildNumberOptions(options: GetBuildNumberOptions) {
   return {
     xcodeproj: options.xcodeproj,
@@ -6461,6 +6674,9 @@ function convertGetBuildNumberOptions(options: GetBuildNumberOptions) {
   };
 }
 
+/* Convert GetBuildNumberRepositoryOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGetBuildNumberRepositoryOptions(
   options: GetBuildNumberRepositoryOptions
 ) {
@@ -6469,6 +6685,9 @@ function convertGetBuildNumberRepositoryOptions(
   };
 }
 
+/* Convert GetCertificatesOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGetCertificatesOptions(options: GetCertificatesOptions) {
   return {
     development: options.development,
@@ -6486,6 +6705,9 @@ function convertGetCertificatesOptions(options: GetCertificatesOptions) {
   };
 }
 
+/* Convert GetGithubReleaseOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGetGithubReleaseOptions(options: GetGithubReleaseOptions) {
   return {
     url: options.url,
@@ -6495,6 +6717,9 @@ function convertGetGithubReleaseOptions(options: GetGithubReleaseOptions) {
   };
 }
 
+/* Convert GetInfoPlistValueOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGetInfoPlistValueOptions(options: GetInfoPlistValueOptions) {
   return {
     key: options.key,
@@ -6502,6 +6727,9 @@ function convertGetInfoPlistValueOptions(options: GetInfoPlistValueOptions) {
   };
 }
 
+/* Convert GetIpaInfoPlistValueOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGetIpaInfoPlistValueOptions(
   options: GetIpaInfoPlistValueOptions
 ) {
@@ -6511,6 +6739,9 @@ function convertGetIpaInfoPlistValueOptions(
   };
 }
 
+/* Convert GetManagedPlayStorePublishingRightsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGetManagedPlayStorePublishingRightsOptions(
   options: GetManagedPlayStorePublishingRightsOptions
 ) {
@@ -6520,6 +6751,9 @@ function convertGetManagedPlayStorePublishingRightsOptions(
   };
 }
 
+/* Convert GetProvisioningProfileOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGetProvisioningProfileOptions(
   options: GetProvisioningProfileOptions
 ) {
@@ -6548,6 +6782,9 @@ function convertGetProvisioningProfileOptions(
   };
 }
 
+/* Convert GetPushCertificateOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGetPushCertificateOptions(options: GetPushCertificateOptions) {
   return {
     development: options.development,
@@ -6567,6 +6804,9 @@ function convertGetPushCertificateOptions(options: GetPushCertificateOptions) {
   };
 }
 
+/* Convert GetVersionNumberOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGetVersionNumberOptions(options: GetVersionNumberOptions) {
   return {
     xcodeproj: options.xcodeproj,
@@ -6575,6 +6815,9 @@ function convertGetVersionNumberOptions(options: GetVersionNumberOptions) {
   };
 }
 
+/* Convert GitAddOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGitAddOptions(options: GitAddOptions) {
   return {
     path: options.path,
@@ -6583,10 +6826,16 @@ function convertGitAddOptions(options: GitAddOptions) {
   };
 }
 
+/* Convert GitBranchOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGitBranchOptions(options: GitBranchOptions) {
   return {};
 }
 
+/* Convert GitCommitOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGitCommitOptions(options: GitCommitOptions) {
   return {
     path: options.path,
@@ -6596,12 +6845,18 @@ function convertGitCommitOptions(options: GitCommitOptions) {
   };
 }
 
+/* Convert GitPullOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGitPullOptions(options: GitPullOptions) {
   return {
     only_tags: options.onlyTags,
   };
 }
 
+/* Convert GitSubmoduleUpdateOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGitSubmoduleUpdateOptions(options: GitSubmoduleUpdateOptions) {
   return {
     recursive: options.recursive,
@@ -6609,6 +6864,9 @@ function convertGitSubmoduleUpdateOptions(options: GitSubmoduleUpdateOptions) {
   };
 }
 
+/* Convert GitTagExistsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGitTagExistsOptions(options: GitTagExistsOptions) {
   return {
     tag: options.tag,
@@ -6617,6 +6875,9 @@ function convertGitTagExistsOptions(options: GitTagExistsOptions) {
   };
 }
 
+/* Convert GithubApiOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGithubApiOptions(options: GithubApiOptions) {
   return {
     server_url: options.serverUrl,
@@ -6632,6 +6893,9 @@ function convertGithubApiOptions(options: GithubApiOptions) {
   };
 }
 
+/* Convert GooglePlayTrackVersionCodesOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGooglePlayTrackVersionCodesOptions(
   options: GooglePlayTrackVersionCodesOptions
 ) {
@@ -6647,6 +6911,9 @@ function convertGooglePlayTrackVersionCodesOptions(
   };
 }
 
+/* Convert GradleOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGradleOptions(options: GradleOptions) {
   return {
     task: options.task,
@@ -6664,6 +6931,9 @@ function convertGradleOptions(options: GradleOptions) {
   };
 }
 
+/* Convert GymOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertGymOptions(options: GymOptions) {
   return {
     workspace: options.workspace,
@@ -6713,12 +6983,18 @@ function convertGymOptions(options: GymOptions) {
   };
 }
 
+/* Convert HgAddTagOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertHgAddTagOptions(options: HgAddTagOptions) {
   return {
     tag: options.tag,
   };
 }
 
+/* Convert HgCommitVersionBumpOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertHgCommitVersionBumpOptions(
   options: HgCommitVersionBumpOptions
 ) {
@@ -6731,12 +7007,18 @@ function convertHgCommitVersionBumpOptions(
   };
 }
 
+/* Convert HgEnsureCleanStatusOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertHgEnsureCleanStatusOptions(
   options: HgEnsureCleanStatusOptions
 ) {
   return {};
 }
 
+/* Convert HgPushOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertHgPushOptions(options: HgPushOptions) {
   return {
     force: options.force,
@@ -6744,6 +7026,9 @@ function convertHgPushOptions(options: HgPushOptions) {
   };
 }
 
+/* Convert HipchatOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertHipchatOptions(options: HipchatOptions) {
   return {
     message: options.message,
@@ -6760,6 +7045,9 @@ function convertHipchatOptions(options: HipchatOptions) {
   };
 }
 
+/* Convert HockeyOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertHockeyOptions(options: HockeyOptions) {
   return {
     apk: options.apk,
@@ -6792,6 +7080,9 @@ function convertHockeyOptions(options: HockeyOptions) {
   };
 }
 
+/* Convert IftttOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertIftttOptions(options: IftttOptions) {
   return {
     api_key: options.apiKey,
@@ -6802,10 +7093,16 @@ function convertIftttOptions(options: IftttOptions) {
   };
 }
 
+/* Convert ImportOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertImportOptions(options: ImportOptions) {
   return {};
 }
 
+/* Convert ImportCertificateOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertImportCertificateOptions(options: ImportCertificateOptions) {
   return {
     certificate_path: options.certificatePath,
@@ -6817,6 +7114,9 @@ function convertImportCertificateOptions(options: ImportCertificateOptions) {
   };
 }
 
+/* Convert ImportFromGitOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertImportFromGitOptions(options: ImportFromGitOptions) {
   return {
     url: options.url,
@@ -6827,6 +7127,9 @@ function convertImportFromGitOptions(options: ImportFromGitOptions) {
   };
 }
 
+/* Convert IncrementBuildNumberOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertIncrementBuildNumberOptions(
   options: IncrementBuildNumberOptions
 ) {
@@ -6836,6 +7139,9 @@ function convertIncrementBuildNumberOptions(
   };
 }
 
+/* Convert IncrementVersionNumberOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertIncrementVersionNumberOptions(
   options: IncrementVersionNumberOptions
 ) {
@@ -6846,6 +7152,9 @@ function convertIncrementVersionNumberOptions(
   };
 }
 
+/* Convert InstallOnDeviceOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertInstallOnDeviceOptions(options: InstallOnDeviceOptions) {
   return {
     extra: options.extra,
@@ -6855,6 +7164,9 @@ function convertInstallOnDeviceOptions(options: InstallOnDeviceOptions) {
   };
 }
 
+/* Convert InstallProvisioningProfileOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertInstallProvisioningProfileOptions(
   options: InstallProvisioningProfileOptions
 ) {
@@ -6863,6 +7175,9 @@ function convertInstallProvisioningProfileOptions(
   };
 }
 
+/* Convert InstallXcodePluginOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertInstallXcodePluginOptions(options: InstallXcodePluginOptions) {
   return {
     url: options.url,
@@ -6870,6 +7185,9 @@ function convertInstallXcodePluginOptions(options: InstallXcodePluginOptions) {
   };
 }
 
+/* Convert InstallrOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertInstallrOptions(options: InstallrOptions) {
   return {
     api_token: options.apiToken,
@@ -6880,6 +7198,9 @@ function convertInstallrOptions(options: InstallrOptions) {
   };
 }
 
+/* Convert IpaOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertIpaOptions(options: IpaOptions) {
   return {
     workspace: options.workspace,
@@ -6898,16 +7219,25 @@ function convertIpaOptions(options: IpaOptions) {
   };
 }
 
+/* Convert IsCiOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertIsCiOptions(options: IsCiOptions) {
   return {};
 }
 
+/* Convert JazzyOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertJazzyOptions(options: JazzyOptions) {
   return {
     config: options.config,
   };
 }
 
+/* Convert JiraOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertJiraOptions(options: JiraOptions) {
   return {
     url: options.url,
@@ -6919,20 +7249,32 @@ function convertJiraOptions(options: JiraOptions) {
   };
 }
 
+/* Convert LaneContextOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertLaneContextOptions(options: LaneContextOptions) {
   return {};
 }
 
+/* Convert LastGitCommitOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertLastGitCommitOptions(options: LastGitCommitOptions) {
   return {};
 }
 
+/* Convert LastGitTagOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertLastGitTagOptions(options: LastGitTagOptions) {
   return {
     pattern: options.pattern,
   };
 }
 
+/* Convert LatestTestflightBuildNumberOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertLatestTestflightBuildNumberOptions(
   options: LatestTestflightBuildNumberOptions
 ) {
@@ -6948,6 +7290,9 @@ function convertLatestTestflightBuildNumberOptions(
   };
 }
 
+/* Convert LcovOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertLcovOptions(options: LcovOptions) {
   return {
     project_name: options.projectName,
@@ -6957,6 +7302,9 @@ function convertLcovOptions(options: LcovOptions) {
   };
 }
 
+/* Convert MailgunOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertMailgunOptions(options: MailgunOptions) {
   return {
     mailgun_sandbox_domain: options.mailgunSandboxDomain,
@@ -6978,6 +7326,9 @@ function convertMailgunOptions(options: MailgunOptions) {
   };
 }
 
+/* Convert MakeChangelogFromJenkinsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertMakeChangelogFromJenkinsOptions(
   options: MakeChangelogFromJenkinsOptions
 ) {
@@ -6987,6 +7338,9 @@ function convertMakeChangelogFromJenkinsOptions(
   };
 }
 
+/* Convert MatchOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertMatchOptions(options: MatchOptions) {
   return {
     type: options.type,
@@ -7027,10 +7381,16 @@ function convertMatchOptions(options: MatchOptions) {
   };
 }
 
+/* Convert MinFastlaneVersionOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertMinFastlaneVersionOptions(options: MinFastlaneVersionOptions) {
   return {};
 }
 
+/* Convert ModifyServicesOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertModifyServicesOptions(options: ModifyServicesOptions) {
   return {
     username: options.username,
@@ -7041,6 +7401,9 @@ function convertModifyServicesOptions(options: ModifyServicesOptions) {
   };
 }
 
+/* Convert NexusUploadOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertNexusUploadOptions(options: NexusUploadOptions) {
   return {
     file: options.file,
@@ -7063,6 +7426,9 @@ function convertNexusUploadOptions(options: NexusUploadOptions) {
   };
 }
 
+/* Convert NotarizeOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertNotarizeOptions(options: NotarizeOptions) {
   return {
     package: options.package,
@@ -7075,6 +7441,9 @@ function convertNotarizeOptions(options: NotarizeOptions) {
   };
 }
 
+/* Convert NotificationOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertNotificationOptions(options: NotificationOptions) {
   return {
     title: options.title,
@@ -7089,16 +7458,25 @@ function convertNotificationOptions(options: NotificationOptions) {
   };
 }
 
+/* Convert NotifyOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertNotifyOptions(options: NotifyOptions) {
   return {};
 }
 
+/* Convert NumberOfCommitsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertNumberOfCommitsOptions(options: NumberOfCommitsOptions) {
   return {
     all: options.all,
   };
 }
 
+/* Convert OclintOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertOclintOptions(options: OclintOptions) {
   return {
     oclint_path: options.oclintPath,
@@ -7123,6 +7501,9 @@ function convertOclintOptions(options: OclintOptions) {
   };
 }
 
+/* Convert OnesignalOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertOnesignalOptions(options: OnesignalOptions) {
   return {
     app_id: options.appId,
@@ -7136,16 +7517,25 @@ function convertOnesignalOptions(options: OnesignalOptions) {
   };
 }
 
+/* Convert OptOutCrashReportingOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertOptOutCrashReportingOptions(
   options: OptOutCrashReportingOptions
 ) {
   return {};
 }
 
+/* Convert OptOutUsageOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertOptOutUsageOptions(options: OptOutUsageOptions) {
   return {};
 }
 
+/* Convert PemOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertPemOptions(options: PemOptions) {
   return {
     development: options.development,
@@ -7165,6 +7555,9 @@ function convertPemOptions(options: PemOptions) {
   };
 }
 
+/* Convert PilotOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertPilotOptions(options: PilotOptions) {
   return {
     username: options.username,
@@ -7202,6 +7595,9 @@ function convertPilotOptions(options: PilotOptions) {
   };
 }
 
+/* Convert PodLibLintOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertPodLibLintOptions(options: PodLibLintOptions) {
   return {
     use_bundle_exec: options.useBundleExec,
@@ -7227,6 +7623,9 @@ function convertPodLibLintOptions(options: PodLibLintOptions) {
   };
 }
 
+/* Convert PodPushOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertPodPushOptions(options: PodPushOptions) {
   return {
     use_bundle_exec: options.useBundleExec,
@@ -7243,6 +7642,9 @@ function convertPodPushOptions(options: PodPushOptions) {
   };
 }
 
+/* Convert PodioItemOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertPodioItemOptions(options: PodioItemOptions) {
   return {
     client_id: options.clientId,
@@ -7255,6 +7657,9 @@ function convertPodioItemOptions(options: PodioItemOptions) {
   };
 }
 
+/* Convert PrecheckOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertPrecheckOptions(options: PrecheckOptions) {
   return {
     app_identifier: options.appIdentifier,
@@ -7276,12 +7681,18 @@ function convertPrecheckOptions(options: PrecheckOptions) {
   };
 }
 
+/* Convert PrintlnOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertPrintlnOptions(options: PrintlnOptions) {
   return {
     message: options.message,
   };
 }
 
+/* Convert ProduceOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertProduceOptions(options: ProduceOptions) {
   return {
     username: options.username,
@@ -7306,6 +7717,9 @@ function convertProduceOptions(options: ProduceOptions) {
   };
 }
 
+/* Convert PromptOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertPromptOptions(options: PromptOptions) {
   return {
     text: options.text,
@@ -7316,6 +7730,9 @@ function convertPromptOptions(options: PromptOptions) {
   };
 }
 
+/* Convert PushGitTagsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertPushGitTagsOptions(options: PushGitTagsOptions) {
   return {
     force: options.force,
@@ -7324,6 +7741,9 @@ function convertPushGitTagsOptions(options: PushGitTagsOptions) {
   };
 }
 
+/* Convert PushToGitRemoteOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertPushToGitRemoteOptions(options: PushToGitRemoteOptions) {
   return {
     local_branch: options.localBranch,
@@ -7337,24 +7757,36 @@ function convertPushToGitRemoteOptions(options: PushToGitRemoteOptions) {
   };
 }
 
+/* Convert PutsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertPutsOptions(options: PutsOptions) {
   return {
     message: options.message,
   };
 }
 
+/* Convert ReadPodspecOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertReadPodspecOptions(options: ReadPodspecOptions) {
   return {
     path: options.path,
   };
 }
 
+/* Convert RecreateSchemesOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertRecreateSchemesOptions(options: RecreateSchemesOptions) {
   return {
     project: options.project,
   };
 }
 
+/* Convert RegisterDeviceOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertRegisterDeviceOptions(options: RegisterDeviceOptions) {
   return {
     name: options.name,
@@ -7365,6 +7797,9 @@ function convertRegisterDeviceOptions(options: RegisterDeviceOptions) {
   };
 }
 
+/* Convert RegisterDevicesOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertRegisterDevicesOptions(options: RegisterDevicesOptions) {
   return {
     devices: options.devices,
@@ -7376,6 +7811,9 @@ function convertRegisterDevicesOptions(options: RegisterDevicesOptions) {
   };
 }
 
+/* Convert ResetGitRepoOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertResetGitRepoOptions(options: ResetGitRepoOptions) {
   return {
     files: options.files,
@@ -7386,6 +7824,9 @@ function convertResetGitRepoOptions(options: ResetGitRepoOptions) {
   };
 }
 
+/* Convert ResetSimulatorContentsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertResetSimulatorContentsOptions(
   options: ResetSimulatorContentsOptions
 ) {
@@ -7395,6 +7836,9 @@ function convertResetSimulatorContentsOptions(
   };
 }
 
+/* Convert ResignOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertResignOptions(options: ResignOptions) {
   return {
     ipa: options.ipa,
@@ -7411,16 +7855,25 @@ function convertResignOptions(options: ResignOptions) {
   };
 }
 
+/* Convert RestoreFileOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertRestoreFileOptions(options: RestoreFileOptions) {
   return {
     path: options.path,
   };
 }
 
+/* Convert RocketOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertRocketOptions(options: RocketOptions) {
   return {};
 }
 
+/* Convert RsyncOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertRsyncOptions(options: RsyncOptions) {
   return {
     extra: options.extra,
@@ -7429,10 +7882,16 @@ function convertRsyncOptions(options: RsyncOptions) {
   };
 }
 
+/* Convert RubyVersionOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertRubyVersionOptions(options: RubyVersionOptions) {
   return {};
 }
 
+/* Convert RunTestsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertRunTestsOptions(options: RunTestsOptions) {
   return {
     workspace: options.workspace,
@@ -7499,6 +7958,9 @@ function convertRunTestsOptions(options: RunTestsOptions) {
   };
 }
 
+/* Convert S3Options to the shape used by the Fastlane service
+ * @private
+ */
 function convertS3Options(options: S3Options) {
   return {
     ipa: options.ipa,
@@ -7520,6 +7982,9 @@ function convertS3Options(options: S3Options) {
   };
 }
 
+/* Convert SayOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSayOptions(options: SayOptions) {
   return {
     text: options.text,
@@ -7527,6 +7992,9 @@ function convertSayOptions(options: SayOptions) {
   };
 }
 
+/* Convert ScanOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertScanOptions(options: ScanOptions) {
   return {
     workspace: options.workspace,
@@ -7593,6 +8061,9 @@ function convertScanOptions(options: ScanOptions) {
   };
 }
 
+/* Convert ScpOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertScpOptions(options: ScpOptions) {
   return {
     username: options.username,
@@ -7604,6 +8075,9 @@ function convertScpOptions(options: ScpOptions) {
   };
 }
 
+/* Convert ScreengrabOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertScreengrabOptions(options: ScreengrabOptions) {
   return {
     android_home: options.androidHome,
@@ -7631,6 +8105,9 @@ function convertScreengrabOptions(options: ScreengrabOptions) {
   };
 }
 
+/* Convert SetBuildNumberRepositoryOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSetBuildNumberRepositoryOptions(
   options: SetBuildNumberRepositoryOptions
 ) {
@@ -7640,6 +8117,9 @@ function convertSetBuildNumberRepositoryOptions(
   };
 }
 
+/* Convert SetChangelogOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSetChangelogOptions(options: SetChangelogOptions) {
   return {
     app_identifier: options.appIdentifier,
@@ -7652,6 +8132,9 @@ function convertSetChangelogOptions(options: SetChangelogOptions) {
   };
 }
 
+/* Convert SetGithubReleaseOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSetGithubReleaseOptions(options: SetGithubReleaseOptions) {
   return {
     repository_name: options.repositoryName,
@@ -7667,6 +8150,9 @@ function convertSetGithubReleaseOptions(options: SetGithubReleaseOptions) {
   };
 }
 
+/* Convert SetInfoPlistValueOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSetInfoPlistValueOptions(options: SetInfoPlistValueOptions) {
   return {
     key: options.key,
@@ -7677,6 +8163,9 @@ function convertSetInfoPlistValueOptions(options: SetInfoPlistValueOptions) {
   };
 }
 
+/* Convert SetPodKeyOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSetPodKeyOptions(options: SetPodKeyOptions) {
   return {
     use_bundle_exec: options.useBundleExec,
@@ -7686,6 +8175,9 @@ function convertSetPodKeyOptions(options: SetPodKeyOptions) {
   };
 }
 
+/* Convert SetupCiOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSetupCiOptions(options: SetupCiOptions) {
   return {
     force: options.force,
@@ -7693,12 +8185,18 @@ function convertSetupCiOptions(options: SetupCiOptions) {
   };
 }
 
+/* Convert SetupCircleCiOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSetupCircleCiOptions(options: SetupCircleCiOptions) {
   return {
     force: options.force,
   };
 }
 
+/* Convert SetupJenkinsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSetupJenkinsOptions(options: SetupJenkinsOptions) {
   return {
     force: options.force,
@@ -7715,12 +8213,18 @@ function convertSetupJenkinsOptions(options: SetupJenkinsOptions) {
   };
 }
 
+/* Convert SetupTravisOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSetupTravisOptions(options: SetupTravisOptions) {
   return {
     force: options.force,
   };
 }
 
+/* Convert ShOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertShOptions(options: ShOptions) {
   return {
     command: options.command,
@@ -7729,6 +8233,9 @@ function convertShOptions(options: ShOptions) {
   };
 }
 
+/* Convert SighOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSighOptions(options: SighOptions) {
   return {
     adhoc: options.adhoc,
@@ -7755,10 +8262,16 @@ function convertSighOptions(options: SighOptions) {
   };
 }
 
+/* Convert SkipDocsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSkipDocsOptions(options: SkipDocsOptions) {
   return {};
 }
 
+/* Convert SlackOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSlackOptions(options: SlackOptions) {
   return {
     message: options.message,
@@ -7778,6 +8291,9 @@ function convertSlackOptions(options: SlackOptions) {
   };
 }
 
+/* Convert SlatherOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSlatherOptions(options: SlatherOptions) {
   return {
     build_directory: options.buildDirectory,
@@ -7812,6 +8328,9 @@ function convertSlatherOptions(options: SlatherOptions) {
   };
 }
 
+/* Convert SnapshotOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSnapshotOptions(options: SnapshotOptions) {
   return {
     workspace: options.workspace,
@@ -7854,6 +8373,9 @@ function convertSnapshotOptions(options: SnapshotOptions) {
   };
 }
 
+/* Convert SonarOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSonarOptions(options: SonarOptions) {
   return {
     project_configuration_path: options.projectConfigurationPath,
@@ -7874,6 +8396,9 @@ function convertSonarOptions(options: SonarOptions) {
   };
 }
 
+/* Convert SpaceshipLogsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSpaceshipLogsOptions(options: SpaceshipLogsOptions) {
   return {
     latest: options.latest,
@@ -7884,6 +8409,9 @@ function convertSpaceshipLogsOptions(options: SpaceshipLogsOptions) {
   };
 }
 
+/* Convert SplunkmintOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSplunkmintOptions(options: SplunkmintOptions) {
   return {
     dsym: options.dsym,
@@ -7898,6 +8426,9 @@ function convertSplunkmintOptions(options: SplunkmintOptions) {
   };
 }
 
+/* Convert SpmOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSpmOptions(options: SpmOptions) {
   return {
     command: options.command,
@@ -7911,6 +8442,9 @@ function convertSpmOptions(options: SpmOptions) {
   };
 }
 
+/* Convert SshOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSshOptions(options: SshOptions) {
   return {
     username: options.username,
@@ -7922,6 +8456,9 @@ function convertSshOptions(options: SshOptions) {
   };
 }
 
+/* Convert SupplyOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSupplyOptions(options: SupplyOptions) {
   return {
     package_name: options.packageName,
@@ -7961,6 +8498,9 @@ function convertSupplyOptions(options: SupplyOptions) {
   };
 }
 
+/* Convert SwiftlintOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSwiftlintOptions(options: SwiftlintOptions) {
   return {
     mode: options.mode,
@@ -7980,6 +8520,9 @@ function convertSwiftlintOptions(options: SwiftlintOptions) {
   };
 }
 
+/* Convert SyncCodeSigningOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertSyncCodeSigningOptions(options: SyncCodeSigningOptions) {
   return {
     type: options.type,
@@ -8020,14 +8563,23 @@ function convertSyncCodeSigningOptions(options: SyncCodeSigningOptions) {
   };
 }
 
+/* Convert TeamIdOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertTeamIdOptions(options: TeamIdOptions) {
   return {};
 }
 
+/* Convert TeamNameOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertTeamNameOptions(options: TeamNameOptions) {
   return {};
 }
 
+/* Convert TestfairyOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertTestfairyOptions(options: TestfairyOptions) {
   return {
     api_key: options.apiKey,
@@ -8046,6 +8598,9 @@ function convertTestfairyOptions(options: TestfairyOptions) {
   };
 }
 
+/* Convert TestflightOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertTestflightOptions(options: TestflightOptions) {
   return {
     username: options.username,
@@ -8083,6 +8638,9 @@ function convertTestflightOptions(options: TestflightOptions) {
   };
 }
 
+/* Convert TryoutsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertTryoutsOptions(options: TryoutsOptions) {
   return {
     app_id: options.appId,
@@ -8095,6 +8653,9 @@ function convertTryoutsOptions(options: TryoutsOptions) {
   };
 }
 
+/* Convert TwitterOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertTwitterOptions(options: TwitterOptions) {
   return {
     consumer_key: options.consumerKey,
@@ -8105,10 +8666,16 @@ function convertTwitterOptions(options: TwitterOptions) {
   };
 }
 
+/* Convert TypetalkOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertTypetalkOptions(options: TypetalkOptions) {
   return {};
 }
 
+/* Convert UnlockKeychainOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUnlockKeychainOptions(options: UnlockKeychainOptions) {
   return {
     path: options.path,
@@ -8118,6 +8685,9 @@ function convertUnlockKeychainOptions(options: UnlockKeychainOptions) {
   };
 }
 
+/* Convert UpdateAppGroupIdentifiersOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdateAppGroupIdentifiersOptions(
   options: UpdateAppGroupIdentifiersOptions
 ) {
@@ -8127,6 +8697,9 @@ function convertUpdateAppGroupIdentifiersOptions(
   };
 }
 
+/* Convert UpdateAppIdentifierOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdateAppIdentifierOptions(
   options: UpdateAppIdentifierOptions
 ) {
@@ -8137,6 +8710,9 @@ function convertUpdateAppIdentifierOptions(
   };
 }
 
+/* Convert UpdateCodeSigningSettingsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdateCodeSigningSettingsOptions(
   options: UpdateCodeSigningSettingsOptions
 ) {
@@ -8153,6 +8729,9 @@ function convertUpdateCodeSigningSettingsOptions(
   };
 }
 
+/* Convert UpdateFastlaneOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdateFastlaneOptions(options: UpdateFastlaneOptions) {
   return {
     no_update: options.noUpdate,
@@ -8160,6 +8739,9 @@ function convertUpdateFastlaneOptions(options: UpdateFastlaneOptions) {
   };
 }
 
+/* Convert UpdateIcloudContainerIdentifiersOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdateIcloudContainerIdentifiersOptions(
   options: UpdateIcloudContainerIdentifiersOptions
 ) {
@@ -8169,6 +8751,9 @@ function convertUpdateIcloudContainerIdentifiersOptions(
   };
 }
 
+/* Convert UpdateInfoPlistOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdateInfoPlistOptions(options: UpdateInfoPlistOptions) {
   return {
     xcodeproj: options.xcodeproj,
@@ -8180,6 +8765,9 @@ function convertUpdateInfoPlistOptions(options: UpdateInfoPlistOptions) {
   };
 }
 
+/* Convert UpdateKeychainAccessGroupsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdateKeychainAccessGroupsOptions(
   options: UpdateKeychainAccessGroupsOptions
 ) {
@@ -8189,6 +8777,9 @@ function convertUpdateKeychainAccessGroupsOptions(
   };
 }
 
+/* Convert UpdatePlistOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdatePlistOptions(options: UpdatePlistOptions) {
   return {
     plist_path: options.plistPath,
@@ -8196,6 +8787,9 @@ function convertUpdatePlistOptions(options: UpdatePlistOptions) {
   };
 }
 
+/* Convert UpdateProjectCodeSigningOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdateProjectCodeSigningOptions(
   options: UpdateProjectCodeSigningOptions
 ) {
@@ -8206,6 +8800,9 @@ function convertUpdateProjectCodeSigningOptions(
   };
 }
 
+/* Convert UpdateProjectProvisioningOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdateProjectProvisioningOptions(
   options: UpdateProjectProvisioningOptions
 ) {
@@ -8220,6 +8817,9 @@ function convertUpdateProjectProvisioningOptions(
   };
 }
 
+/* Convert UpdateProjectTeamOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdateProjectTeamOptions(options: UpdateProjectTeamOptions) {
   return {
     path: options.path,
@@ -8228,6 +8828,9 @@ function convertUpdateProjectTeamOptions(options: UpdateProjectTeamOptions) {
   };
 }
 
+/* Convert UpdateUrbanAirshipConfigurationOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdateUrbanAirshipConfigurationOptions(
   options: UpdateUrbanAirshipConfigurationOptions
 ) {
@@ -8241,6 +8844,9 @@ function convertUpdateUrbanAirshipConfigurationOptions(
   };
 }
 
+/* Convert UpdateUrlSchemesOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUpdateUrlSchemesOptions(options: UpdateUrlSchemesOptions) {
   return {
     path: options.path,
@@ -8249,6 +8855,9 @@ function convertUpdateUrlSchemesOptions(options: UpdateUrlSchemesOptions) {
   };
 }
 
+/* Convert UploadSymbolsToCrashlyticsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUploadSymbolsToCrashlyticsOptions(
   options: UploadSymbolsToCrashlyticsOptions
 ) {
@@ -8264,6 +8873,9 @@ function convertUploadSymbolsToCrashlyticsOptions(
   };
 }
 
+/* Convert UploadSymbolsToSentryOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUploadSymbolsToSentryOptions(
   options: UploadSymbolsToSentryOptions
 ) {
@@ -8278,6 +8890,9 @@ function convertUploadSymbolsToSentryOptions(
   };
 }
 
+/* Convert UploadToAppStoreOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUploadToAppStoreOptions(options: UploadToAppStoreOptions) {
   return {
     username: options.username,
@@ -8345,6 +8960,9 @@ function convertUploadToAppStoreOptions(options: UploadToAppStoreOptions) {
   };
 }
 
+/* Convert UploadToPlayStoreOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUploadToPlayStoreOptions(options: UploadToPlayStoreOptions) {
   return {
     package_name: options.packageName,
@@ -8384,6 +9002,9 @@ function convertUploadToPlayStoreOptions(options: UploadToPlayStoreOptions) {
   };
 }
 
+/* Convert UploadToPlayStoreInternalAppSharingOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUploadToPlayStoreInternalAppSharingOptions(
   options: UploadToPlayStoreInternalAppSharingOptions
 ) {
@@ -8400,6 +9021,9 @@ function convertUploadToPlayStoreInternalAppSharingOptions(
   };
 }
 
+/* Convert UploadToTestflightOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertUploadToTestflightOptions(options: UploadToTestflightOptions) {
   return {
     username: options.username,
@@ -8437,6 +9061,9 @@ function convertUploadToTestflightOptions(options: UploadToTestflightOptions) {
   };
 }
 
+/* Convert ValidatePlayStoreJsonKeyOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertValidatePlayStoreJsonKeyOptions(
   options: ValidatePlayStoreJsonKeyOptions
 ) {
@@ -8448,6 +9075,9 @@ function convertValidatePlayStoreJsonKeyOptions(
   };
 }
 
+/* Convert VerifyBuildOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertVerifyBuildOptions(options: VerifyBuildOptions) {
   return {
     provisioning_type: options.provisioningType,
@@ -8461,16 +9091,25 @@ function convertVerifyBuildOptions(options: VerifyBuildOptions) {
   };
 }
 
+/* Convert VerifyPodKeysOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertVerifyPodKeysOptions(options: VerifyPodKeysOptions) {
   return {};
 }
 
+/* Convert VerifyXcodeOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertVerifyXcodeOptions(options: VerifyXcodeOptions) {
   return {
     xcode_path: options.xcodePath,
   };
 }
 
+/* Convert VersionBumpPodspecOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertVersionBumpPodspecOptions(options: VersionBumpPodspecOptions) {
   return {
     path: options.path,
@@ -8481,6 +9120,9 @@ function convertVersionBumpPodspecOptions(options: VersionBumpPodspecOptions) {
   };
 }
 
+/* Convert VersionGetPodspecOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertVersionGetPodspecOptions(options: VersionGetPodspecOptions) {
   return {
     path: options.path,
@@ -8488,22 +9130,37 @@ function convertVersionGetPodspecOptions(options: VersionGetPodspecOptions) {
   };
 }
 
+/* Convert XcarchiveOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertXcarchiveOptions(options: XcarchiveOptions) {
   return {};
 }
 
+/* Convert XcbuildOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertXcbuildOptions(options: XcbuildOptions) {
   return {};
 }
 
+/* Convert XccleanOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertXccleanOptions(options: XccleanOptions) {
   return {};
 }
 
+/* Convert XcexportOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertXcexportOptions(options: XcexportOptions) {
   return {};
 }
 
+/* Convert XcodeInstallOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertXcodeInstallOptions(options: XcodeInstallOptions) {
   return {
     version: options.version,
@@ -8512,10 +9169,16 @@ function convertXcodeInstallOptions(options: XcodeInstallOptions) {
   };
 }
 
+/* Convert XcodeSelectOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertXcodeSelectOptions(options: XcodeSelectOptions) {
   return {};
 }
 
+/* Convert XcodeServerGetAssetsOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertXcodeServerGetAssetsOptions(
   options: XcodeServerGetAssetsOptions
 ) {
@@ -8531,28 +9194,46 @@ function convertXcodeServerGetAssetsOptions(
   };
 }
 
+/* Convert XcodebuildOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertXcodebuildOptions(options: XcodebuildOptions) {
   return {};
 }
 
+/* Convert XcovOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertXcovOptions(options: XcovOptions) {
   return {};
 }
 
+/* Convert XctestOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertXctestOptions(options: XctestOptions) {
   return {};
 }
 
+/* Convert XctoolOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertXctoolOptions(options: XctoolOptions) {
   return {};
 }
 
+/* Convert XcversionOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertXcversionOptions(options: XcversionOptions) {
   return {
     version: options.version,
   };
 }
 
+/* Convert ZipOptions to the shape used by the Fastlane service
+ * @private
+ */
 function convertZipOptions(options: ZipOptions) {
   return {
     path: options.path,
@@ -10488,11 +11169,14 @@ class Fastlane extends FastlaneBase {
   }
 }
 function withFastlane(
+  f: (fastlane: Fastlane) => Promise<any>,
   {
     port = 2000,
     isInteractive = true,
-  }: { port: number; isInteractive: boolean },
-  f: (fastlane: Fastlane) => Promise<any>
+  }: { port: number; isInteractive: boolean } = {
+    port: 2000,
+    isInteractive: true,
+  }
 ) {
   const fastlane = new Fastlane(port, isInteractive);
   return f(fastlane);

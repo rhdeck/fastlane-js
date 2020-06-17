@@ -72,6 +72,9 @@ const converters = actions.map(({ action_name, options }) => {
     })
     .filter(Boolean);
   return `
+/* Convert ${interfaceName} to the shape used by the Fastlane service
+* @private
+*/
 function convert${interfaceName}(options: ${interfaceName}) {
   return {
     ${optionsMembers
@@ -103,7 +106,7 @@ prepend = `/** Main Class
 */
 class Fastlane extends FastlaneBase {`;
 postpend = `}
-function withFastlane({port=2000, isInteractive= true}: {port: number, isInteractive: boolean}, f: (fastlane: Fastlane)=>Promise<any>) {
+function withFastlane(f: (fastlane: Fastlane)=>Promise<any>, {port=2000, isInteractive= true}: {port: number, isInteractive: boolean} = {port: 2000, isInteractive: true}) {
   const fastlane = new Fastlane(port, isInteractive);
   return f(fastlane);
 }
