@@ -1,6 +1,6 @@
 {
   "name": "@fastlanejs/base",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Base Interface for communicating with the fastlane socket server",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -31,5 +31,10 @@
     "@raydeck/livelink": "^1.3.4",
     "tslib": "^2.0.0",
     "typescript": "^3.9.5"
+  },
+  "liveLink": {
+    "ignoreMasks": [
+      "dist"
+    ]
   }
 }
