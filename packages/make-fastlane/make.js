@@ -1,15 +1,7 @@
 #!/usr/bin/env node
 const { makeCamelCase, getCachedAPI, proper } = require("./");
-const { join } = require("path");
-const { readFileSync, writeFileSync, existsSync } = require("fs");
-const { program: commander } = require("commander");
-const { version, actions } = getCachedAPI();
+const { actions } = getCachedAPI();
 const prettier = require("prettier");
-//#region update Package.json
-const packagePath = join(__dirname, "package.json");
-const o = JSON.parse(readFileSync(packagePath, { encoding: "utf8" }));
-o.version = version;
-writeFileSync(packagePath, JSON.stringify(o, null, 2));
 const convertType = (return_type, key, action_name) => {
   switch (return_type) {
     case "String":
@@ -53,10 +45,14 @@ ${optionsMembers
   .join("\n")}
 */
 interface ${interfaceName} {
-    ${optionsMembers.map(({ name, type, optional }) => {
-      return `
-  ${name}${optional ? "?" : ""}: ${type}`;
-    })}
+    ${optionsMembers
+      .map(({ name, type, optional, description }) => {
+        return `/**
+* ${description}
+*/
+  ${name}${optional ? "?" : ""}: ${type};`;
+      })
+      .join("\n")}
 }`;
 });
 const converters = actions.map(({ action_name, options }) => {
@@ -72,7 +68,7 @@ const converters = actions.map(({ action_name, options }) => {
     })
     .filter(Boolean);
   return `
-/* Convert ${interfaceName} to the shape used by the Fastlane service
+/** Convert ${interfaceName} to the shape used by the Fastlane service
 * @private
 */
 function convert${interfaceName}(options: ${interfaceName}) {
@@ -101,7 +97,7 @@ const methods = actions.map(
   }
 );
 imports = `
-import { Fastlane as FastlaneBase } from '@fastlanejs/base';`;
+import { FastlaneBase } from '@fastlanejs/base';`;
 prepend = `/** Main Class
 */
 class Fastlane extends FastlaneBase {`;
@@ -112,11 +108,13 @@ function withFastlane(f: (fastlane: Fastlane)=>Promise<any>, {port=2000, isInter
 }
 export default Fastlane;
 export {Fastlane, withFastlane}`;
-console.log(
-  prettier.format(
-    [imports, ...interfaces, ...converters, prepend, ...methods, postpend].join(
-      "\n"
-    ),
-    { parser: "babel-ts" }
-  )
-);
+const base = [
+  imports,
+  ...interfaces,
+  ...converters,
+  prepend,
+  ...methods,
+  postpend,
+].join("\n");
+console.log(prettier.format(base, { parser: "babel-ts" }));
+// console.log(base);
