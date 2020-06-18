@@ -105,3 +105,4 @@ dist
 packages/fastlane/.watchmanconfig
 packages/.DS_Store
 packages/.DS_Store
+packages/fastlane/cached_api.json
