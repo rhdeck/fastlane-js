@@ -5,8 +5,10 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
+    "clear": "rm cached_api.json",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node setversion.js &&  yarn -s generator > src/index.ts && tsc && chmod +x dist/bin.js"
+    "build": "node setversion.js &&  yarn -s generator > src/index.ts && tsc && chmod +x dist/bin.js",
+    "clearbuild": "yarn clear && yarn build"
   },
   "repository": {
     "type": "git",
