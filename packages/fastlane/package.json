@@ -1,6 +1,6 @@
 {
   "name": "fastlanejs",
-  "version": "2.146.1",
+  "version": "2.146.3",
   "description": "typed interface to Fastlane",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -50,7 +50,7 @@
     ]
   },
   "dependencies": {
-    "@fastlanejs/base": "^2.0.1",
+    "@fastlanejs/base": "^2.0.2",
     "commander": "^5.1.0"
   },
   "bin": "./dist/bin.js",
