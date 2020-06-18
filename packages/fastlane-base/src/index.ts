@@ -1,7 +1,17 @@
 import { connect, SocketConnectOpts, Socket } from "net";
 import { spawn, ChildProcessWithoutNullStreams } from "child_process";
-import Deferred from "es6-deferred";
-class Fastlane {
+class Deferred {
+  public resolve: (...args: any) => void;
+  public reject: (reason: any) => void;
+  public promise: Promise<any>;
+  constructor() {
+    this.promise = new Promise((resolve, reject) => {
+      this.resolve = resolve;
+      this.reject = reject;
+    });
+  }
+}
+class FastlaneBase {
   protected port?: number = undefined;
   protected socket?: Socket = undefined;
   protected isInteractive: boolean = true;
@@ -115,13 +125,16 @@ const launch = (
 };
 const init = async (port: number = 2000): Promise<Socket> => {
   while (true) {
-    const s = (
-      await Promise.all(
-        ["::1", "127.0.0.1"].map(async (host) => {
-          return await asyncConnect({ host, port });
-        })
-      )
-    ).find(Boolean);
+    let s;
+    try {
+      s = (
+        await Promise.all(
+          ["::1", "127.0.0.1"].map(async (host) => {
+            return await asyncConnect({ host, port });
+          })
+        )
+      ).find(Boolean);
+    } catch (e) {}
     if (s) {
       return s;
     }
@@ -138,15 +151,17 @@ const once = (socket: Socket, event: string, f: (...args: any) => void) => {
 };
 //#endregion
 //#region Exported Functions
-const withFastlaneSimple = async (f: (fastlane: Fastlane) => Promise<any>) => {
+const withFastlaneSimple = async (
+  f: (fastlane: FastlaneBase) => Promise<any>
+) => {
   return withFastlane({ port: 2000, isInteractive: true }, f);
 };
 const withFastlane = async (
   options: { port: number; isInteractive: boolean },
-  f: (fastlane: Fastlane) => Promise<any>
+  f: (fastlane: FastlaneBase) => Promise<any>
 ) => {
   const { port = 2000, isInteractive = true } = options;
-  const fastlane = new Fastlane(port, isInteractive);
+  const fastlane = new FastlaneBase(port, isInteractive);
   try {
     const result = await f(fastlane);
     fastlane.close();
@@ -167,4 +182,4 @@ const doActionOnce = async (
   );
 
 //#endregion
-export { Fastlane, doActionOnce, withFastlane };
+export { FastlaneBase, doActionOnce, withFastlane };
