@@ -108,3 +108,4 @@ packages/.DS_Store
 packages/fastlane/cached_api.json
 packages/.DS_Store
 packages/fastlane-api/Gemfile.lock
+packages/fastlane-api/out.json
