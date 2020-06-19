@@ -59,23 +59,41 @@ const converters = actions.map(({ action_name, options }) => {
     .map(({ key, data_type, optional, ...rest }) => {
       if (!key) return;
       const optionName = key && makeCamelCase(key);
+      const tsType = convertType(data_type, key, action_name);
       // console.log(rest);
       // return { optionName, description, data_type };
-      return { key, name: optionName, type: data_type, optional };
+      return { key, name: optionName, type: data_type, optional, tsType };
     })
     .filter(Boolean);
   return `
+
+type converted${interfaceName} = {
+  ${optionsMembers
+    .map(({ key, name, type, tsType, optional, description }) => {
+      return `
+  ${key}${optional ? "?" : ""}: ${tsType};`;
+    })
+    .join("")}
+}
 /** Convert ${interfaceName} to the shape used by the Fastlane service
 * @private
 */
-function convert${interfaceName}(options: ${interfaceName}) {
-  return {
+function convert${interfaceName}(options: ${interfaceName}):converted${interfaceName} {
+  const temp:converted${interfaceName} = {
     ${optionsMembers
+      .filter(({ optional }) => !optional)
       .map(({ key, name, type, optional }) => {
-        return `'${key}': options.${name},`;
+        return `${key}: options.${name},`;
       })
-      .join("\n")}
+      .join("")}
   }
+  ${optionsMembers
+    .filter(({ optional }) => optional)
+    .map(({ key, name, type, optional }) => {
+      return `if(typeof options.${name} !== 'undefined') temp['${key}'] = options.${name};`;
+    })
+    .join("\n")}
+  return temp; 
 }`;
 });
 const methods = actions.map(
@@ -126,5 +144,5 @@ const base = [
   ...methods,
   postpend,
 ].join("\n");
-console.log(prettier.format(base, { parser: "babel-ts" }));
+process.stdout.write(prettier.format(base, { parser: "babel-ts" }));
 // console.log(base);
