@@ -16,16 +16,22 @@ class FastlaneBase {
   protected socket?: Socket = undefined;
   protected isInteractive: boolean = true;
   protected childProcess?: ChildProcessWithoutNullStreams = undefined;
-  public debug: boolean = false;
+  protected _debug: boolean = false;
   constructor(port = 2000, isInteractive = true, debug = false) {
     this.port = port;
     this.socket = null;
     this.isInteractive = isInteractive;
     this.childProcess = null;
-    this.debug = debug;
+    this._debug = debug;
+  }
+  setDebug(newValue: boolean = true) {
+    this._debug = newValue;
+  }
+  isDebug() {
+    return this._debug;
   }
   log(...args: any) {
-    if (this.debug) console.log(args);
+    if (this._debug) console.log(args);
   }
   async start() {
     if (!this.childProcess)
