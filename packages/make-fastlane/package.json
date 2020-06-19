@@ -1,6 +1,6 @@
 {
   "name": "@fastlanejs/generator",
-  "version": "2.146.1",
+  "version": "3.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,15 +9,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "fastlane-api": "^1.1.0",
-    "prettier": "^2.0.5",
-    "title-case": "^3.0.2"
-  },
+  "devDependencies": {},
   "dependencies": {
-    "@fastlanejs/api": "../fastlane-api",
+    "@fastlanejs/api": "^1.1.4",
     "@raydeck/fastlane": "^2.0.0",
     "commander": "^5.1.0",
+    "prettier": "^2.0.5",
+    "title-case": "^3.0.2",
     "yaml": "^1.9.2"
   },
   "bin": "./make.js"
