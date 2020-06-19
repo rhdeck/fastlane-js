@@ -41,15 +41,15 @@
     tmp "^0.2.0"
     yaml "^1.9.2"
 
-"@fastlanejs/base@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@fastlanejs/base/-/base-2.0.7.tgz#e653e157531eb7fbe8b6e15989439888c81d633f"
-  integrity sha512-qm9L6jhxU1m+lBP0qGVghkDy2QSmZlzxrNd9QkBLmYT2Wh/s2cFgKC+upoEwMfUwprW2zqs1AKVYRN3tWWjCGg==
+"@fastlanejs/base@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@fastlanejs/base/-/base-2.0.10.tgz#42a0d7c91ddb125c8f63534818dcf9706d2ace23"
+  integrity sha512-lFWKT0mCedEI3jnDWHgL5OrhRukJgY1O/nIs5SWp/ryvrJq74m974cCQlKX9jqATHvIrzQh0Pc8WGVPRE0a9fg==
 
-"@fastlanejs/generator@^3.0.6":
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/@fastlanejs/generator/-/generator-3.0.6.tgz#892bf0cfa2d06ffec525b5ffbe41bb9aa45da821"
-  integrity sha512-dQADYu28YdWWA6zAVamK0sHsEZGyEvHO635eSf5R3jVjajtNFRn+CYKe0xHMCwKlxx72ZLMX5TMISLoSUTU6Zw==
+"@fastlanejs/generator@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@fastlanejs/generator/-/generator-3.0.7.tgz#3b940762c208b84cb9eeda88c927e0d35624f9e9"
+  integrity sha512-Q9gUdBw6RrBSDGS5UoKkvfj+riORpcX5G95eZtzUbNfun522KZmN7ybTwtUF4xc0RU7VZHynfSjqfO2Vkr7MUQ==
   dependencies:
     "@fastlanejs/api" "^1.1.4"
     "@raydeck/fastlane" "^2.0.0"

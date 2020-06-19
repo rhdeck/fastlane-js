@@ -1,6 +1,6 @@
 {
   "name": "fastlanejs",
-  "version": "2.149.7",
+  "version": "2.149.8",
   "description": "typed interface to Fastlane",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/rhdeck/fastlane-js#readme",
   "devDependencies": {
     "@fastlanejs/api": "^1.1.4",
-    "@fastlanejs/generator": "^3.0.6",
+    "@fastlanejs/generator": "^3.0.7",
     "@raydeck/livelink": "^1.3.4",
     "@types/node": "^14.0.13",
     "@typescript-eslint/eslint-plugin": "^3.3.0",
@@ -52,7 +52,7 @@
     ]
   },
   "dependencies": {
-    "@fastlanejs/base": "^2.0.7",
+    "@fastlanejs/base": "^2.0.10",
     "commander": "^5.1.0",
     "ts-node": "^8.10.2"
   },
