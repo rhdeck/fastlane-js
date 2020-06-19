@@ -28,7 +28,8 @@ class FastlaneBase {
     if (!this.socket) this.socket = await init(this.port);
   }
   async close() {
-    const { resolve } = new Deferred();
+    console.log("Starting close ");
+    const { resolve, promise } = new Deferred();
     if (!this.socket) {
       this.socket = null;
       this.childProcess.kill("SIGHUP");
@@ -41,9 +42,10 @@ class FastlaneBase {
       this.socket = null;
       this.childProcess.kill("SIGHUP");
       this.childProcess = null;
+      console.log("All done");
       resolve();
     });
-    // return promise;
+    return promise;
   }
   async send({ commandType, command }: { commandType: string; command: {} }) {
     if (!this.socket) throw "Socket not initialized";
@@ -71,11 +73,10 @@ class FastlaneBase {
             resolve(result);
           }
         } catch (e) {
-          console.log("Problem resolving the payload after parsing");
           reject(e);
         }
       } catch (e) {
-        console.log("Could not parse json", d);
+        console.warn("Could not parse json", d);
         removeError();
         reject(e);
       }
@@ -91,11 +92,12 @@ class FastlaneBase {
       commandType: "action",
       command: { methodName: action, args },
     };
+    console.log("Do action sending command ", command);
     return this.send(command);
   }
 }
 //#region Internal utility functions
-const asyncConnect = (options: SocketConnectOpts): Promise<Socket> => {
+const asyncConnect = async (options: SocketConnectOpts): Promise<Socket> => {
   const { resolve, reject, promise } = new Deferred();
   const initError = (e: Error) => reject(e);
   try {
@@ -107,7 +109,8 @@ const asyncConnect = (options: SocketConnectOpts): Promise<Socket> => {
   } catch (e) {
     reject(e);
   }
-  return promise;
+  const out = await promise;
+  return out;
 };
 const sleep = (ms: number): Promise<void> =>
   new Promise((r) => setTimeout(() => r(), ms));
@@ -130,7 +133,12 @@ const init = async (port: number = 2000): Promise<Socket> => {
       s = (
         await Promise.all(
           ["::1", "127.0.0.1"].map(async (host) => {
-            return await asyncConnect({ host, port });
+            try {
+              const socket = await asyncConnect({ host, port });
+              return socket;
+            } catch (e) {
+              return null;
+            }
           })
         )
       ).find(Boolean);
@@ -151,16 +159,13 @@ const once = (socket: Socket, event: string, f: (...args: any) => void) => {
 };
 //#endregion
 //#region Exported Functions
-const withFastlaneSimple = async (
-  f: (fastlane: FastlaneBase) => Promise<any>
+const withFastlaneBase = async (
+  f: (fastlane: FastlaneBase) => Promise<any>,
+  {
+    port = 2000,
+    isInteractive = true,
+  }: { port?: number; isInteractive?: boolean }
 ) => {
-  return withFastlane({ port: 2000, isInteractive: true }, f);
-};
-const withFastlane = async (
-  options: { port: number; isInteractive: boolean },
-  f: (fastlane: FastlaneBase) => Promise<any>
-) => {
-  const { port = 2000, isInteractive = true } = options;
   const fastlane = new FastlaneBase(port, isInteractive);
   try {
     const result = await f(fastlane);
@@ -177,9 +182,10 @@ const doActionOnce = async (
   isInteractive: boolean = true,
   port: number = 2000
 ) =>
-  withFastlane({ port, isInteractive }, ({ doAction }) =>
-    doAction(action, argobj)
-  );
+  withFastlaneBase(({ doAction }) => doAction(action, argobj), {
+    port,
+    isInteractive,
+  });
 
 //#endregion
-export { FastlaneBase, doActionOnce, withFastlane };
+export { FastlaneBase, doActionOnce, withFastlaneBase };
