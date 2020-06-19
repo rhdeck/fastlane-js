@@ -87,7 +87,6 @@ class FastlaneBase {
           reject(e);
         }
       } catch (e) {
-        console.warn("Could not parse json", d);
         removeError();
         reject(e);
       }
@@ -177,9 +176,8 @@ const once = (socket: Socket, event: string, f: (data: string) => void) => {
     if (d.length < 65536) {
       socket.removeListener(event, listener);
       const text = data.map((b) => b.toString("utf8")).join("");
-      console.warn("RHD data was less than full, returning", text);
       f(text);
-    } else console.warn("RHD data was full, waiting for the next set");
+    }
   };
   socket.on(event, listener);
   return () => socket.removeListener(event, listener);
