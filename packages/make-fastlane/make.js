@@ -5,6 +5,7 @@ const prettier = require("prettier");
 const convertType = (return_type, key, action_name) => {
   switch (return_type) {
     case "String":
+    case "string":
       return "string";
     case "Fastlane::Boolean":
       return "boolean";
@@ -13,11 +14,14 @@ const convertType = (return_type, key, action_name) => {
     case "Hash":
       return "{string: string}";
     default:
+      // process.stderr.write(
+      //   ["MISSING", action_name, key, return_type].join(", ") + "\n"
+      // );
       return "any";
   }
 };
-const convertReturnType = (return_type) => {
-  return convertType(return_type);
+const convertReturnType = (return_type, key, action_name) => {
+  return convertType(return_type, key, action_name);
 };
 const interfaces = actions.map(({ action_name, options }) => {
   const actionName = makeCamelCase(action_name);
@@ -30,21 +34,14 @@ const interfaces = actions.map(({ action_name, options }) => {
       // return { optionName, description, data_type };
       return {
         name: optionName,
-        type: convertType(data_type),
+        type: convertType(data_type, key, action_name),
         optional,
         description,
       };
     })
     .filter(Boolean);
   return `
-/** @interface ${interfaceName}
-${optionsMembers
-  .map(({ name, type, optional, description }) => {
-    return `* @property {${type}} ${name} ${description}`;
-  })
-  .join("\n")}
-*/
-interface ${interfaceName} {
+type ${interfaceName} = {
     ${optionsMembers
       .map(({ name, type, optional, description }) => {
         return `/**
@@ -85,7 +82,7 @@ const methods = actions.map(
   ({ action_name, description, return_type, sample_return_value, options }) => {
     const actionName = makeCamelCase(action_name);
     const optionsName = proper(actionName) + "Options";
-    const returnType = convertReturnType(return_type);
+    const returnType = convertReturnType(return_type, "RETURN", action_name);
     const jsDoc = `/** ${description}
     */`;
     const functionBody = `async ${actionName}(options: ${optionsName}):Promise<${returnType}> {
@@ -102,10 +99,23 @@ prepend = `/** Main Class
 */
 class Fastlane extends FastlaneBase {`;
 postpend = `}
-function withFastlane(f: (fastlane: Fastlane)=>Promise<any>, {port=2000, isInteractive= true}: {port: number, isInteractive: boolean} = {port: 2000, isInteractive: true}) {
+const withFastlane = async (
+  f: (fastlane: Fastlane) => Promise<any>,
+  {
+    port = 2000,
+    isInteractive = true,
+  }: { port?: number; isInteractive?: boolean }
+) => {
   const fastlane = new Fastlane(port, isInteractive);
-  return f(fastlane);
-}
+  try {
+    const result = await f(fastlane);
+    fastlane.close();
+    return result;
+  } catch (e) {
+    await fastlane.close();
+    throw e;
+  }
+};
 export default Fastlane;
 export {Fastlane, withFastlane}`;
 const base = [
