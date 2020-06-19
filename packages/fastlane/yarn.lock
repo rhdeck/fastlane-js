@@ -41,10 +41,10 @@
     tmp "^0.2.0"
     yaml "^1.9.2"
 
-"@fastlanejs/base@^2.0.10":
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/@fastlanejs/base/-/base-2.0.10.tgz#42a0d7c91ddb125c8f63534818dcf9706d2ace23"
-  integrity sha512-lFWKT0mCedEI3jnDWHgL5OrhRukJgY1O/nIs5SWp/ryvrJq74m974cCQlKX9jqATHvIrzQh0Pc8WGVPRE0a9fg==
+"@fastlanejs/base@^2.0.11":
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/@fastlanejs/base/-/base-2.0.11.tgz#e822e2bc646a48e1d9736a1f449a07d866931b22"
+  integrity sha512-pKgCEV6b38hqZcGHNVBWoUFWV6VixdLVkA4ULVD0uU08W5Ky4UGe3g71m/JWKXlHYc9UMjm27Z9fYI3a876UAw==
 
 "@fastlanejs/generator@^3.0.7":
   version "3.0.7"

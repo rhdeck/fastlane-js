@@ -1,6 +1,6 @@
 {
   "name": "fastlanejs",
-  "version": "2.149.8",
+  "version": "2.149.10",
   "description": "typed interface to Fastlane",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -52,7 +52,7 @@
     ]
   },
   "dependencies": {
-    "@fastlanejs/base": "^2.0.10",
+    "@fastlanejs/base": "^2.0.11",
     "commander": "^5.1.0",
     "ts-node": "^8.10.2"
   },

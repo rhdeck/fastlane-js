@@ -11,6 +11,19 @@ class Deferred {
     });
   }
 }
+class FastlaneError extends Error {
+  public class: string;
+  public information: string[];
+  constructor(payload: {
+    failure_class: string;
+    failure_message: string;
+    failure_information: string[];
+  }) {
+    super(payload.failure_message);
+    this.class = payload.failure_class;
+    this.information = payload.failure_information;
+  }
+}
 class FastlaneBase {
   protected port?: number = undefined;
   protected socket?: Socket = undefined;
@@ -72,11 +85,8 @@ class FastlaneBase {
           if (o.payload) {
             if (o.payload.status === "failure") {
               this.log("RECEIVED FAILURE", o);
-              reject({
-                error: "fastlane_failure",
-                description: o.payload.failure_information.join("\n"),
-                raw: o,
-              });
+              const e = new FastlaneError(o.payload);
+              reject(e);
             } else if (typeof o.payload.return_object === "undefined") {
               reject(o);
             }
