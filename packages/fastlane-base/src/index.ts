@@ -16,11 +16,16 @@ class FastlaneBase {
   protected socket?: Socket = undefined;
   protected isInteractive: boolean = true;
   protected childProcess?: ChildProcessWithoutNullStreams = undefined;
-  constructor(port = 2000, isInteractive = true) {
+  public debug: boolean = false;
+  constructor(port = 2000, isInteractive = true, debug = false) {
     this.port = port;
     this.socket = null;
     this.isInteractive = isInteractive;
     this.childProcess = null;
+    this.debug = debug;
+  }
+  log(...args: any) {
+    if (this.debug) console.log(args);
   }
   async start() {
     if (!this.childProcess)
@@ -28,11 +33,10 @@ class FastlaneBase {
     if (!this.socket) this.socket = await init(this.port);
   }
   async close() {
-    console.log("Starting close ");
     const { resolve, promise } = new Deferred();
     if (!this.socket) {
       this.socket = null;
-      this.childProcess.kill("SIGHUP");
+      if (this.childProcess) this.childProcess.kill("SIGHUP");
       this.childProcess = null;
       return;
     }
@@ -42,7 +46,6 @@ class FastlaneBase {
       this.socket = null;
       this.childProcess.kill("SIGHUP");
       this.childProcess = null;
-      console.log("All done");
       resolve();
     });
     return promise;
@@ -50,6 +53,7 @@ class FastlaneBase {
   async send({ commandType, command }: { commandType: string; command: {} }) {
     if (!this.socket) throw "Socket not initialized";
     const json = JSON.stringify({ commandType, command });
+    this.log("Transmitting JSON", json);
     this.socket.write(json);
     const { resolve, promise, reject } = new Deferred();
     this.socket.setEncoding("utf8");
@@ -61,6 +65,7 @@ class FastlaneBase {
         try {
           if (o.payload) {
             if (o.payload.status === "failure") {
+              this.log("RECEIVED FAILURE", o);
               reject({
                 error: "fastlane_failure",
                 description: o.payload.failure_information.join("\n"),
@@ -92,7 +97,7 @@ class FastlaneBase {
       commandType: "action",
       command: { methodName: action, args },
     };
-    console.log("Do action sending command ", command);
+    this.log("Do action sending command ", command);
     return this.send(command);
   }
 }
@@ -119,8 +124,18 @@ const launch = (
   port: number = 2000
 ): ChildProcessWithoutNullStreams => {
   return spawn(
-    "fastlane",
-    ["socket_server", "-c", "30", "-s", "-p", port.toString()],
+    "bundle",
+    [
+      "exec",
+      "fastlane",
+      "socket_server",
+      "--verbose",
+      "-c",
+      "30",
+      "-s",
+      "-p",
+      port.toString(),
+    ],
     {
       ...(interactive ? { stdio: "inherit" } : {}),
     }
@@ -149,10 +164,16 @@ const init = async (port: number = 2000): Promise<Socket> => {
     await sleep(500);
   }
 };
-const once = (socket: Socket, event: string, f: (...args: any) => void) => {
-  const listener = (d: any) => {
-    socket.removeListener(event, listener);
-    f(d);
+const once = (socket: Socket, event: string, f: (data: string) => void) => {
+  const data: Buffer[] = [];
+  const listener = (d: Buffer) => {
+    data.push(d);
+    if (d.length < 65536) {
+      socket.removeListener(event, listener);
+      const text = data.map((b) => b.toString("utf8")).join("");
+      console.warn("RHD data was less than full, returning", text);
+      f(text);
+    } else console.warn("RHD data was full, waiting for the next set");
   };
   socket.on(event, listener);
   return () => socket.removeListener(event, listener);
