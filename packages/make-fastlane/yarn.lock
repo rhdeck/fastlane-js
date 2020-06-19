@@ -9,8 +9,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@fastlanejs/api@../fastlane-api":
-  version "1.1.0"
+"@fastlanejs/api@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@fastlanejs/api/-/api-1.1.4.tgz#8ac647aaae46c12db612802b63354e492a64d32e"
+  integrity sha512-0Y8jVaTjIWT9yh8efMAH4HfKJRise5X2jho+3Qqm5l+7aLuuMGwdsjEk4GRkcCI6Gj2mFdUjz13snTW05KWpYA==
   dependencies:
     "@prettier/plugin-ruby" "^0.18.1"
     commander "^5.1.0"
@@ -202,9 +204,9 @@ tmp@^0.2.0:
     rimraf "^3.0.0"
 
 tslib@^1.10.0:
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.1.tgz#eb15d128827fbee2841549e171f45ed338ac7e35"
-  integrity sha512-aZW88SY8kQbU7gpV19lN24LtXh/yD4ZZg6qieAJDDg+YBsJcSmLGK9QpnUjAKVG/xefmvJGd1WUmfpT/g6AJGA==
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
+  integrity sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
 
 wrappy@1:
   version "1.0.2"
