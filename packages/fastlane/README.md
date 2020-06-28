@@ -2,4 +2,4 @@
 
 # fastlanejs
 
-[API Documentation](globals.md)
+[API Documentation](docs/globals.md)
