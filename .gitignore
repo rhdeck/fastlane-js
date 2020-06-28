@@ -111,4 +111,3 @@ packages/fastlane-api/Gemfile.lock
 packages/fastlane-api/out.json
 packages/fastlane/missing
 packages/fastlane/out.json
-packages/fastlane/src/index.ts
