@@ -41,6 +41,8 @@ const interfaces = actions.map(({ action_name, options }) => {
     })
     .filter(Boolean);
   return `
+/** Shape for ${actionName} options argument
+*/ 
 type ${interfaceName} = {
     ${optionsMembers
       .map(({ name, type, optional, description }) => {
@@ -66,7 +68,7 @@ const converters = actions.map(({ action_name, options }) => {
     })
     .filter(Boolean);
   return `
-
+/** @ignore */
 type converted${interfaceName} = {
   ${optionsMembers
     .map(({ key, name, type, tsType, optional, description }) => {
@@ -75,8 +77,7 @@ type converted${interfaceName} = {
     })
     .join("")}
 }
-/** Convert ${interfaceName} to the shape used by the Fastlane service
-* @private
+/** @ignore Convert ${interfaceName} to the shape used by the Fastlane service
 */
 function convert${interfaceName}(options: ${interfaceName}):converted${interfaceName} {
   const temp:converted${interfaceName} = {
