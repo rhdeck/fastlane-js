@@ -4,6 +4,8 @@ Monorepo for fastlane.js: App Automation done right... in Javascript!
 
 This repo contains four projects key to the fastlane-js build process.
 
+For most use cases go straight to the [fastlane package](packages/fastlane).
+
 ## [fastlane-api](packages/fastlane-api)
 
 A tool to automatically generate the inputs and outputs of almost all fastlane actions, uaing the same interface as the Fastlane Swift code generator. Deployed on NPM as `@fastlanejs/fastlane-api`
