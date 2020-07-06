@@ -25,10 +25,15 @@ class FastlaneError extends Error {
   }
 }
 class FastlaneBase {
+  /** @private */
   protected port?: number = undefined;
+  /** @private */
   protected socket?: Socket = undefined;
+  /** @private */
   protected isInteractive: boolean = true;
+  /** @private */
   protected childProcess?: ChildProcessWithoutNullStreams = undefined;
+  /** @private */
   protected _debug: boolean = false;
   constructor(port = 2000, isInteractive = true, debug = false) {
     this.port = port;
