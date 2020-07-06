@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "clear": "rm cached_api.json src/index.ts && rm -rf docs",
+    "clean": "rm cached_api.json src/index.ts && rm -rf docs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node setversion.js &&  yarn -s generator > src/index.ts && tsc && chmod +x dist/bin.js && typedoc --excludePrivate --mode file --theme minimal --inputFiles src/index.ts",
-    "clearbuild": "yarn clear && yarn build"
+    "cleanbuild": "yarn clean && yarn build"
   },
   "repository": {
     "type": "git",
