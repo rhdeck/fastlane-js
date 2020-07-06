@@ -1,6 +1,6 @@
 import { FastlaneBase } from "@fastlanejs/base";
 
-/** Shape for adb options argument
+/** Shape for [[adb]] options argument
  */
 
 type AdbOptions = {
@@ -18,7 +18,7 @@ type AdbOptions = {
   adbPath?: string;
 };
 
-/** Shape for adbDevices options argument
+/** Shape for [[adbDevices]] options argument
  */
 
 type AdbDevicesOptions = {
@@ -28,7 +28,7 @@ type AdbDevicesOptions = {
   adbPath?: string;
 };
 
-/** Shape for addExtraPlatforms options argument
+/** Shape for [[addExtraPlatforms]] options argument
  */
 
 type AddExtraPlatformsOptions = {
@@ -38,7 +38,7 @@ type AddExtraPlatformsOptions = {
   platforms: string[];
 };
 
-/** Shape for addGitTag options argument
+/** Shape for [[addGitTag]] options argument
  */
 
 type AddGitTagOptions = {
@@ -80,7 +80,7 @@ type AddGitTagOptions = {
   sign?: any;
 };
 
-/** Shape for appStoreBuildNumber options argument
+/** Shape for [[appStoreBuildNumber]] options argument
  */
 
 type AppStoreBuildNumberOptions = {
@@ -118,7 +118,7 @@ type AppStoreBuildNumberOptions = {
   teamName?: string;
 };
 
-/** Shape for appaloosa options argument
+/** Shape for [[appaloosa]] options argument
  */
 
 type AppaloosaOptions = {
@@ -156,7 +156,7 @@ type AppaloosaOptions = {
   description?: string;
 };
 
-/** Shape for appetize options argument
+/** Shape for [[appetize]] options argument
  */
 
 type AppetizeOptions = {
@@ -190,7 +190,7 @@ type AppetizeOptions = {
   note?: string;
 };
 
-/** Shape for appetizeViewingUrlGenerator options argument
+/** Shape for [[appetizeViewingUrlGenerator]] options argument
  */
 
 type AppetizeViewingUrlGeneratorOptions = {
@@ -240,7 +240,7 @@ type AppetizeViewingUrlGeneratorOptions = {
   proxy?: string;
 };
 
-/** Shape for appium options argument
+/** Shape for [[appium]] options argument
  */
 
 type AppiumOptions = {
@@ -282,7 +282,7 @@ type AppiumOptions = {
   appiumLib?: { string: string };
 };
 
-/** Shape for appledoc options argument
+/** Shape for [[appledoc]] options argument
  */
 
 type AppledocOptions = {
@@ -468,7 +468,7 @@ type AppledocOptions = {
   verbose?: any;
 };
 
-/** Shape for appstore options argument
+/** Shape for [[appstore]] options argument
  */
 
 type AppstoreOptions = {
@@ -714,7 +714,7 @@ type AppstoreOptions = {
   app: any;
 };
 
-/** Shape for apteligent options argument
+/** Shape for [[apteligent]] options argument
  */
 
 type ApteligentOptions = {
@@ -732,7 +732,7 @@ type ApteligentOptions = {
   apiKey: string;
 };
 
-/** Shape for artifactory options argument
+/** Shape for [[artifactory]] options argument
  */
 
 type ArtifactoryOptions = {
@@ -794,7 +794,7 @@ type ArtifactoryOptions = {
   readTimeout?: string;
 };
 
-/** Shape for automaticCodeSigning options argument
+/** Shape for [[automaticCodeSigning]] options argument
  */
 
 type AutomaticCodeSigningOptions = {
@@ -832,7 +832,7 @@ type AutomaticCodeSigningOptions = {
   bundleIdentifier?: string;
 };
 
-/** Shape for backupFile options argument
+/** Shape for [[backupFile]] options argument
  */
 
 type BackupFileOptions = {
@@ -842,7 +842,7 @@ type BackupFileOptions = {
   path: string;
 };
 
-/** Shape for backupXcarchive options argument
+/** Shape for [[backupXcarchive]] options argument
  */
 
 type BackupXcarchiveOptions = {
@@ -868,7 +868,7 @@ type BackupXcarchiveOptions = {
   versioned?: any;
 };
 
-/** Shape for badge options argument
+/** Shape for [[badge]] options argument
  */
 
 type BadgeOptions = {
@@ -918,7 +918,7 @@ type BadgeOptions = {
   shieldNoResize?: any;
 };
 
-/** Shape for buildAndUploadToAppetize options argument
+/** Shape for [[buildAndUploadToAppetize]] options argument
  */
 
 type BuildAndUploadToAppetizeOptions = {
@@ -944,7 +944,7 @@ type BuildAndUploadToAppetizeOptions = {
   note?: string;
 };
 
-/** Shape for buildAndroidApp options argument
+/** Shape for [[buildAndroidApp]] options argument
  */
 
 type BuildAndroidAppOptions = {
@@ -998,7 +998,7 @@ type BuildAndroidAppOptions = {
   printCommandOutput: any;
 };
 
-/** Shape for buildApp options argument
+/** Shape for [[buildApp]] options argument
  */
 
 type BuildAppOptions = {
@@ -1180,7 +1180,7 @@ type BuildAppOptions = {
   clonedSourcePackagesPath?: string;
 };
 
-/** Shape for buildIosApp options argument
+/** Shape for [[buildIosApp]] options argument
  */
 
 type BuildIosAppOptions = {
@@ -1350,7 +1350,7 @@ type BuildIosAppOptions = {
   clonedSourcePackagesPath?: string;
 };
 
-/** Shape for buildMacApp options argument
+/** Shape for [[buildMacApp]] options argument
  */
 
 type BuildMacAppOptions = {
@@ -1524,7 +1524,7 @@ type BuildMacAppOptions = {
   clonedSourcePackagesPath?: string;
 };
 
-/** Shape for bundleInstall options argument
+/** Shape for [[bundleInstall]] options argument
  */
 
 type BundleInstallOptions = {
@@ -1602,7 +1602,7 @@ type BundleInstallOptions = {
   with?: string;
 };
 
-/** Shape for captureAndroidScreenshots options argument
+/** Shape for [[captureAndroidScreenshots]] options argument
  */
 
 type CaptureAndroidScreenshotsOptions = {
@@ -1696,7 +1696,7 @@ type CaptureAndroidScreenshotsOptions = {
   adbHost?: string;
 };
 
-/** Shape for captureIosScreenshots options argument
+/** Shape for [[captureIosScreenshots]] options argument
  */
 
 type CaptureIosScreenshotsOptions = {
@@ -1870,7 +1870,7 @@ type CaptureIosScreenshotsOptions = {
   disableXcpretty?: boolean;
 };
 
-/** Shape for captureScreenshots options argument
+/** Shape for [[captureScreenshots]] options argument
  */
 
 type CaptureScreenshotsOptions = {
@@ -2044,7 +2044,7 @@ type CaptureScreenshotsOptions = {
   disableXcpretty?: boolean;
 };
 
-/** Shape for carthage options argument
+/** Shape for [[carthage]] options argument
  */
 
 type CarthageOptions = {
@@ -2130,7 +2130,7 @@ type CarthageOptions = {
   executable: string;
 };
 
-/** Shape for cert options argument
+/** Shape for [[cert]] options argument
  */
 
 type CertOptions = {
@@ -2184,7 +2184,7 @@ type CertOptions = {
   platform: string;
 };
 
-/** Shape for changelogFromGitCommits options argument
+/** Shape for [[changelogFromGitCommits]] options argument
  */
 
 type ChangelogFromGitCommitsOptions = {
@@ -2234,7 +2234,7 @@ type ChangelogFromGitCommitsOptions = {
   mergeCommitFiltering?: string;
 };
 
-/** Shape for chatwork options argument
+/** Shape for [[chatwork]] options argument
  */
 
 type ChatworkOptions = {
@@ -2256,7 +2256,7 @@ type ChatworkOptions = {
   success?: any;
 };
 
-/** Shape for checkAppStoreMetadata options argument
+/** Shape for [[checkAppStoreMetadata]] options argument
  */
 
 type CheckAppStoreMetadataOptions = {
@@ -2326,7 +2326,7 @@ type CheckAppStoreMetadataOptions = {
   unreachableUrls?: any;
 };
 
-/** Shape for cleanBuildArtifacts options argument
+/** Shape for [[cleanBuildArtifacts]] options argument
  */
 
 type CleanBuildArtifactsOptions = {
@@ -2336,7 +2336,7 @@ type CleanBuildArtifactsOptions = {
   excludePattern?: string;
 };
 
-/** Shape for cleanCocoapodsCache options argument
+/** Shape for [[cleanCocoapodsCache]] options argument
  */
 
 type CleanCocoapodsCacheOptions = {
@@ -2346,7 +2346,7 @@ type CleanCocoapodsCacheOptions = {
   name?: string;
 };
 
-/** Shape for clearDerivedData options argument
+/** Shape for [[clearDerivedData]] options argument
  */
 
 type ClearDerivedDataOptions = {
@@ -2356,7 +2356,7 @@ type ClearDerivedDataOptions = {
   derivedDataPath: string;
 };
 
-/** Shape for clipboard options argument
+/** Shape for [[clipboard]] options argument
  */
 
 type ClipboardOptions = {
@@ -2366,7 +2366,7 @@ type ClipboardOptions = {
   value: string;
 };
 
-/** Shape for cloc options argument
+/** Shape for [[cloc]] options argument
  */
 
 type ClocOptions = {
@@ -2392,7 +2392,7 @@ type ClocOptions = {
   xml: any;
 };
 
-/** Shape for cocoapods options argument
+/** Shape for [[cocoapods]] options argument
  */
 
 type CocoapodsOptions = {
@@ -2446,7 +2446,7 @@ type CocoapodsOptions = {
   integrate?: any;
 };
 
-/** Shape for commitGithubFile options argument
+/** Shape for [[commitGithubFile]] options argument
  */
 
 type CommitGithubFileOptions = {
@@ -2480,7 +2480,7 @@ type CommitGithubFileOptions = {
   secure?: any;
 };
 
-/** Shape for commitVersionBump options argument
+/** Shape for [[commitVersionBump]] options argument
  */
 
 type CommitVersionBumpOptions = {
@@ -2514,7 +2514,7 @@ type CommitVersionBumpOptions = {
   noVerify: boolean;
 };
 
-/** Shape for copyArtifacts options argument
+/** Shape for [[copyArtifacts]] options argument
  */
 
 type CopyArtifactsOptions = {
@@ -2536,7 +2536,7 @@ type CopyArtifactsOptions = {
   failOnMissing?: any;
 };
 
-/** Shape for crashlytics options argument
+/** Shape for [[crashlytics]] options argument
  */
 
 type CrashlyticsOptions = {
@@ -2586,7 +2586,7 @@ type CrashlyticsOptions = {
   debug: any;
 };
 
-/** Shape for createAppOnManagedPlayStore options argument
+/** Shape for [[createAppOnManagedPlayStore]] options argument
  */
 
 type CreateAppOnManagedPlayStoreOptions = {
@@ -2624,7 +2624,7 @@ type CreateAppOnManagedPlayStoreOptions = {
   timeout?: any;
 };
 
-/** Shape for createAppOnline options argument
+/** Shape for [[createAppOnline]] options argument
  */
 
 type CreateAppOnlineOptions = {
@@ -2706,7 +2706,7 @@ type CreateAppOnlineOptions = {
   itcTeamName?: string;
 };
 
-/** Shape for createKeychain options argument
+/** Shape for [[createKeychain]] options argument
  */
 
 type CreateKeychainOptions = {
@@ -2752,7 +2752,7 @@ type CreateKeychainOptions = {
   requireCreate: any;
 };
 
-/** Shape for createPullRequest options argument
+/** Shape for [[createPullRequest]] options argument
  */
 
 type CreatePullRequestOptions = {
@@ -2810,7 +2810,7 @@ type CreatePullRequestOptions = {
   teamReviewers?: string[];
 };
 
-/** Shape for danger options argument
+/** Shape for [[danger]] options argument
  */
 
 type DangerOptions = {
@@ -2860,17 +2860,17 @@ type DangerOptions = {
   pr?: string;
 };
 
-/** Shape for debug options argument
+/** Shape for [[debug]] options argument
  */
 
 type DebugOptions = {};
 
-/** Shape for defaultPlatform options argument
+/** Shape for [[defaultPlatform]] options argument
  */
 
 type DefaultPlatformOptions = {};
 
-/** Shape for deleteKeychain options argument
+/** Shape for [[deleteKeychain]] options argument
  */
 
 type DeleteKeychainOptions = {
@@ -2884,7 +2884,7 @@ type DeleteKeychainOptions = {
   keychainPath?: string;
 };
 
-/** Shape for deliver options argument
+/** Shape for [[deliver]] options argument
  */
 
 type DeliverOptions = {
@@ -3130,7 +3130,7 @@ type DeliverOptions = {
   app: any;
 };
 
-/** Shape for deploygate options argument
+/** Shape for [[deploygate]] options argument
  */
 
 type DeploygateOptions = {
@@ -3172,7 +3172,7 @@ type DeploygateOptions = {
   distributionName?: string;
 };
 
-/** Shape for dotgpgEnvironment options argument
+/** Shape for [[dotgpgEnvironment]] options argument
  */
 
 type DotgpgEnvironmentOptions = {
@@ -3182,7 +3182,7 @@ type DotgpgEnvironmentOptions = {
   dotgpgFile: string;
 };
 
-/** Shape for download options argument
+/** Shape for [[download]] options argument
  */
 
 type DownloadOptions = {
@@ -3192,7 +3192,7 @@ type DownloadOptions = {
   url: string;
 };
 
-/** Shape for downloadDsyms options argument
+/** Shape for [[downloadDsyms]] options argument
  */
 
 type DownloadDsymsOptions = {
@@ -3242,7 +3242,7 @@ type DownloadDsymsOptions = {
   waitTimeout?: any;
 };
 
-/** Shape for downloadFromPlayStore options argument
+/** Shape for [[downloadFromPlayStore]] options argument
  */
 
 type DownloadFromPlayStoreOptions = {
@@ -3288,7 +3288,7 @@ type DownloadFromPlayStoreOptions = {
   timeout?: any;
 };
 
-/** Shape for dsymZip options argument
+/** Shape for [[dsymZip]] options argument
  */
 
 type DsymZipOptions = {
@@ -3306,7 +3306,7 @@ type DsymZipOptions = {
   all?: any;
 };
 
-/** Shape for echo options argument
+/** Shape for [[echo]] options argument
  */
 
 type EchoOptions = {
@@ -3316,12 +3316,12 @@ type EchoOptions = {
   message?: string;
 };
 
-/** Shape for ensureBundleExec options argument
+/** Shape for [[ensureBundleExec]] options argument
  */
 
 type EnsureBundleExecOptions = {};
 
-/** Shape for ensureEnvVars options argument
+/** Shape for [[ensureEnvVars]] options argument
  */
 
 type EnsureEnvVarsOptions = {
@@ -3331,7 +3331,7 @@ type EnsureEnvVarsOptions = {
   envVars: string[];
 };
 
-/** Shape for ensureGitBranch options argument
+/** Shape for [[ensureGitBranch]] options argument
  */
 
 type EnsureGitBranchOptions = {
@@ -3341,7 +3341,7 @@ type EnsureGitBranchOptions = {
   branch: string;
 };
 
-/** Shape for ensureGitStatusClean options argument
+/** Shape for [[ensureGitStatusClean]] options argument
  */
 
 type EnsureGitStatusCleanOptions = {
@@ -3355,7 +3355,7 @@ type EnsureGitStatusCleanOptions = {
   showDiff?: any;
 };
 
-/** Shape for ensureNoDebugCode options argument
+/** Shape for [[ensureNoDebugCode]] options argument
  */
 
 type EnsureNoDebugCodeOptions = {
@@ -3385,7 +3385,7 @@ type EnsureNoDebugCodeOptions = {
   excludeDirs?: string[];
 };
 
-/** Shape for ensureXcodeVersion options argument
+/** Shape for [[ensureXcodeVersion]] options argument
  */
 
 type EnsureXcodeVersionOptions = {
@@ -3399,7 +3399,7 @@ type EnsureXcodeVersionOptions = {
   strict: boolean;
 };
 
-/** Shape for environmentVariable options argument
+/** Shape for [[environmentVariable]] options argument
  */
 
 type EnvironmentVariableOptions = {
@@ -3417,7 +3417,7 @@ type EnvironmentVariableOptions = {
   remove?: string;
 };
 
-/** Shape for erb options argument
+/** Shape for [[erb]] options argument
  */
 
 type ErbOptions = {
@@ -3435,12 +3435,12 @@ type ErbOptions = {
   placeholders: { string: string };
 };
 
-/** Shape for fastlaneVersion options argument
+/** Shape for [[fastlaneVersion]] options argument
  */
 
 type FastlaneVersionOptions = {};
 
-/** Shape for flock options argument
+/** Shape for [[flock]] options argument
  */
 
 type FlockOptions = {
@@ -3458,7 +3458,7 @@ type FlockOptions = {
   baseUrl?: string;
 };
 
-/** Shape for frameScreenshots options argument
+/** Shape for [[frameScreenshots]] options argument
  */
 
 type FrameScreenshotsOptions = {
@@ -3532,7 +3532,7 @@ type FrameScreenshotsOptions = {
   path: string;
 };
 
-/** Shape for frameit options argument
+/** Shape for [[frameit]] options argument
  */
 
 type FrameitOptions = {
@@ -3606,12 +3606,12 @@ type FrameitOptions = {
   path: string;
 };
 
-/** Shape for gcovr options argument
+/** Shape for [[gcovr]] options argument
  */
 
 type GcovrOptions = {};
 
-/** Shape for getBuildNumber options argument
+/** Shape for [[getBuildNumber]] options argument
  */
 
 type GetBuildNumberOptions = {
@@ -3625,7 +3625,7 @@ type GetBuildNumberOptions = {
   hideErrorWhenVersioningDisabled: boolean;
 };
 
-/** Shape for getBuildNumberRepository options argument
+/** Shape for [[getBuildNumberRepository]] options argument
  */
 
 type GetBuildNumberRepositoryOptions = {
@@ -3635,7 +3635,7 @@ type GetBuildNumberRepositoryOptions = {
   useHgRevisionNumber?: any;
 };
 
-/** Shape for getCertificates options argument
+/** Shape for [[getCertificates]] options argument
  */
 
 type GetCertificatesOptions = {
@@ -3689,7 +3689,7 @@ type GetCertificatesOptions = {
   platform: string;
 };
 
-/** Shape for getGithubRelease options argument
+/** Shape for [[getGithubRelease]] options argument
  */
 
 type GetGithubReleaseOptions = {
@@ -3711,7 +3711,7 @@ type GetGithubReleaseOptions = {
   apiToken?: string;
 };
 
-/** Shape for getInfoPlistValue options argument
+/** Shape for [[getInfoPlistValue]] options argument
  */
 
 type GetInfoPlistValueOptions = {
@@ -3725,7 +3725,7 @@ type GetInfoPlistValueOptions = {
   path: string;
 };
 
-/** Shape for getIpaInfoPlistValue options argument
+/** Shape for [[getIpaInfoPlistValue]] options argument
  */
 
 type GetIpaInfoPlistValueOptions = {
@@ -3739,7 +3739,7 @@ type GetIpaInfoPlistValueOptions = {
   ipa: string;
 };
 
-/** Shape for getManagedPlayStorePublishingRights options argument
+/** Shape for [[getManagedPlayStorePublishingRights]] options argument
  */
 
 type GetManagedPlayStorePublishingRightsOptions = {
@@ -3753,7 +3753,7 @@ type GetManagedPlayStorePublishingRightsOptions = {
   jsonKeyData?: string;
 };
 
-/** Shape for getProvisioningProfile options argument
+/** Shape for [[getProvisioningProfile]] options argument
  */
 
 type GetProvisioningProfileOptions = {
@@ -3843,7 +3843,7 @@ type GetProvisioningProfileOptions = {
   failOnNameTaken?: any;
 };
 
-/** Shape for getPushCertificate options argument
+/** Shape for [[getPushCertificate]] options argument
  */
 
 type GetPushCertificateOptions = {
@@ -3905,7 +3905,7 @@ type GetPushCertificateOptions = {
   newProfile?: any;
 };
 
-/** Shape for getVersionNumber options argument
+/** Shape for [[getVersionNumber]] options argument
  */
 
 type GetVersionNumberOptions = {
@@ -3923,7 +3923,7 @@ type GetVersionNumberOptions = {
   configuration?: string;
 };
 
-/** Shape for gitAdd options argument
+/** Shape for [[gitAdd]] options argument
  */
 
 type GitAddOptions = {
@@ -3941,12 +3941,12 @@ type GitAddOptions = {
   pathspec?: string;
 };
 
-/** Shape for gitBranch options argument
+/** Shape for [[gitBranch]] options argument
  */
 
 type GitBranchOptions = {};
 
-/** Shape for gitCommit options argument
+/** Shape for [[gitCommit]] options argument
  */
 
 type GitCommitOptions = {
@@ -3968,7 +3968,7 @@ type GitCommitOptions = {
   allowNothingToCommit?: boolean;
 };
 
-/** Shape for gitPull options argument
+/** Shape for [[gitPull]] options argument
  */
 
 type GitPullOptions = {
@@ -3978,7 +3978,7 @@ type GitPullOptions = {
   onlyTags?: any;
 };
 
-/** Shape for gitSubmoduleUpdate options argument
+/** Shape for [[gitSubmoduleUpdate]] options argument
  */
 
 type GitSubmoduleUpdateOptions = {
@@ -3992,7 +3992,7 @@ type GitSubmoduleUpdateOptions = {
   init: boolean;
 };
 
-/** Shape for gitTagExists options argument
+/** Shape for [[gitTagExists]] options argument
  */
 
 type GitTagExistsOptions = {
@@ -4010,7 +4010,7 @@ type GitTagExistsOptions = {
   remoteName?: string;
 };
 
-/** Shape for githubApi options argument
+/** Shape for [[githubApi]] options argument
  */
 
 type GithubApiOptions = {
@@ -4056,7 +4056,7 @@ type GithubApiOptions = {
   secure?: boolean;
 };
 
-/** Shape for googlePlayTrackVersionCodes options argument
+/** Shape for [[googlePlayTrackVersionCodes]] options argument
  */
 
 type GooglePlayTrackVersionCodesOptions = {
@@ -4094,7 +4094,7 @@ type GooglePlayTrackVersionCodesOptions = {
   timeout?: any;
 };
 
-/** Shape for gradle options argument
+/** Shape for [[gradle]] options argument
  */
 
 type GradleOptions = {
@@ -4148,7 +4148,7 @@ type GradleOptions = {
   printCommandOutput: any;
 };
 
-/** Shape for gym options argument
+/** Shape for [[gym]] options argument
  */
 
 type GymOptions = {
@@ -4330,7 +4330,7 @@ type GymOptions = {
   clonedSourcePackagesPath?: string;
 };
 
-/** Shape for hgAddTag options argument
+/** Shape for [[hgAddTag]] options argument
  */
 
 type HgAddTagOptions = {
@@ -4340,7 +4340,7 @@ type HgAddTagOptions = {
   tag: string;
 };
 
-/** Shape for hgCommitVersionBump options argument
+/** Shape for [[hgCommitVersionBump]] options argument
  */
 
 type HgCommitVersionBumpOptions = {
@@ -4366,12 +4366,12 @@ type HgCommitVersionBumpOptions = {
   testExpectedFiles?: string;
 };
 
-/** Shape for hgEnsureCleanStatus options argument
+/** Shape for [[hgEnsureCleanStatus]] options argument
  */
 
 type HgEnsureCleanStatusOptions = {};
 
-/** Shape for hgPush options argument
+/** Shape for [[hgPush]] options argument
  */
 
 type HgPushOptions = {
@@ -4385,7 +4385,7 @@ type HgPushOptions = {
   destination?: string;
 };
 
-/** Shape for hipchat options argument
+/** Shape for [[hipchat]] options argument
  */
 
 type HipchatOptions = {
@@ -4435,7 +4435,7 @@ type HipchatOptions = {
   from?: string;
 };
 
-/** Shape for hockey options argument
+/** Shape for [[hockey]] options argument
  */
 
 type HockeyOptions = {
@@ -4549,7 +4549,7 @@ type HockeyOptions = {
   dsaSignature?: string;
 };
 
-/** Shape for ifttt options argument
+/** Shape for [[ifttt]] options argument
  */
 
 type IftttOptions = {
@@ -4575,12 +4575,12 @@ type IftttOptions = {
   value3?: string;
 };
 
-/** Shape for import options argument
+/** Shape for [[import]] options argument
  */
 
 type ImportOptions = {};
 
-/** Shape for importCertificate options argument
+/** Shape for [[importCertificate]] options argument
  */
 
 type ImportCertificateOptions = {
@@ -4610,7 +4610,7 @@ type ImportCertificateOptions = {
   logOutput?: boolean;
 };
 
-/** Shape for importFromGit options argument
+/** Shape for [[importFromGit]] options argument
  */
 
 type ImportFromGitOptions = {
@@ -4636,7 +4636,7 @@ type ImportFromGitOptions = {
   version?: any;
 };
 
-/** Shape for incrementBuildNumber options argument
+/** Shape for [[incrementBuildNumber]] options argument
  */
 
 type IncrementBuildNumberOptions = {
@@ -4650,7 +4650,7 @@ type IncrementBuildNumberOptions = {
   xcodeproj?: string;
 };
 
-/** Shape for incrementVersionNumber options argument
+/** Shape for [[incrementVersionNumber]] options argument
  */
 
 type IncrementVersionNumberOptions = {
@@ -4668,7 +4668,7 @@ type IncrementVersionNumberOptions = {
   xcodeproj?: string;
 };
 
-/** Shape for installOnDevice options argument
+/** Shape for [[installOnDevice]] options argument
  */
 
 type InstallOnDeviceOptions = {
@@ -4690,7 +4690,7 @@ type InstallOnDeviceOptions = {
   ipa?: string;
 };
 
-/** Shape for installProvisioningProfile options argument
+/** Shape for [[installProvisioningProfile]] options argument
  */
 
 type InstallProvisioningProfileOptions = {
@@ -4700,7 +4700,7 @@ type InstallProvisioningProfileOptions = {
   path: string;
 };
 
-/** Shape for installXcodePlugin options argument
+/** Shape for [[installXcodePlugin]] options argument
  */
 
 type InstallXcodePluginOptions = {
@@ -4714,7 +4714,7 @@ type InstallXcodePluginOptions = {
   github?: string;
 };
 
-/** Shape for installr options argument
+/** Shape for [[installr]] options argument
  */
 
 type InstallrOptions = {
@@ -4740,7 +4740,7 @@ type InstallrOptions = {
   add?: string;
 };
 
-/** Shape for ipa options argument
+/** Shape for [[ipa]] options argument
  */
 
 type IpaOptions = {
@@ -4798,12 +4798,12 @@ type IpaOptions = {
   xcargs?: string;
 };
 
-/** Shape for isCi options argument
+/** Shape for [[isCi]] options argument
  */
 
 type IsCiOptions = {};
 
-/** Shape for jazzy options argument
+/** Shape for [[jazzy]] options argument
  */
 
 type JazzyOptions = {
@@ -4813,7 +4813,7 @@ type JazzyOptions = {
   config?: string;
 };
 
-/** Shape for jira options argument
+/** Shape for [[jira]] options argument
  */
 
 type JiraOptions = {
@@ -4843,17 +4843,17 @@ type JiraOptions = {
   commentText: string;
 };
 
-/** Shape for laneContext options argument
+/** Shape for [[laneContext]] options argument
  */
 
 type LaneContextOptions = {};
 
-/** Shape for lastGitCommit options argument
+/** Shape for [[lastGitCommit]] options argument
  */
 
 type LastGitCommitOptions = {};
 
-/** Shape for lastGitTag options argument
+/** Shape for [[lastGitTag]] options argument
  */
 
 type LastGitTagOptions = {
@@ -4863,7 +4863,7 @@ type LastGitTagOptions = {
   pattern?: string;
 };
 
-/** Shape for latestTestflightBuildNumber options argument
+/** Shape for [[latestTestflightBuildNumber]] options argument
  */
 
 type LatestTestflightBuildNumberOptions = {
@@ -4901,7 +4901,7 @@ type LatestTestflightBuildNumberOptions = {
   teamName?: string;
 };
 
-/** Shape for lcov options argument
+/** Shape for [[lcov]] options argument
  */
 
 type LcovOptions = {
@@ -4923,7 +4923,7 @@ type LcovOptions = {
   outputDir?: string;
 };
 
-/** Shape for mailgun options argument
+/** Shape for [[mailgun]] options argument
  */
 
 type MailgunOptions = {
@@ -4993,7 +4993,7 @@ type MailgunOptions = {
   customPlaceholders: { string: string };
 };
 
-/** Shape for makeChangelogFromJenkins options argument
+/** Shape for [[makeChangelogFromJenkins]] options argument
  */
 
 type MakeChangelogFromJenkinsOptions = {
@@ -5007,7 +5007,7 @@ type MakeChangelogFromJenkinsOptions = {
   includeCommitBody?: any;
 };
 
-/** Shape for match options argument
+/** Shape for [[match]] options argument
  */
 
 type MatchOptions = {
@@ -5161,12 +5161,12 @@ type MatchOptions = {
   verbose: boolean;
 };
 
-/** Shape for minFastlaneVersion options argument
+/** Shape for [[minFastlaneVersion]] options argument
  */
 
 type MinFastlaneVersionOptions = {};
 
-/** Shape for modifyServices options argument
+/** Shape for [[modifyServices]] options argument
  */
 
 type ModifyServicesOptions = {
@@ -5192,7 +5192,7 @@ type ModifyServicesOptions = {
   teamName?: string;
 };
 
-/** Shape for nexusUpload options argument
+/** Shape for [[nexusUpload]] options argument
  */
 
 type NexusUploadOptions = {
@@ -5266,7 +5266,7 @@ type NexusUploadOptions = {
   proxyPort?: string;
 };
 
-/** Shape for notarize options argument
+/** Shape for [[notarize]] options argument
  */
 
 type NotarizeOptions = {
@@ -5300,7 +5300,7 @@ type NotarizeOptions = {
   verbose?: boolean;
 };
 
-/** Shape for notification options argument
+/** Shape for [[notification]] options argument
  */
 
 type NotificationOptions = {
@@ -5342,12 +5342,12 @@ type NotificationOptions = {
   execute?: string;
 };
 
-/** Shape for notify options argument
+/** Shape for [[notify]] options argument
  */
 
 type NotifyOptions = {};
 
-/** Shape for numberOfCommits options argument
+/** Shape for [[numberOfCommits]] options argument
  */
 
 type NumberOfCommitsOptions = {
@@ -5357,7 +5357,7 @@ type NumberOfCommitsOptions = {
   all?: any;
 };
 
-/** Shape for oclint options argument
+/** Shape for [[oclint]] options argument
  */
 
 type OclintOptions = {
@@ -5439,7 +5439,7 @@ type OclintOptions = {
   extraArg?: string;
 };
 
-/** Shape for onesignal options argument
+/** Shape for [[onesignal]] options argument
  */
 
 type OnesignalOptions = {
@@ -5477,17 +5477,17 @@ type OnesignalOptions = {
   apnsEnv?: string;
 };
 
-/** Shape for optOutCrashReporting options argument
+/** Shape for [[optOutCrashReporting]] options argument
  */
 
 type OptOutCrashReportingOptions = {};
 
-/** Shape for optOutUsage options argument
+/** Shape for [[optOutUsage]] options argument
  */
 
 type OptOutUsageOptions = {};
 
-/** Shape for pem options argument
+/** Shape for [[pem]] options argument
  */
 
 type PemOptions = {
@@ -5549,7 +5549,7 @@ type PemOptions = {
   newProfile?: any;
 };
 
-/** Shape for pilot options argument
+/** Shape for [[pilot]] options argument
  */
 
 type PilotOptions = {
@@ -5687,7 +5687,7 @@ type PilotOptions = {
   rejectBuildWaitingForReview: any;
 };
 
-/** Shape for podLibLint options argument
+/** Shape for [[podLibLint]] options argument
  */
 
 type PodLibLintOptions = {
@@ -5773,7 +5773,7 @@ type PodLibLintOptions = {
   analyze: boolean;
 };
 
-/** Shape for podPush options argument
+/** Shape for [[podPush]] options argument
  */
 
 type PodPushOptions = {
@@ -5823,7 +5823,7 @@ type PodPushOptions = {
   useModularHeaders?: boolean;
 };
 
-/** Shape for podioItem options argument
+/** Shape for [[podioItem]] options argument
  */
 
 type PodioItemOptions = {
@@ -5857,7 +5857,7 @@ type PodioItemOptions = {
   otherFields?: { string: string };
 };
 
-/** Shape for precheck options argument
+/** Shape for [[precheck]] options argument
  */
 
 type PrecheckOptions = {
@@ -5927,7 +5927,7 @@ type PrecheckOptions = {
   unreachableUrls?: any;
 };
 
-/** Shape for println options argument
+/** Shape for [[println]] options argument
  */
 
 type PrintlnOptions = {
@@ -5937,7 +5937,7 @@ type PrintlnOptions = {
   message?: string;
 };
 
-/** Shape for produce options argument
+/** Shape for [[produce]] options argument
  */
 
 type ProduceOptions = {
@@ -6019,7 +6019,7 @@ type ProduceOptions = {
   itcTeamName?: string;
 };
 
-/** Shape for prompt options argument
+/** Shape for [[prompt]] options argument
  */
 
 type PromptOptions = {
@@ -6045,7 +6045,7 @@ type PromptOptions = {
   multiLineEndKeyword?: string;
 };
 
-/** Shape for pushGitTags options argument
+/** Shape for [[pushGitTags]] options argument
  */
 
 type PushGitTagsOptions = {
@@ -6063,7 +6063,7 @@ type PushGitTagsOptions = {
   tag?: string;
 };
 
-/** Shape for pushToGitRemote options argument
+/** Shape for [[pushToGitRemote]] options argument
  */
 
 type PushToGitRemoteOptions = {
@@ -6101,7 +6101,7 @@ type PushToGitRemoteOptions = {
   setUpstream: boolean;
 };
 
-/** Shape for puts options argument
+/** Shape for [[puts]] options argument
  */
 
 type PutsOptions = {
@@ -6111,7 +6111,7 @@ type PutsOptions = {
   message?: string;
 };
 
-/** Shape for readPodspec options argument
+/** Shape for [[readPodspec]] options argument
  */
 
 type ReadPodspecOptions = {
@@ -6121,7 +6121,7 @@ type ReadPodspecOptions = {
   path: string;
 };
 
-/** Shape for recreateSchemes options argument
+/** Shape for [[recreateSchemes]] options argument
  */
 
 type RecreateSchemesOptions = {
@@ -6131,7 +6131,7 @@ type RecreateSchemesOptions = {
   project: string;
 };
 
-/** Shape for registerDevice options argument
+/** Shape for [[registerDevice]] options argument
  */
 
 type RegisterDeviceOptions = {
@@ -6157,7 +6157,7 @@ type RegisterDeviceOptions = {
   username: string;
 };
 
-/** Shape for registerDevices options argument
+/** Shape for [[registerDevices]] options argument
  */
 
 type RegisterDevicesOptions = {
@@ -6187,7 +6187,7 @@ type RegisterDevicesOptions = {
   platform?: string;
 };
 
-/** Shape for resetGitRepo options argument
+/** Shape for [[resetGitRepo]] options argument
  */
 
 type ResetGitRepoOptions = {
@@ -6213,7 +6213,7 @@ type ResetGitRepoOptions = {
   exclude?: any;
 };
 
-/** Shape for resetSimulatorContents options argument
+/** Shape for [[resetSimulatorContents]] options argument
  */
 
 type ResetSimulatorContentsOptions = {
@@ -6227,7 +6227,7 @@ type ResetSimulatorContentsOptions = {
   osVersions?: string[];
 };
 
-/** Shape for resign options argument
+/** Shape for [[resign]] options argument
  */
 
 type ResignOptions = {
@@ -6277,7 +6277,7 @@ type ResignOptions = {
   keychainPath?: string;
 };
 
-/** Shape for restoreFile options argument
+/** Shape for [[restoreFile]] options argument
  */
 
 type RestoreFileOptions = {
@@ -6287,12 +6287,12 @@ type RestoreFileOptions = {
   path: string;
 };
 
-/** Shape for rocket options argument
+/** Shape for [[rocket]] options argument
  */
 
 type RocketOptions = {};
 
-/** Shape for rsync options argument
+/** Shape for [[rsync]] options argument
  */
 
 type RsyncOptions = {
@@ -6310,12 +6310,12 @@ type RsyncOptions = {
   destination: string;
 };
 
-/** Shape for rubyVersion options argument
+/** Shape for [[rubyVersion]] options argument
  */
 
 type RubyVersionOptions = {};
 
-/** Shape for runTests options argument
+/** Shape for [[runTests]] options argument
  */
 
 type RunTestsOptions = {
@@ -6573,7 +6573,7 @@ type RunTestsOptions = {
   failBuild: any;
 };
 
-/** Shape for s3 options argument
+/** Shape for [[s3]] options argument
  */
 
 type S3Options = {
@@ -6643,7 +6643,7 @@ type S3Options = {
   acl?: string;
 };
 
-/** Shape for say options argument
+/** Shape for [[say]] options argument
  */
 
 type SayOptions = {
@@ -6657,7 +6657,7 @@ type SayOptions = {
   mute: boolean;
 };
 
-/** Shape for scan options argument
+/** Shape for [[scan]] options argument
  */
 
 type ScanOptions = {
@@ -6915,7 +6915,7 @@ type ScanOptions = {
   failBuild: any;
 };
 
-/** Shape for scp options argument
+/** Shape for [[scp]] options argument
  */
 
 type ScpOptions = {
@@ -6945,7 +6945,7 @@ type ScpOptions = {
   download?: { string: string };
 };
 
-/** Shape for screengrab options argument
+/** Shape for [[screengrab]] options argument
  */
 
 type ScreengrabOptions = {
@@ -7039,7 +7039,7 @@ type ScreengrabOptions = {
   adbHost?: string;
 };
 
-/** Shape for setBuildNumberRepository options argument
+/** Shape for [[setBuildNumberRepository]] options argument
  */
 
 type SetBuildNumberRepositoryOptions = {
@@ -7053,7 +7053,7 @@ type SetBuildNumberRepositoryOptions = {
   xcodeproj?: string;
 };
 
-/** Shape for setChangelog options argument
+/** Shape for [[setChangelog]] options argument
  */
 
 type SetChangelogOptions = {
@@ -7087,7 +7087,7 @@ type SetChangelogOptions = {
   platform: string;
 };
 
-/** Shape for setGithubRelease options argument
+/** Shape for [[setGithubRelease]] options argument
  */
 
 type SetGithubReleaseOptions = {
@@ -7133,7 +7133,7 @@ type SetGithubReleaseOptions = {
   uploadAssets?: string[];
 };
 
-/** Shape for setInfoPlistValue options argument
+/** Shape for [[setInfoPlistValue]] options argument
  */
 
 type SetInfoPlistValueOptions = {
@@ -7159,7 +7159,7 @@ type SetInfoPlistValueOptions = {
   outputFileName?: string;
 };
 
-/** Shape for setPodKey options argument
+/** Shape for [[setPodKey]] options argument
  */
 
 type SetPodKeyOptions = {
@@ -7181,7 +7181,7 @@ type SetPodKeyOptions = {
   project?: string;
 };
 
-/** Shape for setupCi options argument
+/** Shape for [[setupCi]] options argument
  */
 
 type SetupCiOptions = {
@@ -7195,7 +7195,7 @@ type SetupCiOptions = {
   provider?: string;
 };
 
-/** Shape for setupCircleCi options argument
+/** Shape for [[setupCircleCi]] options argument
  */
 
 type SetupCircleCiOptions = {
@@ -7205,7 +7205,7 @@ type SetupCircleCiOptions = {
   force: any;
 };
 
-/** Shape for setupJenkins options argument
+/** Shape for [[setupJenkins]] options argument
  */
 
 type SetupJenkinsOptions = {
@@ -7255,7 +7255,7 @@ type SetupJenkinsOptions = {
   resultBundle: any;
 };
 
-/** Shape for setupTravis options argument
+/** Shape for [[setupTravis]] options argument
  */
 
 type SetupTravisOptions = {
@@ -7265,7 +7265,7 @@ type SetupTravisOptions = {
   force: any;
 };
 
-/** Shape for sh options argument
+/** Shape for [[sh]] options argument
  */
 
 type ShOptions = {
@@ -7283,7 +7283,7 @@ type ShOptions = {
   errorCallback?: any;
 };
 
-/** Shape for sigh options argument
+/** Shape for [[sigh]] options argument
  */
 
 type SighOptions = {
@@ -7373,12 +7373,12 @@ type SighOptions = {
   failOnNameTaken?: any;
 };
 
-/** Shape for skipDocs options argument
+/** Shape for [[skipDocs]] options argument
  */
 
 type SkipDocsOptions = {};
 
-/** Shape for slack options argument
+/** Shape for [[slack]] options argument
  */
 
 type SlackOptions = {
@@ -7436,7 +7436,7 @@ type SlackOptions = {
   linkNames?: any;
 };
 
-/** Shape for slather options argument
+/** Shape for [[slather]] options argument
  */
 
 type SlatherOptions = {
@@ -7562,7 +7562,7 @@ type SlatherOptions = {
   decimals?: any;
 };
 
-/** Shape for snapshot options argument
+/** Shape for [[snapshot]] options argument
  */
 
 type SnapshotOptions = {
@@ -7736,7 +7736,7 @@ type SnapshotOptions = {
   disableXcpretty?: boolean;
 };
 
-/** Shape for sonar options argument
+/** Shape for [[sonar]] options argument
  */
 
 type SonarOptions = {
@@ -7802,7 +7802,7 @@ type SonarOptions = {
   pullRequestKey?: string;
 };
 
-/** Shape for spaceshipLogs options argument
+/** Shape for [[spaceshipLogs]] options argument
  */
 
 type SpaceshipLogsOptions = {
@@ -7828,7 +7828,7 @@ type SpaceshipLogsOptions = {
   copyToClipboard: boolean;
 };
 
-/** Shape for splunkmint options argument
+/** Shape for [[splunkmint]] options argument
  */
 
 type SplunkmintOptions = {
@@ -7870,7 +7870,7 @@ type SplunkmintOptions = {
   proxyPort?: string;
 };
 
-/** Shape for spm options argument
+/** Shape for [[spm]] options argument
  */
 
 type SpmOptions = {
@@ -7908,7 +7908,7 @@ type SpmOptions = {
   verbose: any;
 };
 
-/** Shape for ssh options argument
+/** Shape for [[ssh]] options argument
  */
 
 type SshOptions = {
@@ -7938,7 +7938,7 @@ type SshOptions = {
   log?: any;
 };
 
-/** Shape for supply options argument
+/** Shape for [[supply]] options argument
  */
 
 type SupplyOptions = {
@@ -8084,7 +8084,7 @@ type SupplyOptions = {
   obbPatchFileSize?: any;
 };
 
-/** Shape for swiftlint options argument
+/** Shape for [[swiftlint]] options argument
  */
 
 type SwiftlintOptions = {
@@ -8146,7 +8146,7 @@ type SwiftlintOptions = {
   compilerLogPath?: string;
 };
 
-/** Shape for syncCodeSigning options argument
+/** Shape for [[syncCodeSigning]] options argument
  */
 
 type SyncCodeSigningOptions = {
@@ -8300,17 +8300,17 @@ type SyncCodeSigningOptions = {
   verbose: boolean;
 };
 
-/** Shape for teamId options argument
+/** Shape for [[teamId]] options argument
  */
 
 type TeamIdOptions = {};
 
-/** Shape for teamName options argument
+/** Shape for [[teamName]] options argument
  */
 
 type TeamNameOptions = {};
 
-/** Shape for testfairy options argument
+/** Shape for [[testfairy]] options argument
  */
 
 type TestfairyOptions = {
@@ -8368,7 +8368,7 @@ type TestfairyOptions = {
   timeout?: any;
 };
 
-/** Shape for testflight options argument
+/** Shape for [[testflight]] options argument
  */
 
 type TestflightOptions = {
@@ -8506,7 +8506,7 @@ type TestflightOptions = {
   rejectBuildWaitingForReview: any;
 };
 
-/** Shape for tryouts options argument
+/** Shape for [[tryouts]] options argument
  */
 
 type TryoutsOptions = {
@@ -8540,7 +8540,7 @@ type TryoutsOptions = {
   status: any;
 };
 
-/** Shape for twitter options argument
+/** Shape for [[twitter]] options argument
  */
 
 type TwitterOptions = {
@@ -8566,12 +8566,12 @@ type TwitterOptions = {
   message: string;
 };
 
-/** Shape for typetalk options argument
+/** Shape for [[typetalk]] options argument
  */
 
 type TypetalkOptions = {};
 
-/** Shape for unlockKeychain options argument
+/** Shape for [[unlockKeychain]] options argument
  */
 
 type UnlockKeychainOptions = {
@@ -8593,7 +8593,7 @@ type UnlockKeychainOptions = {
   setDefault: any;
 };
 
-/** Shape for updateAppGroupIdentifiers options argument
+/** Shape for [[updateAppGroupIdentifiers]] options argument
  */
 
 type UpdateAppGroupIdentifiersOptions = {
@@ -8607,7 +8607,7 @@ type UpdateAppGroupIdentifiersOptions = {
   appGroupIdentifiers: any;
 };
 
-/** Shape for updateAppIdentifier options argument
+/** Shape for [[updateAppIdentifier]] options argument
  */
 
 type UpdateAppIdentifierOptions = {
@@ -8625,7 +8625,7 @@ type UpdateAppIdentifierOptions = {
   appIdentifier: string;
 };
 
-/** Shape for updateCodeSigningSettings options argument
+/** Shape for [[updateCodeSigningSettings]] options argument
  */
 
 type UpdateCodeSigningSettingsOptions = {
@@ -8667,7 +8667,7 @@ type UpdateCodeSigningSettingsOptions = {
   bundleIdentifier?: string;
 };
 
-/** Shape for updateFastlane options argument
+/** Shape for [[updateFastlane]] options argument
  */
 
 type UpdateFastlaneOptions = {
@@ -8681,7 +8681,7 @@ type UpdateFastlaneOptions = {
   nightly?: any;
 };
 
-/** Shape for updateIcloudContainerIdentifiers options argument
+/** Shape for [[updateIcloudContainerIdentifiers]] options argument
  */
 
 type UpdateIcloudContainerIdentifiersOptions = {
@@ -8695,7 +8695,7 @@ type UpdateIcloudContainerIdentifiersOptions = {
   icloudContainerIdentifiers: any;
 };
 
-/** Shape for updateInfoPlist options argument
+/** Shape for [[updateInfoPlist]] options argument
  */
 
 type UpdateInfoPlistOptions = {
@@ -8725,7 +8725,7 @@ type UpdateInfoPlistOptions = {
   block?: any;
 };
 
-/** Shape for updateKeychainAccessGroups options argument
+/** Shape for [[updateKeychainAccessGroups]] options argument
  */
 
 type UpdateKeychainAccessGroupsOptions = {
@@ -8739,7 +8739,7 @@ type UpdateKeychainAccessGroupsOptions = {
   identifiers: any;
 };
 
-/** Shape for updatePlist options argument
+/** Shape for [[updatePlist]] options argument
  */
 
 type UpdatePlistOptions = {
@@ -8753,7 +8753,7 @@ type UpdatePlistOptions = {
   block: any;
 };
 
-/** Shape for updateProjectCodeSigning options argument
+/** Shape for [[updateProjectCodeSigning]] options argument
  */
 
 type UpdateProjectCodeSigningOptions = {
@@ -8771,7 +8771,7 @@ type UpdateProjectCodeSigningOptions = {
   uuid: string;
 };
 
-/** Shape for updateProjectProvisioning options argument
+/** Shape for [[updateProjectProvisioning]] options argument
  */
 
 type UpdateProjectProvisioningOptions = {
@@ -8805,7 +8805,7 @@ type UpdateProjectProvisioningOptions = {
   codeSigningIdentity?: string;
 };
 
-/** Shape for updateProjectTeam options argument
+/** Shape for [[updateProjectTeam]] options argument
  */
 
 type UpdateProjectTeamOptions = {
@@ -8823,7 +8823,7 @@ type UpdateProjectTeamOptions = {
   teamid: string;
 };
 
-/** Shape for updateUrbanAirshipConfiguration options argument
+/** Shape for [[updateUrbanAirshipConfiguration]] options argument
  */
 
 type UpdateUrbanAirshipConfigurationOptions = {
@@ -8853,7 +8853,7 @@ type UpdateUrbanAirshipConfigurationOptions = {
   detectProvisioningMode?: boolean;
 };
 
-/** Shape for updateUrlSchemes options argument
+/** Shape for [[updateUrlSchemes]] options argument
  */
 
 type UpdateUrlSchemesOptions = {
@@ -8871,7 +8871,7 @@ type UpdateUrlSchemesOptions = {
   updateUrlSchemes?: any;
 };
 
-/** Shape for uploadSymbolsToCrashlytics options argument
+/** Shape for [[uploadSymbolsToCrashlytics]] options argument
  */
 
 type UploadSymbolsToCrashlyticsOptions = {
@@ -8909,7 +8909,7 @@ type UploadSymbolsToCrashlyticsOptions = {
   dsymWorkerThreads?: any;
 };
 
-/** Shape for uploadSymbolsToSentry options argument
+/** Shape for [[uploadSymbolsToSentry]] options argument
  */
 
 type UploadSymbolsToSentryOptions = {
@@ -8943,7 +8943,7 @@ type UploadSymbolsToSentryOptions = {
   dsymPaths?: any;
 };
 
-/** Shape for uploadToAppStore options argument
+/** Shape for [[uploadToAppStore]] options argument
  */
 
 type UploadToAppStoreOptions = {
@@ -9189,7 +9189,7 @@ type UploadToAppStoreOptions = {
   app: any;
 };
 
-/** Shape for uploadToPlayStore options argument
+/** Shape for [[uploadToPlayStore]] options argument
  */
 
 type UploadToPlayStoreOptions = {
@@ -9335,7 +9335,7 @@ type UploadToPlayStoreOptions = {
   obbPatchFileSize?: any;
 };
 
-/** Shape for uploadToPlayStoreInternalAppSharing options argument
+/** Shape for [[uploadToPlayStoreInternalAppSharing]] options argument
  */
 
 type UploadToPlayStoreInternalAppSharingOptions = {
@@ -9377,7 +9377,7 @@ type UploadToPlayStoreInternalAppSharingOptions = {
   timeout?: any;
 };
 
-/** Shape for uploadToTestflight options argument
+/** Shape for [[uploadToTestflight]] options argument
  */
 
 type UploadToTestflightOptions = {
@@ -9515,7 +9515,7 @@ type UploadToTestflightOptions = {
   rejectBuildWaitingForReview: any;
 };
 
-/** Shape for validatePlayStoreJsonKey options argument
+/** Shape for [[validatePlayStoreJsonKey]] options argument
  */
 
 type ValidatePlayStoreJsonKeyOptions = {
@@ -9537,7 +9537,7 @@ type ValidatePlayStoreJsonKeyOptions = {
   timeout?: any;
 };
 
-/** Shape for verifyBuild options argument
+/** Shape for [[verifyBuild]] options argument
  */
 
 type VerifyBuildOptions = {
@@ -9575,12 +9575,12 @@ type VerifyBuildOptions = {
   buildPath?: string;
 };
 
-/** Shape for verifyPodKeys options argument
+/** Shape for [[verifyPodKeys]] options argument
  */
 
 type VerifyPodKeysOptions = {};
 
-/** Shape for verifyXcode options argument
+/** Shape for [[verifyXcode]] options argument
  */
 
 type VerifyXcodeOptions = {
@@ -9590,7 +9590,7 @@ type VerifyXcodeOptions = {
   xcodePath: string;
 };
 
-/** Shape for versionBumpPodspec options argument
+/** Shape for [[versionBumpPodspec]] options argument
  */
 
 type VersionBumpPodspecOptions = {
@@ -9616,7 +9616,7 @@ type VersionBumpPodspecOptions = {
   requireVariablePrefix: boolean;
 };
 
-/** Shape for versionGetPodspec options argument
+/** Shape for [[versionGetPodspec]] options argument
  */
 
 type VersionGetPodspecOptions = {
@@ -9630,27 +9630,27 @@ type VersionGetPodspecOptions = {
   requireVariablePrefix: any;
 };
 
-/** Shape for xcarchive options argument
+/** Shape for [[xcarchive]] options argument
  */
 
 type XcarchiveOptions = {};
 
-/** Shape for xcbuild options argument
+/** Shape for [[xcbuild]] options argument
  */
 
 type XcbuildOptions = {};
 
-/** Shape for xcclean options argument
+/** Shape for [[xcclean]] options argument
  */
 
 type XccleanOptions = {};
 
-/** Shape for xcexport options argument
+/** Shape for [[xcexport]] options argument
  */
 
 type XcexportOptions = {};
 
-/** Shape for xcodeInstall options argument
+/** Shape for [[xcodeInstall]] options argument
  */
 
 type XcodeInstallOptions = {
@@ -9668,12 +9668,12 @@ type XcodeInstallOptions = {
   teamId?: string;
 };
 
-/** Shape for xcodeSelect options argument
+/** Shape for [[xcodeSelect]] options argument
  */
 
 type XcodeSelectOptions = {};
 
-/** Shape for xcodeServerGetAssets options argument
+/** Shape for [[xcodeServerGetAssets]] options argument
  */
 
 type XcodeServerGetAssetsOptions = {
@@ -9711,27 +9711,27 @@ type XcodeServerGetAssetsOptions = {
   trustSelfSignedCerts?: any;
 };
 
-/** Shape for xcodebuild options argument
+/** Shape for [[xcodebuild]] options argument
  */
 
 type XcodebuildOptions = {};
 
-/** Shape for xcov options argument
+/** Shape for [[xcov]] options argument
  */
 
 type XcovOptions = {};
 
-/** Shape for xctest options argument
+/** Shape for [[xctest]] options argument
  */
 
 type XctestOptions = {};
 
-/** Shape for xctool options argument
+/** Shape for [[xctool]] options argument
  */
 
 type XctoolOptions = {};
 
-/** Shape for xcversion options argument
+/** Shape for [[xcversion]] options argument
  */
 
 type XcversionOptions = {
@@ -9741,7 +9741,7 @@ type XcversionOptions = {
   version: string;
 };
 
-/** Shape for zip options argument
+/** Shape for [[zip]] options argument
  */
 
 type ZipOptions = {

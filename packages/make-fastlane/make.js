@@ -41,7 +41,7 @@ const interfaces = actions.map(({ action_name, options }) => {
     })
     .filter(Boolean);
   return `
-/** Shape for ${actionName} options argument
+/** Shape for [[${actionName}]] options argument
 */ 
 type ${interfaceName} = {
     ${optionsMembers
