@@ -17994,7 +17994,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `upload_to_app_store` action
+  /** Alias for the [[`uploadToAppStore`]] action
    */
   async appstore(options: AppstoreOptions): Promise<any> {
     const out = await this.doAction(
@@ -18067,7 +18067,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `gradle` action
+  /** Alias for the [[`gradle`]] action
    */
   async buildAndroidApp(options: BuildAndroidAppOptions): Promise<any> {
     const out = await this.doAction(
@@ -18134,7 +18134,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `capture_ios_screenshots` action
+  /** Alias for the [[`captureIosScreenshots`]] action
    */
   async captureScreenshots(options: CaptureScreenshotsOptions): Promise<any> {
     const out = await this.doAction(
@@ -18152,7 +18152,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `get_certificates` action
+  /** Alias for the [[`getCertificates`]] action
    */
   async cert(options: CertOptions): Promise<any> {
     const out = await this.doAction("cert", convertCertOptions(options));
@@ -18344,7 +18344,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `upload_to_app_store` action
+  /** Alias for the [[`uploadToAppStore`]] action
    */
   async deliver(options: DeliverOptions): Promise<any> {
     const out = await this.doAction("deliver", convertDeliverOptions(options));
@@ -18403,7 +18403,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("dsym_zip", convertDsymZipOptions(options));
     return out;
   }
-  /** Alias for the `puts` action
+  /** Alias for the [[`puts`]] action
    */
   async echo(options: EchoOptions): Promise<any> {
     const out = await this.doAction("echo", convertEchoOptions(options));
@@ -18482,7 +18482,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("erb", convertErbOptions(options));
     return out;
   }
-  /** Alias for the `min_fastlane_version` action
+  /** Alias for the [[`minFastlaneVersion`]] action
    */
   async fastlaneVersion(options: FastlaneVersionOptions): Promise<any> {
     const out = await this.doAction(
@@ -18506,7 +18506,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `frame_screenshots` action
+  /** Alias for the [[`frameScreenshots`]] action
    */
   async frameit(options: FrameitOptions): Promise<any> {
     const out = await this.doAction("frameit", convertFrameitOptions(options));
@@ -18690,7 +18690,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("gradle", convertGradleOptions(options));
     return out;
   }
-  /** Alias for the `build_app` action
+  /** Alias for the [[`buildApp`]] action
    */
   async gym(options: GymOptions): Promise<any> {
     const out = await this.doAction("gym", convertGymOptions(options));
@@ -18916,7 +18916,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `sync_code_signing` action
+  /** Alias for the [[`syncCodeSigning`]] action
    */
   async match(options: MatchOptions): Promise<any> {
     const out = await this.doAction("match", convertMatchOptions(options));
@@ -19017,13 +19017,13 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `get_push_certificate` action
+  /** Alias for the [[`getPushCertificate`]] action
    */
   async pem(options: PemOptions): Promise<any> {
     const out = await this.doAction("pem", convertPemOptions(options));
     return out;
   }
-  /** Alias for the `upload_to_testflight` action
+  /** Alias for the [[`uploadToTestflight`]] action
    */
   async pilot(options: PilotOptions): Promise<any> {
     const out = await this.doAction("pilot", convertPilotOptions(options));
@@ -19053,7 +19053,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `check_app_store_metadata` action
+  /** Alias for the [[`checkAppStoreMetadata`]] action
    */
   async precheck(options: PrecheckOptions): Promise<any> {
     const out = await this.doAction(
@@ -19062,13 +19062,13 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `puts` action
+  /** Alias for the [[`puts`]] action
    */
   async println(options: PrintlnOptions): Promise<any> {
     const out = await this.doAction("println", convertPrintlnOptions(options));
     return out;
   }
-  /** Alias for the `create_app_online` action
+  /** Alias for the [[`createAppOnline`]] action
    */
   async produce(options: ProduceOptions): Promise<any> {
     const out = await this.doAction("produce", convertProduceOptions(options));
@@ -19217,7 +19217,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("say", convertSayOptions(options));
     return out;
   }
-  /** Alias for the `run_tests` action
+  /** Alias for the [[`runTests`]] action
    */
   async scan(options: ScanOptions): Promise<any> {
     const out = await this.doAction("scan", convertScanOptions(options));
@@ -19229,7 +19229,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("scp", convertScpOptions(options));
     return out;
   }
-  /** Alias for the `capture_android_screenshots` action
+  /** Alias for the [[`captureAndroidScreenshots`]] action
    */
   async screengrab(options: ScreengrabOptions): Promise<any> {
     const out = await this.doAction(
@@ -19324,7 +19324,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("sh", convertShOptions(options));
     return out;
   }
-  /** Alias for the `get_provisioning_profile` action
+  /** Alias for the [[`getProvisioningProfile`]] action
    */
   async sigh(options: SighOptions): Promise<any> {
     const out = await this.doAction("sigh", convertSighOptions(options));
@@ -19351,7 +19351,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("slather", convertSlatherOptions(options));
     return out;
   }
-  /** Alias for the `capture_ios_screenshots` action
+  /** Alias for the [[`captureIosScreenshots`]] action
    */
   async snapshot(options: SnapshotOptions): Promise<any> {
     const out = await this.doAction(
@@ -19396,7 +19396,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("ssh", convertSshOptions(options));
     return out;
   }
-  /** Alias for the `upload_to_play_store` action
+  /** Alias for the [[`uploadToPlayStore`]] action
    */
   async supply(options: SupplyOptions): Promise<any> {
     const out = await this.doAction("supply", convertSupplyOptions(options));
@@ -19444,7 +19444,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `upload_to_testflight` action
+  /** Alias for the [[`uploadToTestflight`]] action
    */
   async testflight(options: TestflightOptions): Promise<any> {
     const out = await this.doAction(

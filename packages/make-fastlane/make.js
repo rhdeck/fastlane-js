@@ -101,6 +101,11 @@ const methods = actions.map(
   ({ action_name, description, return_type, sample_return_value, options }) => {
     const actionName = makeCamelCase(action_name);
     const optionsName = proper(actionName) + "Options";
+    if (/^Alias for the `.*` action$/.test(description)) {
+      const [_, rawAction, __] = description.split("`");
+      const formattedAction = makeCamelCase(rawAction);
+      description = [_, "[[`", formattedAction, "`]]", __].join("");
+    }
     const returnType = convertReturnType(return_type, "RETURN", action_name);
     const jsDoc = `/** ${description}
     */`;
