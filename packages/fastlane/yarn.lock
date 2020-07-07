@@ -104,10 +104,10 @@
     commander "^5.0.0"
     es6-deferred "^1.3.0"
 
-"@raydeck/livelink@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/@raydeck/livelink/-/livelink-1.3.4.tgz#301a3949960f3d9d770af4a7a1ae9b347105a1be"
-  integrity sha512-5vaJ4cuWG4o7a3UAomNBkEcS0GKIUAe+6oa8vfmBxtJNqDox21PagY/zf5BhA/ties+R7sgBgFgeFWKltG39gg==
+"@raydeck/livelink@^1.5.2":
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/@raydeck/livelink/-/livelink-1.5.2.tgz#7e251298bb4852ca8a72de16d137badc08e2d048"
+  integrity sha512-vnJgI8oUeaoJ4mKG4aOqKtMxS//8ImjBgWWzlDECt8lkj7tKmWvBjbiEpnpmcjjxs/a8G31dUews2fWISR/9BQ==
   dependencies:
     "@raydeck/wml" "^0.0.2"
     commander "^5.1.0"
