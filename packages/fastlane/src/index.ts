@@ -575,7 +575,7 @@ type AppstoreOptions = {
   /**
    * Extra information for the submission (e.g. compliance specifications, IDFA settings)
    */
-  submissionInformation?: any;
+  submissionInformation?: { string: string };
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
@@ -605,15 +605,15 @@ type AppstoreOptions = {
    */
   precheckDefaultRuleLevel: any;
   /**
-   * An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow
+   * **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow
    */
-  individualMetadataItems: string[];
+  individualMetadataItems?: string[];
   /**
-   * Metadata: The path to the app icon
+   * **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the app icon
    */
   appIcon?: string;
   /**
-   * Metadata: The path to the Apple Watch app icon
+   * **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the Apple Watch app icon
    */
   appleWatchAppIcon?: string;
   /**
@@ -2661,7 +2661,7 @@ type CreateAppOnlineOptions = {
    */
   platforms?: string[];
   /**
-   * Primary Language (e.g. 'English', 'German')
+   * Primary Language (e.g. 'en-US', 'fr-FR')
    */
   language: string;
   /**
@@ -2991,7 +2991,7 @@ type DeliverOptions = {
   /**
    * Extra information for the submission (e.g. compliance specifications, IDFA settings)
    */
-  submissionInformation?: any;
+  submissionInformation?: { string: string };
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
@@ -3021,15 +3021,15 @@ type DeliverOptions = {
    */
   precheckDefaultRuleLevel: any;
   /**
-   * An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow
+   * **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow
    */
-  individualMetadataItems: string[];
+  individualMetadataItems?: string[];
   /**
-   * Metadata: The path to the app icon
+   * **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the app icon
    */
   appIcon?: string;
   /**
-   * Metadata: The path to the Apple Watch app icon
+   * **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the Apple Watch app icon
    */
   appleWatchAppIcon?: string;
   /**
@@ -4054,6 +4054,44 @@ type GithubApiOptions = {
    * Optionally disable secure requests (ssl_verify_peer)
    */
   secure?: boolean;
+};
+
+/** Shape for [[googlePlayTrackReleaseNames]] options argument
+ */
+
+type GooglePlayTrackReleaseNamesOptions = {
+  /**
+   * The package name of the application to use
+   */
+  packageName: string;
+  /**
+   * The track of the application to use. The default available tracks are: production, beta, alpha, internal
+   */
+  track: string;
+  /**
+   * **DEPRECATED!** Use `--json_key` instead - The p12 File used to authenticate with Google
+   */
+  key?: string;
+  /**
+   * **DEPRECATED!** Use `--json_key` instead - The issuer of the p12 file (email address of the service account)
+   */
+  issuer?: string;
+  /**
+   * The path to a file containing service account JSON, used to authenticate with Google
+   */
+  jsonKey?: string;
+  /**
+   * The raw service account JSON data used to authenticate with Google
+   */
+  jsonKeyData?: string;
+  /**
+   * Root URL for the Google Play API. The provided URL will be used for API calls in place of https://www.googleapis.com/
+   */
+  rootUrl?: string;
+  /**
+   * Timeout for read, open, and send (in seconds)
+   */
+  timeout?: any;
 };
 
 /** Shape for [[googlePlayTrackVersionCodes]] options argument
@@ -5974,7 +6012,7 @@ type ProduceOptions = {
    */
   platforms?: string[];
   /**
-   * Primary Language (e.g. 'English', 'German')
+   * Primary Language (e.g. 'en-US', 'fr-FR')
    */
   language: string;
   /**
@@ -7513,6 +7551,10 @@ type SlatherOptions = {
    */
   llvmCov?: any;
   /**
+   * Tell slather that it should output results as static JSON report
+   */
+  json?: boolean;
+  /**
    * Tell slather that it should output results as static HTML pages
    */
   html?: boolean;
@@ -7894,6 +7936,10 @@ type SpmOptions = {
    * Build with configuration (debug|release) [default: debug]
    */
   configuration?: string;
+  /**
+   * Disable using the sandbox when executing subprocesses
+   */
+  disableSandbox?: any;
   /**
    * Specifies the output type for xcpretty. eg. 'test', or 'simple'
    */
@@ -9050,7 +9096,7 @@ type UploadToAppStoreOptions = {
   /**
    * Extra information for the submission (e.g. compliance specifications, IDFA settings)
    */
-  submissionInformation?: any;
+  submissionInformation?: { string: string };
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
@@ -9080,15 +9126,15 @@ type UploadToAppStoreOptions = {
    */
   precheckDefaultRuleLevel: any;
   /**
-   * An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow
+   * **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - An array of localized metadata items to upload individually by language so that errors can be identified. E.g. ['name', 'keywords', 'description']. Note: slow
    */
-  individualMetadataItems: string[];
+  individualMetadataItems?: string[];
   /**
-   * Metadata: The path to the app icon
+   * **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the app icon
    */
   appIcon?: string;
   /**
-   * Metadata: The path to the Apple Watch app icon
+   * **DEPRECATED!** Removed after the migration to the new App Store Connect API in June 2020 - Metadata: The path to the Apple Watch app icon
    */
   appleWatchAppIcon?: string;
   /**
@@ -10169,7 +10215,7 @@ type convertedAppstoreOptions = {
   reset_ratings?: any;
   price_tier?: any;
   app_rating_config_path?: string;
-  submission_information?: any;
+  submission_information?: { string: string };
   team_id?: any;
   team_name?: string;
   dev_portal_team_id?: string;
@@ -10177,7 +10223,7 @@ type convertedAppstoreOptions = {
   itc_provider?: string;
   run_precheck_before_submit: any;
   precheck_default_rule_level: any;
-  individual_metadata_items: string[];
+  individual_metadata_items?: string[];
   app_icon?: string;
   apple_watch_app_icon?: string;
   copyright?: string;
@@ -10224,7 +10270,6 @@ function convertAppstoreOptions(
     automatic_release: options.automaticRelease,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
-    individual_metadata_items: options.individualMetadataItems,
     ignore_language_directory_validation:
       options.ignoreLanguageDirectoryValidation,
     app: options.app,
@@ -10266,6 +10311,8 @@ function convertAppstoreOptions(
     temp["dev_portal_team_name"] = options.devPortalTeamName;
   if (typeof options.itcProvider !== "undefined")
     temp["itc_provider"] = options.itcProvider;
+  if (typeof options.individualMetadataItems !== "undefined")
+    temp["individual_metadata_items"] = options.individualMetadataItems;
   if (typeof options.appIcon !== "undefined")
     temp["app_icon"] = options.appIcon;
   if (typeof options.appleWatchAppIcon !== "undefined")
@@ -12054,7 +12101,7 @@ type convertedDeliverOptions = {
   reset_ratings?: any;
   price_tier?: any;
   app_rating_config_path?: string;
-  submission_information?: any;
+  submission_information?: { string: string };
   team_id?: any;
   team_name?: string;
   dev_portal_team_id?: string;
@@ -12062,7 +12109,7 @@ type convertedDeliverOptions = {
   itc_provider?: string;
   run_precheck_before_submit: any;
   precheck_default_rule_level: any;
-  individual_metadata_items: string[];
+  individual_metadata_items?: string[];
   app_icon?: string;
   apple_watch_app_icon?: string;
   copyright?: string;
@@ -12109,7 +12156,6 @@ function convertDeliverOptions(
     automatic_release: options.automaticRelease,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
-    individual_metadata_items: options.individualMetadataItems,
     ignore_language_directory_validation:
       options.ignoreLanguageDirectoryValidation,
     app: options.app,
@@ -12151,6 +12197,8 @@ function convertDeliverOptions(
     temp["dev_portal_team_name"] = options.devPortalTeamName;
   if (typeof options.itcProvider !== "undefined")
     temp["itc_provider"] = options.itcProvider;
+  if (typeof options.individualMetadataItems !== "undefined")
+    temp["individual_metadata_items"] = options.individualMetadataItems;
   if (typeof options.appIcon !== "undefined")
     temp["app_icon"] = options.appIcon;
   if (typeof options.appleWatchAppIcon !== "undefined")
@@ -13086,6 +13134,38 @@ function convertGithubApiOptions(
     temp["error_handlers"] = options.errorHandlers;
   if (typeof options.headers !== "undefined") temp["headers"] = options.headers;
   if (typeof options.secure !== "undefined") temp["secure"] = options.secure;
+  return temp;
+}
+
+/** @ignore */
+type convertedGooglePlayTrackReleaseNamesOptions = {
+  package_name: string;
+  track: string;
+  key?: string;
+  issuer?: string;
+  json_key?: string;
+  json_key_data?: string;
+  root_url?: string;
+  timeout?: any;
+};
+/** @ignore Convert GooglePlayTrackReleaseNamesOptions to the shape used by the Fastlane service
+ */
+function convertGooglePlayTrackReleaseNamesOptions(
+  options: GooglePlayTrackReleaseNamesOptions
+): convertedGooglePlayTrackReleaseNamesOptions {
+  const temp: convertedGooglePlayTrackReleaseNamesOptions = {
+    package_name: options.packageName,
+    track: options.track,
+  };
+  if (typeof options.key !== "undefined") temp["key"] = options.key;
+  if (typeof options.issuer !== "undefined") temp["issuer"] = options.issuer;
+  if (typeof options.jsonKey !== "undefined")
+    temp["json_key"] = options.jsonKey;
+  if (typeof options.jsonKeyData !== "undefined")
+    temp["json_key_data"] = options.jsonKeyData;
+  if (typeof options.rootUrl !== "undefined")
+    temp["root_url"] = options.rootUrl;
+  if (typeof options.timeout !== "undefined") temp["timeout"] = options.timeout;
   return temp;
 }
 
@@ -15928,6 +16008,7 @@ type convertedSlatherOptions = {
   cobertura_xml?: boolean;
   sonarqube_xml?: boolean;
   llvm_cov?: any;
+  json?: boolean;
   html?: boolean;
   show: boolean;
   source_directory?: string;
@@ -15983,6 +16064,7 @@ function convertSlatherOptions(
     temp["sonarqube_xml"] = options.sonarqubeXml;
   if (typeof options.llvmCov !== "undefined")
     temp["llvm_cov"] = options.llvmCov;
+  if (typeof options.json !== "undefined") temp["json"] = options.json;
   if (typeof options.html !== "undefined") temp["html"] = options.html;
   if (typeof options.sourceDirectory !== "undefined")
     temp["source_directory"] = options.sourceDirectory;
@@ -16241,6 +16323,7 @@ type convertedSpmOptions = {
   package_path?: string;
   xcconfig?: string;
   configuration?: string;
+  disable_sandbox?: any;
   xcpretty_output?: string;
   xcpretty_args?: string;
   verbose: any;
@@ -16260,6 +16343,8 @@ function convertSpmOptions(options: SpmOptions): convertedSpmOptions {
     temp["xcconfig"] = options.xcconfig;
   if (typeof options.configuration !== "undefined")
     temp["configuration"] = options.configuration;
+  if (typeof options.disableSandbox !== "undefined")
+    temp["disable_sandbox"] = options.disableSandbox;
   if (typeof options.xcprettyOutput !== "undefined")
     temp["xcpretty_output"] = options.xcprettyOutput;
   if (typeof options.xcprettyArgs !== "undefined")
@@ -17188,7 +17273,7 @@ type convertedUploadToAppStoreOptions = {
   reset_ratings?: any;
   price_tier?: any;
   app_rating_config_path?: string;
-  submission_information?: any;
+  submission_information?: { string: string };
   team_id?: any;
   team_name?: string;
   dev_portal_team_id?: string;
@@ -17196,7 +17281,7 @@ type convertedUploadToAppStoreOptions = {
   itc_provider?: string;
   run_precheck_before_submit: any;
   precheck_default_rule_level: any;
-  individual_metadata_items: string[];
+  individual_metadata_items?: string[];
   app_icon?: string;
   apple_watch_app_icon?: string;
   copyright?: string;
@@ -17243,7 +17328,6 @@ function convertUploadToAppStoreOptions(
     automatic_release: options.automaticRelease,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
-    individual_metadata_items: options.individualMetadataItems,
     ignore_language_directory_validation:
       options.ignoreLanguageDirectoryValidation,
     app: options.app,
@@ -17285,6 +17369,8 @@ function convertUploadToAppStoreOptions(
     temp["dev_portal_team_name"] = options.devPortalTeamName;
   if (typeof options.itcProvider !== "undefined")
     temp["itc_provider"] = options.itcProvider;
+  if (typeof options.individualMetadataItems !== "undefined")
+    temp["individual_metadata_items"] = options.individualMetadataItems;
   if (typeof options.appIcon !== "undefined")
     temp["app_icon"] = options.appIcon;
   if (typeof options.appleWatchAppIcon !== "undefined")
@@ -18670,6 +18756,17 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction(
       "github_api",
       convertGithubApiOptions(options)
+    );
+    return out;
+  }
+  /** Retrieves release names for a Google Play track
+   */
+  async googlePlayTrackReleaseNames(
+    options: GooglePlayTrackReleaseNamesOptions
+  ): Promise<any> {
+    const out = await this.doAction(
+      "google_play_track_release_names",
+      convertGooglePlayTrackReleaseNamesOptions(options)
     );
     return out;
   }
