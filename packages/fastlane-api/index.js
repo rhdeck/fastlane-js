@@ -1,7 +1,13 @@
 #!/usr/bin/env node
 const mustache = require("mustache");
 const { join } = require("path");
-const { readFileSync, writeFileSync, mkdirSync, existsSync } = require("fs");
+const {
+  readFileSync,
+  writeFileSync,
+  mkdirSync,
+  existsSync,
+  unlinkSync,
+} = require("fs");
 const { codegen } = require(join(__dirname, "package.json"));
 const { spawnSync } = require("child_process");
 const tmp = require("tmp");
@@ -12,6 +18,8 @@ const getFastlaneAPI = ({ debug } = {}) => {
     join(__dirname, "templates", "Fastfile.mustache"),
     { encoding: "utf8" }
   );
+  if (existsSync(join(__dirname, "Gemfile.lock")))
+    unlinkSync(join(__dirname, "Gemfile.lock"));
   const fastlanepath = join(__dirname, "fastlane");
   if (!existsSync(fastlanepath)) mkdirSync(fastlanepath);
   const target = join(fastlanepath, "Fastfile");
