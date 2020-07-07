@@ -23,6 +23,7 @@ const convertType = (return_type, key, action_name) => {
 const convertReturnType = (return_type, key, action_name) => {
   return convertType(return_type, key, action_name);
 };
+//#region @DELETE
 const interfaces = actions.map(({ action_name, options }) => {
   const actionName = makeCamelCase(action_name);
   const interfaceName = proper(actionName) + "Options";
@@ -97,6 +98,7 @@ function convert${interfaceName}(options: ${interfaceName}):converted${interface
   return temp; 
 }`;
 });
+//#endregion
 const methods = actions.map(
   ({ action_name, description, return_type, sample_return_value, options }) => {
     const actionName = makeCamelCase(action_name);
@@ -106,15 +108,50 @@ const methods = actions.map(
       const formattedAction = makeCamelCase(rawAction);
       description = [_, "[[`", formattedAction, "`]]", __].join("");
     }
+    const optionsDestruct = `{${options
+      .filter(({ key }) => key)
+      .map(({ key, default_value, data_type, optional }) => {
+        const optionName = makeCamelCase(key);
+        const type = convertType(data_type, key, action_name);
+        return `${optionName}:_${optionName} ${
+          default_value
+            ? ["string", "any"].includes(type)
+              ? `="${default_value}"`
+              : ""
+            : ""
+        }`;
+      })
+      .join(",")}}`;
+    const optionsSignature = `{${options
+      .filter(({ key }) => key)
+      .map(({ key, default_value, data_type, optional, description }) => {
+        const optionName = makeCamelCase(key);
+        const type = convertType(data_type, key, action_name);
+        return `
+        /** 
+         * ${description}
+         * */
+        ${optionName}${optional ? "?" : ""}: ${type}`;
+      })}}`;
     const returnType = convertReturnType(return_type, "RETURN", action_name);
     const jsDoc = `/** ${description}
     */`;
-    const functionBody = `async ${actionName}(options: ${optionsName}):Promise<${returnType}> {
-      const out = await this.doAction('${action_name}', convert${optionsName}(options));
-      ${(returnType !== "void" && "return out;") || ""}
-    }`;
-    return [jsDoc, functionBody].join("\n");
-    //Deploy
+    const signature = `async ${actionName}(options: ${optionsSignature}):Promise<${returnType}> {`;
+    const converter = `const convertedOptions = { ${options
+      .filter(({ key }) => key)
+
+      .map(({ key }) => {
+        const optionName = makeCamelCase(key);
+        return `"${key}": options.${optionName}`;
+      })
+      .join(",")}}`;
+    const closer = `
+    ${
+      returnType !== "void" && "const out = "
+    }await this.doAction('${action_name}', convertedOptions);
+    ${(returnType !== "void" && "return out;") || ""}
+  }`;
+    return [jsDoc, signature, converter, closer].join("\n");
   }
 );
 imports = `
@@ -144,8 +181,8 @@ export default Fastlane;
 export {Fastlane, withFastlane}`;
 const base = [
   imports,
-  ...interfaces,
-  ...converters,
+  // ...interfaces,
+  // ...converters,
   prepend,
   ...methods,
   postpend,
