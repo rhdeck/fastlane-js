@@ -45,9 +45,14 @@ const interfaces = actions.map(({ action_name, options }) => {
 */ 
 type ${interfaceName} = {
     ${optionsMembers
-      .map(({ name, type, optional, description }) => {
+      .map(({ name, type, optional, description, default_value }) => {
         return `/**
-* ${description}
+* ${description}${
+          default_value
+            ? `
+* @default ${default_value}`
+            : ""
+        }
 */
   ${name}${optional ? "?" : ""}: ${type};`;
       })
@@ -98,7 +103,15 @@ function convert${interfaceName}(options: ${interfaceName}):converted${interface
 }`;
 });
 const methods = actions.map(
-  ({ action_name, description, return_type, sample_return_value, options }) => {
+  ({
+    action_name,
+    description,
+    return_type,
+    return_value,
+    sample_return_value,
+    options,
+    details,
+  }) => {
     const actionName = makeCamelCase(action_name);
     const optionsName = proper(actionName) + "Options";
     if (/^Alias for the `.*` action$/.test(description)) {
@@ -107,7 +120,14 @@ const methods = actions.map(
       description = [_, "[[`", formattedAction, "`]]", __].join("");
     }
     const returnType = convertReturnType(return_type, "RETURN", action_name);
-    const jsDoc = `/** ${description}
+    const jsDoc = `/** ${details ? details : description}${
+      return_value
+        ? `
+    * @return ${return_value} ${
+            sample_return_value ? `(ex: ${sample_return_value})` : ""
+          }`
+        : ""
+    }
     */`;
     const functionBody = `async ${actionName}(options: ${optionsName}):Promise<${returnType}> {
       const out = await this.doAction('${action_name}', convert${optionsName}(options));

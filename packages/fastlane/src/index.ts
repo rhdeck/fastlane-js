@@ -17994,13 +17994,15 @@ function convertZipOptions(options: ZipOptions): convertedZipOptions {
 /** Main Class
  */
 class Fastlane extends FastlaneBase {
-  /** Run ADB Actions
+  /** see adb --help for more details
+   * @return The output of the adb command
    */
   async adb(options: AdbOptions): Promise<string> {
     const out = await this.doAction("adb", convertAdbOptions(options));
     return out;
   }
-  /** Get an array of Connected android device serials
+  /** Fetches device list via adb, e.g. run an adb command on all connected devices.
+   * @return Returns an array of all currently connected android devices (ex: )
    */
   async adbDevices(options: AdbDevicesOptions): Promise<any> {
     const out = await this.doAction(
@@ -18018,8 +18020,16 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** This will add an annotated git tag to the current branch
-   */
+  /** This will automatically tag your build with the following format: `<grouping>/<lane>/<prefix><build_number>`, where:|
+|
+>- `grouping` is just to keep your tags organised under one 'folder', defaults to 'builds'|
+- `lane` is the name of the current fastlane lane|
+- `prefix` is anything you want to stick in front of the version number, e.g. 'v'|
+- `postfix` is anything you want to stick at the end of the version number, e.g. '-RC1'|
+- `build_number` is the build number, which defaults to the value emitted by the `increment_build_number` action|
+>|
+For example, for build 1234 in the 'appstore' lane, it will tag the commit with `builds/appstore/1234`.
+    */
   async addGitTag(options: AddGitTagOptions): Promise<any> {
     const out = await this.doAction(
       "add_git_tag",
@@ -18027,8 +18037,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Returns the current build_number of either live or edit version
-   */
+  /** Returns the current build number of either the live or testflight version - it is useful for getting the build_number of the current or ready-for-sale app version, and it also works on non-live testflight version.
+If you need to handle more build-trains please see `latest_testflight_build_number`.
+    */
   async appStoreBuildNumber(options: AppStoreBuildNumberOptions): Promise<any> {
     const out = await this.doAction(
       "app_store_build_number",
@@ -18036,8 +18047,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Upload your app to [Appaloosa Store](https://www.appaloosa-store.com/)
-   */
+  /** Appaloosa is a private mobile application store. This action offers a quick deployment on the platform.
+You can create an account, push to your existing account, or manage your user groups.
+We accept iOS and Android applications.
+    */
   async appaloosa(options: AppaloosaOptions): Promise<any> {
     const out = await this.doAction(
       "appaloosa",
@@ -18045,8 +18058,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Upload your app to [Appetize.io](https://appetize.io/) to stream it in browser
-   */
+  /** If you provide a `public_key`, this will overwrite an existing application. If you want to have this build as a new app version, you shouldn't provide this value.
+
+To integrate appetize into your GitHub workflow check out the [device_grid guide](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/device_grid/README.md).
+    */
   async appetize(options: AppetizeOptions): Promise<any> {
     const out = await this.doAction(
       "appetize",
@@ -18054,7 +18069,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Generate an URL for appetize simulator
+  /** Check out the [device_grid guide](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/device_grid/README.md) for more information
+   * @return The URL to preview the iPhone app
    */
   async appetizeViewingUrlGenerator(
     options: AppetizeViewingUrlGeneratorOptions
@@ -18071,7 +18087,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("appium", convertAppiumOptions(options));
     return out;
   }
-  /** Generate Apple-like source code documentation from the source code
+  /** Runs `appledoc [OPTIONS] <paths to source dirs or files>` for the project
    */
   async appledoc(options: AppledocOptions): Promise<any> {
     const out = await this.doAction(
@@ -18080,8 +18096,13 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the [[`uploadToAppStore`]] action
-   */
+  /** Using _upload_to_app_store_ after _build_app_ and _capture_screenshots_ will automatically upload the latest ipa and screenshots with no other configuration.
+
+If you don't want a PDF report for App Store builds, use the `:force` option.
+This is useful when running _fastlane_ on your Continuous Integration server:
+`_upload_to_app_store_(force: true)`
+If your account is on multiple teams and you need to tell the `iTMSTransporter` which 'provider' to use, you can set the `:itc_provider` option to pass this info.
+    */
   async appstore(options: AppstoreOptions): Promise<any> {
     const out = await this.doAction(
       "appstore",
@@ -18107,7 +18128,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Configures Xcode's Codesigning options
+  /** Configures Xcode's Codesigning options of all targets in the project
+   * @return The current status (boolean) of codesigning after modification
    */
   async automaticCodeSigning(
     options: AutomaticCodeSigningOptions
@@ -18136,14 +18158,19 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Automatically add a badge to your app icon
-   */
+  /** Please use the [badge plugin](https://github.com/HazAT/fastlane-plugin-badge) instead.
+This action will add a light/dark badge onto your app icon.
+You can also provide your custom badge/overlay or add a shield for more customization.
+More info: [https://github.com/HazAT/badge](https://github.com/HazAT/badge)
+**Note**: If you want to reset the badge back to default, you can use `sh 'git checkout -- <path>/Assets.xcassets/'`.
+    */
   async badge(options: BadgeOptions): Promise<any> {
     const out = await this.doAction("badge", convertBadgeOptions(options));
     return out;
   }
-  /** Generate and upload an ipa file to appetize.io
-   */
+  /** This should be called from danger.
+More information in the [device_grid guide](https://github.com/fastlane/fastlane/blob/master/fastlane/lib/fastlane/actions/device_grid/README.md).
+    */
   async buildAndUploadToAppetize(
     options: BuildAndUploadToAppetizeOptions
   ): Promise<any> {
@@ -18153,7 +18180,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the [[`gradle`]] action
+  /** Run `./gradlew tasks` to get a list of all available gradle tasks for your project
+   * @return The output of running the gradle task
    */
   async buildAndroidApp(options: BuildAndroidAppOptions): Promise<any> {
     const out = await this.doAction(
@@ -18162,7 +18190,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Easily build and sign your app (via _gym_)
+  /** More information: https://fastlane.tools/gym
+   * @return The absolute path to the generated ipa file
    */
   async buildApp(options: BuildAppOptions): Promise<any> {
     const out = await this.doAction(
@@ -18171,7 +18200,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `build_app` action but only for iOS
+  /** More information: https://fastlane.tools/gym
+   * @return The absolute path to the generated ipa file
    */
   async buildIosApp(options: BuildIosAppOptions): Promise<any> {
     const out = await this.doAction(
@@ -18180,7 +18210,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the `build_app` action but only for macOS
+  /** More information: https://fastlane.tools/gym
+   * @return The absolute path to the generated ipa file
    */
   async buildMacApp(options: BuildMacAppOptions): Promise<any> {
     const out = await this.doAction(
@@ -18238,13 +18269,15 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the [[`getCertificates`]] action
-   */
+  /** **Important**: It is recommended to use [match](https://docs.fastlane.tools/actions/match/) according to the [codesigning.guide](https://codesigning.guide) for generating and maintaining your certificates. Use _cert_ directly only if you want full control over what's going on and know more about codesigning.
+Use this action to download the latest code signing identity.
+    */
   async cert(options: CertOptions): Promise<any> {
     const out = await this.doAction("cert", convertCertOptions(options));
     return out;
   }
-  /** Collect git commit messages into a changelog
+  /** By default, messages will be collected back to the last tag, but the range can be controlled
+   * @return Returns a String containing your formatted git commits
    */
   async changelogFromGitCommits(
     options: ChangelogFromGitCommitsOptions
@@ -18255,7 +18288,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Send a success/error message to [ChatWork](https://go.chatwork.com/)
+  /** Information on how to obtain an API token: [http://developer.chatwork.com/ja/authenticate.html](http://developer.chatwork.com/ja/authenticate.html)
    */
   async chatwork(options: ChatworkOptions): Promise<any> {
     const out = await this.doAction(
@@ -18264,7 +18297,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Check your app's metadata before you submit your app to review (via _precheck_)
+  /** More information: https://fastlane.tools/precheck
+   * @return true if precheck passes, else, false
    */
   async checkAppStoreMetadata(
     options: CheckAppStoreMetadataOptions
@@ -18275,8 +18309,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Deletes files created as result of running gym, cert, sigh or download_dsyms
-   */
+  /** This action deletes the files that get created in your repo as a result of running the _gym_ and _sigh_ commands. It doesn't delete the `fastlane/report.xml` though, this is probably more suited for the .gitignore.
+
+Useful if you quickly want to send out a test build by dropping down to the command line and typing something like `fastlane beta`, without leaving your repo in a messy state afterwards.
+    */
   async cleanBuildArtifacts(options: CleanBuildArtifactsOptions): Promise<any> {
     const out = await this.doAction(
       "clean_build_artifacts",
@@ -18293,7 +18329,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Deletes the Xcode Derived Data
+  /** Deletes the Derived Data from path set on Xcode or a supplied path
    */
   async clearDerivedData(options: ClearDerivedDataOptions): Promise<any> {
     const out = await this.doAction(
@@ -18311,13 +18347,14 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Generates a Code Count that can be read by Jenkins (xml format)
-   */
+  /** This action will run cloc to generate a SLOC report that the Jenkins SLOCCount plugin can read.
+See [https://wiki.jenkins-ci.org/display/JENKINS/SLOCCount+Plugin](https://wiki.jenkins-ci.org/display/JENKINS/SLOCCount+Plugin) and [https://github.com/AlDanial/cloc](https://github.com/AlDanial/cloc) for more information.
+    */
   async cloc(options: ClocOptions): Promise<any> {
     const out = await this.doAction("cloc", convertClocOptions(options));
     return out;
   }
-  /** Runs `pod install` for the project
+  /** If you use [CocoaPods](http://cocoapods.org) you can use the `cocoapods` integration to run `pod install` before building your app.
    */
   async cocoapods(options: CocoapodsOptions): Promise<any> {
     const out = await this.doAction(
@@ -18326,8 +18363,12 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** This will commit a file directly on GitHub via the API
-   */
+  /** Commits a file directly to GitHub. You must provide your GitHub Personal token (get one from [https://github.com/settings/tokens/new](https://github.com/settings/tokens/new)), the repository name and the relative file path from the root git project.
+Out parameters provide the commit sha created, which can be used for later usage for examples such as releases, the direct download link and the full response JSON.
+Documentation: [https://developer.github.com/v3/repos/contents/#create-a-file](https://developer.github.com/v3/repos/contents/#create-a-file).
+    * @return A hash containing all relevant information for this commit
+Access things like 'html_url', 'sha', 'message' 
+    */
   async commitGithubFile(options: CommitGithubFileOptions): Promise<any> {
     const out = await this.doAction(
       "commit_github_file",
@@ -18335,8 +18376,16 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Creates a 'Version Bump' commit. Run after `increment_build_number`
-   */
+  /** This action will create a 'Version Bump' commit in your repo. Useful in conjunction with `increment_build_number`.
+It checks the repo to make sure that only the relevant files have changed. These are the files that `increment_build_number` (`agvtool`) touches:|
+|
+>- All `.plist` files|
+- The `.xcodeproj/project.pbxproj` file|
+>|
+Then commits those files to the repo.
+Customize the message with the `:message` option. It defaults to 'Version Bump'.
+If you have other uncommitted changes in your repo, this action will fail. If you started off in a clean repo, and used the _ipa_ and or _sigh_ actions, then you can use the [clean_build_artifacts](https://docs.fastlane.tools/actions/clean_build_artifacts/) action to clean those temporary files up before running this action.
+    */
   async commitVersionBump(options: CommitVersionBumpOptions): Promise<any> {
     const out = await this.doAction(
       "commit_version_bump",
@@ -18344,8 +18393,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Copy and save your build artifacts (useful when you use reset_git_repo)
-   */
+  /** This action copies artifacts to a target directory. It's useful if you have a CI that will pick up these artifacts and attach them to the build. Useful e.g. for storing your `.ipa`s, `.dSYM.zip`s, `.mobileprovision`s, `.cert`s.
+Make sure your `:target_path` is ignored from git, and if you use `reset_git_repo`, make sure the artifacts are added to the exclude list.
+    */
   async copyArtifacts(options: CopyArtifactsOptions): Promise<any> {
     const out = await this.doAction(
       "copy_artifacts",
@@ -18353,8 +18403,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Refer to [Firebase App Distribution](https://appdistro.page.link/fastlane-repo)
-   */
+  /** Additionally, you can specify `notes`, `emails`, `groups` and `notifications`.
+Distributing to Groups: When using the `groups` parameter, it's important to use the group **alias** names for each group you'd like to distribute to. A group's alias can be found in the web UI. If you're viewing the Beta page, you can open the groups dialog by clicking the 'Manage Groups' button.
+This action uses the `submit` binary provided by the Crashlytics framework. If the binary is not found in its usual path, you'll need to specify the path manually by using the `crashlytics_path` option.
+    */
   async crashlytics(options: CrashlyticsOptions): Promise<any> {
     const out = await this.doAction(
       "crashlytics",
@@ -18362,7 +18414,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Create Managed Google Play Apps
+  /** Create new apps on Managed Google Play.
    */
   async createAppOnManagedPlayStore(
     options: CreateAppOnManagedPlayStoreOptions
@@ -18373,8 +18425,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Creates the given application on iTC and the Dev Portal (via _produce_)
-   */
+  /** Create new apps on App Store Connect and Apple Developer Portal via _produce_.
+If the app already exists, `create_app_online` will not do anything.
+For more information about _produce_, visit its documentation page: [https://docs.fastlane.tools/actions/produce/](https://docs.fastlane.tools/actions/produce/).
+    */
   async createAppOnline(options: CreateAppOnlineOptions): Promise<any> {
     const out = await this.doAction(
       "create_app_online",
@@ -18392,6 +18446,7 @@ class Fastlane extends FastlaneBase {
     return out;
   }
   /** This will create a new pull request on GitHub
+   * @return The pull request URL when successful
    */
   async createPullRequest(options: CreatePullRequestOptions): Promise<any> {
     const out = await this.doAction(
@@ -18400,8 +18455,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Runs `danger` for the project
-   */
+  /** Formalize your Pull Request etiquette.
+More information: [https://github.com/danger/danger](https://github.com/danger/danger).
+    */
   async danger(options: DangerOptions): Promise<any> {
     const out = await this.doAction("danger", convertDangerOptions(options));
     return out;
@@ -18421,7 +18477,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Delete keychains and remove them from the search list
+  /** Keychains can be deleted after being created with `create_keychain`
    */
   async deleteKeychain(options: DeleteKeychainOptions): Promise<any> {
     const out = await this.doAction(
@@ -18430,14 +18486,20 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the [[`uploadToAppStore`]] action
-   */
+  /** Using _upload_to_app_store_ after _build_app_ and _capture_screenshots_ will automatically upload the latest ipa and screenshots with no other configuration.
+
+If you don't want a PDF report for App Store builds, use the `:force` option.
+This is useful when running _fastlane_ on your Continuous Integration server:
+`_upload_to_app_store_(force: true)`
+If your account is on multiple teams and you need to tell the `iTMSTransporter` which 'provider' to use, you can set the `:itc_provider` option to pass this info.
+    */
   async deliver(options: DeliverOptions): Promise<any> {
     const out = await this.doAction("deliver", convertDeliverOptions(options));
     return out;
   }
-  /** Upload a new build to [DeployGate](https://deploygate.com/)
-   */
+  /** You can retrieve your username and API token on [your settings page](https://deploygate.com/settings).
+More information about the available options can be found in the [DeployGate Push API document](https://deploygate.com/docs/api).
+    */
   async deploygate(options: DeploygateOptions): Promise<any> {
     const out = await this.doAction(
       "deploygate",
@@ -18445,7 +18507,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Reads in production secrets set in a dotgpg file and puts them in ENV
+  /** More information about dotgpg can be found at [https://github.com/ConradIrwin/dotgpg](https://github.com/ConradIrwin/dotgpg).
    */
   async dotgpgEnvironment(options: DotgpgEnvironmentOptions): Promise<any> {
     const out = await this.doAction(
@@ -18454,8 +18516,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Download a file from a remote server (e.g. JSON file)
-   */
+  /** Specify the URL to download and get the content as a return value.
+Automatically parses JSON into a Ruby data structure.
+For more advanced networking code, use the Ruby functions instead: [http://docs.ruby-lang.org/en/2.0.0/Net/HTTP.html](http://docs.ruby-lang.org/en/2.0.0/Net/HTTP.html).
+    */
   async download(options: DownloadOptions): Promise<any> {
     const out = await this.doAction(
       "download",
@@ -18463,8 +18527,17 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Download dSYM files from App Store Connect for Bitcode apps
-   */
+  /** This action downloads dSYM files from App Store Connect after the ipa gets re-compiled by Apple. Useful if you have Bitcode enabled.|
+|
+```ruby|
+lane :refresh_dsyms do|
+  download_dsyms                  # Download dSYM files from iTC|
+  upload_symbols_to_crashlytics   # Upload them to Crashlytics|
+  clean_build_artifacts           # Delete the local dSYM files|
+end|
+```|
+>|
+    */
   async downloadDsyms(options: DownloadDsymsOptions): Promise<any> {
     const out = await this.doAction(
       "download_dsyms",
@@ -18472,7 +18545,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Download metadata and binaries from Google Play (via _supply_)
+  /** More information: https://docs.fastlane.tools/actions/download_from_play_store/
    */
   async downloadFromPlayStore(
     options: DownloadFromPlayStoreOptions
@@ -18483,7 +18556,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Creates a zipped dSYM in the project root from the .xcarchive
+  /** You can manually specify the path to the xcarchive (not needed if you use `xcodebuild`/`xcarchive` to build your archive)
    */
   async dsymZip(options: DsymZipOptions): Promise<any> {
     const out = await this.doAction("dsym_zip", convertDsymZipOptions(options));
@@ -18495,8 +18568,9 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("echo", convertEchoOptions(options));
     return out;
   }
-  /** Raises an exception if not using `bundle exec` to run fastlane
-   */
+  /** This action will check if you are using `bundle exec` to run fastlane.
+You can put it into `before_all` to make sure that fastlane is ran using the `bundle exec fastlane` command.
+    */
   async ensureBundleExec(options: EnsureBundleExecOptions): Promise<any> {
     const out = await this.doAction(
       "ensure_bundle_exec",
@@ -18504,7 +18578,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Raises an exception if the specified env vars are not set
+  /** This action will check if some environment variables are set.
    */
   async ensureEnvVars(options: EnsureEnvVarsOptions): Promise<any> {
     const out = await this.doAction(
@@ -18513,8 +18587,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Raises an exception if not on a specific git branch
-   */
+  /** This action will check if your git repo is checked out to a specific branch.
+You may only want to make releases from a specific branch, so `ensure_git_branch` will stop a lane if it was accidentally executed on an incorrect branch.
+    */
   async ensureGitBranch(options: EnsureGitBranchOptions): Promise<any> {
     const out = await this.doAction(
       "ensure_git_branch",
@@ -18522,8 +18597,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Raises an exception if there are uncommitted git changes
-   */
+  /** A sanity check to make sure you are working in a repo that is clean.
+Especially useful to put at the beginning of your Fastfile in the `before_all` block, if some of your other actions will touch your filesystem, do things to your git repo, or just as a general reminder to save your work.
+Also needed as a prerequisite for some other actions like `reset_git_repo`.
+    */
   async ensureGitStatusClean(
     options: EnsureGitStatusCleanOptions
   ): Promise<any> {
@@ -18533,8 +18610,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Ensures the given text is nowhere in the code base
-   */
+  /** You don't want any debug code to slip into production.
+This can be used to check if there is any debug code still in your codebase or if you have things like `// TO DO` or similar.
+    */
   async ensureNoDebugCode(options: EnsureNoDebugCodeOptions): Promise<any> {
     const out = await this.doAction(
       "ensure_no_debug_code",
@@ -18542,8 +18620,11 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Ensure the right version of Xcode is used
-   */
+  /** If building your app requires a specific version of Xcode, you can invoke this command before using gym.
+For example, to ensure that a beta version of Xcode is not accidentally selected to build, which would make uploading to TestFlight fail.
+You can either manually provide a specific version using `version: ` or you make use of the `.xcode-version` file.
+Using the `strict` parameter, you can either verify the full set of version numbers strictly (i.e. `11.3.1`) or only a subset of them (i.e. `11.3` or `11`).
+    */
   async ensureXcodeVersion(options: EnsureXcodeVersionOptions): Promise<any> {
     const out = await this.doAction(
       "ensure_xcode_version",
@@ -18562,14 +18643,16 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Allows to Generate output files based on ERB templates
-   */
+  /** Renders an ERB template with `:placeholders` given as a hash via parameter.
+If no `:destination` is set, it returns the rendered template as string.
+    */
   async erb(options: ErbOptions): Promise<any> {
     const out = await this.doAction("erb", convertErbOptions(options));
     return out;
   }
-  /** Alias for the [[`minFastlaneVersion`]] action
-   */
+  /** Add this to your `Fastfile` to require a certain version of _fastlane_.
+Use it if you use an action that just recently came out and you need it.
+    */
   async fastlaneVersion(options: FastlaneVersionOptions): Promise<any> {
     const out = await this.doAction(
       "fastlane_version",
@@ -18577,14 +18660,15 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Send a message to a [Flock](https://flock.com/) group
+  /** To obtain the token, create a new [incoming message webhook](https://dev.flock.co/wiki/display/FlockAPI/Incoming+Webhooks) in your Flock admin panel.
    */
   async flock(options: FlockOptions): Promise<any> {
     const out = await this.doAction("flock", convertFlockOptions(options));
     return out;
   }
-  /** Adds device frames around all screenshots (via _frameit_)
-   */
+  /** Uses [frameit](https://docs.fastlane.tools/actions/frameit/) to prepare perfect screenshots for the App Store, your website, QA or emails.
+You can add background and titles to the framed screenshots as well.
+    */
   async frameScreenshots(options: FrameScreenshotsOptions): Promise<any> {
     const out = await this.doAction(
       "frame_screenshots",
@@ -18592,20 +18676,22 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the [[`frameScreenshots`]] action
-   */
+  /** Uses [frameit](https://docs.fastlane.tools/actions/frameit/) to prepare perfect screenshots for the App Store, your website, QA or emails.
+You can add background and titles to the framed screenshots as well.
+    */
   async frameit(options: FrameitOptions): Promise<any> {
     const out = await this.doAction("frameit", convertFrameitOptions(options));
     return out;
   }
-  /** Runs test coverage reports for your Xcode project
+  /** Generate summarized code coverage reports using [gcovr](http://gcovr.com/)
    */
   async gcovr(options: GcovrOptions): Promise<any> {
     const out = await this.doAction("gcovr", convertGcovrOptions(options));
     return out;
   }
-  /** Get the build number of your project
-   */
+  /** This action will return the current build number set on your project.
+You first have to set up your Xcode project, if you haven't done it already: [https://developer.apple.com/library/ios/qa/qa1827/_index.html](https://developer.apple.com/library/ios/qa/qa1827/_index.html).
+    */
   async getBuildNumber(options: GetBuildNumberOptions): Promise<string> {
     const out = await this.doAction(
       "get_build_number",
@@ -18613,8 +18699,11 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Get the build number from the current repository
-   */
+  /** This action will get the **build number** according to what the SCM HEAD reports.
+Currently supported SCMs are svn (uses root revision), git-svn (uses svn revision), git (uses short hash) and mercurial (uses short hash or revision number).
+There is an option, `:use_hg_revision_number`, which allows to use mercurial revision number instead of hash.
+    * @return The build number from the current repository 
+    */
   async getBuildNumberRepository(
     options: GetBuildNumberRepositoryOptions
   ): Promise<any> {
@@ -18624,8 +18713,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Create new iOS code signing certificates (via _cert_)
-   */
+  /** **Important**: It is recommended to use [match](https://docs.fastlane.tools/actions/match/) according to the [codesigning.guide](https://codesigning.guide) for generating and maintaining your certificates. Use _cert_ directly only if you want full control over what's going on and know more about codesigning.
+Use this action to download the latest code signing identity.
+    */
   async getCertificates(options: GetCertificatesOptions): Promise<any> {
     const out = await this.doAction(
       "get_certificates",
@@ -18633,8 +18723,49 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** This will verify if a given release version is available on GitHub
-   */
+  /** This will return all information about a release. For example:|
+|
+```no-highlight|
+{|
+  "url"=>"https://api.github.com/repos/KrauseFx/fastlane/releases/1537713",|
+   "assets_url"=>"https://api.github.com/repos/KrauseFx/fastlane/releases/1537713/assets",|
+   "upload_url"=>"https://uploads.github.com/repos/KrauseFx/fastlane/releases/1537713/assets{?name}",|
+   "html_url"=>"https://github.com/fastlane/fastlane/releases/tag/1.8.0",|
+   "id"=>1537713,|
+   "tag_name"=>"1.8.0",|
+   "target_commitish"=>"master",|
+   "name"=>"1.8.0 Switch Lanes & Pass Parameters",|
+   "draft"=>false,|
+   "author"=>|
+    {"login"=>"KrauseFx",|
+     "id"=>869950,|
+     "avatar_url"=>"https://avatars.githubusercontent.com/u/869950?v=3",|
+     "gravatar_id"=>"",|
+     "url"=>"https://api.github.com/users/KrauseFx",|
+     "html_url"=>"https://github.com/fastlane",|
+     "followers_url"=>"https://api.github.com/users/KrauseFx/followers",|
+     "following_url"=>"https://api.github.com/users/KrauseFx/following{/other_user}",|
+     "gists_url"=>"https://api.github.com/users/KrauseFx/gists{/gist_id}",|
+     "starred_url"=>"https://api.github.com/users/KrauseFx/starred{/owner}{/repo}",|
+     "subscriptions_url"=>"https://api.github.com/users/KrauseFx/subscriptions",|
+     "organizations_url"=>"https://api.github.com/users/KrauseFx/orgs",|
+     "repos_url"=>"https://api.github.com/users/KrauseFx/repos",|
+     "events_url"=>"https://api.github.com/users/KrauseFx/events{/privacy}",|
+     "received_events_url"=>"https://api.github.com/users/KrauseFx/received_events",|
+     "type"=>"User",|
+     "site_admin"=>false},|
+   "prerelease"=>false,|
+   "created_at"=>"2015-07-14T23:33:01Z",|
+   "published_at"=>"2015-07-14T23:44:10Z",|
+   "assets"=>[],|
+   "tarball_url"=>"https://api.github.com/repos/KrauseFx/fastlane/tarball/1.8.0",|
+   "zipball_url"=>"https://api.github.com/repos/KrauseFx/fastlane/zipball/1.8.0",|
+   "body"=> ...Markdown...|
+  "This is one of the biggest updates of _fastlane_ yet"|
+}|
+```|
+>|
+    */
   async getGithubRelease(options: GetGithubReleaseOptions): Promise<any> {
     const out = await this.doAction(
       "get_github_release",
@@ -18642,7 +18773,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Returns value from Info.plist of your project as native Ruby data structures
+  /** Get a value from a plist file, which can be used to fetch the app identifier and more information about your app
    */
   async getInfoPlistValue(options: GetInfoPlistValueOptions): Promise<string> {
     const out = await this.doAction(
@@ -18651,7 +18782,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Returns a value from Info.plist inside a .ipa file
+  /** This is useful for introspecting Info.plist files for `.ipa` files that have already been built.
+   * @return Returns the value in the .ipa's Info.plist corresponding to the passed in Key
    */
   async getIpaInfoPlistValue(
     options: GetIpaInfoPlistValueOptions
@@ -18662,8 +18794,12 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Obtain publishing rights for custom apps on Managed Google Play Store
-   */
+  /** If you haven't done so before, start by following the first two steps of Googles ["Get started with custom app publishing"](https://developers.google.com/android/work/play/custom-app-api/get-started) -> ["Preliminary setup"](https://developers.google.com/android/work/play/custom-app-api/get-started#preliminary_setup) instructions:
+"[Enable the Google Play Custom App Publishing API](https://developers.google.com/android/work/play/custom-app-api/get-started#enable_the_google_play_custom_app_publishing_api)" and "[Create a service account](https://developers.google.com/android/work/play/custom-app-api/get-started#create_a_service_account)".
+You need the "service account's private key file" to continue.
+Run the action and supply the "private key file" to it as the `json_key` parameter. The command will output a URL to visit. After logging in you are redirected to a page that outputs your "Developer Account ID" - take note of that, you will need it to be able to use [`create_app_on_managed_play_store`](https://docs.fastlane.tools/actions/create_app_on_managed_play_store/).
+    * @return An URI to obtain publishing rights for custom apps on Managed Play Store 
+    */
   async getManagedPlayStorePublishingRights(
     options: GetManagedPlayStorePublishingRightsOptions
   ): Promise<any> {
@@ -18673,7 +18809,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Generates a provisioning profile, saving it in the current folder (via _sigh_)
+  /** **Note**: It is recommended to use [match](https://docs.fastlane.tools/actions/match/) according to the [codesigning.guide](https://codesigning.guide) for generating and maintaining your provisioning profiles. Use _sigh_ directly only if you want full control over what's going on and know more about codesigning.
+   * @return The UUID of the profile sigh just fetched/generated
    */
   async getProvisioningProfile(
     options: GetProvisioningProfileOptions
@@ -18684,8 +18821,18 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Ensure a valid push profile is active, creating a new one if needed (via _pem_)
-   */
+  /** Additionally to the available options, you can also specify a block that only gets executed if a new profile was created. You can use it to upload the new profile to your server.
+Use it like this:|
+|
+```ruby|
+get_push_certificate(|
+  new_profile: proc do|
+    # your upload code|
+  end|
+)|
+```|
+>|
+    */
   async getPushCertificate(options: GetPushCertificateOptions): Promise<any> {
     const out = await this.doAction(
       "get_push_certificate",
@@ -18693,7 +18840,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Get the version number of your project
+  /** This action will return the current version number set on your project.
    */
   async getVersionNumber(options: GetVersionNumberOptions): Promise<string> {
     const out = await this.doAction(
@@ -18708,7 +18855,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("git_add", convertGitAddOptions(options));
     return out;
   }
-  /** Returns the name of the current git branch, possibly as managed by CI ENV vars
+  /** If no branch could be found, this action will return an empty string
    */
   async gitBranch(options: GitBranchOptions): Promise<string> {
     const out = await this.doAction(
@@ -18742,6 +18889,7 @@ class Fastlane extends FastlaneBase {
     return out;
   }
   /** Checks if the git tag with the given name exists in the current repo
+   * @return Boolean value whether the tag exists or not
    */
   async gitTagExists(options: GitTagExistsOptions): Promise<any> {
     const out = await this.doAction(
@@ -18750,8 +18898,11 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Call a GitHub API endpoint and get the resulting JSON response
-   */
+  /** Calls any GitHub API endpoint. You must provide your GitHub Personal token (get one from [https://github.com/settings/tokens/new](https://github.com/settings/tokens/new)).
+Out parameters provide the status code and the full response JSON if valid, otherwise the raw response body.
+Documentation: [https://developer.github.com/v3](https://developer.github.com/v3).
+    * @return A hash including the HTTP status code (:status), the response body (:body), and if valid JSON has been returned the parsed JSON (:json). 
+    */
   async githubApi(options: GithubApiOptions): Promise<any> {
     const out = await this.doAction(
       "github_api",
@@ -18759,7 +18910,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Retrieves release names for a Google Play track
+  /** More information: [https://docs.fastlane.tools/actions/supply/](https://docs.fastlane.tools/actions/supply/)
+   * @return Array of strings representing the release names for the given Google Play track
    */
   async googlePlayTrackReleaseNames(
     options: GooglePlayTrackReleaseNamesOptions
@@ -18770,7 +18922,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Retrieves version codes for a Google Play track
+  /** More information: [https://docs.fastlane.tools/actions/supply/](https://docs.fastlane.tools/actions/supply/)
+   * @return Array of integers representing the version codes for the given Google Play track
    */
   async googlePlayTrackVersionCodes(
     options: GooglePlayTrackVersionCodesOptions
@@ -18781,13 +18934,15 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** All gradle related actions, including building and testing your Android app
+  /** Run `./gradlew tasks` to get a list of all available gradle tasks for your project
+   * @return The output of running the gradle task
    */
   async gradle(options: GradleOptions): Promise<any> {
     const out = await this.doAction("gradle", convertGradleOptions(options));
     return out;
   }
-  /** Alias for the [[`buildApp`]] action
+  /** More information: https://fastlane.tools/gym
+   * @return The absolute path to the generated ipa file
    */
   async gym(options: GymOptions): Promise<any> {
     const out = await this.doAction("gym", convertGymOptions(options));
@@ -18802,8 +18957,16 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** This will commit a version bump to the hg repo
-   */
+  /** The mercurial equivalent of the [commit_version_bump](https://docs.fastlane.tools/actions/commit_version_bump/) git action. Like the git version, it is useful in conjunction with [`increment_build_number`](https://docs.fastlane.tools/actions/increment_build_number/).
+It checks the repo to make sure that only the relevant files have changed, these are the files that `increment_build_number` (`agvtool`) touches:|
+|
+>- All `.plist` files|
+- The `.xcodeproj/project.pbxproj` file|
+>|
+Then commits those files to the repo.
+Customize the message with the `:message` option, defaults to 'Version Bump'
+If you have other uncommitted changes in your repo, this action will fail. If you started off in a clean repo, and used the _ipa_ and or _sigh_ actions, then you can use the [clean_build_artifacts](https://docs.fastlane.tools/actions/clean_build_artifacts/) action to clean those temporary files up before running this action.
+    */
   async hgCommitVersionBump(options: HgCommitVersionBumpOptions): Promise<any> {
     const out = await this.doAction(
       "hg_commit_version_bump",
@@ -18811,7 +18974,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Raises an exception if there are uncommitted hg changes
+  /** Along the same lines as the [ensure_git_status_clean](https://docs.fastlane.tools/actions/ensure_git_status_clean/) action, this is a sanity check to ensure the working mercurial repo is clean. Especially useful to put at the beginning of your Fastfile in the `before_all` block.
    */
   async hgEnsureCleanStatus(options: HgEnsureCleanStatusOptions): Promise<any> {
     const out = await this.doAction(
@@ -18820,37 +18983,42 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** This will push changes to the remote hg repository
+  /** The mercurial equivalent of [push_to_git_remote](https://docs.fastlane.tools/actions/push_to_git_remote/). Pushes your local commits to a remote mercurial repo. Useful when local changes such as adding a version bump commit or adding a tag are part of your lane’s actions.
    */
   async hgPush(options: HgPushOptions): Promise<any> {
     const out = await this.doAction("hg_push", convertHgPushOptions(options));
     return out;
   }
-  /** Send a error/success message to [HipChat](https://www.hipchat.com/)
+  /** Send a message to **room** (by default) or a direct message to **@username** with success (green) or failure (red) status.
    */
   async hipchat(options: HipchatOptions): Promise<any> {
     const out = await this.doAction("hipchat", convertHipchatOptions(options));
     return out;
   }
-  /** Refer to [App Center](https://github.com/Microsoft/fastlane-plugin-appcenter/)
-   */
+  /** HockeyApp will be no longer supported and will be transitioned into App Center on November 16, 2019.
+Please migrate over to [App Center](https://github.com/Microsoft/fastlane-plugin-appcenter/)
+
+Symbols will also be uploaded automatically if a `app.dSYM.zip` file is found next to `app.ipa`. In case it is located in a different place you can specify the path explicitly in the `:dsym` parameter.
+More information about the available options can be found in the [HockeyApp Docs](http://support.hockeyapp.net/kb/api/api-versions#upload-version).
+    */
   async hockey(options: HockeyOptions): Promise<any> {
     const out = await this.doAction("hockey", convertHockeyOptions(options));
     return out;
   }
-  /** Connect to the [IFTTT Maker Channel](https://ifttt.com/maker)
+  /** Connect to the IFTTT [Maker Channel](https://ifttt.com/maker). An IFTTT Recipe has two components: a Trigger and an Action. In this case, the Trigger will fire every time the Maker Channel receives a web request (made by this _fastlane_ action) to notify it of an event. The Action can be anything that IFTTT supports: email, SMS, etc.
    */
   async ifttt(options: IftttOptions): Promise<any> {
     const out = await this.doAction("ifttt", convertIftttOptions(options));
     return out;
   }
-  /** Import another Fastfile to use its lanes
-   */
+  /** This is useful if you have shared lanes across multiple apps and you want to store a Fastfile in a separate folder.
+The path must be relative to the Fastfile this is called from.
+    */
   async import(options: ImportOptions): Promise<any> {
     const out = await this.doAction("import", convertImportOptions(options));
     return out;
   }
-  /** Import certificate from inputfile into a keychain
+  /** Import certificates (and private keys) into the current default keychain. Use the `create_keychain` action to create a new keychain.
    */
   async importCertificate(options: ImportCertificateOptions): Promise<any> {
     const out = await this.doAction(
@@ -18859,7 +19027,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Import another Fastfile from a remote git repository to use its lanes
+  /** This is useful if you have shared lanes across multiple apps and you want to store the Fastfile in a remote git repository.
    */
   async importFromGit(options: ImportFromGitOptions): Promise<any> {
     const out = await this.doAction(
@@ -18869,6 +19037,7 @@ class Fastlane extends FastlaneBase {
     return out;
   }
   /** Increment the build number of your project
+   * @return The new build number
    */
   async incrementBuildNumber(
     options: IncrementBuildNumberOptions
@@ -18879,8 +19048,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Increment the version number of your project
-   */
+  /** This action will increment the version number.
+You first have to set up your Xcode project, if you haven't done it already: [https://developer.apple.com/library/ios/qa/qa1827/_index.html](https://developer.apple.com/library/ios/qa/qa1827/_index.html).
+    * @return The new version number 
+    */
   async incrementVersionNumber(
     options: IncrementVersionNumberOptions
   ): Promise<string> {
@@ -18890,7 +19061,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Installs an .ipa file on a connected iOS-device via usb or wifi
+  /** Installs the ipa on the device. If no id is given, the first found iOS device will be used. Works via USB or Wi-Fi. This requires `ios-deploy` to be installed. Please have a look at [ios-deploy](https://github.com/ios-control/ios-deploy). To quickly install it, use `npm -g i ios-deploy`
    */
   async installOnDevice(options: InstallOnDeviceOptions): Promise<any> {
     const out = await this.doAction(
@@ -18899,7 +19070,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Install provisioning profile from path
+  /** Install provisioning profile from path for current user
+   * @return The absolute path to the installed provisioning profile
    */
   async installProvisioningProfile(
     options: InstallProvisioningProfileOptions
@@ -18934,7 +19106,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("ipa", convertIpaOptions(options));
     return out;
   }
-  /** Is the current run being executed on a CI system, like Jenkins or Travis
+  /** The return value of this method is true if fastlane is currently executed on Travis, Jenkins, Circle or a similar CI service
    */
   async isCi(options: IsCiOptions): Promise<any> {
     const out = await this.doAction("is_ci", convertIsCiOptions(options));
@@ -18952,8 +19124,9 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("jira", convertJiraOptions(options));
     return out;
   }
-  /** Access lane context values
-   */
+  /** Access the fastlane lane context values.
+More information about how the lane context works: [https://docs.fastlane.tools/advanced/#lane-context](https://docs.fastlane.tools/advanced/#lane-context).
+    */
   async laneContext(options: LaneContextOptions): Promise<any> {
     const out = await this.doAction(
       "lane_context",
@@ -18962,6 +19135,7 @@ class Fastlane extends FastlaneBase {
     return out;
   }
   /** Return last git commit hash, abbreviated commit hash, commit message and author
+   * @return Returns the following dict: {commit_hash: "commit hash", abbreviated_commit_hash: "abbreviated commit hash" author: "Author", author_email: "author email", message: "commit message"} (ex: [object Object])
    */
   async lastGitCommit(options: LastGitCommitOptions): Promise<any> {
     const out = await this.doAction(
@@ -18970,8 +19144,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Get the most recent git tag
-   */
+  /** If you are using this action on a **shallow clone**, *the default with some CI systems like Bamboo*, you need to ensure that you have also pulled all the git tags appropriately. Assuming your git repo has the correct remote set you can issue `sh('git fetch --tags')`.
+Pattern parameter allows you to filter to a subset of tags.
+    */
   async lastGitTag(options: LastGitTagOptions): Promise<string> {
     const out = await this.doAction(
       "last_git_tag",
@@ -18979,8 +19154,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Fetches most recent build number from TestFlight
-   */
+  /** Provides a way to have `increment_build_number` be based on the latest build you uploaded to iTC.
+Fetches the most recent build number from TestFlight based on the version number. Provides a way to have `increment_build_number` be based on the latest build you uploaded to iTC.
+    * @return Integer representation of the latest build number uploaded to TestFlight (ex: 2)
+    */
   async latestTestflightBuildNumber(
     options: LatestTestflightBuildNumberOptions
   ): Promise<any> {
@@ -19002,7 +19179,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("mailgun", convertMailgunOptions(options));
     return out;
   }
-  /** Generate a changelog using the Changes section from the current Jenkins build
+  /** This is useful when deploying automated builds. The changelog from Jenkins lists all the commit messages since the last build.
    */
   async makeChangelogFromJenkins(
     options: MakeChangelogFromJenkinsOptions
@@ -19013,14 +19190,15 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the [[`syncCodeSigning`]] action
+  /** More information: https://docs.fastlane.tools/actions/match/
    */
   async match(options: MatchOptions): Promise<any> {
     const out = await this.doAction("match", convertMatchOptions(options));
     return out;
   }
-  /** Verifies the minimum fastlane version required
-   */
+  /** Add this to your `Fastfile` to require a certain version of _fastlane_.
+Use it if you use an action that just recently came out and you need it.
+    */
   async minFastlaneVersion(options: MinFastlaneVersionOptions): Promise<any> {
     const out = await this.doAction(
       "min_fastlane_version",
@@ -19028,7 +19206,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Modifies the services of the app created on Developer Portal
+  /** The options are the same as `:enable_services` in the [produce action](https://docs.fastlane.tools/actions/produce/#parameters_1)
    */
   async modifyServices(options: ModifyServicesOptions): Promise<any> {
     const out = await this.doAction(
@@ -19070,7 +19248,8 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("notify", convertNotifyOptions(options));
     return out;
   }
-  /** Return the number of commits in current git branch
+  /** You can use this action to get the number of commits of this branch. This is useful if you want to set the build number to the number of commits. See `fastlane actions number_of_commits` for more details.
+   * @return The total number of all commits in current git branch
    */
   async numberOfCommits(options: NumberOfCommitsOptions): Promise<any> {
     const out = await this.doAction(
@@ -19079,13 +19258,13 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Lints implementation files with OCLint
+  /** Run the static analyzer tool [OCLint](http://oclint.org) for your project. You need to have a `compile_commands.json` file in your _fastlane_ directory or pass a path to your file.
    */
   async oclint(options: OclintOptions): Promise<any> {
     const out = await this.doAction("oclint", convertOclintOptions(options));
     return out;
   }
-  /** Create or update a new [OneSignal](https://onesignal.com/) application
+  /** You can use this action to automatically create or update a OneSignal application. You can also upload a `.p12` with password, a GCM key, or both.
    */
   async onesignal(options: OnesignalOptions): Promise<any> {
     const out = await this.doAction(
@@ -19094,7 +19273,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** This will prevent reports from being uploaded when _fastlane_ crashes
+  /** _fastlane_ doesn't have crash reporting any more. Feel free to remove `opt_out_crash_reporting` from your Fastfile.
    */
   async optOutCrashReporting(
     options: OptOutCrashReportingOptions
@@ -19105,8 +19284,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** This will stop uploading the information which actions were run
-   */
+  /** By default, _fastlane_ will track what actions are being used. No personal/sensitive information is recorded.
+Learn more at [https://docs.fastlane.tools/#metrics](https://docs.fastlane.tools/#metrics).
+Add `opt_out_usage` at the top of your Fastfile to disable metrics collection.
+    */
   async optOutUsage(options: OptOutUsageOptions): Promise<any> {
     const out = await this.doAction(
       "opt_out_usage",
@@ -19114,19 +19295,30 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the [[`getPushCertificate`]] action
-   */
+  /** Additionally to the available options, you can also specify a block that only gets executed if a new profile was created. You can use it to upload the new profile to your server.
+Use it like this:|
+|
+```ruby|
+get_push_certificate(|
+  new_profile: proc do|
+    # your upload code|
+  end|
+)|
+```|
+>|
+    */
   async pem(options: PemOptions): Promise<any> {
     const out = await this.doAction("pem", convertPemOptions(options));
     return out;
   }
-  /** Alias for the [[`uploadToTestflight`]] action
-   */
+  /** More details can be found on https://docs.fastlane.tools/actions/pilot/.
+This integration will only do the TestFlight upload.
+    */
   async pilot(options: PilotOptions): Promise<any> {
     const out = await this.doAction("pilot", convertPilotOptions(options));
     return out;
   }
-  /** Pod lib lint
+  /** Test the syntax of your Podfile by linting the pod against the files of its directory
    */
   async podLibLint(options: PodLibLintOptions): Promise<any> {
     const out = await this.doAction(
@@ -19141,8 +19333,10 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("pod_push", convertPodPushOptions(options));
     return out;
   }
-  /** Creates or updates an item within your Podio app
-   */
+  /** Use this action to create or update an item within your Podio app (see [https://help.podio.com/hc/en-us/articles/201019278-Creating-apps-](https://help.podio.com/hc/en-us/articles/201019278-Creating-apps-)).
+Pass in dictionary with field keys and their values.
+Field key is located under `Modify app` -> `Advanced` -> `Developer` -> `External ID` (see [https://developers.podio.com/examples/items](https://developers.podio.com/examples/items)).
+    */
   async podioItem(options: PodioItemOptions): Promise<any> {
     const out = await this.doAction(
       "podio_item",
@@ -19150,7 +19344,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the [[`checkAppStoreMetadata`]] action
+  /** More information: https://fastlane.tools/precheck
+   * @return true if precheck passes, else, false
    */
   async precheck(options: PrecheckOptions): Promise<any> {
     const out = await this.doAction(
@@ -19165,19 +19360,23 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("println", convertPrintlnOptions(options));
     return out;
   }
-  /** Alias for the [[`createAppOnline`]] action
-   */
+  /** Create new apps on App Store Connect and Apple Developer Portal via _produce_.
+If the app already exists, `create_app_online` will not do anything.
+For more information about _produce_, visit its documentation page: [https://docs.fastlane.tools/actions/produce/](https://docs.fastlane.tools/actions/produce/).
+    */
   async produce(options: ProduceOptions): Promise<any> {
     const out = await this.doAction("produce", convertProduceOptions(options));
     return out;
   }
-  /** Ask the user for a value or for confirmation
-   */
+  /** You can use `prompt` to ask the user for a value or to just let the user confirm the next step.
+When this is executed on a CI service, the passed `ci_input` value will be returned.
+This action also supports multi-line inputs using the `multi_line_end_keyword` option.
+    */
   async prompt(options: PromptOptions): Promise<string> {
     const out = await this.doAction("prompt", convertPromptOptions(options));
     return out;
   }
-  /** Push local tags to the remote - this will only push tags
+  /** If you only want to push the tags and nothing else, you can use the `push_git_tags` action
    */
   async pushGitTags(options: PushGitTagsOptions): Promise<any> {
     const out = await this.doAction(
@@ -19186,8 +19385,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Push local changes to the remote branch
-   */
+  /** Lets you push your local commits to a remote git repo. Useful if you make local changes such as adding a version bump commit (using `commit_version_bump`) or a git tag (using 'add_git_tag') on a CI server, and you want to push those changes back to your canonical/main repo.
+If this is a new branch, use the `set_upstream` option to set the remote branch as upstream.
+    */
   async pushToGitRemote(options: PushToGitRemoteOptions): Promise<any> {
     const out = await this.doAction(
       "push_to_git_remote",
@@ -19201,8 +19401,11 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("puts", convertPutsOptions(options));
     return out;
   }
-  /** Loads a CocoaPods spec as JSON
-   */
+  /** This can be used for only specifying a version string in your podspec - and during your release process you'd read it from the podspec by running `version = read_podspec['version']` at the beginning of your lane.
+Loads the specified (or the first found) podspec in the folder as JSON, so that you can inspect its `version`, `files` etc.
+This can be useful when basing your release process on the version string only stored in one place - in the podspec.
+As one of the first steps you'd read the podspec and its version and the rest of the workflow can use that version string (when e.g. creating a new git tag or a GitHub Release).
+    */
   async readPodspec(options: ReadPodspecOptions): Promise<any> {
     const out = await this.doAction(
       "read_podspec",
@@ -19219,8 +19422,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Registers a new device to the Apple Dev Portal
-   */
+  /** This will register an iOS device with the Developer Portal so that you can include it in your provisioning profiles.
+This is an optimistic action, in that it will only ever add a device to the member center. If the device has already been registered within the member center, it will be left alone in the member center.
+The action will connect to the Apple Developer Portal using the username you specified in your `Appfile` with `apple_id`, but you can override it using the `:username` option.
+    */
   async registerDevice(options: RegisterDeviceOptions): Promise<string> {
     const out = await this.doAction(
       "register_device",
@@ -19228,8 +19433,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Registers new devices to the Apple Dev Portal
-   */
+  /** This will register iOS/Mac devices with the Developer Portal so that you can include them in your provisioning profiles.
+This is an optimistic action, in that it will only ever add new devices to the member center, and never remove devices. If a device which has already been registered within the member center is not passed to this action, it will be left alone in the member center and continue to work.
+The action will connect to the Apple Developer Portal using the username you specified in your `Appfile` with `apple_id`, but you can override it using the `username` option, or by setting the env variable `ENV['DELIVER_USER']`.
+    */
   async registerDevices(options: RegisterDevicesOptions): Promise<any> {
     const out = await this.doAction(
       "register_devices",
@@ -19237,8 +19444,13 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Resets git repo to a clean state by discarding uncommitted changes
-   */
+  /** This action will reset your git repo to a clean state, discarding any uncommitted and untracked changes. Useful in case you need to revert the repo back to a clean state, e.g. after running _fastlane_.
+Untracked files like `.env` will also be deleted, unless `:skip_clean` is true.
+It's a pretty drastic action so it comes with a sort of safety latch. It will only proceed with the reset if this condition is met:|
+|
+>- You have called the `ensure_git_status_clean` action prior to calling this action. This ensures that your repo started off in a clean state, so the only things that will get destroyed by this action are files that are created as a byproduct of the fastlane run.|
+>|
+    */
   async resetGitRepo(options: ResetGitRepoOptions): Promise<any> {
     const out = await this.doAction(
       "reset_git_repo",
@@ -19272,20 +19484,21 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Outputs ascii-art for a rocket 🚀
+  /** Print an ascii Rocket :rocket:. Useful after using _crashlytics_ or _pilot_ to indicate that your new build has been shipped to outer-space.
    */
   async rocket(options: RocketOptions): Promise<string> {
     const out = await this.doAction("rocket", convertRocketOptions(options));
     return out;
   }
-  /** Rsync files from :source to :destination
+  /** A wrapper around `rsync`, which is a tool that lets you synchronize files, including permissions and so on. For a more detailed information about `rsync`, please see [rsync(1) man page](https://linux.die.net/man/1/rsync).
    */
   async rsync(options: RsyncOptions): Promise<any> {
     const out = await this.doAction("rsync", convertRsyncOptions(options));
     return out;
   }
-  /** Verifies the minimum ruby version required
-   */
+  /** Add this to your `Fastfile` to require a certain version of _ruby_.
+Put it at the top of your `Fastfile` to ensure that _fastlane_ is executed appropriately.
+    */
   async rubyVersion(options: RubyVersionOptions): Promise<any> {
     const out = await this.doAction(
       "ruby_version",
@@ -19293,7 +19506,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Easily run tests of your iOS app (via _scan_)
+  /** More information: https://docs.fastlane.tools/actions/scan/
    */
   async runTests(options: RunTestsOptions): Promise<any> {
     const out = await this.doAction(
@@ -19302,8 +19515,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Generates a plist file and uploads all to AWS S3
-   */
+  /** Upload a new build to Amazon S3 to distribute the build to beta testers.
+Works for both Ad Hoc and Enterprise signed applications. This step will generate the necessary HTML, plist, and version files for you.
+It is recommended to **not** store the AWS access keys in the `Fastfile`. The uploaded `version.json` file provides an easy way for apps to poll if a new update is available.
+    */
   async s3(options: S3Options): Promise<any> {
     const out = await this.doAction("s3", convertS3Options(options));
     return out;
@@ -19314,7 +19529,7 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("say", convertSayOptions(options));
     return out;
   }
-  /** Alias for the [[`runTests`]] action
+  /** More information: https://docs.fastlane.tools/actions/scan/
    */
   async scan(options: ScanOptions): Promise<any> {
     const out = await this.doAction("scan", convertScanOptions(options));
@@ -19335,8 +19550,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Set the build number from the current repository
-   */
+  /** This action will set the **build number** according to what the SCM HEAD reports.
+Currently supported SCMs are svn (uses root revision), git-svn (uses svn revision) and git (uses short hash) and mercurial (uses short hash or revision number).
+There is an option, `:use_hg_revision_number`, which allows to use mercurial revision number instead of hash.
+    */
   async setBuildNumberRepository(
     options: SetBuildNumberRepositoryOptions
   ): Promise<any> {
@@ -19346,8 +19563,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Set the changelog for all languages on App Store Connect
-   */
+  /** This is useful if you have only one changelog for all languages.
+You can store the changelog in `./changelog.txt` and it will automatically get loaded from there. This integration is useful if you support e.g. 10 languages and want to use the same "What's new"-text for all languages.
+Defining the version is optional. _fastlane_ will try to automatically detect it if you don't provide one.
+    */
   async setChangelog(options: SetChangelogOptions): Promise<any> {
     const out = await this.doAction(
       "set_changelog",
@@ -19355,8 +19574,12 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** This will create a new release on GitHub and upload assets for it
-   */
+  /** Creates a new release on GitHub. You must provide your GitHub Personal token (get one from [https://github.com/settings/tokens/new](https://github.com/settings/tokens/new)), the repository name and tag name. By default, that's `master`.
+If the tag doesn't exist, one will be created on the commit or branch passed in as commitish.
+Out parameters provide the release's id, which can be used for later editing and the release HTML link to GitHub. You can also specify a list of assets to be uploaded to the release with the `:upload_assets` parameter.
+    * @return A hash containing all relevant information of this release
+Access things like 'html_url', 'tag_name', 'name', 'body' 
+    */
   async setGithubRelease(options: SetGithubReleaseOptions): Promise<any> {
     const out = await this.doAction(
       "set_github_release",
@@ -19373,7 +19596,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Sets a value for a key with cocoapods-keys
+  /** Adds a key to [cocoapods-keys](https://github.com/orta/cocoapods-keys)
    */
   async setPodKey(options: SetPodKeyOptions): Promise<any> {
     const out = await this.doAction(
@@ -19382,14 +19605,22 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Setup the keychain and match to work with CI
-   */
+  /** - Creates a new temporary keychain for use with match|
+- Switches match to `readonly` mode to not create new profiles/cert on CI|
+- Sets up log and test result paths to be easily collectible|
+>|
+This action helps with CI integration. Add this to the top of your Fastfile if you use CI.
+    */
   async setupCi(options: SetupCiOptions): Promise<any> {
     const out = await this.doAction("setup_ci", convertSetupCiOptions(options));
     return out;
   }
-  /** Setup the keychain and match to work with CircleCI
-   */
+  /** - Creates a new temporary keychain for use with match|
+- Switches match to `readonly` mode to not create new profiles/cert on CI|
+- Sets up log and test result paths to be easily collectible|
+>|
+This action helps with CircleCI integration. Add this to the top of your Fastfile if you use CircleCI.
+    */
   async setupCircleCi(options: SetupCircleCiOptions): Promise<any> {
     const out = await this.doAction(
       "setup_circle_ci",
@@ -19397,8 +19628,18 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Setup xcodebuild, gym and scan for easier Jenkins integration
-   */
+  /** - Adds and unlocks keychains from Jenkins 'Keychains and Provisioning Profiles Plugin'|
+- Sets unlocked keychain to be used by Match|
+- Sets code signing identity from Jenkins 'Keychains and Provisioning Profiles Plugin'|
+- Sets output directory to './output' (gym, scan and backup_xcarchive)|
+- Sets derived data path to './derivedData' (xcodebuild, gym, scan and clear_derived_data, carthage)|
+- Produce result bundle (gym and scan)|
+>|
+This action helps with Jenkins integration. Creates own derived data for each job. All build results like IPA files and archives will be stored in the `./output` directory.
+The action also works with [Keychains and Provisioning Profiles Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Keychains+and+Provisioning+Profiles+Plugin), the selected keychain will be automatically unlocked and the selected code signing identity will be used.
+[Match](https://docs.fastlane.tools/actions/match/) will be also set up to use the unlocked keychain and set in read-only mode, if its environment variables were not yet defined.
+By default this action will only work when _fastlane_ is executed on a CI system.
+    */
   async setupJenkins(options: SetupJenkinsOptions): Promise<any> {
     const out = await this.doAction(
       "setup_jenkins",
@@ -19406,8 +19647,11 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Setup the keychain and match to work with Travis CI
-   */
+  /** - Creates a new temporary keychain for use with match|
+- Switches match to `readonly` mode to not create new profiles/cert on CI|
+>|
+This action helps with Travis integration. Add this to the top of your Fastfile if you use Travis.
+    */
   async setupTravis(options: SetupTravisOptions): Promise<any> {
     const out = await this.doAction(
       "setup_travis",
@@ -19415,19 +19659,22 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Runs a shell command
-   */
+  /** Allows running an arbitrary shell command.
+Be aware of a specific behavior of `sh` action with regard to the working directory. For details, refer to [Advanced](https://docs.fastlane.tools/advanced/#directory-behavior).
+    * @return Outputs the string and executes it. When running in tests, it returns the actual command instead of executing it 
+    */
   async sh(options: ShOptions): Promise<string> {
     const out = await this.doAction("sh", convertShOptions(options));
     return out;
   }
-  /** Alias for the [[`getProvisioningProfile`]] action
+  /** **Note**: It is recommended to use [match](https://docs.fastlane.tools/actions/match/) according to the [codesigning.guide](https://codesigning.guide) for generating and maintaining your provisioning profiles. Use _sigh_ directly only if you want full control over what's going on and know more about codesigning.
+   * @return The UUID of the profile sigh just fetched/generated
    */
   async sigh(options: SighOptions): Promise<any> {
     const out = await this.doAction("sigh", convertSighOptions(options));
     return out;
   }
-  /** Skip the creation of the fastlane/README.md file when running fastlane
+  /** Tell _fastlane_ to not automatically create a `fastlane/README.md` when running _fastlane_. You can always trigger the creation of this file manually by running `fastlane docs`.
    */
   async skipDocs(options: SkipDocsOptions): Promise<any> {
     const out = await this.doAction(
@@ -19436,14 +19683,15 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Send a success/error message to your [Slack](https://slack.com) group
+  /** Create an Incoming WebHook and export this as `SLACK_URL`. Can send a message to **#channel** (by default), a direct message to **@username** or a message to a private group **group** with success (green) or failure (red) status.
    */
   async slack(options: SlackOptions): Promise<any> {
     const out = await this.doAction("slack", convertSlackOptions(options));
     return out;
   }
-  /** Use slather to generate a code coverage report
-   */
+  /** Slather works with multiple code coverage formats, including Xcode 7 code coverage.
+Slather is available at [https://github.com/SlatherOrg/slather](https://github.com/SlatherOrg/slather).
+    */
   async slather(options: SlatherOptions): Promise<any> {
     const out = await this.doAction("slather", convertSlatherOptions(options));
     return out;
@@ -19457,13 +19705,16 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Invokes sonar-scanner to programmatically run SonarQube analysis
-   */
+  /** See [http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner](http://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) for details.
+It can process unit test results if formatted as junit report as shown in [xctest](https://docs.fastlane.tools/actions/xctest/) action. It can also integrate coverage reports in Cobertura format, which can be transformed into by the [slather](https://docs.fastlane.tools/actions/slather/) action.
+    * @return The exit code of the sonar-scanner binary 
+    */
   async sonar(options: SonarOptions): Promise<any> {
     const out = await this.doAction("sonar", convertSonarOptions(options));
     return out;
   }
   /** Find, print, and copy Spaceship logs
+   * @return The array of Spaceship logs
    */
   async spaceshipLogs(options: SpaceshipLogsOptions): Promise<any> {
     const out = await this.doAction(
@@ -19487,13 +19738,13 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("spm", convertSpmOptions(options));
     return out;
   }
-  /** Allows remote command execution using ssh
+  /** Lets you execute remote commands via ssh using username/password or ssh-agent. If one of the commands in command-array returns non 0, it fails.
    */
   async ssh(options: SshOptions): Promise<any> {
     const out = await this.doAction("ssh", convertSshOptions(options));
     return out;
   }
-  /** Alias for the [[`uploadToPlayStore`]] action
+  /** More information: https://docs.fastlane.tools/actions/supply/
    */
   async supply(options: SupplyOptions): Promise<any> {
     const out = await this.doAction("supply", convertSupplyOptions(options));
@@ -19508,7 +19759,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Easily sync your certificates and profiles across your team (via _match_)
+  /** More information: https://docs.fastlane.tools/actions/match/
    */
   async syncCodeSigning(options: SyncCodeSigningOptions): Promise<any> {
     const out = await this.doAction(
@@ -19532,7 +19783,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Upload a new build to [TestFairy](https://www.testfairy.com/)
+  /** You can retrieve your API key on [your settings page](https://free.testfairy.com/settings/)
    */
   async testfairy(options: TestfairyOptions): Promise<any> {
     const out = await this.doAction(
@@ -19541,8 +19792,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Alias for the [[`uploadToTestflight`]] action
-   */
+  /** More details can be found on https://docs.fastlane.tools/actions/pilot/.
+This integration will only do the TestFlight upload.
+    */
   async testflight(options: TestflightOptions): Promise<any> {
     const out = await this.doAction(
       "testflight",
@@ -19550,13 +19802,13 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Upload a new build to [Tryouts](https://tryouts.io/)
+  /** More information: [http://tryouts.readthedocs.org/en/latest/releases.html#create-release](http://tryouts.readthedocs.org/en/latest/releases.html#create-release)
    */
   async tryouts(options: TryoutsOptions): Promise<any> {
     const out = await this.doAction("tryouts", convertTryoutsOptions(options));
     return out;
   }
-  /** Post a tweet on [Twitter.com](https://twitter.com)
+  /** Post a tweet on Twitter. Requires you to setup an app on [twitter.com](https://twitter.com) and obtain `consumer` and `access_token`.
    */
   async twitter(options: TwitterOptions): Promise<any> {
     const out = await this.doAction("twitter", convertTwitterOptions(options));
@@ -19571,8 +19823,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Unlock a keychain
-   */
+  /** Unlocks the given keychain file and adds it to the keychain search list.
+Keychains can be replaced with `add_to_search_list: :replace`.
+    */
   async unlockKeychain(options: UnlockKeychainOptions): Promise<any> {
     const out = await this.doAction(
       "unlock_keychain",
@@ -19580,7 +19833,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** This action changes the app group identifiers in the entitlements file
+  /** Updates the App Group Identifiers in the given Entitlements file, so you can have app groups for the app store build and app groups for an enterprise build.
    */
   async updateAppGroupIdentifiers(
     options: UpdateAppGroupIdentifiersOptions
@@ -19591,7 +19844,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Update the project's bundle identifier
+  /** Update an app identifier by either setting `CFBundleIdentifier` or `PRODUCT_BUNDLE_IDENTIFIER`, depending on which is already in use.
    */
   async updateAppIdentifier(options: UpdateAppIdentifierOptions): Promise<any> {
     const out = await this.doAction(
@@ -19600,7 +19853,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Configures Xcode's Codesigning options
+  /** Configures Xcode's Codesigning options of all targets in the project
+   * @return The current status (boolean) of codesigning after modification
    */
   async updateCodeSigningSettings(
     options: UpdateCodeSigningSettingsOptions
@@ -19611,8 +19865,21 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Makes sure fastlane-tools are up-to-date when running fastlane
-   */
+  /** This action will update fastlane to the most recent version - major version updates will not be performed automatically, as they might include breaking changes. If an update was performed, fastlane will be restarted before the run continues.
+
+If you are using rbenv or rvm, everything should be good to go. However, if you are using the system's default ruby, some additional setup is needed for this action to work correctly. In short, fastlane needs to be able to access your gem library without running in `sudo` mode.
+
+The simplest possible fix for this is putting the following lines into your `~/.bashrc` or `~/.zshrc` file:|
+|
+```bash|
+export GEM_HOME=~/.gems|
+export PATH=$PATH:~/.gems/bin|
+```|
+>|
+After the above changes, restart your terminal, then run `mkdir $GEM_HOME` to create the new gem directory. After this, you're good to go!
+
+Recommended usage of the `update_fastlane` action is at the top inside of the `before_all` block, before running any other action.
+    */
   async updateFastlane(options: UpdateFastlaneOptions): Promise<any> {
     const out = await this.doAction(
       "update_fastlane",
@@ -19620,7 +19887,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** This action changes the iCloud container identifiers in the entitlements file
+  /** Updates the iCloud Container Identifiers in the given Entitlements file, so you can use different iCloud containers for different builds like Adhoc, App Store, etc.
    */
   async updateIcloudContainerIdentifiers(
     options: UpdateIcloudContainerIdentifiersOptions
@@ -19631,7 +19898,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Update a Info.plist file with bundle identifier and display name
+  /** This action allows you to modify your `Info.plist` file before building. This may be useful if you want a separate build for alpha, beta or nightly builds, but don't want a separate target.
    */
   async updateInfoPlist(options: UpdateInfoPlistOptions): Promise<any> {
     const out = await this.doAction(
@@ -19640,7 +19907,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** This action changes the keychain access groups in the entitlements file
+  /** Updates the Keychain Group Access Groups in the given Entitlements file, so you can have keychain access groups for the app store build and keychain access groups for an enterprise build.
    */
   async updateKeychainAccessGroups(
     options: UpdateKeychainAccessGroupsOptions
@@ -19651,7 +19918,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Update a plist file
+  /** This action allows you to modify any value inside any `plist` file.
    */
   async updatePlist(options: UpdatePlistOptions): Promise<any> {
     const out = await this.doAction(
@@ -19671,8 +19938,13 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Update projects code signing settings from your provisioning profile
-   */
+  /** You should check out the [code signing guide](https://docs.fastlane.tools/codesigning/getting-started/) before using this action.
+This action retrieves a provisioning profile UUID from a provisioning profile (`.mobileprovision`) to set up the Xcode projects' code signing settings in `*.xcodeproj/project.pbxproj`.
+The `:target_filter` value can be used to only update code signing for the specified targets.
+The `:build_configuration` value can be used to only update code signing for the specified build configurations of the targets passing through the `:target_filter`.
+Example usage is the WatchKit Extension or WatchKit App, where you need separate provisioning profiles.
+Example: `update_project_provisioning(xcodeproj: "..", target_filter: ".*WatchKit App.*")`.
+    */
   async updateProjectProvisioning(
     options: UpdateProjectProvisioningOptions
   ): Promise<any> {
@@ -19682,7 +19954,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Update Xcode Development Team ID
+  /** This action updates the Developer Team ID of your Xcode project.
    */
   async updateProjectTeam(options: UpdateProjectTeamOptions): Promise<any> {
     const out = await this.doAction(
@@ -19691,7 +19963,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Set [Urban Airship](https://www.urbanairship.com/) plist configuration values
+  /** This action updates the `AirshipConfig.plist` needed to configure the Urban Airship SDK at runtime, allowing keys and secrets to easily be set for the Enterprise and Production versions of the application.
    */
   async updateUrbanAirshipConfiguration(
     options: UpdateUrbanAirshipConfigurationOptions
@@ -19702,8 +19974,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Updates the URL schemes in the given Info.plist
-   */
+  /** This action allows you to update the URL schemes of the app before building it.
+For example, you can use this to set a different URL scheme for the alpha or beta version of the app.
+    */
   async updateUrlSchemes(options: UpdateUrlSchemesOptions): Promise<any> {
     const out = await this.doAction(
       "update_url_schemes",
@@ -19711,7 +19984,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Upload dSYM symbolication files to Crashlytics
+  /** This action allows you to upload symbolication files to Crashlytics. It's extra useful if you use it to download the latest dSYM files from Apple when you use Bitcode. This action will not fail the build if one of the uploads failed. The reason for that is that sometimes some of dSYM files are invalid, and we don't want them to fail the complete build.
    */
   async uploadSymbolsToCrashlytics(
     options: UploadSymbolsToCrashlyticsOptions
@@ -19722,7 +19995,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Upload dSYM symbolication files to Sentry
+  /** This action allows you to upload symbolication files to Sentry. It's extra useful if you use it to download the latest dSYM files from Apple when you use Bitcode.
+   * @return The uploaded dSYM path(s)
    */
   async uploadSymbolsToSentry(
     options: UploadSymbolsToSentryOptions
@@ -19733,8 +20007,13 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Upload metadata and binary to App Store Connect (via _deliver_)
-   */
+  /** Using _upload_to_app_store_ after _build_app_ and _capture_screenshots_ will automatically upload the latest ipa and screenshots with no other configuration.
+
+If you don't want a PDF report for App Store builds, use the `:force` option.
+This is useful when running _fastlane_ on your Continuous Integration server:
+`_upload_to_app_store_(force: true)`
+If your account is on multiple teams and you need to tell the `iTMSTransporter` which 'provider' to use, you can set the `:itc_provider` option to pass this info.
+    */
   async uploadToAppStore(options: UploadToAppStoreOptions): Promise<any> {
     const out = await this.doAction(
       "upload_to_app_store",
@@ -19742,7 +20021,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Upload metadata, screenshots and binaries to Google Play (via _supply_)
+  /** More information: https://docs.fastlane.tools/actions/supply/
    */
   async uploadToPlayStore(options: UploadToPlayStoreOptions): Promise<any> {
     const out = await this.doAction(
@@ -19751,7 +20030,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Upload binaries to Google Play Internal App Sharing (via _supply_)
+  /** More information: https://docs.fastlane.tools/actions/upload_to_play_store_internal_app_sharing/
+   * @return Returns a string containing the download URL for the uploaded APK/AAB (or array of strings if multiple were uploaded).
    */
   async uploadToPlayStoreInternalAppSharing(
     options: UploadToPlayStoreInternalAppSharingOptions
@@ -19762,8 +20042,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Upload new binary to App Store Connect for TestFlight beta testing (via _pilot_)
-   */
+  /** More details can be found on https://docs.fastlane.tools/actions/pilot/.
+This integration will only do the TestFlight upload.
+    */
   async uploadToTestflight(options: UploadToTestflightOptions): Promise<any> {
     const out = await this.doAction(
       "upload_to_testflight",
@@ -19771,7 +20052,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Validate that the Google Play Store `json_key` works
+  /** Use this action to test and validate your private key json key file used to connect and authenticate with the Google Play API
    */
   async validatePlayStoreJsonKey(
     options: ValidatePlayStoreJsonKeyOptions
@@ -19782,7 +20063,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Able to verify various settings in ipa file
+  /** Verifies that the built app was built using the expected build resources. This is relevant for people who build on machines that are used to build apps with different profiles, certificates and/or bundle identifiers to guard against configuration mistakes.
    */
   async verifyBuild(options: VerifyBuildOptions): Promise<any> {
     const out = await this.doAction(
@@ -19791,7 +20072,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Verifies all keys referenced from the Podfile are non-empty
+  /** Runs a check against all keys specified in your Podfile to make sure they're more than a single character long. This is to ensure you don't deploy with stubbed keys.
    */
   async verifyPodKeys(options: VerifyPodKeysOptions): Promise<any> {
     const out = await this.doAction(
@@ -19800,7 +20081,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Verifies that the Xcode installation is properly signed by Apple
+  /** This action was implemented after the recent Xcode attack to make sure you're not using a [hacked Xcode installation](http://researchcenter.paloaltonetworks.com/2015/09/novel-malware-xcodeghost-modifies-xcode-infects-apple-ios-apps-and-hits-app-store/).
    */
   async verifyXcode(options: VerifyXcodeOptions): Promise<any> {
     const out = await this.doAction(
@@ -19809,8 +20090,11 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Increment or set the version in a podspec file
-   */
+  /** You can use this action to manipulate any 'version' variable contained in a ruby file.
+For example, you can use it to bump the version of a CocoaPods' podspec file.
+It also supports versions that are not semantic: `1.4.14.4.1`.
+For such versions, there is an option to change the appendix (e.g. `4.1`).
+    */
   async versionBumpPodspec(options: VersionBumpPodspecOptions): Promise<any> {
     const out = await this.doAction(
       "version_bump_podspec",
@@ -19857,7 +20141,8 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Make sure a certain version of Xcode is installed
+  /** Makes sure a specific version of Xcode is installed. If that's not the case, it will automatically be downloaded by the [xcode_install](https://github.com/neonichu/xcode-install) gem. This will make sure to use the correct Xcode for later actions.
+   * @return The path to the newly installed Xcode version
    */
   async xcodeInstall(options: XcodeInstallOptions): Promise<string> {
     const out = await this.doAction(
@@ -19866,8 +20151,11 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Change the xcode-path to use. Useful for beta versions of Xcode
-   */
+  /** Select and build with the Xcode installed at the provided path.
+Use the `xcversion` action if you want to select an Xcode:
+- Based on a version specifier or
+- You don't have known, stable paths, as may happen in a CI environment.
+    */
   async xcodeSelect(options: XcodeSelectOptions): Promise<any> {
     const out = await this.doAction(
       "xcode_select",
@@ -19875,8 +20163,10 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Downloads Xcode Bot assets like the `.xcarchive` and logs
-   */
+  /** This action downloads assets from your Xcode Server Bot (works with Xcode Server using Xcode 6 and 7. By default, this action downloads all assets, unzips them and deletes everything except for the `.xcarchive`.
+If you'd like to keep all downloaded assets, pass `keep_all_assets: true`.
+This action returns the path to the downloaded assets folder and puts into shared values the paths to the asset folder and to the `.xcarchive` inside it.
+    */
   async xcodeServerGetAssets(
     options: XcodeServerGetAssetsOptions
   ): Promise<any> {
@@ -19886,7 +20176,7 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Use the `xcodebuild` command to build and sign your app
+  /** **Note**: `xcodebuild` is a complex command, so it is recommended to use [_gym_](https://docs.fastlane.tools/actions/gym/) for building your ipa file and [_scan_](https://docs.fastlane.tools/actions/scan/) for testing your app instead.
    */
   async xcodebuild(options: XcodebuildOptions): Promise<any> {
     const out = await this.doAction(
@@ -19895,8 +20185,9 @@ class Fastlane extends FastlaneBase {
     );
     return out;
   }
-  /** Nice code coverage reports without hassle
-   */
+  /** Create nice code coverage reports and post coverage summaries on Slack *(xcov gem is required)*.
+More information: [https://github.com/nakiostudio/xcov](https://github.com/nakiostudio/xcov).
+    */
   async xcov(options: XcovOptions): Promise<any> {
     const out = await this.doAction("xcov", convertXcovOptions(options));
     return out;
@@ -19907,13 +20198,15 @@ class Fastlane extends FastlaneBase {
     const out = await this.doAction("xctest", convertXctestOptions(options));
     return out;
   }
-  /** Run tests using xctool
-   */
+  /** You can run any `xctool` action. This will require having [xctool](https://github.com/facebook/xctool) installed through [Homebrew](http://brew.sh).
+It is recommended to store the build configuration in the `.xctool-args` file.
+More information: [https://docs.fastlane.tools/actions/xctool/](https://docs.fastlane.tools/actions/xctool/).
+    */
   async xctool(options: XctoolOptions): Promise<any> {
     const out = await this.doAction("xctool", convertXctoolOptions(options));
     return out;
   }
-  /** Select an Xcode to use by version specifier
+  /** Finds and selects a version of an installed Xcode that best matches the provided [`Gem::Version` requirement specifier](http://www.rubydoc.info/github/rubygems/rubygems/Gem/Version)
    */
   async xcversion(options: XcversionOptions): Promise<any> {
     const out = await this.doAction(
@@ -19923,6 +20216,7 @@ class Fastlane extends FastlaneBase {
     return out;
   }
   /** Compress a file or folder to a zip
+   * @return The path to the output zip file
    */
   async zip(options: ZipOptions): Promise<string> {
     const out = await this.doAction("zip", convertZipOptions(options));
