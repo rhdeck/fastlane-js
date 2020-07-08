@@ -5150,6 +5150,10 @@ type MatchOptions = {
    */
   s3Bucket?: string;
   /**
+   * Prefix to be used on all objects uploaded to S3
+   */
+  s3ObjectPrefix?: string;
+  /**
    * Keychain the items should be imported to
    */
   keychainName: string;
@@ -5859,6 +5863,10 @@ type PodPushOptions = {
    * Use modular headers option during validation
    */
   useModularHeaders?: boolean;
+  /**
+   * If validation depends on other recently pushed pods, synchronize
+   */
+  synchronous?: boolean;
 };
 
 /** Shape for [[podioItem]] options argument
@@ -6306,7 +6314,7 @@ type ResignOptions = {
    */
   bundleId?: string;
   /**
-   * Extract app bundle codesigning entitlements and combine with entitlements from new provisionin profile
+   * Extract app bundle codesigning entitlements and combine with entitlements from new provisioning profile
    */
   useAppEntitlements?: any;
   /**
@@ -8297,6 +8305,10 @@ type SyncCodeSigningOptions = {
    */
   s3Bucket?: string;
   /**
+   * Prefix to be used on all objects uploaded to S3
+   */
+  s3ObjectPrefix?: string;
+  /**
    * Keychain the items should be imported to
    */
   keychainName: string;
@@ -8953,6 +8965,10 @@ type UploadSymbolsToCrashlyticsOptions = {
    * The number of threads to use for simultaneous dSYM upload
    */
   dsymWorkerThreads?: any;
+  /**
+   * Enable debug mode for upload-symbols
+   */
+  debug: boolean;
 };
 
 /** Shape for [[uploadSymbolsToSentry]] options argument
@@ -14030,6 +14046,7 @@ type convertedMatchOptions = {
   s3_access_key?: string;
   s3_secret_access_key?: string;
   s3_bucket?: string;
+  s3_object_prefix?: string;
   keychain_name: string;
   keychain_password?: string;
   force: boolean;
@@ -14093,6 +14110,8 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     temp["s3_secret_access_key"] = options.s3SecretAccessKey;
   if (typeof options.s3Bucket !== "undefined")
     temp["s3_bucket"] = options.s3Bucket;
+  if (typeof options.s3ObjectPrefix !== "undefined")
+    temp["s3_object_prefix"] = options.s3ObjectPrefix;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
   if (typeof options.templateName !== "undefined")
@@ -14618,6 +14637,7 @@ type convertedPodPushOptions = {
   skip_tests?: boolean;
   verbose?: boolean;
   use_modular_headers?: boolean;
+  synchronous?: boolean;
 };
 /** @ignore Convert PodPushOptions to the shape used by the Fastlane service
  */
@@ -14643,6 +14663,8 @@ function convertPodPushOptions(
   if (typeof options.verbose !== "undefined") temp["verbose"] = options.verbose;
   if (typeof options.useModularHeaders !== "undefined")
     temp["use_modular_headers"] = options.useModularHeaders;
+  if (typeof options.synchronous !== "undefined")
+    temp["synchronous"] = options.synchronous;
   return temp;
 }
 
@@ -16559,6 +16581,7 @@ type convertedSyncCodeSigningOptions = {
   s3_access_key?: string;
   s3_secret_access_key?: string;
   s3_bucket?: string;
+  s3_object_prefix?: string;
   keychain_name: string;
   keychain_password?: string;
   force: boolean;
@@ -16624,6 +16647,8 @@ function convertSyncCodeSigningOptions(
     temp["s3_secret_access_key"] = options.s3SecretAccessKey;
   if (typeof options.s3Bucket !== "undefined")
     temp["s3_bucket"] = options.s3Bucket;
+  if (typeof options.s3ObjectPrefix !== "undefined")
+    temp["s3_object_prefix"] = options.s3ObjectPrefix;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
   if (typeof options.templateName !== "undefined")
@@ -17190,6 +17215,7 @@ type convertedUploadSymbolsToCrashlyticsOptions = {
   binary_path?: string;
   platform: string;
   dsym_worker_threads?: any;
+  debug: boolean;
 };
 /** @ignore Convert UploadSymbolsToCrashlyticsOptions to the shape used by the Fastlane service
  */
@@ -17198,6 +17224,7 @@ function convertUploadSymbolsToCrashlyticsOptions(
 ): convertedUploadSymbolsToCrashlyticsOptions {
   const temp: convertedUploadSymbolsToCrashlyticsOptions = {
     platform: options.platform,
+    debug: options.debug,
   };
   if (typeof options.dsymPath !== "undefined")
     temp["dsym_path"] = options.dsymPath;
