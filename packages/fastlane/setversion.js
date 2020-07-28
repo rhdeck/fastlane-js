@@ -1,6 +1,6 @@
 const { join } = require("path");
 const { readFileSync } = require("fs");
-const { spawnSync } = require("child_process");
+const { spawnSync, execSync } = require("child_process");
 const getAPI = require("@fastlanejs/api");
 const { version } = getAPI();
 
@@ -14,15 +14,15 @@ if (o.version !== version) {
     (major === packagemajor && minor > packageminor) ||
     (major === packagemajor && minor === packageminor && build > packagebuild)
   ) {
-    spawnSync(
-      "git",
-      ["commit", "-a", "-m", `"Updating to fastlane ${version}"`],
-      { stdio: "inherit" }
-    );
-    spawnSync("npm", ["version", version], {
-      stdio: "inherit",
-    });
+    try {
+      spawnSync(
+        "git",
+        ["commit", "-a", "-m", `"Updating to fastlane ${version}"`],
+        { stdio: "inherit" }
+      );
+    } catch (e) {}
     o.version = version;
-    // writeFileSync(packagePath, JSON.stringify(o, null, 2));
+    console.log("Done setting version to ", version);
+    writeFileSync(packagePath, JSON.stringify(o, null, 2));
   }
 }
