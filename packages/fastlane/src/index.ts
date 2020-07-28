@@ -3223,7 +3223,7 @@ type DownloadDsymsOptions = {
   /**
    * The app build_number for dSYMs you wish to download
    */
-  buildNumber?: string;
+  buildNumber?: any;
   /**
    * The minimum app version for dSYMs you wish to download
    */
@@ -3433,6 +3433,10 @@ type ErbOptions = {
    * Placeholders given as a hash
    */
   placeholders: { string: string };
+  /**
+   * Trim mode applied to the ERB
+   */
+  trimMode?: string;
 };
 
 /** Shape for [[fastlaneVersion]] options argument
@@ -5655,6 +5659,10 @@ type PilotOptions = {
    * **DEPRECATED!** Update build info immediately after validation. This is deprecated and will be removed in a future release. App Store Connect no longer supports setting build info until after build processing has completed, which is when build info is updated by default
    */
   updateBuildInfoOnUpload?: any;
+  /**
+   * Distribute a previously uploaded build (equivalent to the `fastlane pilot distribute` command)
+   */
+  distributeOnly: boolean;
   /**
    * Provide the 'Uses Non-Exempt Encryption' for export compliance. This is used if there is 'ITSAppUsesNonExemptEncryption' is not set in the Info.plist
    */
@@ -8491,6 +8499,10 @@ type TestflightOptions = {
    */
   updateBuildInfoOnUpload?: any;
   /**
+   * Distribute a previously uploaded build (equivalent to the `fastlane pilot distribute` command)
+   */
+  distributeOnly: boolean;
+  /**
    * Provide the 'Uses Non-Exempt Encryption' for export compliance. This is used if there is 'ITSAppUsesNonExemptEncryption' is not set in the Info.plist
    */
   usesNonExemptEncryption: boolean;
@@ -9503,6 +9515,10 @@ type UploadToTestflightOptions = {
    * **DEPRECATED!** Update build info immediately after validation. This is deprecated and will be removed in a future release. App Store Connect no longer supports setting build info until after build processing has completed, which is when build info is updated by default
    */
   updateBuildInfoOnUpload?: any;
+  /**
+   * Distribute a previously uploaded build (equivalent to the `fastlane pilot distribute` command)
+   */
+  distributeOnly: boolean;
   /**
    * Provide the 'Uses Non-Exempt Encryption' for export compliance. This is used if there is 'ITSAppUsesNonExemptEncryption' is not set in the Info.plist
    */
@@ -12342,7 +12358,7 @@ type convertedDownloadDsymsOptions = {
   team_name?: string;
   platform?: string;
   version?: string;
-  build_number?: string;
+  build_number?: any;
   min_version?: string;
   output_directory?: string;
   wait_for_dsym_processing?: boolean;
@@ -12576,6 +12592,7 @@ type convertedErbOptions = {
   template: string;
   destination?: string;
   placeholders: { string: string };
+  trim_mode?: string;
 };
 /** @ignore Convert ErbOptions to the shape used by the Fastlane service
  */
@@ -12586,6 +12603,8 @@ function convertErbOptions(options: ErbOptions): convertedErbOptions {
   };
   if (typeof options.destination !== "undefined")
     temp["destination"] = options.destination;
+  if (typeof options.trimMode !== "undefined")
+    temp["trim_mode"] = options.trimMode;
   return temp;
 }
 
@@ -14487,6 +14506,7 @@ type convertedPilotOptions = {
   skip_submission: any;
   skip_waiting_for_build_processing: any;
   update_build_info_on_upload?: any;
+  distribute_only: boolean;
   uses_non_exempt_encryption: boolean;
   distribute_external: any;
   notify_external_testers: any;
@@ -14514,6 +14534,7 @@ function convertPilotOptions(options: PilotOptions): convertedPilotOptions {
     demo_account_required: options.demoAccountRequired,
     skip_submission: options.skipSubmission,
     skip_waiting_for_build_processing: options.skipWaitingForBuildProcessing,
+    distribute_only: options.distributeOnly,
     uses_non_exempt_encryption: options.usesNonExemptEncryption,
     distribute_external: options.distributeExternal,
     notify_external_testers: options.notifyExternalTesters,
@@ -16744,6 +16765,7 @@ type convertedTestflightOptions = {
   skip_submission: any;
   skip_waiting_for_build_processing: any;
   update_build_info_on_upload?: any;
+  distribute_only: boolean;
   uses_non_exempt_encryption: boolean;
   distribute_external: any;
   notify_external_testers: any;
@@ -16773,6 +16795,7 @@ function convertTestflightOptions(
     demo_account_required: options.demoAccountRequired,
     skip_submission: options.skipSubmission,
     skip_waiting_for_build_processing: options.skipWaitingForBuildProcessing,
+    distribute_only: options.distributeOnly,
     uses_non_exempt_encryption: options.usesNonExemptEncryption,
     distribute_external: options.distributeExternal,
     notify_external_testers: options.notifyExternalTesters,
@@ -17612,6 +17635,7 @@ type convertedUploadToTestflightOptions = {
   skip_submission: any;
   skip_waiting_for_build_processing: any;
   update_build_info_on_upload?: any;
+  distribute_only: boolean;
   uses_non_exempt_encryption: boolean;
   distribute_external: any;
   notify_external_testers: any;
@@ -17641,6 +17665,7 @@ function convertUploadToTestflightOptions(
     demo_account_required: options.demoAccountRequired,
     skip_submission: options.skipSubmission,
     skip_waiting_for_build_processing: options.skipWaitingForBuildProcessing,
+    distribute_only: options.distributeOnly,
     uses_non_exempt_encryption: options.usesNonExemptEncryption,
     distribute_external: options.distributeExternal,
     notify_external_testers: options.notifyExternalTesters,
