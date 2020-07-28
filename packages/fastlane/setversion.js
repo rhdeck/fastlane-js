@@ -19,7 +19,7 @@ if (o.version !== version) {
       ["commit", "-a", "-m", `"Updating to fastlane ${version}"`],
       { stdio: "inherit" }
     );
-    spawnSync("npm", [version, "git-tag-version"], { stdio: "inhierit" });
+    spawnSync("npm", [version, "git-tag-version"], { stdio: "inherit" });
     o.version = version;
     // writeFileSync(packagePath, JSON.stringify(o, null, 2));
   }
