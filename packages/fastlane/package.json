@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "checkfastlane": "node checkversion.js",
-    "clean": "rm cached_api.json src/index.ts && rm -rf docs",
+    "clean": "rm cached_api.json src/index.ts ; rm -rf docs ; echo \"Cleaned\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "yarn -s generator > src/index.ts && tsc && chmod +x dist/bin.js && typedoc --excludePrivate --mode file --theme minimal --inputFiles src/index.ts && node setversion.js",
     "cleanbuild": "yarn clean && yarn build"

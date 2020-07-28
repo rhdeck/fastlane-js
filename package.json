@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "yarn cache clean && cd packages/fastlane && rm -rf node_modules",
+    "clean": "yarn cache clean && cd packages/fastlane && rm -rf node_modules ; echo \"Clean\"",
     "setup": "gem install fastlane --user-install && cd packages/fastlane && yarn && yarn livelink once",
     "build": "cd packages/fastlane && yarn checkfastlane && yarn cleanbuild",
     "ship": "cd packages/fastlane && npm publish && git commit -a -m 'New revision' && git push",
