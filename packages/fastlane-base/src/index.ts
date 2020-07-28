@@ -14,15 +14,30 @@ class Deferred {
 class FastlaneError extends Error {
   public class: string;
   public information: string[];
-  constructor(payload: {
-    failure_class: string;
-    failure_message: string;
-    failure_information: string[];
+  constructor({
+    failureClass,
+    message,
+    stackTrace,
+  }: {
+    failureClass: string;
+    message: string;
+    stackTrace: string[];
   }) {
-    super(payload.failure_message);
-    this.class = payload.failure_class;
-    this.information = payload.failure_information;
+    super(message);
+    this.class = failureClass;
+    this.information = stackTrace;
   }
+}
+function makeFastlaneError({
+  failure_class: failureClass,
+  failure_message: message,
+  failure_information: stackTrace,
+}: {
+  failure_class: string;
+  failure_message: string;
+  failure_information: string[];
+}) {
+  return new FastlaneError({ failureClass, message, stackTrace });
 }
 class FastlaneBase {
   /** @private */
@@ -90,7 +105,7 @@ class FastlaneBase {
           if (o.payload) {
             if (o.payload.status === "failure") {
               this.log("RECEIVED FAILURE", o);
-              const e = new FastlaneError(o.payload);
+              const e = makeFastlaneError(o.payload);
               reject(e);
             } else if (typeof o.payload.return_object === "undefined") {
               reject(o);

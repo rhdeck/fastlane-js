@@ -3,15 +3,20 @@ import { program } from "commander";
 import { join } from "path";
 import { withFastlane, Fastlane } from "./";
 import { register } from "ts-node";
-import { existsSync } from "fs";
+import { existsSync, unlinkSync } from "fs";
+import { spawnSync } from "child_process";
 register();
 let fastfilepath = "";
 const tsPath = join(process.cwd(), "fastfile.ts");
 const jsPath = join(process.cwd(), "fastfile.js");
-if (existsSync(tsPath)) fastfilepath = tsPath;
-if (existsSync(jsPath)) fastfilepath = jsPath;
+const tempPath = join(process.cwd(), "_fastfile.js");
+if (existsSync(tsPath)) {
+  spawnSync("tsc", [tsPath, "--outFile", tempPath]);
+  fastfilepath = tempPath;
+} else if (existsSync(jsPath)) fastfilepath = jsPath;
 else console.error("Could not find a fastfile.js or fastfile.ts");
 const ff = require(fastfilepath);
+if (existsSync(tempPath)) unlinkSync(tempPath);
 program.option("--noWrap", "Do not wrap the function in a withFastlane call");
 program.option(
   "--port <port>",
@@ -19,7 +24,7 @@ program.option(
 );
 program.option(
   "--silent",
-  "Run in noninteractive mode (less text, but also no user prompts"
+  "Run in noninteractive mode (less text, but also no user prompts)"
 );
 Object.entries(ff).map(([key, value]) => {
   if (typeof value !== "function") return;
