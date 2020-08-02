@@ -1,0 +1,64 @@
+name: "ruby-responder"
+on:
+  repository_dispatch:
+    types:
+      - rebuild
+jobs:
+  rebuild-js:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: setup-node
+        uses: actions/setup-node@v1
+        with:
+          always-auth: true
+          node-version: "12.x"
+          registry-url: https://registry.npmjs.org
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: setuser
+        run: |
+          git config --global user.email "ray@raydeck.com"
+          git config --global user.name "Github Actions"
+      - name: clean
+        run: yarn clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: setup
+        run: yarn setup
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: build
+        run: yarn build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Extract version
+        id: extract_version
+        run: echo "::set-output version=`cat packages/fastlane/package.json| jq .version`"
+      - name: publish
+        run: npm publish ./packages/fastlane --access public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: Commit and push changes
+        run: |
+          git commit -a -m "Rebuild from fastlane release"
+          git push
+      - name: Extract version
+        id: extract_version
+        run: echo "::set-output version=`cat packages/fastlane/package.json| jq .version`"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ steps.extract_version.version }}
+          release_name: Release ${{ steps.extract_version.version }}
+          body: |
+            Update based on latest Fastlane release ${{ steps.extract_version.version }}. Release notes: https://github.com/fastlane/fastlane/releases/tag/${{ steps.extract_version.version}}
+          draft: false
+          prerelease: false
