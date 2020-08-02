@@ -1761,6 +1761,10 @@ type CaptureIosScreenshotsOptions = {
    */
   eraseSimulator: any;
   /**
+   * Enabling this option will prevent displaying the simulator window
+   */
+  headless: boolean;
+  /**
    * Enabling this option wil automatically override the status bar to show 9:41 AM, full battery, and full reception
    */
   overrideStatusBar: any;
@@ -1935,6 +1939,10 @@ type CaptureScreenshotsOptions = {
    */
   eraseSimulator: any;
   /**
+   * Enabling this option will prevent displaying the simulator window
+   */
+  headless: boolean;
+  /**
    * Enabling this option wil automatically override the status bar to show 9:41 AM, full battery, and full reception
    */
   overrideStatusBar: any;
@@ -2064,6 +2072,10 @@ type CarthageOptions = {
    * Add dependencies as Git submodules
    */
   useSubmodules?: boolean;
+  /**
+   * Use .netrc for downloading frameworks
+   */
+  useNetrc?: boolean;
   /**
    * Check out dependency repositories even when prebuilt frameworks exist
    */
@@ -3980,6 +3992,10 @@ type GitPullOptions = {
    * Simply pull the tags, and not bring new commits to the current branch from the remote
    */
   onlyTags?: any;
+  /**
+   * Rebase on top of the remote branch instead of merge
+   */
+  rebase?: any;
 };
 
 /** Shape for [[gitSubmoduleUpdate]] options argument
@@ -5126,6 +5142,10 @@ type MatchOptions = {
    */
   gitBearerAuthorization?: string;
   /**
+   * Use a private key to access the git repo (e.g.: access to GitHub repository via Deploy keys), usually a id_rsa named file or the contents hereof
+   */
+  gitPrivateKey?: string;
+  /**
    * Name of the Google Cloud Storage bucket to use
    */
   googleCloudBucketName?: string;
@@ -5644,7 +5664,7 @@ type PilotOptions = {
    */
   localizedBuildInfo?: { string: string };
   /**
-   * Provide the 'What to Test' text when uploading a new build. `skip_waiting_for_build_processing: false` is required to set the changelog
+   * Provide the 'What to Test' text when uploading a new build
    */
   changelog?: string;
   /**
@@ -7685,6 +7705,10 @@ type SnapshotOptions = {
    */
   eraseSimulator: any;
   /**
+   * Enabling this option will prevent displaying the simulator window
+   */
+  headless: boolean;
+  /**
    * Enabling this option wil automatically override the status bar to show 9:41 AM, full battery, and full reception
    */
   overrideStatusBar: any;
@@ -8285,6 +8309,10 @@ type SyncCodeSigningOptions = {
    */
   gitBearerAuthorization?: string;
   /**
+   * Use a private key to access the git repo (e.g.: access to GitHub repository via Deploy keys), usually a id_rsa named file or the contents hereof
+   */
+  gitPrivateKey?: string;
+  /**
    * Name of the Google Cloud Storage bucket to use
    */
   googleCloudBucketName?: string;
@@ -8483,7 +8511,7 @@ type TestflightOptions = {
    */
   localizedBuildInfo?: { string: string };
   /**
-   * Provide the 'What to Test' text when uploading a new build. `skip_waiting_for_build_processing: false` is required to set the changelog
+   * Provide the 'What to Test' text when uploading a new build
    */
   changelog?: string;
   /**
@@ -9500,7 +9528,7 @@ type UploadToTestflightOptions = {
    */
   localizedBuildInfo?: { string: string };
   /**
-   * Provide the 'What to Test' text when uploading a new build. `skip_waiting_for_build_processing: false` is required to set the changelog
+   * Provide the 'What to Test' text when uploading a new build
    */
   changelog?: string;
   /**
@@ -11172,6 +11200,7 @@ type convertedCaptureIosScreenshotsOptions = {
   clear_previous_screenshots: any;
   reinstall_app: any;
   erase_simulator: any;
+  headless: boolean;
   override_status_bar: any;
   localize_simulator: any;
   dark_mode?: boolean;
@@ -11214,6 +11243,7 @@ function convertCaptureIosScreenshotsOptions(
     clear_previous_screenshots: options.clearPreviousScreenshots,
     reinstall_app: options.reinstallApp,
     erase_simulator: options.eraseSimulator,
+    headless: options.headless,
     override_status_bar: options.overrideStatusBar,
     localize_simulator: options.localizeSimulator,
     buildlog_path: options.buildlogPath,
@@ -11291,6 +11321,7 @@ type convertedCaptureScreenshotsOptions = {
   clear_previous_screenshots: any;
   reinstall_app: any;
   erase_simulator: any;
+  headless: boolean;
   override_status_bar: any;
   localize_simulator: any;
   dark_mode?: boolean;
@@ -11333,6 +11364,7 @@ function convertCaptureScreenshotsOptions(
     clear_previous_screenshots: options.clearPreviousScreenshots,
     reinstall_app: options.reinstallApp,
     erase_simulator: options.eraseSimulator,
+    headless: options.headless,
     override_status_bar: options.overrideStatusBar,
     localize_simulator: options.localizeSimulator,
     buildlog_path: options.buildlogPath,
@@ -11399,6 +11431,7 @@ type convertedCarthageOptions = {
   dependencies: string[];
   use_ssh?: boolean;
   use_submodules?: boolean;
+  use_netrc?: boolean;
   use_binaries?: boolean;
   no_checkout?: boolean;
   no_build?: boolean;
@@ -11431,6 +11464,8 @@ function convertCarthageOptions(
   if (typeof options.useSsh !== "undefined") temp["use_ssh"] = options.useSsh;
   if (typeof options.useSubmodules !== "undefined")
     temp["use_submodules"] = options.useSubmodules;
+  if (typeof options.useNetrc !== "undefined")
+    temp["use_netrc"] = options.useNetrc;
   if (typeof options.useBinaries !== "undefined")
     temp["use_binaries"] = options.useBinaries;
   if (typeof options.noCheckout !== "undefined")
@@ -13085,6 +13120,7 @@ function convertGitCommitOptions(
 /** @ignore */
 type convertedGitPullOptions = {
   only_tags?: any;
+  rebase?: any;
 };
 /** @ignore Convert GitPullOptions to the shape used by the Fastlane service
  */
@@ -13094,6 +13130,7 @@ function convertGitPullOptions(
   const temp: convertedGitPullOptions = {};
   if (typeof options.onlyTags !== "undefined")
     temp["only_tags"] = options.onlyTags;
+  if (typeof options.rebase !== "undefined") temp["rebase"] = options.rebase;
   return temp;
 }
 
@@ -14058,6 +14095,7 @@ type convertedMatchOptions = {
   clone_branch_directly: boolean;
   git_basic_authorization?: string;
   git_bearer_authorization?: string;
+  git_private_key?: string;
   google_cloud_bucket_name?: string;
   google_cloud_keys_file?: string;
   google_cloud_project_id?: string;
@@ -14115,6 +14153,8 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     temp["git_basic_authorization"] = options.gitBasicAuthorization;
   if (typeof options.gitBearerAuthorization !== "undefined")
     temp["git_bearer_authorization"] = options.gitBearerAuthorization;
+  if (typeof options.gitPrivateKey !== "undefined")
+    temp["git_private_key"] = options.gitPrivateKey;
   if (typeof options.googleCloudBucketName !== "undefined")
     temp["google_cloud_bucket_name"] = options.googleCloudBucketName;
   if (typeof options.googleCloudKeysFile !== "undefined")
@@ -16142,6 +16182,7 @@ type convertedSnapshotOptions = {
   clear_previous_screenshots: any;
   reinstall_app: any;
   erase_simulator: any;
+  headless: boolean;
   override_status_bar: any;
   localize_simulator: any;
   dark_mode?: boolean;
@@ -16184,6 +16225,7 @@ function convertSnapshotOptions(
     clear_previous_screenshots: options.clearPreviousScreenshots,
     reinstall_app: options.reinstallApp,
     erase_simulator: options.eraseSimulator,
+    headless: options.headless,
     override_status_bar: options.overrideStatusBar,
     localize_simulator: options.localizeSimulator,
     buildlog_path: options.buildlogPath,
@@ -16595,6 +16637,7 @@ type convertedSyncCodeSigningOptions = {
   clone_branch_directly: boolean;
   git_basic_authorization?: string;
   git_bearer_authorization?: string;
+  git_private_key?: string;
   google_cloud_bucket_name?: string;
   google_cloud_keys_file?: string;
   google_cloud_project_id?: string;
@@ -16654,6 +16697,8 @@ function convertSyncCodeSigningOptions(
     temp["git_basic_authorization"] = options.gitBasicAuthorization;
   if (typeof options.gitBearerAuthorization !== "undefined")
     temp["git_bearer_authorization"] = options.gitBearerAuthorization;
+  if (typeof options.gitPrivateKey !== "undefined")
+    temp["git_private_key"] = options.gitPrivateKey;
   if (typeof options.googleCloudBucketName !== "undefined")
     temp["google_cloud_bucket_name"] = options.googleCloudBucketName;
   if (typeof options.googleCloudKeysFile !== "undefined")
