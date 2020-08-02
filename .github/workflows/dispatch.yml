@@ -27,53 +27,55 @@ jobs:
       #   env: # More info about the environment variables in the README
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #     NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - name: clean
-        run: yarn clean
-        env: # More info about the environment variables in the README
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - name: setup
-        run: yarn setup
-        env: # More info about the environment variables in the README
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - name: build
-        run: yarn build
-        env: # More info about the environment variables in the README
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - name: publish
-        run: |
-          cd packages/fastlane
-          npm publish
-        # - name: Publish if version has been updated
-        #   uses: pascalgn/npm-publish-action@06e0830ea83eea10ed4a62654eeaedafb8bf50fc
-        #   with: # All of theses inputs are optional
-        #     tag_name: "v%s"
-        #     tag_message: "v%s"
-        #     commit_pattern: "^Release (\\S+)"
-        #     workspace: "packages/fastlane"
-        env: # More info about the environment variables in the README
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
-      # - name: ship
-      #   run: yarn ship
+      - name: whoami
+        run: npm whoami
+      # - name: clean
+      #   run: yarn clean
       #   env: # More info about the environment variables in the README
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #     NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - name: Commit and push changes
-        run: |
-          git commit -a -m "Rebuild from fastlane release"
-          git push
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: |
-            Update based on latest Fastlane release
-          draft: false
-          prerelease: false
+      # - name: setup
+      #   run: yarn setup
+      #   env: # More info about the environment variables in the README
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      # - name: build
+      #   run: yarn build
+      #   env: # More info about the environment variables in the README
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      # - name: publish
+      #   run: |
+      #     cd packages/fastlane
+      #     npm publish
+      #   # - name: Publish if version has been updated
+      #   #   uses: pascalgn/npm-publish-action@06e0830ea83eea10ed4a62654eeaedafb8bf50fc
+      #   #   with: # All of theses inputs are optional
+      #   #     tag_name: "v%s"
+      #   #     tag_message: "v%s"
+      #   #     commit_pattern: "^Release (\\S+)"
+      #   #     workspace: "packages/fastlane"
+      #   env: # More info about the environment variables in the README
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
+      #     NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
+      # # - name: ship
+      # #   run: yarn ship
+      # #   env: # More info about the environment variables in the README
+      # #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # #     NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      # - name: Commit and push changes
+      #   run: |
+      #     git commit -a -m "Rebuild from fastlane release"
+      #     git push
+      # - name: Create Release
+      #   id: create_release
+      #   uses: actions/create-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+      #   with:
+      #     tag_name: ${{ github.ref }}
+      #     release_name: Release ${{ github.ref }}
+      #     body: |
+      #       Update based on latest Fastlane release
+      #     draft: false
+      #     prerelease: false
