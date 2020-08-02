@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
       - name: yarn
         run: yarn
-      - name: setup
+      - name: npmrc-init
         run: echo "//npm.pkg.github.com/:_authToken=${{secrets.NPM_AUTH_TOKEN}}" > ./.npmrc
       - name: echo
         run: cat .npmrc
@@ -19,8 +19,23 @@ jobs:
         run: |
           git config --global user.email "ray@raydeck.com"
           git config --global user.name "Github Actions"
-      - name: release
-        run: yarn release
+      - name: clean
+        run: yarn clean
+        env: # More info about the environment variables in the README
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: setup
+        run: yarn setup
+        env: # More info about the environment variables in the README
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: build
+        run: yarn build
+        env: # More info about the environment variables in the README
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: ship
+        run: yarn ship
         env: # More info about the environment variables in the README
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
