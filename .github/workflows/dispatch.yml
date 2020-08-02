@@ -1,0 +1,12 @@
+name: "dispatch-response"
+on: repository_dispatch
+jobs:
+  rebuild-js:
+    runs-on: macos-latest
+    steps:
+      - name: checkout
+      - uses: actions/checkout@v2
+      - name: yarn
+      - run: yarn
+      - name: release
+      - run: yarn release
