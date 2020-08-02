@@ -5,8 +5,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: yarn
-      - run: yarn
+        run: yarn
       - name: release
-      - run: yarn release
+        run: yarn release
