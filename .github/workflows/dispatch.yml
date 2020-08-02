@@ -13,8 +13,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12"
-      - name: yarn
-        run: yarn
       - name: setuser
         run: |
           git config --global user.email "ray@raydeck.com"
