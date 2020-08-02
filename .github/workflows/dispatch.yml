@@ -9,19 +9,24 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+        env: # More info about the environment variables in the README
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: setup-node
         uses: actions/setup-node@v1
         with:
           node-version: "12"
+        env: # More info about the environment variables in the README
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       - name: setuser
         run: |
           git config --global user.email "ray@raydeck.com"
           git config --global user.name "Github Actions"
-      - name: "make npmrc"
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > .npmrc
-        env: # More info about the environment variables in the README
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      # - name: "make npmrc"
+      #   run: echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > .npmrc
+      #   env: # More info about the environment variables in the README
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       - name: clean
         run: yarn clean
         env: # More info about the environment variables in the README
