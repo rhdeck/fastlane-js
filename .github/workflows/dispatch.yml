@@ -16,7 +16,7 @@ jobs:
       - name: echo
         run: cat .npmrc
       - name: setuser
-      - run: |
+        run: |
           git config --global user.email "ray@raydeck.com"
           git config --global user.name "Github Actions"
       - name: release
