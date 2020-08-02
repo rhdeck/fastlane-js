@@ -15,8 +15,6 @@ jobs:
           node-version: "12"
       - name: yarn
         run: yarn
-      - name: echo
-        run: cat .npmrc
       - name: setuser
         run: |
           git config --global user.email "ray@raydeck.com"
