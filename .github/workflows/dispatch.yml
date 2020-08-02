@@ -1,5 +1,8 @@
 name: "dispatch-response"
-on: repository_dispatch
+on:
+  repository_dispatch:
+    types:
+      - rebuild
 jobs:
   rebuild-js:
     runs-on: macos-latest
