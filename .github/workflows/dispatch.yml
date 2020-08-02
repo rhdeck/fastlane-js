@@ -7,10 +7,13 @@ jobs:
   rebuild-js:
     runs-on: macos-latest
     steps:
+      - name: "echo"
+        run: echo $RUNNER_TEMP
       - name: checkout
         uses: actions/checkout@v2
         env: # More info about the environment variables in the README
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: setup-node
         uses: actions/setup-node@v1
         with:
