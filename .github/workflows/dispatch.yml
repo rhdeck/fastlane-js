@@ -27,6 +27,10 @@ jobs:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       # - name: show-rc
       #   run: cat .npmrc
+      - name: echo2
+      - run |
+        cat /Users/runner/work/_temp/.npmrc
+        echo "that was the echo2"
       - name: setuser
         run: |
           git config --global user.email "ray@raydeck.com"
