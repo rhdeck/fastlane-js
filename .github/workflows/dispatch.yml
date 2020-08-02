@@ -8,7 +8,9 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: "echo"
-        run: echo $RUNNER_TEMP
+        run: |
+          echo $RUNNER_TEMP
+          echo $GITHUB_TOKEN
       - name: checkout
         uses: actions/checkout@v2
         env: # More info about the environment variables in the README
