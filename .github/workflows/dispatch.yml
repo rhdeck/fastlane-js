@@ -15,8 +15,6 @@ jobs:
           node-version: "12"
       - name: yarn
         run: yarn
-      - name: npmrc-init
-        run: echo "//npm.pkg.github.com/:_authToken=${{secrets.NPM_AUTH_TOKEN}}" > ./.npmrc
       - name: echo
         run: cat .npmrc
       - name: setuser
