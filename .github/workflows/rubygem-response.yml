@@ -35,9 +35,6 @@ jobs:
         run: yarn build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Extract version
-        id: extract_version
-        run: echo "::set-output version=`cat packages/fastlane/package.json| jq .version`"
       - name: publish
         run: npm publish ./packages/fastlane --access public
         env:
