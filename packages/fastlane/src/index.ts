@@ -1872,6 +1872,10 @@ type CaptureIosScreenshotsOptions = {
    * Disable xcpretty formatting of build
    */
   disableXcpretty?: boolean;
+  /**
+   * Suppress the output of xcodebuild to stdout. Output is still saved in buildlog_path
+   */
+  suppressXcodeOutput?: boolean;
 };
 
 /** Shape for [[captureScreenshots]] options argument
@@ -2050,6 +2054,10 @@ type CaptureScreenshotsOptions = {
    * Disable xcpretty formatting of build
    */
   disableXcpretty?: boolean;
+  /**
+   * Suppress the output of xcodebuild to stdout. Output is still saved in buildlog_path
+   */
+  suppressXcodeOutput?: boolean;
 };
 
 /** Shape for [[carthage]] options argument
@@ -3842,7 +3850,7 @@ type GetProvisioningProfileOptions = {
    */
   skipCertificateVerification: any;
   /**
-   * Set the provisioning profile's platform (i.e. ios, tvos)
+   * Set the provisioning profile's platform (i.e. ios, tvos, macos, catalyst)
    */
   platform: any;
   /**
@@ -5202,9 +5210,13 @@ type MatchOptions = {
    */
   skipDocs: boolean;
   /**
-   * Set the provisioning profile's platform to work with (i.e. ios, tvos, macos)
+   * Set the provisioning profile's platform to work with (i.e. ios, tvos, macos, catalyst)
    */
   platform: string;
+  /**
+   * Enable this if you have the Mac Catalyst capability enabled and your project was created with Xcode 11.3 or earlier. Prepends 'maccatalyst.' to the app identifier for the provisioning profile mapping
+   */
+  deriveCatalystAppIdentifier: boolean;
   /**
    * The name of provisioning profile template. If the developer account has provisioning profile templates (aka: custom entitlements), the template name can be found by inspecting the Entitlements drop-down while creating/editing a provisioning profile (e.g. "Apple Pay Pass Suppression Development")
    */
@@ -7430,7 +7442,7 @@ type SighOptions = {
    */
   skipCertificateVerification: any;
   /**
-   * Set the provisioning profile's platform (i.e. ios, tvos)
+   * Set the provisioning profile's platform (i.e. ios, tvos, macos, catalyst)
    */
   platform: any;
   /**
@@ -7816,6 +7828,10 @@ type SnapshotOptions = {
    * Disable xcpretty formatting of build
    */
   disableXcpretty?: boolean;
+  /**
+   * Suppress the output of xcodebuild to stdout. Output is still saved in buildlog_path
+   */
+  suppressXcodeOutput?: boolean;
 };
 
 /** Shape for [[sonar]] options argument
@@ -8168,6 +8184,10 @@ type SupplyOptions = {
    * Size of 'patch' expansion file in bytes
    */
   obbPatchFileSize?: any;
+  /**
+   * Must be set to true if the bundle installation may trigger a warning on user devices (e.g can only be downloaded over wifi). Typically this is required for bundles over 150MB
+   */
+  ackBundleInstallationWarning?: boolean;
 };
 
 /** Shape for [[swiftlint]] options argument
@@ -8369,9 +8389,13 @@ type SyncCodeSigningOptions = {
    */
   skipDocs: boolean;
   /**
-   * Set the provisioning profile's platform to work with (i.e. ios, tvos, macos)
+   * Set the provisioning profile's platform to work with (i.e. ios, tvos, macos, catalyst)
    */
   platform: string;
+  /**
+   * Enable this if you have the Mac Catalyst capability enabled and your project was created with Xcode 11.3 or earlier. Prepends 'maccatalyst.' to the app identifier for the provisioning profile mapping
+   */
+  deriveCatalystAppIdentifier: boolean;
   /**
    * The name of provisioning profile template. If the developer account has provisioning profile templates (aka: custom entitlements), the template name can be found by inspecting the Entitlements drop-down while creating/editing a provisioning profile (e.g. "Apple Pay Pass Suppression Development")
    */
@@ -9435,6 +9459,10 @@ type UploadToPlayStoreOptions = {
    * Size of 'patch' expansion file in bytes
    */
   obbPatchFileSize?: any;
+  /**
+   * Must be set to true if the bundle installation may trigger a warning on user devices (e.g can only be downloaded over wifi). Typically this is required for bundles over 150MB
+   */
+  ackBundleInstallationWarning?: boolean;
 };
 
 /** Shape for [[uploadToPlayStoreInternalAppSharing]] options argument
@@ -11228,6 +11256,7 @@ type convertedCaptureIosScreenshotsOptions = {
   only_testing?: any;
   skip_testing?: any;
   disable_xcpretty?: boolean;
+  suppress_xcode_output?: boolean;
 };
 /** @ignore Convert CaptureIosScreenshotsOptions to the shape used by the Fastlane service
  */
@@ -11301,6 +11330,8 @@ function convertCaptureIosScreenshotsOptions(
     temp["skip_testing"] = options.skipTesting;
   if (typeof options.disableXcpretty !== "undefined")
     temp["disable_xcpretty"] = options.disableXcpretty;
+  if (typeof options.suppressXcodeOutput !== "undefined")
+    temp["suppress_xcode_output"] = options.suppressXcodeOutput;
   return temp;
 }
 
@@ -11349,6 +11380,7 @@ type convertedCaptureScreenshotsOptions = {
   only_testing?: any;
   skip_testing?: any;
   disable_xcpretty?: boolean;
+  suppress_xcode_output?: boolean;
 };
 /** @ignore Convert CaptureScreenshotsOptions to the shape used by the Fastlane service
  */
@@ -11422,6 +11454,8 @@ function convertCaptureScreenshotsOptions(
     temp["skip_testing"] = options.skipTesting;
   if (typeof options.disableXcpretty !== "undefined")
     temp["disable_xcpretty"] = options.disableXcpretty;
+  if (typeof options.suppressXcodeOutput !== "undefined")
+    temp["suppress_xcode_output"] = options.suppressXcodeOutput;
   return temp;
 }
 
@@ -14111,6 +14145,7 @@ type convertedMatchOptions = {
   skip_confirmation: boolean;
   skip_docs: boolean;
   platform: string;
+  derive_catalyst_app_identifier: boolean;
   template_name?: string;
   profile_name?: string;
   fail_on_name_taken?: boolean;
@@ -14138,6 +14173,7 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     skip_confirmation: options.skipConfirmation,
     skip_docs: options.skipDocs,
     platform: options.platform,
+    derive_catalyst_app_identifier: options.deriveCatalystAppIdentifier,
     verbose: options.verbose,
   };
   if (typeof options.additionalCertTypes !== "undefined")
@@ -16210,6 +16246,7 @@ type convertedSnapshotOptions = {
   only_testing?: any;
   skip_testing?: any;
   disable_xcpretty?: boolean;
+  suppress_xcode_output?: boolean;
 };
 /** @ignore Convert SnapshotOptions to the shape used by the Fastlane service
  */
@@ -16283,6 +16320,8 @@ function convertSnapshotOptions(
     temp["skip_testing"] = options.skipTesting;
   if (typeof options.disableXcpretty !== "undefined")
     temp["disable_xcpretty"] = options.disableXcpretty;
+  if (typeof options.suppressXcodeOutput !== "undefined")
+    temp["suppress_xcode_output"] = options.suppressXcodeOutput;
   return temp;
 }
 
@@ -16499,6 +16538,7 @@ type convertedSupplyOptions = {
   obb_main_file_size?: any;
   obb_patch_references_version?: any;
   obb_patch_file_size?: any;
+  ack_bundle_installation_warning?: boolean;
 };
 /** @ignore Convert SupplyOptions to the shape used by the Fastlane service
  */
@@ -16566,6 +16606,9 @@ function convertSupplyOptions(options: SupplyOptions): convertedSupplyOptions {
     temp["obb_patch_references_version"] = options.obbPatchReferencesVersion;
   if (typeof options.obbPatchFileSize !== "undefined")
     temp["obb_patch_file_size"] = options.obbPatchFileSize;
+  if (typeof options.ackBundleInstallationWarning !== "undefined")
+    temp["ack_bundle_installation_warning"] =
+      options.ackBundleInstallationWarning;
   return temp;
 }
 
@@ -16653,6 +16696,7 @@ type convertedSyncCodeSigningOptions = {
   skip_confirmation: boolean;
   skip_docs: boolean;
   platform: string;
+  derive_catalyst_app_identifier: boolean;
   template_name?: string;
   profile_name?: string;
   fail_on_name_taken?: boolean;
@@ -16682,6 +16726,7 @@ function convertSyncCodeSigningOptions(
     skip_confirmation: options.skipConfirmation,
     skip_docs: options.skipDocs,
     platform: options.platform,
+    derive_catalyst_app_identifier: options.deriveCatalystAppIdentifier,
     verbose: options.verbose,
   };
   if (typeof options.additionalCertTypes !== "undefined")
@@ -17555,6 +17600,7 @@ type convertedUploadToPlayStoreOptions = {
   obb_main_file_size?: any;
   obb_patch_references_version?: any;
   obb_patch_file_size?: any;
+  ack_bundle_installation_warning?: boolean;
 };
 /** @ignore Convert UploadToPlayStoreOptions to the shape used by the Fastlane service
  */
@@ -17624,6 +17670,9 @@ function convertUploadToPlayStoreOptions(
     temp["obb_patch_references_version"] = options.obbPatchReferencesVersion;
   if (typeof options.obbPatchFileSize !== "undefined")
     temp["obb_patch_file_size"] = options.obbPatchFileSize;
+  if (typeof options.ackBundleInstallationWarning !== "undefined")
+    temp["ack_bundle_installation_warning"] =
+      options.ackBundleInstallationWarning;
   return temp;
 }
 
