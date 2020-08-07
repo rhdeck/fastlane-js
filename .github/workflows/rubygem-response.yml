@@ -46,7 +46,7 @@ jobs:
           git push
       - name: Extract version
         id: extract_version
-        run: echo "::set-output version=`cat packages/fastlane/package.json| jq .version`"
+        run: echo "::set-output name=version::`cat packages/fastlane/package.json| jq -r .version`"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
