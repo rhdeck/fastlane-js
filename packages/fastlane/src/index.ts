@@ -118,6 +118,36 @@ type AppStoreBuildNumberOptions = {
   teamName?: string;
 };
 
+/** Shape for [[appStoreConnectApiKey]] options argument
+ */
+
+type AppStoreConnectApiKeyOptions = {
+  /**
+   * The key ID
+   */
+  keyId: string;
+  /**
+   * The issuer ID
+   */
+  issuerId: string;
+  /**
+   * The path to the key p8 file
+   */
+  keyFilepath?: string;
+  /**
+   * The content of the key p8 file
+   */
+  keyContent?: string;
+  /**
+   * The token session duration
+   */
+  duration?: any;
+  /**
+   * Is App Store or Enterprise (in house) team? App Store Connect API cannot not determine this on its own (yet)
+   */
+  inHouse?: boolean;
+};
+
 /** Shape for [[appaloosa]] options argument
  */
 
@@ -5632,6 +5662,14 @@ type PemOptions = {
 
 type PilotOptions = {
   /**
+   * Path to your App Store Connect API key JSON file
+   */
+  apiKeyPath?: string;
+  /**
+   * Path to your App Store Connect API key JSON file
+   */
+  apiKey?: { string: string };
+  /**
    * Your Apple ID Username
    */
   username: string;
@@ -7859,6 +7897,10 @@ type SonarOptions = {
    */
   sourcesPath?: string;
   /**
+   * Comma-separated paths to directories to be excluded from the analysis
+   */
+  exclusions?: string;
+  /**
    * Language key, e.g. objc
    */
   projectLanguage?: string;
@@ -7924,6 +7966,16 @@ type SpaceshipLogsOptions = {
    * Copies the contents of the found Spaceship log file(s) to the clipboard
    */
   copyToClipboard: boolean;
+};
+
+/** Shape for [[spaceshipStats]] options argument
+ */
+
+type SpaceshipStatsOptions = {
+  /**
+   * Print all URLs requested
+   */
+  printRequestLogs: boolean;
 };
 
 /** Shape for [[splunkmint]] options argument
@@ -8490,6 +8542,14 @@ type TestfairyOptions = {
  */
 
 type TestflightOptions = {
+  /**
+   * Path to your App Store Connect API key JSON file
+   */
+  apiKeyPath?: string;
+  /**
+   * Path to your App Store Connect API key JSON file
+   */
+  apiKey?: { string: string };
   /**
    * Your Apple ID Username
    */
@@ -9512,6 +9572,14 @@ type UploadToPlayStoreInternalAppSharingOptions = {
 
 type UploadToTestflightOptions = {
   /**
+   * Path to your App Store Connect API key JSON file
+   */
+  apiKeyPath?: string;
+  /**
+   * Path to your App Store Connect API key JSON file
+   */
+  apiKey?: { string: string };
+  /**
    * Your Apple ID Username
    */
   username: string;
@@ -10009,6 +10077,35 @@ function convertAppStoreBuildNumberOptions(
     temp["platform"] = options.platform;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
+  return temp;
+}
+
+/** @ignore */
+type convertedAppStoreConnectApiKeyOptions = {
+  key_id: string;
+  issuer_id: string;
+  key_filepath?: string;
+  key_content?: string;
+  duration?: any;
+  in_house?: boolean;
+};
+/** @ignore Convert AppStoreConnectApiKeyOptions to the shape used by the Fastlane service
+ */
+function convertAppStoreConnectApiKeyOptions(
+  options: AppStoreConnectApiKeyOptions
+): convertedAppStoreConnectApiKeyOptions {
+  const temp: convertedAppStoreConnectApiKeyOptions = {
+    key_id: options.keyId,
+    issuer_id: options.issuerId,
+  };
+  if (typeof options.keyFilepath !== "undefined")
+    temp["key_filepath"] = options.keyFilepath;
+  if (typeof options.keyContent !== "undefined")
+    temp["key_content"] = options.keyContent;
+  if (typeof options.duration !== "undefined")
+    temp["duration"] = options.duration;
+  if (typeof options.inHouse !== "undefined")
+    temp["in_house"] = options.inHouse;
   return temp;
 }
 
@@ -14567,6 +14664,8 @@ function convertPemOptions(options: PemOptions): convertedPemOptions {
 
 /** @ignore */
 type convertedPilotOptions = {
+  api_key_path?: string;
+  api_key?: { string: string };
   username: string;
   app_identifier?: string;
   app_platform?: string;
@@ -14618,6 +14717,9 @@ function convertPilotOptions(options: PilotOptions): convertedPilotOptions {
     wait_processing_interval: options.waitProcessingInterval,
     reject_build_waiting_for_review: options.rejectBuildWaitingForReview,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.appIdentifier !== "undefined")
     temp["app_identifier"] = options.appIdentifier;
   if (typeof options.appPlatform !== "undefined")
@@ -16332,6 +16434,7 @@ type convertedSonarOptions = {
   project_name?: string;
   project_version?: string;
   sources_path?: string;
+  exclusions?: string;
   project_language?: string;
   source_encoding?: string;
   sonar_runner_args?: string;
@@ -16357,6 +16460,8 @@ function convertSonarOptions(options: SonarOptions): convertedSonarOptions {
     temp["project_version"] = options.projectVersion;
   if (typeof options.sourcesPath !== "undefined")
     temp["sources_path"] = options.sourcesPath;
+  if (typeof options.exclusions !== "undefined")
+    temp["exclusions"] = options.exclusions;
   if (typeof options.projectLanguage !== "undefined")
     temp["project_language"] = options.projectLanguage;
   if (typeof options.sourceEncoding !== "undefined")
@@ -16401,6 +16506,22 @@ function convertSpaceshipLogsOptions(
   };
   if (typeof options.copyToPath !== "undefined")
     temp["copy_to_path"] = options.copyToPath;
+  return temp;
+}
+
+/** @ignore */
+type convertedSpaceshipStatsOptions = {
+  print_request_logs: boolean;
+};
+/** @ignore Convert SpaceshipStatsOptions to the shape used by the Fastlane service
+ */
+function convertSpaceshipStatsOptions(
+  options: SpaceshipStatsOptions
+): convertedSpaceshipStatsOptions {
+  const temp: convertedSpaceshipStatsOptions = {
+    print_request_logs: options.printRequestLogs,
+  };
+
   return temp;
 }
 
@@ -16840,6 +16961,8 @@ function convertTestfairyOptions(
 
 /** @ignore */
 type convertedTestflightOptions = {
+  api_key_path?: string;
+  api_key?: { string: string };
   username: string;
   app_identifier?: string;
   app_platform?: string;
@@ -16893,6 +17016,9 @@ function convertTestflightOptions(
     wait_processing_interval: options.waitProcessingInterval,
     reject_build_waiting_for_review: options.rejectBuildWaitingForReview,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.appIdentifier !== "undefined")
     temp["app_identifier"] = options.appIdentifier;
   if (typeof options.appPlatform !== "undefined")
@@ -17714,6 +17840,8 @@ function convertUploadToPlayStoreInternalAppSharingOptions(
 
 /** @ignore */
 type convertedUploadToTestflightOptions = {
+  api_key_path?: string;
+  api_key?: { string: string };
   username: string;
   app_identifier?: string;
   app_platform?: string;
@@ -17767,6 +17895,9 @@ function convertUploadToTestflightOptions(
     wait_processing_interval: options.waitProcessingInterval,
     reject_build_waiting_for_review: options.rejectBuildWaitingForReview,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.appIdentifier !== "undefined")
     temp["app_identifier"] = options.appIdentifier;
   if (typeof options.appPlatform !== "undefined")
@@ -18190,6 +18321,17 @@ If you need to handle more build-trains please see `latest_testflight_build_numb
     const out = await this.doAction(
       "app_store_build_number",
       convertAppStoreBuildNumberOptions(options)
+    );
+    return out;
+  }
+  /** Load the App Store Connect API token to use in other fastlane tools and actions
+   */
+  async appStoreConnectApiKey(
+    options: AppStoreConnectApiKeyOptions
+  ): Promise<any> {
+    const out = await this.doAction(
+      "app_store_connect_api_key",
+      convertAppStoreConnectApiKeyOptions(options)
     );
     return out;
   }
@@ -19866,6 +20008,15 @@ It can process unit test results if formatted as junit report as shown in [xctes
     const out = await this.doAction(
       "spaceship_logs",
       convertSpaceshipLogsOptions(options)
+    );
+    return out;
+  }
+  /** Print out Spaceship stats from this session (number of request to each domain)
+   */
+  async spaceshipStats(options: SpaceshipStatsOptions): Promise<any> {
+    const out = await this.doAction(
+      "spaceship_stats",
+      convertSpaceshipStatsOptions(options)
     );
     return out;
   }
