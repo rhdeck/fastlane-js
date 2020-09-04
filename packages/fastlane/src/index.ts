@@ -2327,6 +2327,10 @@ type CheckAppStoreMetadataOptions = {
    */
   teamName?: string;
   /**
+   * The platform to use (optional)
+   */
+  platform?: string;
+  /**
    * The default rule level unless otherwise configured
    */
   defaultRuleLevel: any;
@@ -6001,6 +6005,10 @@ type PrecheckOptions = {
    * The name of your App Store Connect team if you're in multiple teams
    */
   teamName?: string;
+  /**
+   * The platform to use (optional)
+   */
+  platform?: string;
   /**
    * The default rule level unless otherwise configured
    */
@@ -11730,6 +11738,7 @@ type convertedCheckAppStoreMetadataOptions = {
   username: string;
   team_id?: string;
   team_name?: string;
+  platform?: string;
   default_rule_level: any;
   include_in_app_purchases?: any;
   negative_apple_sentiment?: any;
@@ -11756,6 +11765,8 @@ function convertCheckAppStoreMetadataOptions(
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
+  if (typeof options.platform !== "undefined")
+    temp["platform"] = options.platform;
   if (typeof options.includeInAppPurchases !== "undefined")
     temp["include_in_app_purchases"] = options.includeInAppPurchases;
   if (typeof options.negativeAppleSentiment !== "undefined")
@@ -14901,6 +14912,7 @@ type convertedPrecheckOptions = {
   username: string;
   team_id?: string;
   team_name?: string;
+  platform?: string;
   default_rule_level: any;
   include_in_app_purchases?: any;
   negative_apple_sentiment?: any;
@@ -14927,6 +14939,8 @@ function convertPrecheckOptions(
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
+  if (typeof options.platform !== "undefined")
+    temp["platform"] = options.platform;
   if (typeof options.includeInAppPurchases !== "undefined")
     temp["include_in_app_purchases"] = options.includeInAppPurchases;
   if (typeof options.negativeAppleSentiment !== "undefined")
