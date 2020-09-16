@@ -503,6 +503,14 @@ type AppledocOptions = {
 
 type AppstoreOptions = {
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * Your Apple ID Username
    */
   username: string;
@@ -559,7 +567,7 @@ type AppstoreOptions = {
    */
   skipMetadata: any;
   /**
-   * Don't update app version for submission
+   * Don’t create or update the app version that is being prepared for submission
    */
   skipAppVersionUpdate: any;
   /**
@@ -2311,6 +2319,14 @@ type ChatworkOptions = {
 
 type CheckAppStoreMetadataOptions = {
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * The bundle identifier of your app
    */
   appIdentifier: string;
@@ -2943,6 +2959,14 @@ type DeleteKeychainOptions = {
 
 type DeliverOptions = {
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * Your Apple ID Username
    */
   username: string;
@@ -2999,7 +3023,7 @@ type DeliverOptions = {
    */
   skipMetadata: any;
   /**
-   * Don't update app version for submission
+   * Don’t create or update the app version that is being prepared for submission
    */
   skipAppVersionUpdate: any;
   /**
@@ -3282,6 +3306,10 @@ type DownloadDsymsOptions = {
    * The minimum app version for dSYMs you wish to download
    */
   minVersion?: string;
+  /**
+   * The uploaded date after which you wish to download dSYMs
+   */
+  afterUploadedDate?: string;
   /**
    * Where to save the download dSYMs, defaults to the current path
    */
@@ -5666,11 +5694,11 @@ type PemOptions = {
 
 type PilotOptions = {
   /**
-   * Path to your App Store Connect API key JSON file
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
    */
   apiKeyPath?: string;
   /**
-   * Path to your App Store Connect API key JSON file
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
    */
   apiKey?: { string: string };
   /**
@@ -5989,6 +6017,14 @@ type PodioItemOptions = {
  */
 
 type PrecheckOptions = {
+  /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
   /**
    * The bundle identifier of your app
    */
@@ -8551,11 +8587,11 @@ type TestfairyOptions = {
 
 type TestflightOptions = {
   /**
-   * Path to your App Store Connect API key JSON file
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
    */
   apiKeyPath?: string;
   /**
-   * Path to your App Store Connect API key JSON file
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
    */
   apiKey?: { string: string };
   /**
@@ -9142,6 +9178,14 @@ type UploadSymbolsToSentryOptions = {
 
 type UploadToAppStoreOptions = {
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * Your Apple ID Username
    */
   username: string;
@@ -9198,7 +9242,7 @@ type UploadToAppStoreOptions = {
    */
   skipMetadata: any;
   /**
-   * Don't update app version for submission
+   * Don’t create or update the app version that is being prepared for submission
    */
   skipAppVersionUpdate: any;
   /**
@@ -9580,11 +9624,11 @@ type UploadToPlayStoreInternalAppSharingOptions = {
 
 type UploadToTestflightOptions = {
   /**
-   * Path to your App Store Connect API key JSON file
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
    */
   apiKeyPath?: string;
   /**
-   * Path to your App Store Connect API key JSON file
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
    */
   apiKey?: { string: string };
   /**
@@ -10383,6 +10427,8 @@ function convertAppledocOptions(
 
 /** @ignore */
 type convertedAppstoreOptions = {
+  api_key_path?: string;
+  api_key?: { string: string };
   username: string;
   app_identifier?: string;
   app_version?: string;
@@ -10467,6 +10513,9 @@ function convertAppstoreOptions(
       options.ignoreLanguageDirectoryValidation,
     app: options.app,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.appIdentifier !== "undefined")
     temp["app_identifier"] = options.appIdentifier;
   if (typeof options.appVersion !== "undefined")
@@ -11734,6 +11783,8 @@ function convertChatworkOptions(
 
 /** @ignore */
 type convertedCheckAppStoreMetadataOptions = {
+  api_key_path?: string;
+  api_key?: { string: string };
   app_identifier: string;
   username: string;
   team_id?: string;
@@ -11762,6 +11813,9 @@ function convertCheckAppStoreMetadataOptions(
     username: options.username,
     default_rule_level: options.defaultRuleLevel,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -12285,6 +12339,8 @@ function convertDeleteKeychainOptions(
 
 /** @ignore */
 type convertedDeliverOptions = {
+  api_key_path?: string;
+  api_key?: { string: string };
   username: string;
   app_identifier?: string;
   app_version?: string;
@@ -12369,6 +12425,9 @@ function convertDeliverOptions(
       options.ignoreLanguageDirectoryValidation,
     app: options.app,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.appIdentifier !== "undefined")
     temp["app_identifier"] = options.appIdentifier;
   if (typeof options.appVersion !== "undefined")
@@ -12537,6 +12596,7 @@ type convertedDownloadDsymsOptions = {
   version?: string;
   build_number?: any;
   min_version?: string;
+  after_uploaded_date?: string;
   output_directory?: string;
   wait_for_dsym_processing?: boolean;
   wait_timeout?: any;
@@ -12560,6 +12620,8 @@ function convertDownloadDsymsOptions(
     temp["build_number"] = options.buildNumber;
   if (typeof options.minVersion !== "undefined")
     temp["min_version"] = options.minVersion;
+  if (typeof options.afterUploadedDate !== "undefined")
+    temp["after_uploaded_date"] = options.afterUploadedDate;
   if (typeof options.outputDirectory !== "undefined")
     temp["output_directory"] = options.outputDirectory;
   if (typeof options.waitForDsymProcessing !== "undefined")
@@ -14908,6 +14970,8 @@ function convertPodioItemOptions(
 
 /** @ignore */
 type convertedPrecheckOptions = {
+  api_key_path?: string;
+  api_key?: { string: string };
   app_identifier: string;
   username: string;
   team_id?: string;
@@ -14936,6 +15000,9 @@ function convertPrecheckOptions(
     username: options.username,
     default_rule_level: options.defaultRuleLevel,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -17528,6 +17595,8 @@ function convertUploadSymbolsToSentryOptions(
 
 /** @ignore */
 type convertedUploadToAppStoreOptions = {
+  api_key_path?: string;
+  api_key?: { string: string };
   username: string;
   app_identifier?: string;
   app_version?: string;
@@ -17612,6 +17681,9 @@ function convertUploadToAppStoreOptions(
       options.ignoreLanguageDirectoryValidation,
     app: options.app,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.appIdentifier !== "undefined")
     temp["app_identifier"] = options.appIdentifier;
   if (typeof options.appVersion !== "undefined")
