@@ -3435,6 +3435,10 @@ type EnsureGitStatusCleanOptions = {
    * The flag whether to show the git diff if the repo is dirty
    */
   showDiff?: any;
+  /**
+   * The flag whether to ignore file the git status if the repo is dirty
+   */
+  ignored?: string;
 };
 
 /** Shape for [[ensureNoDebugCode]] options argument
@@ -5208,7 +5212,7 @@ type MatchOptions = {
    */
   gitBasicAuthorization?: string;
   /**
-   * Use a bearer authorization header to access the git repo (e.g.: access to an Azure Devops repository), usually a string in Base64
+   * Use a bearer authorization header to access the git repo (e.g.: access to an Azure DevOps repository), usually a string in Base64
    */
   gitBearerAuthorization?: string;
   /**
@@ -8421,7 +8425,7 @@ type SyncCodeSigningOptions = {
    */
   gitBasicAuthorization?: string;
   /**
-   * Use a bearer authorization header to access the git repo (e.g.: access to an Azure Devops repository), usually a string in Base64
+   * Use a bearer authorization header to access the git repo (e.g.: access to an Azure DevOps repository), usually a string in Base64
    */
   gitBearerAuthorization?: string;
   /**
@@ -12749,6 +12753,7 @@ function convertEnsureGitBranchOptions(
 type convertedEnsureGitStatusCleanOptions = {
   show_uncommitted_changes?: any;
   show_diff?: any;
+  ignored?: string;
 };
 /** @ignore Convert EnsureGitStatusCleanOptions to the shape used by the Fastlane service
  */
@@ -12760,6 +12765,7 @@ function convertEnsureGitStatusCleanOptions(
     temp["show_uncommitted_changes"] = options.showUncommittedChanges;
   if (typeof options.showDiff !== "undefined")
     temp["show_diff"] = options.showDiff;
+  if (typeof options.ignored !== "undefined") temp["ignored"] = options.ignored;
   return temp;
 }
 
