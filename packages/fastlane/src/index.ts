@@ -2209,6 +2209,14 @@ type CertOptions = {
    */
   generateAppleCerts: boolean;
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * Your Apple ID Username
    */
   username: string;
@@ -2236,6 +2244,10 @@ type CertOptions = {
    * This might be required the first time you access certificates on a new mac. For the login/default keychain this is your account password
    */
   keychainPassword?: string;
+  /**
+   * Skips setting the partition list (which can sometimes take a long time). Setting the partition list is usually needed to prevent Xcode from prompting to allow a cert to be used for signing
+   */
+  skipSetPartitionList: boolean;
   /**
    * Set the provisioning profile's platform (ios, macos)
    */
@@ -3746,6 +3758,14 @@ type GetCertificatesOptions = {
    */
   generateAppleCerts: boolean;
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * Your Apple ID Username
    */
   username: string;
@@ -3773,6 +3793,10 @@ type GetCertificatesOptions = {
    * This might be required the first time you access certificates on a new mac. For the login/default keychain this is your account password
    */
   keychainPassword?: string;
+  /**
+   * Skips setting the partition list (which can sometimes take a long time). Setting the partition list is usually needed to prevent Xcode from prompting to allow a cert to be used for signing
+   */
+  skipSetPartitionList: boolean;
   /**
    * Set the provisioning profile's platform (ios, macos)
    */
@@ -3871,6 +3895,14 @@ type GetProvisioningProfileOptions = {
    * The bundle identifier of your app
    */
   appIdentifier: string;
+  /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
   /**
    * Your Apple ID Username
    */
@@ -5168,9 +5200,17 @@ type MatchOptions = {
    */
   appIdentifier: string[];
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The ID of your Developer Portal team if you're in multiple teams
    */
@@ -5299,6 +5339,10 @@ type MatchOptions = {
    * Path in which to export certificates, key and profile
    */
   outputPath?: string;
+  /**
+   * Skips setting the partition list (which can sometimes take a long time). Setting the partition list is usually needed to prevent Xcode from prompting to allow a cert to be used for signing
+   */
+  skipSetPartitionList: boolean;
   /**
    * Print out extra information and all commands
    */
@@ -7484,6 +7528,14 @@ type SighOptions = {
    */
   appIdentifier: string;
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * Your Apple ID Username
    */
   username: string;
@@ -8381,9 +8433,17 @@ type SyncCodeSigningOptions = {
    */
   appIdentifier: string[];
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The ID of your Developer Portal team if you're in multiple teams
    */
@@ -8512,6 +8572,10 @@ type SyncCodeSigningOptions = {
    * Path in which to export certificates, key and profile
    */
   outputPath?: string;
+  /**
+   * Skips setting the partition list (which can sometimes take a long time). Setting the partition list is usually needed to prevent Xcode from prompting to allow a cert to be used for signing
+   */
+  skipSetPartitionList: boolean;
   /**
    * Print out extra information and all commands
    */
@@ -11691,6 +11755,8 @@ type convertedCertOptions = {
   type?: string;
   force: boolean;
   generate_apple_certs: boolean;
+  api_key_path?: string;
+  api_key?: { string: string };
   username: string;
   team_id?: string;
   team_name?: string;
@@ -11698,6 +11764,7 @@ type convertedCertOptions = {
   output_path: string;
   keychain_path: string;
   keychain_password?: string;
+  skip_set_partition_list: boolean;
   platform: string;
 };
 /** @ignore Convert CertOptions to the shape used by the Fastlane service
@@ -11710,9 +11777,13 @@ function convertCertOptions(options: CertOptions): convertedCertOptions {
     username: options.username,
     output_path: options.outputPath,
     keychain_path: options.keychainPath,
+    skip_set_partition_list: options.skipSetPartitionList,
     platform: options.platform,
   };
   if (typeof options.type !== "undefined") temp["type"] = options.type;
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -13035,6 +13106,8 @@ type convertedGetCertificatesOptions = {
   type?: string;
   force: boolean;
   generate_apple_certs: boolean;
+  api_key_path?: string;
+  api_key?: { string: string };
   username: string;
   team_id?: string;
   team_name?: string;
@@ -13042,6 +13115,7 @@ type convertedGetCertificatesOptions = {
   output_path: string;
   keychain_path: string;
   keychain_password?: string;
+  skip_set_partition_list: boolean;
   platform: string;
 };
 /** @ignore Convert GetCertificatesOptions to the shape used by the Fastlane service
@@ -13056,9 +13130,13 @@ function convertGetCertificatesOptions(
     username: options.username,
     output_path: options.outputPath,
     keychain_path: options.keychainPath,
+    skip_set_partition_list: options.skipSetPartitionList,
     platform: options.platform,
   };
   if (typeof options.type !== "undefined") temp["type"] = options.type;
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -13154,6 +13232,8 @@ type convertedGetProvisioningProfileOptions = {
   skip_install: any;
   force: any;
   app_identifier: string;
+  api_key_path?: string;
+  api_key?: { string: string };
   username: string;
   team_id?: string;
   team_name?: string;
@@ -13188,6 +13268,9 @@ function convertGetProvisioningProfileOptions(
     skip_certificate_verification: options.skipCertificateVerification,
     platform: options.platform,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -14293,7 +14376,9 @@ type convertedMatchOptions = {
   generate_apple_certs: boolean;
   skip_provisioning_profiles: boolean;
   app_identifier: string[];
-  username: string;
+  api_key_path?: string;
+  api_key?: { string: string };
+  username?: string;
   team_id?: string;
   team_name?: string;
   storage_mode: string;
@@ -14326,6 +14411,7 @@ type convertedMatchOptions = {
   profile_name?: string;
   fail_on_name_taken?: boolean;
   output_path?: string;
+  skip_set_partition_list: boolean;
   verbose: boolean;
 };
 /** @ignore Convert MatchOptions to the shape used by the Fastlane service
@@ -14337,7 +14423,6 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     generate_apple_certs: options.generateAppleCerts,
     skip_provisioning_profiles: options.skipProvisioningProfiles,
     app_identifier: options.appIdentifier,
-    username: options.username,
     storage_mode: options.storageMode,
     git_url: options.gitUrl,
     git_branch: options.gitBranch,
@@ -14350,10 +14435,16 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     skip_docs: options.skipDocs,
     platform: options.platform,
     derive_catalyst_app_identifier: options.deriveCatalystAppIdentifier,
+    skip_set_partition_list: options.skipSetPartitionList,
     verbose: options.verbose,
   };
   if (typeof options.additionalCertTypes !== "undefined")
     temp["additional_cert_types"] = options.additionalCertTypes;
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -16186,6 +16277,8 @@ type convertedSighOptions = {
   skip_install: any;
   force: any;
   app_identifier: string;
+  api_key_path?: string;
+  api_key?: { string: string };
   username: string;
   team_id?: string;
   team_name?: string;
@@ -16218,6 +16311,9 @@ function convertSighOptions(options: SighOptions): convertedSighOptions {
     skip_certificate_verification: options.skipCertificateVerification,
     platform: options.platform,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -16876,7 +16972,9 @@ type convertedSyncCodeSigningOptions = {
   generate_apple_certs: boolean;
   skip_provisioning_profiles: boolean;
   app_identifier: string[];
-  username: string;
+  api_key_path?: string;
+  api_key?: { string: string };
+  username?: string;
   team_id?: string;
   team_name?: string;
   storage_mode: string;
@@ -16909,6 +17007,7 @@ type convertedSyncCodeSigningOptions = {
   profile_name?: string;
   fail_on_name_taken?: boolean;
   output_path?: string;
+  skip_set_partition_list: boolean;
   verbose: boolean;
 };
 /** @ignore Convert SyncCodeSigningOptions to the shape used by the Fastlane service
@@ -16922,7 +17021,6 @@ function convertSyncCodeSigningOptions(
     generate_apple_certs: options.generateAppleCerts,
     skip_provisioning_profiles: options.skipProvisioningProfiles,
     app_identifier: options.appIdentifier,
-    username: options.username,
     storage_mode: options.storageMode,
     git_url: options.gitUrl,
     git_branch: options.gitBranch,
@@ -16935,10 +17033,16 @@ function convertSyncCodeSigningOptions(
     skip_docs: options.skipDocs,
     platform: options.platform,
     derive_catalyst_app_identifier: options.deriveCatalystAppIdentifier,
+    skip_set_partition_list: options.skipSetPartitionList,
     verbose: options.verbose,
   };
   if (typeof options.additionalCertTypes !== "undefined")
     temp["additional_cert_types"] = options.additionalCertTypes;
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
