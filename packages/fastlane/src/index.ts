@@ -85,6 +85,14 @@ type AddGitTagOptions = {
 
 type AppStoreBuildNumberOptions = {
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * sets the build number to given value if no build is in current train
    */
   initialBuildNumber: any;
@@ -138,6 +146,10 @@ type AppStoreConnectApiKeyOptions = {
    * The content of the key p8 file
    */
   keyContent?: string;
+  /**
+   * Whether :key_content is Base64 encoded or not
+   */
+  isKeyContentBase64: boolean;
   /**
    * The token session duration
    */
@@ -571,7 +583,7 @@ type AppstoreOptions = {
    */
   skipAppVersionUpdate: any;
   /**
-   * Skip the HTML report file verification
+   * Skip verification of HTML preview file
    */
   force: any;
   /**
@@ -589,7 +601,7 @@ type AppstoreOptions = {
   /**
    * Should the app be automatically released once it's approved? (Can not be used together with `auto_release_date`)
    */
-  automaticRelease: any;
+  automaticRelease?: boolean;
   /**
    * Date in milliseconds for automatically releasing on pending approval (Can not be used together with `automatic_release`)
    */
@@ -3039,7 +3051,7 @@ type DeliverOptions = {
    */
   skipAppVersionUpdate: any;
   /**
-   * Skip the HTML report file verification
+   * Skip verification of HTML preview file
    */
   force: any;
   /**
@@ -3057,7 +3069,7 @@ type DeliverOptions = {
   /**
    * Should the app be automatically released once it's approved? (Can not be used together with `auto_release_date`)
    */
-  automaticRelease: any;
+  automaticRelease?: boolean;
   /**
    * Date in milliseconds for automatically releasing on pending approval (Can not be used together with `automatic_release`)
    */
@@ -5032,6 +5044,14 @@ type LastGitTagOptions = {
 
 type LatestTestflightBuildNumberOptions = {
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * Query the live version (ready-for-sale)
    */
   live?: any;
@@ -6356,9 +6376,21 @@ type RegisterDeviceOptions = {
    */
   name: string;
   /**
+   * Provide the platform of the device to register as (ios, mac)
+   */
+  platform?: string;
+  /**
    * Provide the UDID of the device to register as
    */
   udid: string;
+  /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
   /**
    * The ID of your Developer Portal team if you're in multiple teams
    */
@@ -6370,7 +6402,7 @@ type RegisterDeviceOptions = {
   /**
    * Optional: Your Apple ID
    */
-  username: string;
+  username?: string;
 };
 
 /** Shape for [[registerDevices]] options argument
@@ -6385,6 +6417,14 @@ type RegisterDevicesOptions = {
    * Provide a path to a file with the devices to register. For the format of the file see the examples
    */
   devicesFile?: string;
+  /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
   /**
    * The ID of your Developer Portal team if you're in multiple teams
    */
@@ -9314,7 +9354,7 @@ type UploadToAppStoreOptions = {
    */
   skipAppVersionUpdate: any;
   /**
-   * Skip the HTML report file verification
+   * Skip verification of HTML preview file
    */
   force: any;
   /**
@@ -9332,7 +9372,7 @@ type UploadToAppStoreOptions = {
   /**
    * Should the app be automatically released once it's approved? (Can not be used together with `auto_release_date`)
    */
-  automaticRelease: any;
+  automaticRelease?: boolean;
   /**
    * Date in milliseconds for automatically releasing on pending approval (Can not be used together with `automatic_release`)
    */
@@ -10171,6 +10211,8 @@ function convertAddGitTagOptions(
 
 /** @ignore */
 type convertedAppStoreBuildNumberOptions = {
+  api_key_path?: string;
+  api_key?: { string: string };
   initial_build_number: any;
   app_identifier: string;
   username: string;
@@ -10190,6 +10232,9 @@ function convertAppStoreBuildNumberOptions(
     app_identifier: options.appIdentifier,
     username: options.username,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.live !== "undefined") temp["live"] = options.live;
   if (typeof options.version !== "undefined") temp["version"] = options.version;
@@ -10206,6 +10251,7 @@ type convertedAppStoreConnectApiKeyOptions = {
   issuer_id: string;
   key_filepath?: string;
   key_content?: string;
+  is_key_content_base64: boolean;
   duration?: any;
   in_house?: boolean;
 };
@@ -10217,6 +10263,7 @@ function convertAppStoreConnectApiKeyOptions(
   const temp: convertedAppStoreConnectApiKeyOptions = {
     key_id: options.keyId,
     issuer_id: options.issuerId,
+    is_key_content_base64: options.isKeyContentBase64,
   };
   if (typeof options.keyFilepath !== "undefined")
     temp["key_filepath"] = options.keyFilepath;
@@ -10516,7 +10563,7 @@ type convertedAppstoreOptions = {
   overwrite_screenshots: any;
   submit_for_review: any;
   reject_if_possible: any;
-  automatic_release: any;
+  automatic_release?: boolean;
   auto_release_date?: any;
   phased_release?: any;
   reset_ratings?: any;
@@ -10574,7 +10621,6 @@ function convertAppstoreOptions(
     overwrite_screenshots: options.overwriteScreenshots,
     submit_for_review: options.submitForReview,
     reject_if_possible: options.rejectIfPossible,
-    automatic_release: options.automaticRelease,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
     ignore_language_directory_validation:
@@ -10600,6 +10646,8 @@ function convertAppstoreOptions(
     temp["metadata_path"] = options.metadataPath;
   if (typeof options.screenshotsPath !== "undefined")
     temp["screenshots_path"] = options.screenshotsPath;
+  if (typeof options.automaticRelease !== "undefined")
+    temp["automatic_release"] = options.automaticRelease;
   if (typeof options.autoReleaseDate !== "undefined")
     temp["auto_release_date"] = options.autoReleaseDate;
   if (typeof options.phasedRelease !== "undefined")
@@ -12435,7 +12483,7 @@ type convertedDeliverOptions = {
   overwrite_screenshots: any;
   submit_for_review: any;
   reject_if_possible: any;
-  automatic_release: any;
+  automatic_release?: boolean;
   auto_release_date?: any;
   phased_release?: any;
   reset_ratings?: any;
@@ -12493,7 +12541,6 @@ function convertDeliverOptions(
     overwrite_screenshots: options.overwriteScreenshots,
     submit_for_review: options.submitForReview,
     reject_if_possible: options.rejectIfPossible,
-    automatic_release: options.automaticRelease,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
     ignore_language_directory_validation:
@@ -12519,6 +12566,8 @@ function convertDeliverOptions(
     temp["metadata_path"] = options.metadataPath;
   if (typeof options.screenshotsPath !== "undefined")
     temp["screenshots_path"] = options.screenshotsPath;
+  if (typeof options.automaticRelease !== "undefined")
+    temp["automatic_release"] = options.automaticRelease;
   if (typeof options.autoReleaseDate !== "undefined")
     temp["auto_release_date"] = options.autoReleaseDate;
   if (typeof options.phasedRelease !== "undefined")
@@ -14249,6 +14298,8 @@ function convertLastGitTagOptions(
 
 /** @ignore */
 type convertedLatestTestflightBuildNumberOptions = {
+  api_key_path?: string;
+  api_key?: { string: string };
   live?: any;
   app_identifier: string;
   username: string;
@@ -14268,6 +14319,9 @@ function convertLatestTestflightBuildNumberOptions(
     username: options.username,
     initial_build_number: options.initialBuildNumber,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.live !== "undefined") temp["live"] = options.live;
   if (typeof options.version !== "undefined") temp["version"] = options.version;
   if (typeof options.platform !== "undefined")
@@ -15323,10 +15377,13 @@ function convertRecreateSchemesOptions(
 /** @ignore */
 type convertedRegisterDeviceOptions = {
   name: string;
+  platform?: string;
   udid: string;
+  api_key_path?: string;
+  api_key?: { string: string };
   team_id?: string;
   team_name?: string;
-  username: string;
+  username?: string;
 };
 /** @ignore Convert RegisterDeviceOptions to the shape used by the Fastlane service
  */
@@ -15336,11 +15393,17 @@ function convertRegisterDeviceOptions(
   const temp: convertedRegisterDeviceOptions = {
     name: options.name,
     udid: options.udid,
-    username: options.username,
   };
+  if (typeof options.platform !== "undefined")
+    temp["platform"] = options.platform;
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   return temp;
 }
 
@@ -15348,6 +15411,8 @@ function convertRegisterDeviceOptions(
 type convertedRegisterDevicesOptions = {
   devices?: { string: string };
   devices_file?: string;
+  api_key_path?: string;
+  api_key?: { string: string };
   team_id?: string;
   team_name?: string;
   username: string;
@@ -15364,6 +15429,9 @@ function convertRegisterDevicesOptions(
   if (typeof options.devices !== "undefined") temp["devices"] = options.devices;
   if (typeof options.devicesFile !== "undefined")
     temp["devices_file"] = options.devicesFile;
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -17726,7 +17794,7 @@ type convertedUploadToAppStoreOptions = {
   overwrite_screenshots: any;
   submit_for_review: any;
   reject_if_possible: any;
-  automatic_release: any;
+  automatic_release?: boolean;
   auto_release_date?: any;
   phased_release?: any;
   reset_ratings?: any;
@@ -17784,7 +17852,6 @@ function convertUploadToAppStoreOptions(
     overwrite_screenshots: options.overwriteScreenshots,
     submit_for_review: options.submitForReview,
     reject_if_possible: options.rejectIfPossible,
-    automatic_release: options.automaticRelease,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
     ignore_language_directory_validation:
@@ -17810,6 +17877,8 @@ function convertUploadToAppStoreOptions(
     temp["metadata_path"] = options.metadataPath;
   if (typeof options.screenshotsPath !== "undefined")
     temp["screenshots_path"] = options.screenshotsPath;
+  if (typeof options.automaticRelease !== "undefined")
+    temp["automatic_release"] = options.automaticRelease;
   if (typeof options.autoReleaseDate !== "undefined")
     temp["auto_release_date"] = options.autoReleaseDate;
   if (typeof options.phasedRelease !== "undefined")
@@ -18582,7 +18651,7 @@ To integrate appetize into your GitHub workflow check out the [device_grid guide
   }
   /** Using _upload_to_app_store_ after _build_app_ and _capture_screenshots_ will automatically upload the latest ipa and screenshots with no other configuration.
 
-If you don't want a PDF report for App Store builds, use the `:force` option.
+If you don't want to verify an HTML preview for App Store builds, use the `:force` option.
 This is useful when running _fastlane_ on your Continuous Integration server:
 `_upload_to_app_store_(force: true)`
 If your account is on multiple teams and you need to tell the `iTMSTransporter` which 'provider' to use, you can set the `:itc_provider` option to pass this info.
@@ -18972,7 +19041,7 @@ More information: [https://github.com/danger/danger](https://github.com/danger/d
   }
   /** Using _upload_to_app_store_ after _build_app_ and _capture_screenshots_ will automatically upload the latest ipa and screenshots with no other configuration.
 
-If you don't want a PDF report for App Store builds, use the `:force` option.
+If you don't want to verify an HTML preview for App Store builds, use the `:force` option.
 This is useful when running _fastlane_ on your Continuous Integration server:
 `_upload_to_app_store_(force: true)`
 If your account is on multiple teams and you need to tell the `iTMSTransporter` which 'provider' to use, you can set the `:itc_provider` option to pass this info.
@@ -20502,7 +20571,7 @@ For example, you can use this to set a different URL scheme for the alpha or bet
   }
   /** Using _upload_to_app_store_ after _build_app_ and _capture_screenshots_ will automatically upload the latest ipa and screenshots with no other configuration.
 
-If you don't want a PDF report for App Store builds, use the `:force` option.
+If you don't want to verify an HTML preview for App Store builds, use the `:force` option.
 This is useful when running _fastlane_ on your Continuous Integration server:
 `_upload_to_app_store_(force: true)`
 If your account is on multiple teams and you need to tell the `iTMSTransporter` which 'provider' to use, you can set the `:itc_provider` option to pass this info.
