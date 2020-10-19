@@ -4810,6 +4810,10 @@ type ImportFromGitOptions = {
    * The version to checkout on the repository. Optimistic match operator or multiple conditions can be used to select the latest version within constraints
    */
   version?: any;
+  /**
+   * The path to a directory where the repository should be cloned into. This is ignored if `version` is not specified. Defaults to `nil`, which causes the repository to be cloned on every call, to a temporary directory
+   */
+  cachePath?: string;
 };
 
 /** Shape for [[incrementBuildNumber]] options argument
@@ -5355,6 +5359,10 @@ type MatchOptions = {
    * Should the command fail if it was about to create a duplicate of an existing provisioning profile. It can happen due to issues on Apple Developer Portal, when profile to be recreated was not properly deleted first
    */
   failOnNameTaken?: boolean;
+  /**
+   * Set to true if there is no access to Apple developer portal but there are certificates, keys and profiles provided. Only works with match import action
+   */
+  skipCertificateMatching?: boolean;
   /**
    * Path in which to export certificates, key and profile
    */
@@ -7314,13 +7322,21 @@ type SetBuildNumberRepositoryOptions = {
 
 type SetChangelogOptions = {
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * The bundle identifier of your app
    */
   appIdentifier: string;
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The version number to create/update
    */
@@ -8608,6 +8624,10 @@ type SyncCodeSigningOptions = {
    * Should the command fail if it was about to create a duplicate of an existing provisioning profile. It can happen due to issues on Apple Developer Portal, when profile to be recreated was not properly deleted first
    */
   failOnNameTaken?: boolean;
+  /**
+   * Set to true if there is no access to Apple developer portal but there are certificates, keys and profiles provided. Only works with match import action
+   */
+  skipCertificateMatching?: boolean;
   /**
    * Path in which to export certificates, key and profile
    */
@@ -14037,6 +14057,7 @@ type convertedImportFromGitOptions = {
   dependencies?: string;
   path?: string;
   version?: any;
+  cache_path?: string;
 };
 /** @ignore Convert ImportFromGitOptions to the shape used by the Fastlane service
  */
@@ -14051,6 +14072,8 @@ function convertImportFromGitOptions(
     temp["dependencies"] = options.dependencies;
   if (typeof options.path !== "undefined") temp["path"] = options.path;
   if (typeof options.version !== "undefined") temp["version"] = options.version;
+  if (typeof options.cachePath !== "undefined")
+    temp["cache_path"] = options.cachePath;
   return temp;
 }
 
@@ -14464,6 +14487,7 @@ type convertedMatchOptions = {
   template_name?: string;
   profile_name?: string;
   fail_on_name_taken?: boolean;
+  skip_certificate_matching?: boolean;
   output_path?: string;
   skip_set_partition_list: boolean;
   verbose: boolean;
@@ -14536,6 +14560,8 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     temp["profile_name"] = options.profileName;
   if (typeof options.failOnNameTaken !== "undefined")
     temp["fail_on_name_taken"] = options.failOnNameTaken;
+  if (typeof options.skipCertificateMatching !== "undefined")
+    temp["skip_certificate_matching"] = options.skipCertificateMatching;
   if (typeof options.outputPath !== "undefined")
     temp["output_path"] = options.outputPath;
   return temp;
@@ -16121,8 +16147,10 @@ function convertSetBuildNumberRepositoryOptions(
 
 /** @ignore */
 type convertedSetChangelogOptions = {
+  api_key_path?: string;
+  api_key?: { string: string };
   app_identifier: string;
-  username: string;
+  username?: string;
   version?: string;
   changelog?: string;
   team_id?: any;
@@ -16136,9 +16164,13 @@ function convertSetChangelogOptions(
 ): convertedSetChangelogOptions {
   const temp: convertedSetChangelogOptions = {
     app_identifier: options.appIdentifier,
-    username: options.username,
     platform: options.platform,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.version !== "undefined") temp["version"] = options.version;
   if (typeof options.changelog !== "undefined")
     temp["changelog"] = options.changelog;
@@ -17074,6 +17106,7 @@ type convertedSyncCodeSigningOptions = {
   template_name?: string;
   profile_name?: string;
   fail_on_name_taken?: boolean;
+  skip_certificate_matching?: boolean;
   output_path?: string;
   skip_set_partition_list: boolean;
   verbose: boolean;
@@ -17148,6 +17181,8 @@ function convertSyncCodeSigningOptions(
     temp["profile_name"] = options.profileName;
   if (typeof options.failOnNameTaken !== "undefined")
     temp["fail_on_name_taken"] = options.failOnNameTaken;
+  if (typeof options.skipCertificateMatching !== "undefined")
+    temp["skip_certificate_matching"] = options.skipCertificateMatching;
   if (typeof options.outputPath !== "undefined")
     temp["output_path"] = options.outputPath;
   return temp;
