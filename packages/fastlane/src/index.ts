@@ -5220,7 +5220,7 @@ type MatchOptions = {
    */
   skipProvisioningProfiles: boolean;
   /**
-   * The bundle identifier(s) of your app (comma-separated)
+   * The bundle identifier(s) of your app (comma-separated string or array of strings)
    */
   appIdentifier: string[];
   /**
@@ -8485,7 +8485,7 @@ type SyncCodeSigningOptions = {
    */
   skipProvisioningProfiles: boolean;
   /**
-   * The bundle identifier(s) of your app (comma-separated)
+   * The bundle identifier(s) of your app (comma-separated string or array of strings)
    */
   appIdentifier: string[];
   /**
