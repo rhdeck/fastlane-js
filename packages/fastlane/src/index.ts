@@ -6820,6 +6820,10 @@ type RunTestsOptions = {
    */
   destination?: any;
   /**
+   * Platform to build when using a Catalyst enabled app. Valid values are: ios, macos
+   */
+  catalystPlatform?: string;
+  /**
    * **DEPRECATED!** Use `--output_files` instead - Sets custom full report file name when generating a single report
    */
   customReportFileName?: string;
@@ -7161,6 +7165,10 @@ type ScanOptions = {
    * Use only if you're a pro, use the other options instead
    */
   destination?: any;
+  /**
+   * Platform to build when using a Catalyst enabled app. Valid values are: ios, macos
+   */
+  catalystPlatform?: string;
   /**
    * **DEPRECATED!** Use `--output_files` instead - Sets custom full report file name when generating a single report
    */
@@ -15663,6 +15671,7 @@ type convertedRunTestsOptions = {
   skip_slack: any;
   slack_only_on_failure: any;
   destination?: any;
+  catalyst_platform?: string;
   custom_report_file_name?: string;
   xcodebuild_command?: string;
   cloned_source_packages_path?: string;
@@ -15776,6 +15785,8 @@ function convertRunTestsOptions(
     temp["slack_icon_url"] = options.slackIconUrl;
   if (typeof options.destination !== "undefined")
     temp["destination"] = options.destination;
+  if (typeof options.catalystPlatform !== "undefined")
+    temp["catalyst_platform"] = options.catalystPlatform;
   if (typeof options.customReportFileName !== "undefined")
     temp["custom_report_file_name"] = options.customReportFileName;
   if (typeof options.xcodebuildCommand !== "undefined")
@@ -15913,6 +15924,7 @@ type convertedScanOptions = {
   skip_slack: any;
   slack_only_on_failure: any;
   destination?: any;
+  catalyst_platform?: string;
   custom_report_file_name?: string;
   xcodebuild_command?: string;
   cloned_source_packages_path?: string;
@@ -16024,6 +16036,8 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
     temp["slack_icon_url"] = options.slackIconUrl;
   if (typeof options.destination !== "undefined")
     temp["destination"] = options.destination;
+  if (typeof options.catalystPlatform !== "undefined")
+    temp["catalyst_platform"] = options.catalystPlatform;
   if (typeof options.customReportFileName !== "undefined")
     temp["custom_report_file_name"] = options.customReportFileName;
   if (typeof options.xcodebuildCommand !== "undefined")
