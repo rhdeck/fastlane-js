@@ -61,7 +61,7 @@ type AddGitTagOptions = {
   /**
    * The build number. Defaults to the result of increment_build_number if you're using it
    */
-  buildNumber: any;
+  buildNumber?: any;
   /**
    * The tag message. Defaults to the tag's name
    */
@@ -8193,6 +8193,10 @@ type SpmOptions = {
    */
   command: string;
   /**
+   * Enables code coverage for the generated Xcode project when using the generate-xcodeproj command
+   */
+  enableCodeCoverage?: any;
+  /**
    * Specify build/cache directory [default: ./.build]
    */
   buildPath?: string;
@@ -10212,7 +10216,7 @@ type convertedAddGitTagOptions = {
   grouping: string;
   prefix: string;
   postfix: string;
-  build_number: any;
+  build_number?: any;
   message?: string;
   commit?: string;
   force?: any;
@@ -10227,9 +10231,10 @@ function convertAddGitTagOptions(
     grouping: options.grouping,
     prefix: options.prefix,
     postfix: options.postfix,
-    build_number: options.buildNumber,
   };
   if (typeof options.tag !== "undefined") temp["tag"] = options.tag;
+  if (typeof options.buildNumber !== "undefined")
+    temp["build_number"] = options.buildNumber;
   if (typeof options.message !== "undefined") temp["message"] = options.message;
   if (typeof options.commit !== "undefined") temp["commit"] = options.commit;
   if (typeof options.force !== "undefined") temp["force"] = options.force;
@@ -16861,6 +16866,7 @@ function convertSplunkmintOptions(
 /** @ignore */
 type convertedSpmOptions = {
   command: string;
+  enable_code_coverage?: any;
   build_path?: string;
   package_path?: string;
   xcconfig?: string;
@@ -16877,6 +16883,8 @@ function convertSpmOptions(options: SpmOptions): convertedSpmOptions {
     command: options.command,
     verbose: options.verbose,
   };
+  if (typeof options.enableCodeCoverage !== "undefined")
+    temp["enable_code_coverage"] = options.enableCodeCoverage;
   if (typeof options.buildPath !== "undefined")
     temp["build_path"] = options.buildPath;
   if (typeof options.packagePath !== "undefined")
