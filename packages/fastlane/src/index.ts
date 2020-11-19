@@ -2253,7 +2253,7 @@ type CertOptions = {
    */
   keychainPath: string;
   /**
-   * This might be required the first time you access certificates on a new mac. For the login/default keychain this is your account password
+   * This might be required the first time you access certificates on a new mac. For the login/default keychain this is your macOS account password
    */
   keychainPassword?: string;
   /**
@@ -3802,7 +3802,7 @@ type GetCertificatesOptions = {
    */
   keychainPath: string;
   /**
-   * This might be required the first time you access certificates on a new mac. For the login/default keychain this is your account password
+   * This might be required the first time you access certificates on a new mac. For the login/default keychain this is your macOS account password
    */
   keychainPassword?: string;
   /**
@@ -5200,7 +5200,7 @@ type MakeChangelogFromJenkinsOptions = {
 
 type MatchOptions = {
   /**
-   * Define the profile type, can be appstore, adhoc, development, enterprise, developer_id
+   * Define the profile type, can be appstore, adhoc, development, enterprise, developer_id, mac_installer_distribution
    */
   type: string;
   /**
@@ -5320,7 +5320,7 @@ type MatchOptions = {
    */
   keychainName: string;
   /**
-   * This might be required the first time you access certificates on a new mac. For the login/default keychain this is your account password
+   * This might be required the first time you access certificates on a new mac. For the login/default keychain this is your macOS account password
    */
   keychainPassword?: string;
   /**
@@ -7835,7 +7835,7 @@ type SlatherOptions = {
   /**
    * Basename of the binary file, this should match the name of your bundle excluding its extension (i.e. YourApp [for YourApp.app bundle])
    */
-  binaryBasename: any;
+  binaryBasename?: string[];
   /**
    * Binary file name to be used for code coverage
    */
@@ -8285,7 +8285,7 @@ type SupplyOptions = {
    */
   track: string;
   /**
-   * The percentage of the user fraction when uploading to the rollout track
+   * The percentage of the user fraction when uploading to the rollout track (setting to 1 will complete the rollout)
    */
   rollout?: string;
   /**
@@ -8477,7 +8477,7 @@ type SwiftlintOptions = {
 
 type SyncCodeSigningOptions = {
   /**
-   * Define the profile type, can be appstore, adhoc, development, enterprise, developer_id
+   * Define the profile type, can be appstore, adhoc, development, enterprise, developer_id, mac_installer_distribution
    */
   type: string;
   /**
@@ -8597,7 +8597,7 @@ type SyncCodeSigningOptions = {
    */
   keychainName: string;
   /**
-   * This might be required the first time you access certificates on a new mac. For the login/default keychain this is your account password
+   * This might be required the first time you access certificates on a new mac. For the login/default keychain this is your macOS account password
    */
   keychainPassword?: string;
   /**
@@ -9592,7 +9592,7 @@ type UploadToPlayStoreOptions = {
    */
   track: string;
   /**
-   * The percentage of the user fraction when uploading to the rollout track
+   * The percentage of the user fraction when uploading to the rollout track (setting to 1 will complete the rollout)
    */
   rollout?: string;
   /**
@@ -16539,7 +16539,7 @@ type convertedSlatherOptions = {
   ignore?: string[];
   verbose?: boolean;
   use_bundle_exec: boolean;
-  binary_basename: any;
+  binary_basename?: string[];
   binary_file?: string[];
   arch?: string;
   source_files?: any;
@@ -16553,7 +16553,6 @@ function convertSlatherOptions(
   const temp: convertedSlatherOptions = {
     show: options.show,
     use_bundle_exec: options.useBundleExec,
-    binary_basename: options.binaryBasename,
   };
   if (typeof options.buildDirectory !== "undefined")
     temp["build_directory"] = options.buildDirectory;
@@ -16595,6 +16594,8 @@ function convertSlatherOptions(
     temp["output_directory"] = options.outputDirectory;
   if (typeof options.ignore !== "undefined") temp["ignore"] = options.ignore;
   if (typeof options.verbose !== "undefined") temp["verbose"] = options.verbose;
+  if (typeof options.binaryBasename !== "undefined")
+    temp["binary_basename"] = options.binaryBasename;
   if (typeof options.binaryFile !== "undefined")
     temp["binary_file"] = options.binaryFile;
   if (typeof options.arch !== "undefined") temp["arch"] = options.arch;
