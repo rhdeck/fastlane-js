@@ -1228,6 +1228,10 @@ type BuildAppOptions = {
    * Sets a custom path for Swift Package Manager dependencies
    */
   clonedSourcePackagesPath?: string;
+  /**
+   * Lets xcodebuild use system's scm configuration
+   */
+  useSystemScm?: boolean;
 };
 
 /** Shape for [[buildIosApp]] options argument
@@ -1398,6 +1402,10 @@ type BuildIosAppOptions = {
    * Sets a custom path for Swift Package Manager dependencies
    */
   clonedSourcePackagesPath?: string;
+  /**
+   * Lets xcodebuild use system's scm configuration
+   */
+  useSystemScm?: boolean;
 };
 
 /** Shape for [[buildMacApp]] options argument
@@ -1572,6 +1580,10 @@ type BuildMacAppOptions = {
    * Sets a custom path for Swift Package Manager dependencies
    */
   clonedSourcePackagesPath?: string;
+  /**
+   * Lets xcodebuild use system's scm configuration
+   */
+  useSystemScm?: boolean;
 };
 
 /** Shape for [[bundleInstall]] options argument
@@ -2261,7 +2273,7 @@ type CertOptions = {
    */
   skipSetPartitionList: boolean;
   /**
-   * Set the provisioning profile's platform (ios, macos)
+   * Set the provisioning profile's platform (ios, macos, tvos)
    */
   platform: string;
 };
@@ -3810,7 +3822,7 @@ type GetCertificatesOptions = {
    */
   skipSetPartitionList: boolean;
   /**
-   * Set the provisioning profile's platform (ios, macos)
+   * Set the provisioning profile's platform (ios, macos, tvos)
    */
   platform: string;
 };
@@ -4504,6 +4516,10 @@ type GymOptions = {
    * Sets a custom path for Swift Package Manager dependencies
    */
   clonedSourcePackagesPath?: string;
+  /**
+   * Lets xcodebuild use system's scm configuration
+   */
+  useSystemScm?: boolean;
 };
 
 /** Shape for [[hgAddTag]] options argument
@@ -6836,6 +6852,10 @@ type RunTestsOptions = {
    */
   clonedSourcePackagesPath?: string;
   /**
+   * Lets xcodebuild use system's scm configuration
+   */
+  useSystemScm?: boolean;
+  /**
    * Should this step stop the build if the tests fail? Set this to false if you're using trainer
    */
   failBuild: any;
@@ -7181,6 +7201,10 @@ type ScanOptions = {
    * Sets a custom path for Swift Package Manager dependencies
    */
   clonedSourcePackagesPath?: string;
+  /**
+   * Lets xcodebuild use system's scm configuration
+   */
+  useSystemScm?: boolean;
   /**
    * Should this step stop the build if the tests fail? Set this to false if you're using trainer
    */
@@ -10060,6 +10084,10 @@ type XcodeInstallOptions = {
    * The ID of your team if you're in multiple teams
    */
   teamId?: string;
+  /**
+   * Number of times the download will be retried in case of failure
+   */
+  downloadRetryAttempts: any;
 };
 
 /** Shape for [[xcodeSelect]] options argument
@@ -11047,6 +11075,7 @@ type convertedBuildAppOptions = {
   xcpretty_utf?: boolean;
   skip_profile_detection?: boolean;
   cloned_source_packages_path?: string;
+  use_system_scm?: boolean;
 };
 /** @ignore Convert BuildAppOptions to the shape used by the Fastlane service
  */
@@ -11133,6 +11162,8 @@ function convertBuildAppOptions(
     temp["skip_profile_detection"] = options.skipProfileDetection;
   if (typeof options.clonedSourcePackagesPath !== "undefined")
     temp["cloned_source_packages_path"] = options.clonedSourcePackagesPath;
+  if (typeof options.useSystemScm !== "undefined")
+    temp["use_system_scm"] = options.useSystemScm;
   return temp;
 }
 
@@ -11179,6 +11210,7 @@ type convertedBuildIosAppOptions = {
   xcpretty_utf?: boolean;
   skip_profile_detection?: boolean;
   cloned_source_packages_path?: string;
+  use_system_scm?: boolean;
 };
 /** @ignore Convert BuildIosAppOptions to the shape used by the Fastlane service
  */
@@ -11260,6 +11292,8 @@ function convertBuildIosAppOptions(
     temp["skip_profile_detection"] = options.skipProfileDetection;
   if (typeof options.clonedSourcePackagesPath !== "undefined")
     temp["cloned_source_packages_path"] = options.clonedSourcePackagesPath;
+  if (typeof options.useSystemScm !== "undefined")
+    temp["use_system_scm"] = options.useSystemScm;
   return temp;
 }
 
@@ -11307,6 +11341,7 @@ type convertedBuildMacAppOptions = {
   xcpretty_utf?: boolean;
   skip_profile_detection?: boolean;
   cloned_source_packages_path?: string;
+  use_system_scm?: boolean;
 };
 /** @ignore Convert BuildMacAppOptions to the shape used by the Fastlane service
  */
@@ -11390,6 +11425,8 @@ function convertBuildMacAppOptions(
     temp["skip_profile_detection"] = options.skipProfileDetection;
   if (typeof options.clonedSourcePackagesPath !== "undefined")
     temp["cloned_source_packages_path"] = options.clonedSourcePackagesPath;
+  if (typeof options.useSystemScm !== "undefined")
+    temp["use_system_scm"] = options.useSystemScm;
   return temp;
 }
 
@@ -13733,6 +13770,7 @@ type convertedGymOptions = {
   xcpretty_utf?: boolean;
   skip_profile_detection?: boolean;
   cloned_source_packages_path?: string;
+  use_system_scm?: boolean;
 };
 /** @ignore Convert GymOptions to the shape used by the Fastlane service
  */
@@ -13817,6 +13855,8 @@ function convertGymOptions(options: GymOptions): convertedGymOptions {
     temp["skip_profile_detection"] = options.skipProfileDetection;
   if (typeof options.clonedSourcePackagesPath !== "undefined")
     temp["cloned_source_packages_path"] = options.clonedSourcePackagesPath;
+  if (typeof options.useSystemScm !== "undefined")
+    temp["use_system_scm"] = options.useSystemScm;
   return temp;
 }
 
@@ -15680,6 +15720,7 @@ type convertedRunTestsOptions = {
   custom_report_file_name?: string;
   xcodebuild_command?: string;
   cloned_source_packages_path?: string;
+  use_system_scm?: boolean;
   fail_build: any;
 };
 /** @ignore Convert RunTestsOptions to the shape used by the Fastlane service
@@ -15798,6 +15839,8 @@ function convertRunTestsOptions(
     temp["xcodebuild_command"] = options.xcodebuildCommand;
   if (typeof options.clonedSourcePackagesPath !== "undefined")
     temp["cloned_source_packages_path"] = options.clonedSourcePackagesPath;
+  if (typeof options.useSystemScm !== "undefined")
+    temp["use_system_scm"] = options.useSystemScm;
   return temp;
 }
 
@@ -15933,6 +15976,7 @@ type convertedScanOptions = {
   custom_report_file_name?: string;
   xcodebuild_command?: string;
   cloned_source_packages_path?: string;
+  use_system_scm?: boolean;
   fail_build: any;
 };
 /** @ignore Convert ScanOptions to the shape used by the Fastlane service
@@ -16049,6 +16093,8 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
     temp["xcodebuild_command"] = options.xcodebuildCommand;
   if (typeof options.clonedSourcePackagesPath !== "undefined")
     temp["cloned_source_packages_path"] = options.clonedSourcePackagesPath;
+  if (typeof options.useSystemScm !== "undefined")
+    temp["use_system_scm"] = options.useSystemScm;
   return temp;
 }
 
@@ -18449,6 +18495,7 @@ type convertedXcodeInstallOptions = {
   version: string;
   username: string;
   team_id?: string;
+  download_retry_attempts: any;
 };
 /** @ignore Convert XcodeInstallOptions to the shape used by the Fastlane service
  */
@@ -18458,6 +18505,7 @@ function convertXcodeInstallOptions(
   const temp: convertedXcodeInstallOptions = {
     version: options.version,
     username: options.username,
+    download_retry_attempts: options.downloadRetryAttempts,
   };
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   return temp;
