@@ -809,11 +809,15 @@ type ArtifactoryOptions = {
   /**
    * Artifactory username
    */
-  username: string;
+  username?: string;
   /**
    * Artifactory password
    */
-  password: string;
+  password?: string;
+  /**
+   * Artifactory API key
+   */
+  apiKey?: string;
   /**
    * Artifact properties hash
    */
@@ -1109,7 +1113,7 @@ type BuildAppOptions = {
    */
   includeBitcode?: boolean;
   /**
-   * Method used to export the archive. Valid values are: app-store, ad-hoc, package, enterprise, development, developer-id
+   * Method used to export the archive. Valid values are: app-store, validation, ad-hoc, package, enterprise, development, developer-id and mac-application
    */
   exportMethod?: string;
   /**
@@ -1233,6 +1237,14 @@ type BuildAppOptions = {
    */
   clonedSourcePackagesPath?: string;
   /**
+   * Skips resolution of Swift Package Manager dependencies
+   */
+  skipPackageDependenciesResolution: boolean;
+  /**
+   * Prevents packages from automatically being resolved to versions other than those recorded in the `Package.resolved` file
+   */
+  disablePackageAutomaticUpdates: boolean;
+  /**
    * Lets xcodebuild use system's scm configuration
    */
   useSystemScm?: boolean;
@@ -1291,7 +1303,7 @@ type BuildIosAppOptions = {
    */
   includeBitcode?: boolean;
   /**
-   * Method used to export the archive. Valid values are: app-store, ad-hoc, package, enterprise, development, developer-id
+   * Method used to export the archive. Valid values are: app-store, validation, ad-hoc, package, enterprise, development, developer-id and mac-application
    */
   exportMethod?: string;
   /**
@@ -1407,6 +1419,14 @@ type BuildIosAppOptions = {
    */
   clonedSourcePackagesPath?: string;
   /**
+   * Skips resolution of Swift Package Manager dependencies
+   */
+  skipPackageDependenciesResolution: boolean;
+  /**
+   * Prevents packages from automatically being resolved to versions other than those recorded in the `Package.resolved` file
+   */
+  disablePackageAutomaticUpdates: boolean;
+  /**
    * Lets xcodebuild use system's scm configuration
    */
   useSystemScm?: boolean;
@@ -1465,7 +1485,7 @@ type BuildMacAppOptions = {
    */
   includeBitcode?: boolean;
   /**
-   * Method used to export the archive. Valid values are: app-store, ad-hoc, package, enterprise, development, developer-id
+   * Method used to export the archive. Valid values are: app-store, validation, ad-hoc, package, enterprise, development, developer-id and mac-application
    */
   exportMethod?: string;
   /**
@@ -1584,6 +1604,14 @@ type BuildMacAppOptions = {
    * Sets a custom path for Swift Package Manager dependencies
    */
   clonedSourcePackagesPath?: string;
+  /**
+   * Skips resolution of Swift Package Manager dependencies
+   */
+  skipPackageDependenciesResolution: boolean;
+  /**
+   * Prevents packages from automatically being resolved to versions other than those recorded in the `Package.resolved` file
+   */
+  disablePackageAutomaticUpdates: boolean;
   /**
    * Lets xcodebuild use system's scm configuration
    */
@@ -1923,6 +1951,14 @@ type CaptureIosScreenshotsOptions = {
    */
   clonedSourcePackagesPath?: string;
   /**
+   * Skips resolution of Swift Package Manager dependencies
+   */
+  skipPackageDependenciesResolution: boolean;
+  /**
+   * Prevents packages from automatically being resolved to versions other than those recorded in the `Package.resolved` file
+   */
+  disablePackageAutomaticUpdates: boolean;
+  /**
    * The testplan associated with the scheme that should be used for testing
    */
   testplan?: string;
@@ -1942,6 +1978,10 @@ type CaptureIosScreenshotsOptions = {
    * Suppress the output of xcodebuild to stdout. Output is still saved in buildlog_path
    */
   suppressXcodeOutput?: boolean;
+  /**
+   * Lets xcodebuild use system's scm configuration
+   */
+  useSystemScm: boolean;
 };
 
 /** Shape for [[captureScreenshots]] options argument
@@ -2105,6 +2145,14 @@ type CaptureScreenshotsOptions = {
    */
   clonedSourcePackagesPath?: string;
   /**
+   * Skips resolution of Swift Package Manager dependencies
+   */
+  skipPackageDependenciesResolution: boolean;
+  /**
+   * Prevents packages from automatically being resolved to versions other than those recorded in the `Package.resolved` file
+   */
+  disablePackageAutomaticUpdates: boolean;
+  /**
    * The testplan associated with the scheme that should be used for testing
    */
   testplan?: string;
@@ -2124,6 +2172,10 @@ type CaptureScreenshotsOptions = {
    * Suppress the output of xcodebuild to stdout. Output is still saved in buildlog_path
    */
   suppressXcodeOutput?: boolean;
+  /**
+   * Lets xcodebuild use system's scm configuration
+   */
+  useSystemScm: boolean;
 };
 
 /** Shape for [[carthage]] options argument
@@ -2873,7 +2925,11 @@ type CreatePullRequestOptions = {
   /**
    * Personal API Token for GitHub - generate one at https://github.com/settings/tokens
    */
-  apiToken: string;
+  apiToken?: string;
+  /**
+   * Use a Bearer authorization token. Usually generated by Github Apps, e.g. GitHub Actions GITHUB_TOKEN environment variable
+   */
+  apiBearer?: string;
   /**
    * The name of the repository you want to submit the pull request to
    */
@@ -2922,6 +2978,28 @@ type CreatePullRequestOptions = {
    * The team reviewers (slug) for the pull request
    */
   teamReviewers?: string[];
+};
+
+/** Shape for [[createXcframework]] options argument
+ */
+
+type CreateXcframeworkOptions = {
+  /**
+   * Frameworks to add to the target xcframework
+   */
+  frameworks?: string[];
+  /**
+   * Libraries to add to the target xcframework, with their corresponding headers
+   */
+  libraries?: { string: string };
+  /**
+   * The path to write the xcframework to
+   */
+  output: string;
+  /**
+   * Specifies that the created xcframework contains information not suitable for public distribution
+   */
+  allowInternalDistribution?: boolean;
 };
 
 /** Shape for [[danger]] options argument
@@ -3363,7 +3441,7 @@ type DownloadDsymsOptions = {
   /**
    * The app platform for dSYMs you wish to download (ios, appletvos)
    */
-  platform?: string;
+  platform: string;
   /**
    * The app version for dSYMs you wish to download, pass in 'latest' to download only the latest build's dSYMs or 'live' to download only the live version dSYMs
    */
@@ -4143,7 +4221,7 @@ type GitCommitOptions = {
    */
   skipGitHooks?: boolean;
   /**
-   * Set to true to allow commit without any git changes
+   * Set to true to allow commit without any git changes in the files you want to commit
    */
   allowNothingToCommit?: boolean;
 };
@@ -4431,7 +4509,7 @@ type GymOptions = {
    */
   includeBitcode?: boolean;
   /**
-   * Method used to export the archive. Valid values are: app-store, ad-hoc, package, enterprise, development, developer-id
+   * Method used to export the archive. Valid values are: app-store, validation, ad-hoc, package, enterprise, development, developer-id and mac-application
    */
   exportMethod?: string;
   /**
@@ -4554,6 +4632,14 @@ type GymOptions = {
    * Sets a custom path for Swift Package Manager dependencies
    */
   clonedSourcePackagesPath?: string;
+  /**
+   * Skips resolution of Swift Package Manager dependencies
+   */
+  skipPackageDependenciesResolution: boolean;
+  /**
+   * Prevents packages from automatically being resolved to versions other than those recorded in the `Package.resolved` file
+   */
+  disablePackageAutomaticUpdates: boolean;
   /**
    * Lets xcodebuild use system's scm configuration
    */
@@ -6514,7 +6600,7 @@ type RegisterDevicesOptions = {
   /**
    * Optional: Your Apple ID
    */
-  username: string;
+  username?: string;
   /**
    * The platform to use (optional)
    */
@@ -6910,6 +6996,14 @@ type RunTestsOptions = {
    */
   clonedSourcePackagesPath?: string;
   /**
+   * Skips resolution of Swift Package Manager dependencies
+   */
+  skipPackageDependenciesResolution: boolean;
+  /**
+   * Prevents packages from automatically being resolved to versions other than those recorded in the `Package.resolved` file
+   */
+  disablePackageAutomaticUpdates: boolean;
+  /**
    * Lets xcodebuild use system's scm configuration
    */
   useSystemScm?: boolean;
@@ -7263,6 +7357,14 @@ type ScanOptions = {
    * Sets a custom path for Swift Package Manager dependencies
    */
   clonedSourcePackagesPath?: string;
+  /**
+   * Skips resolution of Swift Package Manager dependencies
+   */
+  skipPackageDependenciesResolution: boolean;
+  /**
+   * Prevents packages from automatically being resolved to versions other than those recorded in the `Package.resolved` file
+   */
+  disablePackageAutomaticUpdates: boolean;
   /**
    * Lets xcodebuild use system's scm configuration
    */
@@ -8105,6 +8207,14 @@ type SnapshotOptions = {
    */
   clonedSourcePackagesPath?: string;
   /**
+   * Skips resolution of Swift Package Manager dependencies
+   */
+  skipPackageDependenciesResolution: boolean;
+  /**
+   * Prevents packages from automatically being resolved to versions other than those recorded in the `Package.resolved` file
+   */
+  disablePackageAutomaticUpdates: boolean;
+  /**
    * The testplan associated with the scheme that should be used for testing
    */
   testplan?: string;
@@ -8124,6 +8234,10 @@ type SnapshotOptions = {
    * Suppress the output of xcodebuild to stdout. Output is still saved in buildlog_path
    */
   suppressXcodeOutput?: boolean;
+  /**
+   * Lets xcodebuild use system's scm configuration
+   */
+  useSystemScm: boolean;
 };
 
 /** Shape for [[sonar]] options argument
@@ -8537,7 +8651,7 @@ type SwiftlintOptions = {
    */
   raiseIfSwiftlintError?: boolean;
   /**
-   * Choose output reporter. Available: xcode, json, csv, checkstyle, junit, html,                                                      emoji, sonarqube, markdown, github-actions-logging
+   * Choose output reporter. Available: xcode, json, csv, checkstyle, codeclimate,                                                      junit, html, emoji, sonarqube, markdown, github-actions-logging
    */
   reporter?: string;
   /**
@@ -10919,8 +11033,9 @@ type convertedArtifactoryOptions = {
   repo: string;
   repo_path: string;
   endpoint: string;
-  username: string;
-  password: string;
+  username?: string;
+  password?: string;
+  api_key?: string;
   properties?: any;
   ssl_pem_file?: string;
   ssl_verify?: any;
@@ -10940,9 +11055,12 @@ function convertArtifactoryOptions(
     repo: options.repo,
     repo_path: options.repoPath,
     endpoint: options.endpoint,
-    username: options.username,
-    password: options.password,
   };
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
+  if (typeof options.password !== "undefined")
+    temp["password"] = options.password;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.properties !== "undefined")
     temp["properties"] = options.properties;
   if (typeof options.sslPemFile !== "undefined")
@@ -11185,6 +11303,8 @@ type convertedBuildAppOptions = {
   xcpretty_utf?: boolean;
   skip_profile_detection?: boolean;
   cloned_source_packages_path?: string;
+  skip_package_dependencies_resolution: boolean;
+  disable_package_automatic_updates: boolean;
   use_system_scm?: boolean;
 };
 /** @ignore Convert BuildAppOptions to the shape used by the Fastlane service
@@ -11199,6 +11319,9 @@ function convertBuildAppOptions(
     skip_package_ipa: options.skipPackageIpa,
     skip_package_pkg: options.skipPackagePkg,
     buildlog_path: options.buildlogPath,
+    skip_package_dependencies_resolution:
+      options.skipPackageDependenciesResolution,
+    disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
   };
   if (typeof options.workspace !== "undefined")
     temp["workspace"] = options.workspace;
@@ -11320,6 +11443,8 @@ type convertedBuildIosAppOptions = {
   xcpretty_utf?: boolean;
   skip_profile_detection?: boolean;
   cloned_source_packages_path?: string;
+  skip_package_dependencies_resolution: boolean;
+  disable_package_automatic_updates: boolean;
   use_system_scm?: boolean;
 };
 /** @ignore Convert BuildIosAppOptions to the shape used by the Fastlane service
@@ -11333,6 +11458,9 @@ function convertBuildIosAppOptions(
     silent: options.silent,
     skip_package_ipa: options.skipPackageIpa,
     buildlog_path: options.buildlogPath,
+    skip_package_dependencies_resolution:
+      options.skipPackageDependenciesResolution,
+    disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
   };
   if (typeof options.workspace !== "undefined")
     temp["workspace"] = options.workspace;
@@ -11451,6 +11579,8 @@ type convertedBuildMacAppOptions = {
   xcpretty_utf?: boolean;
   skip_profile_detection?: boolean;
   cloned_source_packages_path?: string;
+  skip_package_dependencies_resolution: boolean;
+  disable_package_automatic_updates: boolean;
   use_system_scm?: boolean;
 };
 /** @ignore Convert BuildMacAppOptions to the shape used by the Fastlane service
@@ -11464,6 +11594,9 @@ function convertBuildMacAppOptions(
     silent: options.silent,
     skip_package_pkg: options.skipPackagePkg,
     buildlog_path: options.buildlogPath,
+    skip_package_dependencies_resolution:
+      options.skipPackageDependenciesResolution,
+    disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
   };
   if (typeof options.workspace !== "undefined")
     temp["workspace"] = options.workspace;
@@ -11702,11 +11835,14 @@ type convertedCaptureIosScreenshotsOptions = {
   concurrent_simulators: any;
   disable_slide_to_type?: any;
   cloned_source_packages_path?: string;
+  skip_package_dependencies_resolution: boolean;
+  disable_package_automatic_updates: boolean;
   testplan?: string;
   only_testing?: any;
   skip_testing?: any;
   disable_xcpretty?: boolean;
   suppress_xcode_output?: boolean;
+  use_system_scm: boolean;
 };
 /** @ignore Convert CaptureIosScreenshotsOptions to the shape used by the Fastlane service
  */
@@ -11730,6 +11866,10 @@ function convertCaptureIosScreenshotsOptions(
     number_of_retries: options.numberOfRetries,
     stop_after_first_error: options.stopAfterFirstError,
     concurrent_simulators: options.concurrentSimulators,
+    skip_package_dependencies_resolution:
+      options.skipPackageDependenciesResolution,
+    disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
+    use_system_scm: options.useSystemScm,
   };
   if (typeof options.workspace !== "undefined")
     temp["workspace"] = options.workspace;
@@ -11826,11 +11966,14 @@ type convertedCaptureScreenshotsOptions = {
   concurrent_simulators: any;
   disable_slide_to_type?: any;
   cloned_source_packages_path?: string;
+  skip_package_dependencies_resolution: boolean;
+  disable_package_automatic_updates: boolean;
   testplan?: string;
   only_testing?: any;
   skip_testing?: any;
   disable_xcpretty?: boolean;
   suppress_xcode_output?: boolean;
+  use_system_scm: boolean;
 };
 /** @ignore Convert CaptureScreenshotsOptions to the shape used by the Fastlane service
  */
@@ -11854,6 +11997,10 @@ function convertCaptureScreenshotsOptions(
     number_of_retries: options.numberOfRetries,
     stop_after_first_error: options.stopAfterFirstError,
     concurrent_simulators: options.concurrentSimulators,
+    skip_package_dependencies_resolution:
+      options.skipPackageDependenciesResolution,
+    disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
+    use_system_scm: options.useSystemScm,
   };
   if (typeof options.workspace !== "undefined")
     temp["workspace"] = options.workspace;
@@ -12523,7 +12670,8 @@ function convertCreateKeychainOptions(
 
 /** @ignore */
 type convertedCreatePullRequestOptions = {
-  api_token: string;
+  api_token?: string;
+  api_bearer?: string;
   repo: string;
   title: string;
   body?: string;
@@ -12543,10 +12691,13 @@ function convertCreatePullRequestOptions(
   options: CreatePullRequestOptions
 ): convertedCreatePullRequestOptions {
   const temp: convertedCreatePullRequestOptions = {
-    api_token: options.apiToken,
     repo: options.repo,
     title: options.title,
   };
+  if (typeof options.apiToken !== "undefined")
+    temp["api_token"] = options.apiToken;
+  if (typeof options.apiBearer !== "undefined")
+    temp["api_bearer"] = options.apiBearer;
   if (typeof options.body !== "undefined") temp["body"] = options.body;
   if (typeof options.draft !== "undefined") temp["draft"] = options.draft;
   if (typeof options.labels !== "undefined") temp["labels"] = options.labels;
@@ -12561,6 +12712,30 @@ function convertCreatePullRequestOptions(
     temp["reviewers"] = options.reviewers;
   if (typeof options.teamReviewers !== "undefined")
     temp["team_reviewers"] = options.teamReviewers;
+  return temp;
+}
+
+/** @ignore */
+type convertedCreateXcframeworkOptions = {
+  frameworks?: string[];
+  libraries?: { string: string };
+  output: string;
+  allow_internal_distribution?: boolean;
+};
+/** @ignore Convert CreateXcframeworkOptions to the shape used by the Fastlane service
+ */
+function convertCreateXcframeworkOptions(
+  options: CreateXcframeworkOptions
+): convertedCreateXcframeworkOptions {
+  const temp: convertedCreateXcframeworkOptions = {
+    output: options.output,
+  };
+  if (typeof options.frameworks !== "undefined")
+    temp["frameworks"] = options.frameworks;
+  if (typeof options.libraries !== "undefined")
+    temp["libraries"] = options.libraries;
+  if (typeof options.allowInternalDistribution !== "undefined")
+    temp["allow_internal_distribution"] = options.allowInternalDistribution;
   return temp;
 }
 
@@ -12922,7 +13097,7 @@ type convertedDownloadDsymsOptions = {
   app_identifier: string;
   team_id?: any;
   team_name?: string;
-  platform?: string;
+  platform: string;
   version?: string;
   build_number?: any;
   min_version?: string;
@@ -12939,12 +13114,11 @@ function convertDownloadDsymsOptions(
   const temp: convertedDownloadDsymsOptions = {
     username: options.username,
     app_identifier: options.appIdentifier,
+    platform: options.platform,
   };
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
-  if (typeof options.platform !== "undefined")
-    temp["platform"] = options.platform;
   if (typeof options.version !== "undefined") temp["version"] = options.version;
   if (typeof options.buildNumber !== "undefined")
     temp["build_number"] = options.buildNumber;
@@ -13909,6 +14083,8 @@ type convertedGymOptions = {
   xcpretty_utf?: boolean;
   skip_profile_detection?: boolean;
   cloned_source_packages_path?: string;
+  skip_package_dependencies_resolution: boolean;
+  disable_package_automatic_updates: boolean;
   use_system_scm?: boolean;
 };
 /** @ignore Convert GymOptions to the shape used by the Fastlane service
@@ -13921,6 +14097,9 @@ function convertGymOptions(options: GymOptions): convertedGymOptions {
     skip_package_ipa: options.skipPackageIpa,
     skip_package_pkg: options.skipPackagePkg,
     buildlog_path: options.buildlogPath,
+    skip_package_dependencies_resolution:
+      options.skipPackageDependenciesResolution,
+    disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
   };
   if (typeof options.workspace !== "undefined")
     temp["workspace"] = options.workspace;
@@ -15643,7 +15822,7 @@ type convertedRegisterDevicesOptions = {
   api_key?: { string: string };
   team_id?: string;
   team_name?: string;
-  username: string;
+  username?: string;
   platform?: string;
 };
 /** @ignore Convert RegisterDevicesOptions to the shape used by the Fastlane service
@@ -15651,9 +15830,7 @@ type convertedRegisterDevicesOptions = {
 function convertRegisterDevicesOptions(
   options: RegisterDevicesOptions
 ): convertedRegisterDevicesOptions {
-  const temp: convertedRegisterDevicesOptions = {
-    username: options.username,
-  };
+  const temp: convertedRegisterDevicesOptions = {};
   if (typeof options.devices !== "undefined") temp["devices"] = options.devices;
   if (typeof options.devicesFile !== "undefined")
     temp["devices_file"] = options.devicesFile;
@@ -15663,6 +15840,8 @@ function convertRegisterDevicesOptions(
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.platform !== "undefined")
     temp["platform"] = options.platform;
   return temp;
@@ -15870,6 +16049,8 @@ type convertedRunTestsOptions = {
   custom_report_file_name?: string;
   xcodebuild_command?: string;
   cloned_source_packages_path?: string;
+  skip_package_dependencies_resolution: boolean;
+  disable_package_automatic_updates: boolean;
   use_system_scm?: boolean;
   fail_build: any;
 };
@@ -15892,6 +16073,9 @@ function convertRunTestsOptions(
     skip_build: options.skipBuild,
     skip_slack: options.skipSlack,
     slack_only_on_failure: options.slackOnlyOnFailure,
+    skip_package_dependencies_resolution:
+      options.skipPackageDependenciesResolution,
+    disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
     fail_build: options.failBuild,
   };
   if (typeof options.workspace !== "undefined")
@@ -16129,6 +16313,8 @@ type convertedScanOptions = {
   custom_report_file_name?: string;
   xcodebuild_command?: string;
   cloned_source_packages_path?: string;
+  skip_package_dependencies_resolution: boolean;
+  disable_package_automatic_updates: boolean;
   use_system_scm?: boolean;
   fail_build: any;
 };
@@ -16149,6 +16335,9 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
     skip_build: options.skipBuild,
     skip_slack: options.skipSlack,
     slack_only_on_failure: options.slackOnlyOnFailure,
+    skip_package_dependencies_resolution:
+      options.skipPackageDependenciesResolution,
+    disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
     fail_build: options.failBuild,
   };
   if (typeof options.workspace !== "undefined")
@@ -16851,11 +17040,14 @@ type convertedSnapshotOptions = {
   concurrent_simulators: any;
   disable_slide_to_type?: any;
   cloned_source_packages_path?: string;
+  skip_package_dependencies_resolution: boolean;
+  disable_package_automatic_updates: boolean;
   testplan?: string;
   only_testing?: any;
   skip_testing?: any;
   disable_xcpretty?: boolean;
   suppress_xcode_output?: boolean;
+  use_system_scm: boolean;
 };
 /** @ignore Convert SnapshotOptions to the shape used by the Fastlane service
  */
@@ -16879,6 +17071,10 @@ function convertSnapshotOptions(
     number_of_retries: options.numberOfRetries,
     stop_after_first_error: options.stopAfterFirstError,
     concurrent_simulators: options.concurrentSimulators,
+    skip_package_dependencies_resolution:
+      options.skipPackageDependenciesResolution,
+    disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
+    use_system_scm: options.useSystemScm,
   };
   if (typeof options.workspace !== "undefined")
     temp["workspace"] = options.workspace;
@@ -18969,7 +19165,7 @@ If your account is on multiple teams and you need to tell the `iTMSTransporter` 
     );
     return out;
   }
-  /** This action uploads an artifact to artifactory
+  /** Connect to the artifactory server using either a username/password or an api_key
    */
   async artifactory(options: ArtifactoryOptions): Promise<any> {
     const out = await this.doAction(
@@ -19302,6 +19498,28 @@ For more information about _produce_, visit its documentation page: [https://doc
     const out = await this.doAction(
       "create_pull_request",
       convertCreatePullRequestOptions(options)
+    );
+    return out;
+  }
+  /** Utility for packaging multiple build configurations of a given library
+or framework into a single xcframework.
+
+If you want to package several frameworks just provide an array containing
+the list of frameworks to be packaged using the :frameworks parameter.
+
+If you want to package several libraries with their corresponding headers
+provide a hash containing the library as the key and the directory containing
+its headers as the value (or an empty string if there are no headers associated
+with the provided library).
+
+Finally specify the location of the xcframework to be generated using the :output
+parameter.
+
+    */
+  async createXcframework(options: CreateXcframeworkOptions): Promise<any> {
+    const out = await this.doAction(
+      "create_xcframework",
+      convertCreateXcframeworkOptions(options)
     );
     return out;
   }
