@@ -234,6 +234,10 @@ type AppetizeOptions = {
    * Notes you wish to add to the uploaded app
    */
   note?: string;
+  /**
+   * The number of seconds to wait until automatically ending the session due to user inactivity. Must be 30, 60, 90, 120, 180, 300, 600, 1800, 3600 or 7200. Default is 120
+   */
+  timeout?: any;
 };
 
 /** Shape for [[appetizeViewingUrlGenerator]] options argument
@@ -1000,6 +1004,10 @@ type BuildAndUploadToAppetizeOptions = {
    * Notes you wish to add to the uploaded app
    */
   note?: string;
+  /**
+   * The number of seconds to wait until automatically ending the session due to user inactivity. Must be 30, 60, 90, 120, 180, 300, 600, 1800, 3600 or 7200. Default is 120
+   */
+  timeout?: any;
 };
 
 /** Shape for [[buildAndroidApp]] options argument
@@ -2263,6 +2271,14 @@ type CarthageOptions = {
    */
   logPath?: string;
   /**
+   * Create xcframework bundles instead of one framework per platform (requires Xcode 12+)
+   */
+  useXcframeworks: boolean;
+  /**
+   * Archive built frameworks from the current project
+   */
+  archive: boolean;
+  /**
    * Path to the `carthage` executable on your machine
    */
   executable: string;
@@ -2602,6 +2618,10 @@ type CocoapodsOptions = {
    * Disallow any changes to the Podfile or the Podfile.lock during installation
    */
   deployment?: boolean;
+  /**
+   * Allows CocoaPods to run as root
+   */
+  allowRoot?: boolean;
   /**
    * **DEPRECATED!** (Option renamed as clean_install) Remove SCM directories
    */
@@ -10601,6 +10621,7 @@ type convertedAppetizeOptions = {
   path?: string;
   public_key?: string;
   note?: string;
+  timeout?: any;
 };
 /** @ignore Convert AppetizeOptions to the shape used by the Fastlane service
  */
@@ -10617,6 +10638,7 @@ function convertAppetizeOptions(
   if (typeof options.publicKey !== "undefined")
     temp["public_key"] = options.publicKey;
   if (typeof options.note !== "undefined") temp["note"] = options.note;
+  if (typeof options.timeout !== "undefined") temp["timeout"] = options.timeout;
   return temp;
 }
 
@@ -11198,6 +11220,7 @@ type convertedBuildAndUploadToAppetizeOptions = {
   api_token: string;
   public_key?: string;
   note?: string;
+  timeout?: any;
 };
 /** @ignore Convert BuildAndUploadToAppetizeOptions to the shape used by the Fastlane service
  */
@@ -11213,6 +11236,7 @@ function convertBuildAndUploadToAppetizeOptions(
   if (typeof options.publicKey !== "undefined")
     temp["public_key"] = options.publicKey;
   if (typeof options.note !== "undefined") temp["note"] = options.note;
+  if (typeof options.timeout !== "undefined") temp["timeout"] = options.timeout;
   return temp;
 }
 
@@ -12078,6 +12102,8 @@ type convertedCarthageOptions = {
   project_directory?: string;
   new_resolver?: boolean;
   log_path?: string;
+  use_xcframeworks: boolean;
+  archive: boolean;
   executable: string;
 };
 /** @ignore Convert CarthageOptions to the shape used by the Fastlane service
@@ -12090,6 +12116,8 @@ function convertCarthageOptions(
     dependencies: options.dependencies,
     cache_builds: options.cacheBuilds,
     frameworks: options.frameworks,
+    use_xcframeworks: options.useXcframeworks,
+    archive: options.archive,
     executable: options.executable,
   };
   if (typeof options.useSsh !== "undefined") temp["use_ssh"] = options.useSsh;
@@ -12394,6 +12422,7 @@ type convertedCocoapodsOptions = {
   error_callback?: any;
   try_repo_update_on_error?: boolean;
   deployment?: boolean;
+  allow_root?: boolean;
   clean?: any;
   integrate?: any;
 };
@@ -12417,6 +12446,8 @@ function convertCocoapodsOptions(
     temp["try_repo_update_on_error"] = options.tryRepoUpdateOnError;
   if (typeof options.deployment !== "undefined")
     temp["deployment"] = options.deployment;
+  if (typeof options.allowRoot !== "undefined")
+    temp["allow_root"] = options.allowRoot;
   if (typeof options.clean !== "undefined") temp["clean"] = options.clean;
   if (typeof options.integrate !== "undefined")
     temp["integrate"] = options.integrate;
