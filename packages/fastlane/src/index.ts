@@ -13,7 +13,7 @@ type AdbOptions = {
    */
   command?: string;
   /**
-   * The path to your `adb` binary (can be left blank if the ANDROID_SDK_ROOT environment variable is set)
+   * The path to your `adb` binary (can be left blank if the ANDROID_SDK_ROOT, ANDROID_HOME or ANDROID_SDK environment variable is set)
    */
   adbPath?: string;
 };
@@ -4229,7 +4229,7 @@ type GitBranchOptions = {};
 
 type GitCommitOptions = {
   /**
-   * The file you want to commit
+   * The file(s) or directory(ies) you want to commit. You can pass an array of multiple file-paths or fileglobs "*.txt" to commit all matching files. The files already staged but not specified and untracked files won't be committed
    */
   path: any;
   /**
@@ -9236,7 +9236,7 @@ type UpdateCodeSigningSettingsOptions = {
    */
   targets?: string[];
   /**
-   * Specify build_configurations you want to toggle the signing mech. (default to all targets)
+   * Specify build_configurations you want to toggle the signing mech. (default to all configurations)
    */
   buildConfigurations?: string[];
   /**
