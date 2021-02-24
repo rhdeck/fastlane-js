@@ -5151,6 +5151,10 @@ type JazzyOptions = {
    * Path to jazzy config file
    */
   config?: string;
+  /**
+   * Version string to use as part of the the default docs title and inside the docset
+   */
+  moduleVersion?: string;
 };
 
 /** Shape for [[jira]] options argument
@@ -5964,7 +5968,7 @@ type PilotOptions = {
   /**
    * Do you need a demo account when Apple does review?
    */
-  demoAccountRequired: boolean;
+  demoAccountRequired?: boolean;
   /**
    * Beta app review information for contact info and demo account
    */
@@ -6904,6 +6908,10 @@ type RunTestsOptions = {
    */
   shouldZipBuildProducts?: any;
   /**
+   * Should provide additional copy of .xctestrun file (settings.xctestrun) and place in output path?
+   */
+  outputXctestrun: boolean;
+  /**
    * Should an Xcode result bundle be generated in the output directory
    */
   resultBundle?: any;
@@ -7265,6 +7273,10 @@ type ScanOptions = {
    * Should zip the derived data build products and place in output path?
    */
   shouldZipBuildProducts?: any;
+  /**
+   * Should provide additional copy of .xctestrun file (settings.xctestrun) and place in output path?
+   */
+  outputXctestrun: boolean;
   /**
    * Should an Xcode result bundle be generated in the output directory
    */
@@ -8981,7 +8993,7 @@ type TestflightOptions = {
   /**
    * Do you need a demo account when Apple does review?
    */
-  demoAccountRequired: boolean;
+  demoAccountRequired?: boolean;
   /**
    * Beta app review information for contact info and demo account
    */
@@ -10060,7 +10072,7 @@ type UploadToTestflightOptions = {
   /**
    * Do you need a demo account when Apple does review?
    */
-  demoAccountRequired: boolean;
+  demoAccountRequired?: boolean;
   /**
    * Beta app review information for contact info and demo account
    */
@@ -14650,12 +14662,15 @@ function convertIsCiOptions(options: IsCiOptions): convertedIsCiOptions {
 /** @ignore */
 type convertedJazzyOptions = {
   config?: string;
+  module_version?: string;
 };
 /** @ignore Convert JazzyOptions to the shape used by the Fastlane service
  */
 function convertJazzyOptions(options: JazzyOptions): convertedJazzyOptions {
   const temp: convertedJazzyOptions = {};
   if (typeof options.config !== "undefined") temp["config"] = options.config;
+  if (typeof options.moduleVersion !== "undefined")
+    temp["module_version"] = options.moduleVersion;
   return temp;
 }
 
@@ -15326,7 +15341,7 @@ type convertedPilotOptions = {
   app_platform?: string;
   apple_id?: string;
   ipa?: string;
-  demo_account_required: boolean;
+  demo_account_required?: boolean;
   beta_app_review_info?: { string: string };
   localized_app_info?: { string: string };
   beta_app_description?: string;
@@ -15361,7 +15376,6 @@ type convertedPilotOptions = {
 function convertPilotOptions(options: PilotOptions): convertedPilotOptions {
   const temp: convertedPilotOptions = {
     username: options.username,
-    demo_account_required: options.demoAccountRequired,
     skip_submission: options.skipSubmission,
     skip_waiting_for_build_processing: options.skipWaitingForBuildProcessing,
     distribute_only: options.distributeOnly,
@@ -15382,6 +15396,8 @@ function convertPilotOptions(options: PilotOptions): convertedPilotOptions {
   if (typeof options.appleId !== "undefined")
     temp["apple_id"] = options.appleId;
   if (typeof options.ipa !== "undefined") temp["ipa"] = options.ipa;
+  if (typeof options.demoAccountRequired !== "undefined")
+    temp["demo_account_required"] = options.demoAccountRequired;
   if (typeof options.betaAppReviewInfo !== "undefined")
     temp["beta_app_review_info"] = options.betaAppReviewInfo;
   if (typeof options.localizedAppInfo !== "undefined")
@@ -16052,6 +16068,7 @@ type convertedRunTestsOptions = {
   xcpretty_args?: string;
   derived_data_path?: string;
   should_zip_build_products?: any;
+  output_xctestrun: boolean;
   result_bundle?: any;
   use_clang_report_name: any;
   concurrent_workers?: any;
@@ -16100,6 +16117,7 @@ function convertRunTestsOptions(
     output_directory: options.outputDirectory,
     output_types: options.outputTypes,
     buildlog_path: options.buildlogPath,
+    output_xctestrun: options.outputXctestrun,
     use_clang_report_name: options.useClangReportName,
     skip_build: options.skipBuild,
     skip_slack: options.skipSlack,
@@ -16316,6 +16334,7 @@ type convertedScanOptions = {
   xcpretty_args?: string;
   derived_data_path?: string;
   should_zip_build_products?: any;
+  output_xctestrun: boolean;
   result_bundle?: any;
   use_clang_report_name: any;
   concurrent_workers?: any;
@@ -16362,6 +16381,7 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
     output_directory: options.outputDirectory,
     output_types: options.outputTypes,
     buildlog_path: options.buildlogPath,
+    output_xctestrun: options.outputXctestrun,
     use_clang_report_name: options.useClangReportName,
     skip_build: options.skipBuild,
     skip_slack: options.skipSlack,
@@ -17716,7 +17736,7 @@ type convertedTestflightOptions = {
   app_platform?: string;
   apple_id?: string;
   ipa?: string;
-  demo_account_required: boolean;
+  demo_account_required?: boolean;
   beta_app_review_info?: { string: string };
   localized_app_info?: { string: string };
   beta_app_description?: string;
@@ -17753,7 +17773,6 @@ function convertTestflightOptions(
 ): convertedTestflightOptions {
   const temp: convertedTestflightOptions = {
     username: options.username,
-    demo_account_required: options.demoAccountRequired,
     skip_submission: options.skipSubmission,
     skip_waiting_for_build_processing: options.skipWaitingForBuildProcessing,
     distribute_only: options.distributeOnly,
@@ -17774,6 +17793,8 @@ function convertTestflightOptions(
   if (typeof options.appleId !== "undefined")
     temp["apple_id"] = options.appleId;
   if (typeof options.ipa !== "undefined") temp["ipa"] = options.ipa;
+  if (typeof options.demoAccountRequired !== "undefined")
+    temp["demo_account_required"] = options.demoAccountRequired;
   if (typeof options.betaAppReviewInfo !== "undefined")
     temp["beta_app_review_info"] = options.betaAppReviewInfo;
   if (typeof options.localizedAppInfo !== "undefined")
@@ -18634,7 +18655,7 @@ type convertedUploadToTestflightOptions = {
   app_platform?: string;
   apple_id?: string;
   ipa?: string;
-  demo_account_required: boolean;
+  demo_account_required?: boolean;
   beta_app_review_info?: { string: string };
   localized_app_info?: { string: string };
   beta_app_description?: string;
@@ -18671,7 +18692,6 @@ function convertUploadToTestflightOptions(
 ): convertedUploadToTestflightOptions {
   const temp: convertedUploadToTestflightOptions = {
     username: options.username,
-    demo_account_required: options.demoAccountRequired,
     skip_submission: options.skipSubmission,
     skip_waiting_for_build_processing: options.skipWaitingForBuildProcessing,
     distribute_only: options.distributeOnly,
@@ -18692,6 +18712,8 @@ function convertUploadToTestflightOptions(
   if (typeof options.appleId !== "undefined")
     temp["apple_id"] = options.appleId;
   if (typeof options.ipa !== "undefined") temp["ipa"] = options.ipa;
+  if (typeof options.demoAccountRequired !== "undefined")
+    temp["demo_account_required"] = options.demoAccountRequired;
   if (typeof options.betaAppReviewInfo !== "undefined")
     temp["beta_app_review_info"] = options.betaAppReviewInfo;
   if (typeof options.localizedAppInfo !== "undefined")
