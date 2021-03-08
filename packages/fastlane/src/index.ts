@@ -159,7 +159,7 @@ type AppStoreConnectApiKeyOptions = {
    */
   duration?: any;
   /**
-   * Is App Store or Enterprise (in house) team? App Store Connect API cannot not determine this on its own (yet)
+   * Is App Store or Enterprise (in house) team? App Store Connect API cannot determine this on its own (yet)
    */
   inHouse?: boolean;
 };
@@ -200,6 +200,10 @@ type AppaloosaOptions = {
    * Your app description
    */
   description?: string;
+  /**
+   * Your app changelog
+   */
+  changelog?: string;
 };
 
 /** Shape for [[appetize]] options argument
@@ -6788,6 +6792,10 @@ type RunTestsOptions = {
    */
   skipDetectDevices?: boolean;
   /**
+   * Should fail if devices not found
+   */
+  ensureDevicesFound?: boolean;
+  /**
    * Enabling this option will automatically killall Simulator processes before the run
    */
   forceQuitSimulator: boolean;
@@ -7153,6 +7161,10 @@ type ScanOptions = {
    * Should skip auto detecting of devices if none were specified
    */
   skipDetectDevices?: boolean;
+  /**
+   * Should fail if devices not found
+   */
+  ensureDevicesFound?: boolean;
   /**
    * Enabling this option will automatically killall Simulator processes before the run
    */
@@ -10603,6 +10615,7 @@ type convertedAppaloosaOptions = {
   locale?: string;
   device?: string;
   description?: string;
+  changelog?: string;
 };
 /** @ignore Convert AppaloosaOptions to the shape used by the Fastlane service
  */
@@ -10621,6 +10634,8 @@ function convertAppaloosaOptions(
   if (typeof options.device !== "undefined") temp["device"] = options.device;
   if (typeof options.description !== "undefined")
     temp["description"] = options.description;
+  if (typeof options.changelog !== "undefined")
+    temp["changelog"] = options.changelog;
   return temp;
 }
 
@@ -16038,6 +16053,7 @@ type convertedRunTestsOptions = {
   device?: string;
   devices?: string[];
   skip_detect_devices?: boolean;
+  ensure_devices_found?: boolean;
   force_quit_simulator: boolean;
   reset_simulator: boolean;
   disable_slide_to_type: boolean;
@@ -16135,6 +16151,8 @@ function convertRunTestsOptions(
   if (typeof options.devices !== "undefined") temp["devices"] = options.devices;
   if (typeof options.skipDetectDevices !== "undefined")
     temp["skip_detect_devices"] = options.skipDetectDevices;
+  if (typeof options.ensureDevicesFound !== "undefined")
+    temp["ensure_devices_found"] = options.ensureDevicesFound;
   if (typeof options.prelaunchSimulator !== "undefined")
     temp["prelaunch_simulator"] = options.prelaunchSimulator;
   if (typeof options.appIdentifier !== "undefined")
@@ -16304,6 +16322,7 @@ type convertedScanOptions = {
   device?: string;
   devices?: string[];
   skip_detect_devices?: boolean;
+  ensure_devices_found?: boolean;
   force_quit_simulator: boolean;
   reset_simulator: boolean;
   disable_slide_to_type: boolean;
@@ -16399,6 +16418,8 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
   if (typeof options.devices !== "undefined") temp["devices"] = options.devices;
   if (typeof options.skipDetectDevices !== "undefined")
     temp["skip_detect_devices"] = options.skipDetectDevices;
+  if (typeof options.ensureDevicesFound !== "undefined")
+    temp["ensure_devices_found"] = options.ensureDevicesFound;
   if (typeof options.prelaunchSimulator !== "undefined")
     temp["prelaunch_simulator"] = options.prelaunchSimulator;
   if (typeof options.appIdentifier !== "undefined")
