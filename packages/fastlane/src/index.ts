@@ -107,7 +107,7 @@ type AppStoreBuildNumberOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
@@ -537,7 +537,7 @@ type AppstoreOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The bundle identifier of your app
    */
@@ -2319,7 +2319,7 @@ type CertOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The ID of your Developer Portal team if you're in multiple teams
    */
@@ -2445,7 +2445,7 @@ type CheckAppStoreMetadataOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
@@ -3119,7 +3119,7 @@ type DeliverOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The bundle identifier of your app
    */
@@ -3932,7 +3932,7 @@ type GetCertificatesOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The ID of your Developer Portal team if you're in multiple teams
    */
@@ -4074,7 +4074,7 @@ type GetProvisioningProfileOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The ID of your Developer Portal team if you're in multiple teams
    */
@@ -4200,7 +4200,7 @@ type GetPushCertificateOptions = {
 
 type GetVersionNumberOptions = {
   /**
-   * Path to the main Xcode project to read version number from, optional. By default will use the first Xcode project found within the project root directory
+   * Path to the Xcode project to read version number from, or its containing directory, optional. If ommitted, or if a directory is passed instead, it will use the first Xcode project found within the given directory, or the project root directory if none is passed
    */
   xcodeproj?: string;
   /**
@@ -5246,7 +5246,7 @@ type LatestTestflightBuildNumberOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The version number whose latest build number we want
    */
@@ -5379,6 +5379,188 @@ type MakeChangelogFromJenkinsOptions = {
  */
 
 type MatchOptions = {
+  /**
+   * Define the profile type, can be appstore, adhoc, development, enterprise, developer_id, mac_installer_distribution
+   */
+  type: string;
+  /**
+   * Create additional cert types needed for macOS installers (valid values: mac_installer_distribution, developer_id_installer)
+   */
+  additionalCertTypes?: string[];
+  /**
+   * Only fetch existing certificates and profiles, don't generate new ones
+   */
+  readonly: boolean;
+  /**
+   * Create a certificate type for Xcode 11 and later (Apple Development or Apple Distribution)
+   */
+  generateAppleCerts: boolean;
+  /**
+   * Skip syncing provisioning profiles
+   */
+  skipProvisioningProfiles: boolean;
+  /**
+   * The bundle identifier(s) of your app (comma-separated string or array of strings)
+   */
+  appIdentifier: string[];
+  /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
+   * Your Apple ID Username
+   */
+  username?: string;
+  /**
+   * The ID of your Developer Portal team if you're in multiple teams
+   */
+  teamId?: string;
+  /**
+   * The name of your Developer Portal team if you're in multiple teams
+   */
+  teamName?: string;
+  /**
+   * Define where you want to store your certificates
+   */
+  storageMode: string;
+  /**
+   * URL to the git repo containing all the certificates
+   */
+  gitUrl: string;
+  /**
+   * Specific git branch to use
+   */
+  gitBranch: string;
+  /**
+   * git user full name to commit
+   */
+  gitFullName?: string;
+  /**
+   * git user email to commit
+   */
+  gitUserEmail?: string;
+  /**
+   * Make a shallow clone of the repository (truncate the history to 1 revision)
+   */
+  shallowClone: boolean;
+  /**
+   * Clone just the branch specified, instead of the whole repo. This requires that the branch already exists. Otherwise the command will fail
+   */
+  cloneBranchDirectly: boolean;
+  /**
+   * Use a basic authorization header to access the git repo (e.g.: access via HTTPS, GitHub Actions, etc), usually a string in Base64
+   */
+  gitBasicAuthorization?: string;
+  /**
+   * Use a bearer authorization header to access the git repo (e.g.: access to an Azure DevOps repository), usually a string in Base64
+   */
+  gitBearerAuthorization?: string;
+  /**
+   * Use a private key to access the git repo (e.g.: access to GitHub repository via Deploy keys), usually a id_rsa named file or the contents hereof
+   */
+  gitPrivateKey?: string;
+  /**
+   * Name of the Google Cloud Storage bucket to use
+   */
+  googleCloudBucketName?: string;
+  /**
+   * Path to the gc_keys.json file
+   */
+  googleCloudKeysFile?: string;
+  /**
+   * ID of the Google Cloud project to use for authentication
+   */
+  googleCloudProjectId?: string;
+  /**
+   * Name of the S3 region
+   */
+  s3Region?: string;
+  /**
+   * S3 access key
+   */
+  s3AccessKey?: string;
+  /**
+   * S3 secret access key
+   */
+  s3SecretAccessKey?: string;
+  /**
+   * Name of the S3 bucket
+   */
+  s3Bucket?: string;
+  /**
+   * Prefix to be used on all objects uploaded to S3
+   */
+  s3ObjectPrefix?: string;
+  /**
+   * Keychain the items should be imported to
+   */
+  keychainName: string;
+  /**
+   * This might be required the first time you access certificates on a new mac. For the login/default keychain this is your macOS account password
+   */
+  keychainPassword?: string;
+  /**
+   * Renew the provisioning profiles every time you run match
+   */
+  force: boolean;
+  /**
+   * Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile type 'appstore'
+   */
+  forceForNewDevices: boolean;
+  /**
+   * Disables confirmation prompts during nuke, answering them with yes
+   */
+  skipConfirmation: boolean;
+  /**
+   * Skip generation of a README.md for the created git repository
+   */
+  skipDocs: boolean;
+  /**
+   * Set the provisioning profile's platform to work with (i.e. ios, tvos, macos, catalyst)
+   */
+  platform: string;
+  /**
+   * Enable this if you have the Mac Catalyst capability enabled and your project was created with Xcode 11.3 or earlier. Prepends 'maccatalyst.' to the app identifier for the provisioning profile mapping
+   */
+  deriveCatalystAppIdentifier: boolean;
+  /**
+   * The name of provisioning profile template. If the developer account has provisioning profile templates (aka: custom entitlements), the template name can be found by inspecting the Entitlements drop-down while creating/editing a provisioning profile (e.g. "Apple Pay Pass Suppression Development")
+   */
+  templateName?: string;
+  /**
+   * A custom name for the provisioning profile. This will replace the default provisioning profile name if specified
+   */
+  profileName?: string;
+  /**
+   * Should the command fail if it was about to create a duplicate of an existing provisioning profile. It can happen due to issues on Apple Developer Portal, when profile to be recreated was not properly deleted first
+   */
+  failOnNameTaken?: boolean;
+  /**
+   * Set to true if there is no access to Apple developer portal but there are certificates, keys and profiles provided. Only works with match import action
+   */
+  skipCertificateMatching?: boolean;
+  /**
+   * Path in which to export certificates, key and profile
+   */
+  outputPath?: string;
+  /**
+   * Skips setting the partition list (which can sometimes take a long time). Setting the partition list is usually needed to prevent Xcode from prompting to allow a cert to be used for signing
+   */
+  skipSetPartitionList: boolean;
+  /**
+   * Print out extra information and all commands
+   */
+  verbose: boolean;
+};
+
+/** Shape for [[matchNuke]] options argument
+ */
+
+type MatchNukeOptions = {
   /**
    * Define the profile type, can be appstore, adhoc, development, enterprise, developer_id, mac_installer_distribution
    */
@@ -5964,7 +6146,7 @@ type PilotOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The bundle identifier of the app to upload or manage testers (optional)
    */
@@ -6296,7 +6478,7 @@ type PrecheckOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
@@ -7850,7 +8032,7 @@ type SighOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The ID of your Developer Portal team if you're in multiple teams
    */
@@ -8997,7 +9179,7 @@ type TestflightOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The bundle identifier of the app to upload or manage testers (optional)
    */
@@ -9630,7 +9812,7 @@ type UploadToAppStoreOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The bundle identifier of your app
    */
@@ -10076,7 +10258,7 @@ type UploadToTestflightOptions = {
   /**
    * Your Apple ID Username
    */
-  username: string;
+  username?: string;
   /**
    * The bundle identifier of the app to upload or manage testers (optional)
    */
@@ -10556,7 +10738,7 @@ type convertedAppStoreBuildNumberOptions = {
   api_key?: { string: string };
   initial_build_number: any;
   app_identifier: string;
-  username: string;
+  username?: string;
   team_id?: any;
   live?: any;
   version?: string;
@@ -10571,11 +10753,12 @@ function convertAppStoreBuildNumberOptions(
   const temp: convertedAppStoreBuildNumberOptions = {
     initial_build_number: options.initialBuildNumber,
     app_identifier: options.appIdentifier,
-    username: options.username,
   };
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.live !== "undefined") temp["live"] = options.live;
   if (typeof options.version !== "undefined") temp["version"] = options.version;
@@ -10890,7 +11073,7 @@ function convertAppledocOptions(
 type convertedAppstoreOptions = {
   api_key_path?: string;
   api_key?: { string: string };
-  username: string;
+  username?: string;
   app_identifier?: string;
   app_version?: string;
   ipa?: string;
@@ -10957,7 +11140,6 @@ function convertAppstoreOptions(
   options: AppstoreOptions
 ): convertedAppstoreOptions {
   const temp: convertedAppstoreOptions = {
-    username: options.username,
     use_live_version: options.useLiveVersion,
     skip_binary_upload: options.skipBinaryUpload,
     skip_screenshots: options.skipScreenshots,
@@ -10976,6 +11158,8 @@ function convertAppstoreOptions(
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.appIdentifier !== "undefined")
     temp["app_identifier"] = options.appIdentifier;
   if (typeof options.appVersion !== "undefined")
@@ -12199,7 +12383,7 @@ type convertedCertOptions = {
   generate_apple_certs: boolean;
   api_key_path?: string;
   api_key?: { string: string };
-  username: string;
+  username?: string;
   team_id?: string;
   team_name?: string;
   filename?: string;
@@ -12216,7 +12400,6 @@ function convertCertOptions(options: CertOptions): convertedCertOptions {
     development: options.development,
     force: options.force,
     generate_apple_certs: options.generateAppleCerts,
-    username: options.username,
     output_path: options.outputPath,
     keychain_path: options.keychainPath,
     skip_set_partition_list: options.skipSetPartitionList,
@@ -12226,6 +12409,8 @@ function convertCertOptions(options: CertOptions): convertedCertOptions {
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -12303,7 +12488,7 @@ type convertedCheckAppStoreMetadataOptions = {
   api_key_path?: string;
   api_key?: { string: string };
   app_identifier: string;
-  username: string;
+  username?: string;
   team_id?: string;
   team_name?: string;
   platform?: string;
@@ -12328,13 +12513,14 @@ function convertCheckAppStoreMetadataOptions(
 ): convertedCheckAppStoreMetadataOptions {
   const temp: convertedCheckAppStoreMetadataOptions = {
     app_identifier: options.appIdentifier,
-    username: options.username,
     default_rule_level: options.defaultRuleLevel,
     use_live: options.useLive,
   };
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -12895,7 +13081,7 @@ function convertDeleteKeychainOptions(
 type convertedDeliverOptions = {
   api_key_path?: string;
   api_key?: { string: string };
-  username: string;
+  username?: string;
   app_identifier?: string;
   app_version?: string;
   ipa?: string;
@@ -12962,7 +13148,6 @@ function convertDeliverOptions(
   options: DeliverOptions
 ): convertedDeliverOptions {
   const temp: convertedDeliverOptions = {
-    username: options.username,
     use_live_version: options.useLiveVersion,
     skip_binary_upload: options.skipBinaryUpload,
     skip_screenshots: options.skipScreenshots,
@@ -12981,6 +13166,8 @@ function convertDeliverOptions(
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.appIdentifier !== "undefined")
     temp["app_identifier"] = options.appIdentifier;
   if (typeof options.appVersion !== "undefined")
@@ -13611,7 +13798,7 @@ type convertedGetCertificatesOptions = {
   generate_apple_certs: boolean;
   api_key_path?: string;
   api_key?: { string: string };
-  username: string;
+  username?: string;
   team_id?: string;
   team_name?: string;
   filename?: string;
@@ -13630,7 +13817,6 @@ function convertGetCertificatesOptions(
     development: options.development,
     force: options.force,
     generate_apple_certs: options.generateAppleCerts,
-    username: options.username,
     output_path: options.outputPath,
     keychain_path: options.keychainPath,
     skip_set_partition_list: options.skipSetPartitionList,
@@ -13640,6 +13826,8 @@ function convertGetCertificatesOptions(
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -13740,7 +13928,7 @@ type convertedGetProvisioningProfileOptions = {
   app_identifier: string;
   api_key_path?: string;
   api_key?: { string: string };
-  username: string;
+  username?: string;
   team_id?: string;
   team_name?: string;
   provisioning_name?: string;
@@ -13768,7 +13956,6 @@ function convertGetProvisioningProfileOptions(
     skip_install: options.skipInstall,
     force: options.force,
     app_identifier: options.appIdentifier,
-    username: options.username,
     output_path: options.outputPath,
     skip_fetch_profiles: options.skipFetchProfiles,
     skip_certificate_verification: options.skipCertificateVerification,
@@ -13777,6 +13964,8 @@ function convertGetProvisioningProfileOptions(
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -14779,7 +14968,7 @@ type convertedLatestTestflightBuildNumberOptions = {
   api_key?: { string: string };
   live?: any;
   app_identifier: string;
-  username: string;
+  username?: string;
   version?: string;
   platform?: string;
   initial_build_number: any;
@@ -14793,13 +14982,14 @@ function convertLatestTestflightBuildNumberOptions(
 ): convertedLatestTestflightBuildNumberOptions {
   const temp: convertedLatestTestflightBuildNumberOptions = {
     app_identifier: options.appIdentifier,
-    username: options.username,
     initial_build_number: options.initialBuildNumber,
   };
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.live !== "undefined") temp["live"] = options.live;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.version !== "undefined") temp["version"] = options.version;
   if (typeof options.platform !== "undefined")
     temp["platform"] = options.platform;
@@ -14950,6 +15140,130 @@ type convertedMatchOptions = {
  */
 function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
   const temp: convertedMatchOptions = {
+    type: options.type,
+    readonly: options.readonly,
+    generate_apple_certs: options.generateAppleCerts,
+    skip_provisioning_profiles: options.skipProvisioningProfiles,
+    app_identifier: options.appIdentifier,
+    storage_mode: options.storageMode,
+    git_url: options.gitUrl,
+    git_branch: options.gitBranch,
+    shallow_clone: options.shallowClone,
+    clone_branch_directly: options.cloneBranchDirectly,
+    keychain_name: options.keychainName,
+    force: options.force,
+    force_for_new_devices: options.forceForNewDevices,
+    skip_confirmation: options.skipConfirmation,
+    skip_docs: options.skipDocs,
+    platform: options.platform,
+    derive_catalyst_app_identifier: options.deriveCatalystAppIdentifier,
+    skip_set_partition_list: options.skipSetPartitionList,
+    verbose: options.verbose,
+  };
+  if (typeof options.additionalCertTypes !== "undefined")
+    temp["additional_cert_types"] = options.additionalCertTypes;
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
+  if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
+  if (typeof options.teamName !== "undefined")
+    temp["team_name"] = options.teamName;
+  if (typeof options.gitFullName !== "undefined")
+    temp["git_full_name"] = options.gitFullName;
+  if (typeof options.gitUserEmail !== "undefined")
+    temp["git_user_email"] = options.gitUserEmail;
+  if (typeof options.gitBasicAuthorization !== "undefined")
+    temp["git_basic_authorization"] = options.gitBasicAuthorization;
+  if (typeof options.gitBearerAuthorization !== "undefined")
+    temp["git_bearer_authorization"] = options.gitBearerAuthorization;
+  if (typeof options.gitPrivateKey !== "undefined")
+    temp["git_private_key"] = options.gitPrivateKey;
+  if (typeof options.googleCloudBucketName !== "undefined")
+    temp["google_cloud_bucket_name"] = options.googleCloudBucketName;
+  if (typeof options.googleCloudKeysFile !== "undefined")
+    temp["google_cloud_keys_file"] = options.googleCloudKeysFile;
+  if (typeof options.googleCloudProjectId !== "undefined")
+    temp["google_cloud_project_id"] = options.googleCloudProjectId;
+  if (typeof options.s3Region !== "undefined")
+    temp["s3_region"] = options.s3Region;
+  if (typeof options.s3AccessKey !== "undefined")
+    temp["s3_access_key"] = options.s3AccessKey;
+  if (typeof options.s3SecretAccessKey !== "undefined")
+    temp["s3_secret_access_key"] = options.s3SecretAccessKey;
+  if (typeof options.s3Bucket !== "undefined")
+    temp["s3_bucket"] = options.s3Bucket;
+  if (typeof options.s3ObjectPrefix !== "undefined")
+    temp["s3_object_prefix"] = options.s3ObjectPrefix;
+  if (typeof options.keychainPassword !== "undefined")
+    temp["keychain_password"] = options.keychainPassword;
+  if (typeof options.templateName !== "undefined")
+    temp["template_name"] = options.templateName;
+  if (typeof options.profileName !== "undefined")
+    temp["profile_name"] = options.profileName;
+  if (typeof options.failOnNameTaken !== "undefined")
+    temp["fail_on_name_taken"] = options.failOnNameTaken;
+  if (typeof options.skipCertificateMatching !== "undefined")
+    temp["skip_certificate_matching"] = options.skipCertificateMatching;
+  if (typeof options.outputPath !== "undefined")
+    temp["output_path"] = options.outputPath;
+  return temp;
+}
+
+/** @ignore */
+type convertedMatchNukeOptions = {
+  type: string;
+  additional_cert_types?: string[];
+  readonly: boolean;
+  generate_apple_certs: boolean;
+  skip_provisioning_profiles: boolean;
+  app_identifier: string[];
+  api_key_path?: string;
+  api_key?: { string: string };
+  username?: string;
+  team_id?: string;
+  team_name?: string;
+  storage_mode: string;
+  git_url: string;
+  git_branch: string;
+  git_full_name?: string;
+  git_user_email?: string;
+  shallow_clone: boolean;
+  clone_branch_directly: boolean;
+  git_basic_authorization?: string;
+  git_bearer_authorization?: string;
+  git_private_key?: string;
+  google_cloud_bucket_name?: string;
+  google_cloud_keys_file?: string;
+  google_cloud_project_id?: string;
+  s3_region?: string;
+  s3_access_key?: string;
+  s3_secret_access_key?: string;
+  s3_bucket?: string;
+  s3_object_prefix?: string;
+  keychain_name: string;
+  keychain_password?: string;
+  force: boolean;
+  force_for_new_devices: boolean;
+  skip_confirmation: boolean;
+  skip_docs: boolean;
+  platform: string;
+  derive_catalyst_app_identifier: boolean;
+  template_name?: string;
+  profile_name?: string;
+  fail_on_name_taken?: boolean;
+  skip_certificate_matching?: boolean;
+  output_path?: string;
+  skip_set_partition_list: boolean;
+  verbose: boolean;
+};
+/** @ignore Convert MatchNukeOptions to the shape used by the Fastlane service
+ */
+function convertMatchNukeOptions(
+  options: MatchNukeOptions
+): convertedMatchNukeOptions {
+  const temp: convertedMatchNukeOptions = {
     type: options.type,
     readonly: options.readonly,
     generate_apple_certs: options.generateAppleCerts,
@@ -15373,7 +15687,7 @@ function convertPemOptions(options: PemOptions): convertedPemOptions {
 type convertedPilotOptions = {
   api_key_path?: string;
   api_key?: { string: string };
-  username: string;
+  username?: string;
   app_identifier?: string;
   app_platform?: string;
   apple_id?: string;
@@ -15412,7 +15726,6 @@ type convertedPilotOptions = {
  */
 function convertPilotOptions(options: PilotOptions): convertedPilotOptions {
   const temp: convertedPilotOptions = {
-    username: options.username,
     skip_submission: options.skipSubmission,
     skip_waiting_for_build_processing: options.skipWaitingForBuildProcessing,
     distribute_only: options.distributeOnly,
@@ -15425,6 +15738,8 @@ function convertPilotOptions(options: PilotOptions): convertedPilotOptions {
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.appIdentifier !== "undefined")
     temp["app_identifier"] = options.appIdentifier;
   if (typeof options.appPlatform !== "undefined")
@@ -15612,7 +15927,7 @@ type convertedPrecheckOptions = {
   api_key_path?: string;
   api_key?: { string: string };
   app_identifier: string;
-  username: string;
+  username?: string;
   team_id?: string;
   team_name?: string;
   platform?: string;
@@ -15637,13 +15952,14 @@ function convertPrecheckOptions(
 ): convertedPrecheckOptions {
   const temp: convertedPrecheckOptions = {
     app_identifier: options.appIdentifier,
-    username: options.username,
     default_rule_level: options.defaultRuleLevel,
     use_live: options.useLive,
   };
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -16887,7 +17203,7 @@ type convertedSighOptions = {
   app_identifier: string;
   api_key_path?: string;
   api_key?: { string: string };
-  username: string;
+  username?: string;
   team_id?: string;
   team_name?: string;
   provisioning_name?: string;
@@ -16913,7 +17229,6 @@ function convertSighOptions(options: SighOptions): convertedSighOptions {
     skip_install: options.skipInstall,
     force: options.force,
     app_identifier: options.appIdentifier,
-    username: options.username,
     output_path: options.outputPath,
     skip_fetch_profiles: options.skipFetchProfiles,
     skip_certificate_verification: options.skipCertificateVerification,
@@ -16922,6 +17237,8 @@ function convertSighOptions(options: SighOptions): convertedSighOptions {
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
@@ -17775,7 +18092,7 @@ function convertTestfairyOptions(
 type convertedTestflightOptions = {
   api_key_path?: string;
   api_key?: { string: string };
-  username: string;
+  username?: string;
   app_identifier?: string;
   app_platform?: string;
   apple_id?: string;
@@ -17816,7 +18133,6 @@ function convertTestflightOptions(
   options: TestflightOptions
 ): convertedTestflightOptions {
   const temp: convertedTestflightOptions = {
-    username: options.username,
     skip_submission: options.skipSubmission,
     skip_waiting_for_build_processing: options.skipWaitingForBuildProcessing,
     distribute_only: options.distributeOnly,
@@ -17829,6 +18145,8 @@ function convertTestflightOptions(
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.appIdentifier !== "undefined")
     temp["app_identifier"] = options.appIdentifier;
   if (typeof options.appPlatform !== "undefined")
@@ -18363,7 +18681,7 @@ function convertUploadSymbolsToSentryOptions(
 type convertedUploadToAppStoreOptions = {
   api_key_path?: string;
   api_key?: { string: string };
-  username: string;
+  username?: string;
   app_identifier?: string;
   app_version?: string;
   ipa?: string;
@@ -18430,7 +18748,6 @@ function convertUploadToAppStoreOptions(
   options: UploadToAppStoreOptions
 ): convertedUploadToAppStoreOptions {
   const temp: convertedUploadToAppStoreOptions = {
-    username: options.username,
     use_live_version: options.useLiveVersion,
     skip_binary_upload: options.skipBinaryUpload,
     skip_screenshots: options.skipScreenshots,
@@ -18449,6 +18766,8 @@ function convertUploadToAppStoreOptions(
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.appIdentifier !== "undefined")
     temp["app_identifier"] = options.appIdentifier;
   if (typeof options.appVersion !== "undefined")
@@ -18695,7 +19014,7 @@ function convertUploadToPlayStoreInternalAppSharingOptions(
 type convertedUploadToTestflightOptions = {
   api_key_path?: string;
   api_key?: { string: string };
-  username: string;
+  username?: string;
   app_identifier?: string;
   app_platform?: string;
   apple_id?: string;
@@ -18736,7 +19055,6 @@ function convertUploadToTestflightOptions(
   options: UploadToTestflightOptions
 ): convertedUploadToTestflightOptions {
   const temp: convertedUploadToTestflightOptions = {
-    username: options.username,
     skip_submission: options.skipSubmission,
     skip_waiting_for_build_processing: options.skipWaitingForBuildProcessing,
     distribute_only: options.distributeOnly,
@@ -18749,6 +19067,8 @@ function convertUploadToTestflightOptions(
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
   if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.appIdentifier !== "undefined")
     temp["app_identifier"] = options.appIdentifier;
   if (typeof options.appPlatform !== "undefined")
@@ -19338,7 +19658,7 @@ More information in the [device_grid guide](https://github.com/fastlane/fastlane
   /** More information: https://fastlane.tools/gym
    * @return The absolute path to the generated ipa file
    */
-  async buildApp(options: BuildAppOptions): Promise<any> {
+  async buildApp(options: BuildAppOptions): Promise<string> {
     const out = await this.doAction(
       "build_app",
       convertBuildAppOptions(options)
@@ -19348,7 +19668,7 @@ More information in the [device_grid guide](https://github.com/fastlane/fastlane
   /** More information: https://fastlane.tools/gym
    * @return The absolute path to the generated ipa file
    */
-  async buildIosApp(options: BuildIosAppOptions): Promise<any> {
+  async buildIosApp(options: BuildIosAppOptions): Promise<string> {
     const out = await this.doAction(
       "build_ios_app",
       convertBuildIosAppOptions(options)
@@ -19358,7 +19678,7 @@ More information in the [device_grid guide](https://github.com/fastlane/fastlane
   /** More information: https://fastlane.tools/gym
    * @return The absolute path to the generated ipa file
    */
-  async buildMacApp(options: BuildMacAppOptions): Promise<any> {
+  async buildMacApp(options: BuildMacAppOptions): Promise<string> {
     const out = await this.doAction(
       "build_mac_app",
       convertBuildMacAppOptions(options)
@@ -19992,7 +20312,7 @@ Run the action and supply the "private key file" to it as the `json_key` paramet
    */
   async getProvisioningProfile(
     options: GetProvisioningProfileOptions
-  ): Promise<any> {
+  ): Promise<string> {
     const out = await this.doAction(
       "get_provisioning_profile",
       convertGetProvisioningProfileOptions(options)
@@ -20033,7 +20353,7 @@ get_push_certificate(|
     const out = await this.doAction("git_add", convertGitAddOptions(options));
     return out;
   }
-  /** If no branch could be found, this action will return an empty string
+  /** If no branch could be found, this action will return an empty string. This is a wrapper for the internal action Actions.git_branch
    */
   async gitBranch(options: GitBranchOptions): Promise<string> {
     const out = await this.doAction(
@@ -20122,7 +20442,7 @@ Documentation: [https://developer.github.com/v3](https://developer.github.com/v3
   /** More information: https://fastlane.tools/gym
    * @return The absolute path to the generated ipa file
    */
-  async gym(options: GymOptions): Promise<any> {
+  async gym(options: GymOptions): Promise<string> {
     const out = await this.doAction("gym", convertGymOptions(options));
     return out;
   }
@@ -20253,7 +20573,7 @@ You first have to set up your Xcode project, if you haven't done it already: [ht
    */
   async installProvisioningProfile(
     options: InstallProvisioningProfileOptions
-  ): Promise<any> {
+  ): Promise<string> {
     const out = await this.doAction(
       "install_provisioning_profile",
       convertInstallProvisioningProfileOptions(options)
@@ -20372,6 +20692,19 @@ Fetches the most recent build number from TestFlight based on the version number
    */
   async match(options: MatchOptions): Promise<any> {
     const out = await this.doAction("match", convertMatchOptions(options));
+    return out;
+  }
+  /** Use the match_nuke action to revoke your certificates and provisioning profiles.
+Don't worry, apps that are already available in the App Store / TestFlight will still work.
+Builds distributed via Ad Hoc or Enterprise will be disabled after nuking your account, so you'll have to re-upload a new build.
+After clearing your account you'll start from a clean state, and you can run match to generate your certificates and profiles again.
+More information: https://docs.fastlane.tools/actions/match/
+    */
+  async matchNuke(options: MatchNukeOptions): Promise<any> {
+    const out = await this.doAction(
+      "match_nuke",
+      convertMatchNukeOptions(options)
+    );
     return out;
   }
   /** Add this to your `Fastfile` to require a certain version of _fastlane_.
@@ -20848,7 +21181,7 @@ Be aware of a specific behavior of `sh` action with regard to the working direct
   /** **Note**: It is recommended to use [match](https://docs.fastlane.tools/actions/match/) according to the [codesigning.guide](https://codesigning.guide) for generating and maintaining your provisioning profiles. Use _sigh_ directly only if you want full control over what's going on and know more about codesigning.
    * @return The UUID of the profile sigh just fetched/generated
    */
-  async sigh(options: SighOptions): Promise<any> {
+  async sigh(options: SighOptions): Promise<string> {
     const out = await this.doAction("sigh", convertSighOptions(options));
     return out;
   }
