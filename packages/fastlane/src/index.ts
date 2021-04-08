@@ -5186,11 +5186,11 @@ type JiraOptions = {
    */
   contextPath?: string;
   /**
-   * Username for JIRA instance
+   * Username for Jira instance
    */
   username: string;
   /**
-   * Password for Jira
+   * Password or API token for Jira
    */
   password: string;
   /**
@@ -5201,6 +5201,10 @@ type JiraOptions = {
    * Text to add to the ticket as a comment
    */
   commentText: string;
+  /**
+   * Should an error adding the Jira comment cause a failure?
+   */
+  failOnError?: boolean;
 };
 
 /** Shape for [[laneContext]] options argument
@@ -5863,7 +5867,7 @@ type NotarizeOptions = {
   /**
    * Apple ID username
    */
-  username: string;
+  username?: string;
   /**
    * Provider short name for accounts associated with multiple providers
    */
@@ -5876,6 +5880,10 @@ type NotarizeOptions = {
    * Whether to log requests
    */
   verbose?: boolean;
+  /**
+   * Path to AppStore Connect API key
+   */
+  apiKeyPath?: string;
 };
 
 /** Shape for [[notification]] options argument
@@ -7238,6 +7246,10 @@ type RunTestsOptions = {
    */
   useSystemScm?: boolean;
   /**
+   * The number of times a test can fail before scan should stop retrying
+   */
+  numberOfRetries: any;
+  /**
    * Should this step stop the build if the tests fail? Set this to false if you're using trainer
    */
   failBuild: any;
@@ -7607,6 +7619,10 @@ type ScanOptions = {
    * Lets xcodebuild use system's scm configuration
    */
   useSystemScm?: boolean;
+  /**
+   * The number of times a test can fail before scan should stop retrying
+   */
+  numberOfRetries: any;
   /**
    * Should this step stop the build if the tests fail? Set this to false if you're using trainer
    */
@@ -8546,6 +8562,68 @@ type SonarOptions = {
    * Unique identifier of your PR. Must correspond to the key of the PR in GitHub or TFS
    */
   pullRequestKey?: string;
+};
+
+/** Shape for [[sourcedocs]] options argument
+ */
+
+type SourcedocsOptions = {
+  /**
+   * Generate documentation for all modules in a Swift package
+   */
+  allModules?: boolean;
+  /**
+   * Generate documentation for Swift Package Manager module
+   */
+  spmModule?: string;
+  /**
+   * Generate documentation for a Swift module
+   */
+  moduleName?: string;
+  /**
+   * The text to begin links with
+   */
+  linkBeginning?: string;
+  /**
+   * The text to end links with (default: .md)
+   */
+  linkEnding?: string;
+  /**
+   * Output directory to clean (default: Documentation/Reference)
+   */
+  outputFolder: string;
+  /**
+   * Access level to include in documentation [private, fileprivate, internal, public, open] (default: public)
+   */
+  minAcl?: string;
+  /**
+   * Include the module name as part of the output folder path
+   */
+  moduleNamePath?: boolean;
+  /**
+   * Delete output folder before generating documentation
+   */
+  clean?: boolean;
+  /**
+   * Put methods, properties and enum cases inside collapsible blocks
+   */
+  collapsible?: boolean;
+  /**
+   * Generate a table of contents with properties and methods for each type
+   */
+  tableOfContents?: boolean;
+  /**
+   * Generate documentation that is reproducible: only depends on the sources
+   */
+  reproducible?: boolean;
+  /**
+   * Create documentation for specific scheme
+   */
+  scheme?: string;
+  /**
+   * Create documentation for specific sdk platform
+   */
+  sdkPlatform?: string;
 };
 
 /** Shape for [[spaceshipLogs]] options argument
@@ -14908,6 +14986,7 @@ type convertedJiraOptions = {
   password: string;
   ticket_id: string;
   comment_text: string;
+  fail_on_error?: boolean;
 };
 /** @ignore Convert JiraOptions to the shape used by the Fastlane service
  */
@@ -14921,6 +15000,8 @@ function convertJiraOptions(options: JiraOptions): convertedJiraOptions {
   };
   if (typeof options.contextPath !== "undefined")
     temp["context_path"] = options.contextPath;
+  if (typeof options.failOnError !== "undefined")
+    temp["fail_on_error"] = options.failOnError;
   return temp;
 }
 
@@ -15431,10 +15512,11 @@ type convertedNotarizeOptions = {
   package: string;
   try_early_stapling?: boolean;
   bundle_id?: string;
-  username: string;
+  username?: string;
   asc_provider?: string;
   print_log?: boolean;
   verbose?: boolean;
+  api_key_path?: string;
 };
 /** @ignore Convert NotarizeOptions to the shape used by the Fastlane service
  */
@@ -15443,17 +15525,20 @@ function convertNotarizeOptions(
 ): convertedNotarizeOptions {
   const temp: convertedNotarizeOptions = {
     package: options.package,
-    username: options.username,
   };
   if (typeof options.tryEarlyStapling !== "undefined")
     temp["try_early_stapling"] = options.tryEarlyStapling;
   if (typeof options.bundleId !== "undefined")
     temp["bundle_id"] = options.bundleId;
+  if (typeof options.username !== "undefined")
+    temp["username"] = options.username;
   if (typeof options.ascProvider !== "undefined")
     temp["asc_provider"] = options.ascProvider;
   if (typeof options.printLog !== "undefined")
     temp["print_log"] = options.printLog;
   if (typeof options.verbose !== "undefined") temp["verbose"] = options.verbose;
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
   return temp;
 }
 
@@ -16455,6 +16540,7 @@ type convertedRunTestsOptions = {
   skip_package_dependencies_resolution: boolean;
   disable_package_automatic_updates: boolean;
   use_system_scm?: boolean;
+  number_of_retries: any;
   fail_build: any;
 };
 /** @ignore Convert RunTestsOptions to the shape used by the Fastlane service
@@ -16480,6 +16566,7 @@ function convertRunTestsOptions(
     skip_package_dependencies_resolution:
       options.skipPackageDependenciesResolution,
     disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
+    number_of_retries: options.numberOfRetries,
     fail_build: options.failBuild,
   };
   if (typeof options.workspace !== "undefined")
@@ -16724,6 +16811,7 @@ type convertedScanOptions = {
   skip_package_dependencies_resolution: boolean;
   disable_package_automatic_updates: boolean;
   use_system_scm?: boolean;
+  number_of_retries: any;
   fail_build: any;
 };
 /** @ignore Convert ScanOptions to the shape used by the Fastlane service
@@ -16747,6 +16835,7 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
     skip_package_dependencies_resolution:
       options.skipPackageDependenciesResolution,
     disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
+    number_of_retries: options.numberOfRetries,
     fail_build: options.failBuild,
   };
   if (typeof options.workspace !== "undefined")
@@ -17597,6 +17686,57 @@ function convertSonarOptions(options: SonarOptions): convertedSonarOptions {
     temp["pull_request_base"] = options.pullRequestBase;
   if (typeof options.pullRequestKey !== "undefined")
     temp["pull_request_key"] = options.pullRequestKey;
+  return temp;
+}
+
+/** @ignore */
+type convertedSourcedocsOptions = {
+  all_modules?: boolean;
+  spm_module?: string;
+  module_name?: string;
+  link_beginning?: string;
+  link_ending?: string;
+  output_folder: string;
+  min_acl?: string;
+  module_name_path?: boolean;
+  clean?: boolean;
+  collapsible?: boolean;
+  table_of_contents?: boolean;
+  reproducible?: boolean;
+  scheme?: string;
+  sdk_platform?: string;
+};
+/** @ignore Convert SourcedocsOptions to the shape used by the Fastlane service
+ */
+function convertSourcedocsOptions(
+  options: SourcedocsOptions
+): convertedSourcedocsOptions {
+  const temp: convertedSourcedocsOptions = {
+    output_folder: options.outputFolder,
+  };
+  if (typeof options.allModules !== "undefined")
+    temp["all_modules"] = options.allModules;
+  if (typeof options.spmModule !== "undefined")
+    temp["spm_module"] = options.spmModule;
+  if (typeof options.moduleName !== "undefined")
+    temp["module_name"] = options.moduleName;
+  if (typeof options.linkBeginning !== "undefined")
+    temp["link_beginning"] = options.linkBeginning;
+  if (typeof options.linkEnding !== "undefined")
+    temp["link_ending"] = options.linkEnding;
+  if (typeof options.minAcl !== "undefined") temp["min_acl"] = options.minAcl;
+  if (typeof options.moduleNamePath !== "undefined")
+    temp["module_name_path"] = options.moduleNamePath;
+  if (typeof options.clean !== "undefined") temp["clean"] = options.clean;
+  if (typeof options.collapsible !== "undefined")
+    temp["collapsible"] = options.collapsible;
+  if (typeof options.tableOfContents !== "undefined")
+    temp["table_of_contents"] = options.tableOfContents;
+  if (typeof options.reproducible !== "undefined")
+    temp["reproducible"] = options.reproducible;
+  if (typeof options.scheme !== "undefined") temp["scheme"] = options.scheme;
+  if (typeof options.sdkPlatform !== "undefined")
+    temp["sdk_platform"] = options.sdkPlatform;
   return temp;
 }
 
@@ -20616,8 +20756,10 @@ You first have to set up your Xcode project, if you haven't done it already: [ht
     const out = await this.doAction("jazzy", convertJazzyOptions(options));
     return out;
   }
-  /** Leave a comment on JIRA tickets
-   */
+  /** Leave a comment on a Jira ticket
+    * @return A hash containing all relevant information of the Jira comment
+Access Jira comment 'id', 'author', 'body', and more 
+    */
   async jira(options: JiraOptions): Promise<any> {
     const out = await this.doAction("jira", convertJiraOptions(options));
     return out;
@@ -21222,6 +21364,15 @@ It can process unit test results if formatted as junit report as shown in [xctes
     */
   async sonar(options: SonarOptions): Promise<any> {
     const out = await this.doAction("sonar", convertSonarOptions(options));
+    return out;
+  }
+  /** Generate docs using SourceDocs
+   */
+  async sourcedocs(options: SourcedocsOptions): Promise<any> {
+    const out = await this.doAction(
+      "sourcedocs",
+      convertSourcedocsOptions(options)
+    );
     return out;
   }
   /** Find, print, and copy Spaceship logs
