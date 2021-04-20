@@ -8877,11 +8877,11 @@ type SupplyOptions = {
    */
   validateOnly?: boolean;
   /**
-   * Path to the mapping file to upload
+   * Path to the mapping file to upload (mapping.txt or native-debug-symbols.zip alike)
    */
   mapping?: string;
   /**
-   * An array of paths to mapping files to upload
+   * An array of paths to mapping files to upload (mapping.txt or native-debug-symbols.zip alike)
    */
   mappingPaths?: string[];
   /**
@@ -10226,11 +10226,11 @@ type UploadToPlayStoreOptions = {
    */
   validateOnly?: boolean;
   /**
-   * Path to the mapping file to upload
+   * Path to the mapping file to upload (mapping.txt or native-debug-symbols.zip alike)
    */
   mapping?: string;
   /**
-   * An array of paths to mapping files to upload
+   * An array of paths to mapping files to upload (mapping.txt or native-debug-symbols.zip alike)
    */
   mappingPaths?: string[];
   /**
