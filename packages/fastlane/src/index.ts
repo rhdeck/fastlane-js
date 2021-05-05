@@ -1875,6 +1875,10 @@ type CaptureIosScreenshotsOptions = {
    */
   overrideStatusBar: any;
   /**
+   * Fully customize the status bar by setting each option here. See `xcrun simctl status_bar --help`
+   */
+  overrideStatusBarArguments?: string;
+  /**
    * Enabling this option will configure the Simulator's system language
    */
   localizeSimulator: any;
@@ -2068,6 +2072,10 @@ type CaptureScreenshotsOptions = {
    * Enabling this option will automatically override the status bar to show 9:41 AM, full battery, and full reception
    */
   overrideStatusBar: any;
+  /**
+   * Fully customize the status bar by setting each option here. See `xcrun simctl status_bar --help`
+   */
+  overrideStatusBarArguments?: string;
   /**
    * Enabling this option will configure the Simulator's system language
    */
@@ -4249,7 +4257,7 @@ type GitCommitOptions = {
    */
   message: string;
   /**
-   * Set to true to pass --no-verify to git
+   * Set to true to pass `--no-verify` to git
    */
   skipGitHooks?: boolean;
   /**
@@ -4277,11 +4285,11 @@ type GitPullOptions = {
 
 type GitSubmoduleUpdateOptions = {
   /**
-   * Should the submodules be updated recursively
+   * Should the submodules be updated recursively?
    */
   recursive: boolean;
   /**
-   * Should the submodules be initiated before update
+   * Should the submodules be initiated before update?
    */
   init: boolean;
 };
@@ -4983,7 +4991,7 @@ type ImportFromGitOptions = {
    */
   version?: any;
   /**
-   * The path to a directory where the repository should be cloned into. This is ignored if `version` is not specified. Defaults to `nil`, which causes the repository to be cloned on every call, to a temporary directory
+   * The path to a directory where the repository should be cloned into. Defaults to `nil`, which causes the repository to be cloned on every call, to a temporary directory
    */
   cachePath?: string;
 };
@@ -8372,6 +8380,10 @@ type SnapshotOptions = {
    * Enabling this option will automatically override the status bar to show 9:41 AM, full battery, and full reception
    */
   overrideStatusBar: any;
+  /**
+   * Fully customize the status bar by setting each option here. See `xcrun simctl status_bar --help`
+   */
+  overrideStatusBarArguments?: string;
   /**
    * Enabling this option will configure the Simulator's system language
    */
@@ -12138,6 +12150,7 @@ type convertedCaptureIosScreenshotsOptions = {
   erase_simulator: any;
   headless: boolean;
   override_status_bar: any;
+  override_status_bar_arguments?: string;
   localize_simulator: any;
   dark_mode?: boolean;
   app_identifier?: string;
@@ -12207,6 +12220,8 @@ function convertCaptureIosScreenshotsOptions(
     temp["output_simulator_logs"] = options.outputSimulatorLogs;
   if (typeof options.iosVersion !== "undefined")
     temp["ios_version"] = options.iosVersion;
+  if (typeof options.overrideStatusBarArguments !== "undefined")
+    temp["override_status_bar_arguments"] = options.overrideStatusBarArguments;
   if (typeof options.darkMode !== "undefined")
     temp["dark_mode"] = options.darkMode;
   if (typeof options.appIdentifier !== "undefined")
@@ -12269,6 +12284,7 @@ type convertedCaptureScreenshotsOptions = {
   erase_simulator: any;
   headless: boolean;
   override_status_bar: any;
+  override_status_bar_arguments?: string;
   localize_simulator: any;
   dark_mode?: boolean;
   app_identifier?: string;
@@ -12338,6 +12354,8 @@ function convertCaptureScreenshotsOptions(
     temp["output_simulator_logs"] = options.outputSimulatorLogs;
   if (typeof options.iosVersion !== "undefined")
     temp["ios_version"] = options.iosVersion;
+  if (typeof options.overrideStatusBarArguments !== "undefined")
+    temp["override_status_bar_arguments"] = options.overrideStatusBarArguments;
   if (typeof options.darkMode !== "undefined")
     temp["dark_mode"] = options.darkMode;
   if (typeof options.appIdentifier !== "undefined")
@@ -17519,6 +17537,7 @@ type convertedSnapshotOptions = {
   erase_simulator: any;
   headless: boolean;
   override_status_bar: any;
+  override_status_bar_arguments?: string;
   localize_simulator: any;
   dark_mode?: boolean;
   app_identifier?: string;
@@ -17588,6 +17607,8 @@ function convertSnapshotOptions(
     temp["output_simulator_logs"] = options.outputSimulatorLogs;
   if (typeof options.iosVersion !== "undefined")
     temp["ios_version"] = options.iosVersion;
+  if (typeof options.overrideStatusBarArguments !== "undefined")
+    temp["override_status_bar_arguments"] = options.overrideStatusBarArguments;
   if (typeof options.darkMode !== "undefined")
     temp["dark_mode"] = options.darkMode;
   if (typeof options.appIdentifier !== "undefined")
@@ -20517,7 +20538,7 @@ get_push_certificate(|
     const out = await this.doAction("git_pull", convertGitPullOptions(options));
     return out;
   }
-  /** Executes a git submodule command
+  /** Executes a git submodule update command
    */
   async gitSubmoduleUpdate(options: GitSubmoduleUpdateOptions): Promise<any> {
     const out = await this.doAction(
