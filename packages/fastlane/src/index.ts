@@ -3086,6 +3086,10 @@ type DangerOptions = {
    * Run danger on a specific pull request. e.g. "https://github.com/danger/danger/pull/518"
    */
   pr?: string;
+  /**
+   * Fail Danger execution if no PR is found
+   */
+  failIfNoPr: boolean;
 };
 
 /** Shape for [[debug]] options argument
@@ -4273,11 +4277,11 @@ type GitPullOptions = {
   /**
    * Simply pull the tags, and not bring new commits to the current branch from the remote
    */
-  onlyTags?: any;
+  onlyTags?: boolean;
   /**
    * Rebase on top of the remote branch instead of merge
    */
-  rebase?: any;
+  rebase?: boolean;
 };
 
 /** Shape for [[gitSubmoduleUpdate]] options argument
@@ -13108,6 +13112,7 @@ type convertedDangerOptions = {
   base?: string;
   head?: string;
   pr?: string;
+  fail_if_no_pr: boolean;
 };
 /** @ignore Convert DangerOptions to the shape used by the Fastlane service
  */
@@ -13115,6 +13120,7 @@ function convertDangerOptions(options: DangerOptions): convertedDangerOptions {
   const temp: convertedDangerOptions = {
     use_bundle_exec: options.useBundleExec,
     verbose: options.verbose,
+    fail_if_no_pr: options.failIfNoPr,
   };
   if (typeof options.dangerId !== "undefined")
     temp["danger_id"] = options.dangerId;
@@ -14203,8 +14209,8 @@ function convertGitCommitOptions(
 
 /** @ignore */
 type convertedGitPullOptions = {
-  only_tags?: any;
-  rebase?: any;
+  only_tags?: boolean;
+  rebase?: boolean;
 };
 /** @ignore Convert GitPullOptions to the shape used by the Fastlane service
  */
