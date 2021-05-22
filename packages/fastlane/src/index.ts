@@ -161,7 +161,11 @@ type AppStoreConnectApiKeyOptions = {
   /**
    * Is App Store or Enterprise (in house) team? App Store Connect API cannot determine this on its own (yet)
    */
-  inHouse?: boolean;
+  inHouse: boolean;
+  /**
+   * Authorizes all Spaceship::ConnectAPI requests by automatically setting Spaceship::ConnectAPI.token
+   */
+  setSpaceshipToken: boolean;
 };
 
 /** Shape for [[appaloosa]] options argument
@@ -565,11 +569,11 @@ type AppstoreOptions = {
   /**
    * Modify live metadata, this option disables ipa upload and screenshot upload
    */
-  editLive?: any;
+  editLive?: boolean;
   /**
    * Force usage of live version rather than edit version
    */
-  useLiveVersion: any;
+  useLiveVersion: boolean;
   /**
    * Path to the folder containing the metadata files
    */
@@ -581,35 +585,35 @@ type AppstoreOptions = {
   /**
    * Skip uploading an ipa or pkg to App Store Connect
    */
-  skipBinaryUpload: any;
+  skipBinaryUpload: boolean;
   /**
    * Don't upload the screenshots
    */
-  skipScreenshots: any;
+  skipScreenshots: boolean;
   /**
    * Don't upload the metadata (e.g. title, description). This will still upload screenshots
    */
-  skipMetadata: any;
+  skipMetadata: boolean;
   /**
    * Don’t create or update the app version that is being prepared for submission
    */
-  skipAppVersionUpdate: any;
+  skipAppVersionUpdate: boolean;
   /**
    * Skip verification of HTML preview file
    */
-  force: any;
+  force: boolean;
   /**
    * Clear all previously uploaded screenshots before uploading the new ones
    */
-  overwriteScreenshots: any;
+  overwriteScreenshots: boolean;
   /**
    * Submit the new version for Review after uploading everything
    */
-  submitForReview: any;
+  submitForReview: boolean;
   /**
    * Rejects the previously submitted build if it's in a state where it's possible
    */
-  rejectIfPossible: any;
+  rejectIfPossible: boolean;
   /**
    * Should the app be automatically released once it's approved? (Can not be used together with `auto_release_date`)
    */
@@ -621,11 +625,11 @@ type AppstoreOptions = {
   /**
    * Enable the phased release feature of iTC
    */
-  phasedRelease?: any;
+  phasedRelease?: boolean;
   /**
    * Reset the summary rating when you release a new version of the application
    */
-  resetRatings?: any;
+  resetRatings?: boolean;
   /**
    * The price tier of this application
    */
@@ -641,7 +645,7 @@ type AppstoreOptions = {
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
-  teamId?: any;
+  teamId?: string;
   /**
    * The name of your App Store Connect team if you're in multiple teams
    */
@@ -661,7 +665,7 @@ type AppstoreOptions = {
   /**
    * Run precheck before submitting to app review
    */
-  runPrecheckBeforeSubmit: any;
+  runPrecheckBeforeSubmit: boolean;
   /**
    * The default precheck rule level unless otherwise configured
    */
@@ -707,7 +711,7 @@ type AppstoreOptions = {
    */
   secondarySecondSubCategory?: string;
   /**
-   * Metadata: A hash containing the trade representative contact information
+   * **DEPRECATED!** This is no longer used by App Store Connect - Metadata: A hash containing the trade representative contact information
    */
   tradeRepresentativeContactInformation?: { string: string };
   /**
@@ -721,11 +725,11 @@ type AppstoreOptions = {
   /**
    * Metadata: The localised app description
    */
-  description?: any;
+  description?: { string: string };
   /**
    * Metadata: The localised app name
    */
-  name?: any;
+  name?: { string: string };
   /**
    * Metadata: The localised app subtitle
    */
@@ -741,23 +745,23 @@ type AppstoreOptions = {
   /**
    * Metadata: Localised release notes for this version
    */
-  releaseNotes?: any;
+  releaseNotes?: { string: string };
   /**
    * Metadata: Localised privacy url
    */
-  privacyUrl?: any;
+  privacyUrl?: { string: string };
   /**
    * Metadata: Localised Apple TV privacy policy text
    */
-  appleTvPrivacyPolicy?: any;
+  appleTvPrivacyPolicy?: { string: string };
   /**
    * Metadata: Localised support url
    */
-  supportUrl?: any;
+  supportUrl?: { string: string };
   /**
    * Metadata: Localised marketing url
    */
-  marketingUrl?: any;
+  marketingUrl?: { string: string };
   /**
    * Metadata: List of languages to activate
    */
@@ -765,15 +769,15 @@ type AppstoreOptions = {
   /**
    * Ignore errors when invalid languages are found in metadata and screenshot directories
    */
-  ignoreLanguageDirectoryValidation: any;
+  ignoreLanguageDirectoryValidation: boolean;
   /**
    * Should precheck check in-app purchases?
    */
-  precheckIncludeInAppPurchases?: any;
+  precheckIncludeInAppPurchases?: boolean;
   /**
    * The (spaceship) app ID of the app you want to use/modify
    */
-  app: any;
+  app?: any;
 };
 
 /** Shape for [[apteligent]] options argument
@@ -3159,11 +3163,11 @@ type DeliverOptions = {
   /**
    * Modify live metadata, this option disables ipa upload and screenshot upload
    */
-  editLive?: any;
+  editLive?: boolean;
   /**
    * Force usage of live version rather than edit version
    */
-  useLiveVersion: any;
+  useLiveVersion: boolean;
   /**
    * Path to the folder containing the metadata files
    */
@@ -3175,35 +3179,35 @@ type DeliverOptions = {
   /**
    * Skip uploading an ipa or pkg to App Store Connect
    */
-  skipBinaryUpload: any;
+  skipBinaryUpload: boolean;
   /**
    * Don't upload the screenshots
    */
-  skipScreenshots: any;
+  skipScreenshots: boolean;
   /**
    * Don't upload the metadata (e.g. title, description). This will still upload screenshots
    */
-  skipMetadata: any;
+  skipMetadata: boolean;
   /**
    * Don’t create or update the app version that is being prepared for submission
    */
-  skipAppVersionUpdate: any;
+  skipAppVersionUpdate: boolean;
   /**
    * Skip verification of HTML preview file
    */
-  force: any;
+  force: boolean;
   /**
    * Clear all previously uploaded screenshots before uploading the new ones
    */
-  overwriteScreenshots: any;
+  overwriteScreenshots: boolean;
   /**
    * Submit the new version for Review after uploading everything
    */
-  submitForReview: any;
+  submitForReview: boolean;
   /**
    * Rejects the previously submitted build if it's in a state where it's possible
    */
-  rejectIfPossible: any;
+  rejectIfPossible: boolean;
   /**
    * Should the app be automatically released once it's approved? (Can not be used together with `auto_release_date`)
    */
@@ -3215,11 +3219,11 @@ type DeliverOptions = {
   /**
    * Enable the phased release feature of iTC
    */
-  phasedRelease?: any;
+  phasedRelease?: boolean;
   /**
    * Reset the summary rating when you release a new version of the application
    */
-  resetRatings?: any;
+  resetRatings?: boolean;
   /**
    * The price tier of this application
    */
@@ -3235,7 +3239,7 @@ type DeliverOptions = {
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
-  teamId?: any;
+  teamId?: string;
   /**
    * The name of your App Store Connect team if you're in multiple teams
    */
@@ -3255,7 +3259,7 @@ type DeliverOptions = {
   /**
    * Run precheck before submitting to app review
    */
-  runPrecheckBeforeSubmit: any;
+  runPrecheckBeforeSubmit: boolean;
   /**
    * The default precheck rule level unless otherwise configured
    */
@@ -3301,7 +3305,7 @@ type DeliverOptions = {
    */
   secondarySecondSubCategory?: string;
   /**
-   * Metadata: A hash containing the trade representative contact information
+   * **DEPRECATED!** This is no longer used by App Store Connect - Metadata: A hash containing the trade representative contact information
    */
   tradeRepresentativeContactInformation?: { string: string };
   /**
@@ -3315,11 +3319,11 @@ type DeliverOptions = {
   /**
    * Metadata: The localised app description
    */
-  description?: any;
+  description?: { string: string };
   /**
    * Metadata: The localised app name
    */
-  name?: any;
+  name?: { string: string };
   /**
    * Metadata: The localised app subtitle
    */
@@ -3335,23 +3339,23 @@ type DeliverOptions = {
   /**
    * Metadata: Localised release notes for this version
    */
-  releaseNotes?: any;
+  releaseNotes?: { string: string };
   /**
    * Metadata: Localised privacy url
    */
-  privacyUrl?: any;
+  privacyUrl?: { string: string };
   /**
    * Metadata: Localised Apple TV privacy policy text
    */
-  appleTvPrivacyPolicy?: any;
+  appleTvPrivacyPolicy?: { string: string };
   /**
    * Metadata: Localised support url
    */
-  supportUrl?: any;
+  supportUrl?: { string: string };
   /**
    * Metadata: Localised marketing url
    */
-  marketingUrl?: any;
+  marketingUrl?: { string: string };
   /**
    * Metadata: List of languages to activate
    */
@@ -3359,15 +3363,15 @@ type DeliverOptions = {
   /**
    * Ignore errors when invalid languages are found in metadata and screenshot directories
    */
-  ignoreLanguageDirectoryValidation: any;
+  ignoreLanguageDirectoryValidation: boolean;
   /**
    * Should precheck check in-app purchases?
    */
-  precheckIncludeInAppPurchases?: any;
+  precheckIncludeInAppPurchases?: boolean;
   /**
    * The (spaceship) app ID of the app you want to use/modify
    */
-  app: any;
+  app?: any;
 };
 
 /** Shape for [[deploygate]] options argument
@@ -6292,6 +6296,10 @@ type PilotOptions = {
    */
   waitProcessingInterval: any;
   /**
+   * Timeout duration in seconds to wait for App Store Connect processing. If set, after exceeding timeout duration, this will `force stop` to wait for App Store Connect processing and exit with exception
+   */
+  waitProcessingTimeoutDuration?: any;
+  /**
    * **DEPRECATED!** No longer needed with the transition over to the App Store Connect API - Use version info from uploaded ipa file to determine what build to use for distribution. If set to false, latest processing or any latest build will be used
    */
   waitForUploadedBuild?: any;
@@ -8951,7 +8959,7 @@ type SupplyOptions = {
 
 type SwiftlintOptions = {
   /**
-   * SwiftLint mode: :lint, :autocorrect or :analyze
+   * SwiftLint mode: :lint, :fix, :autocorrect or :analyze
    */
   mode?: any;
   /**
@@ -9398,6 +9406,10 @@ type TestflightOptions = {
    * Interval in seconds to wait for App Store Connect processing
    */
   waitProcessingInterval: any;
+  /**
+   * Timeout duration in seconds to wait for App Store Connect processing. If set, after exceeding timeout duration, this will `force stop` to wait for App Store Connect processing and exit with exception
+   */
+  waitProcessingTimeoutDuration?: any;
   /**
    * **DEPRECATED!** No longer needed with the transition over to the App Store Connect API - Use version info from uploaded ipa file to determine what build to use for distribution. If set to false, latest processing or any latest build will be used
    */
@@ -9934,11 +9946,11 @@ type UploadToAppStoreOptions = {
   /**
    * Modify live metadata, this option disables ipa upload and screenshot upload
    */
-  editLive?: any;
+  editLive?: boolean;
   /**
    * Force usage of live version rather than edit version
    */
-  useLiveVersion: any;
+  useLiveVersion: boolean;
   /**
    * Path to the folder containing the metadata files
    */
@@ -9950,35 +9962,35 @@ type UploadToAppStoreOptions = {
   /**
    * Skip uploading an ipa or pkg to App Store Connect
    */
-  skipBinaryUpload: any;
+  skipBinaryUpload: boolean;
   /**
    * Don't upload the screenshots
    */
-  skipScreenshots: any;
+  skipScreenshots: boolean;
   /**
    * Don't upload the metadata (e.g. title, description). This will still upload screenshots
    */
-  skipMetadata: any;
+  skipMetadata: boolean;
   /**
    * Don’t create or update the app version that is being prepared for submission
    */
-  skipAppVersionUpdate: any;
+  skipAppVersionUpdate: boolean;
   /**
    * Skip verification of HTML preview file
    */
-  force: any;
+  force: boolean;
   /**
    * Clear all previously uploaded screenshots before uploading the new ones
    */
-  overwriteScreenshots: any;
+  overwriteScreenshots: boolean;
   /**
    * Submit the new version for Review after uploading everything
    */
-  submitForReview: any;
+  submitForReview: boolean;
   /**
    * Rejects the previously submitted build if it's in a state where it's possible
    */
-  rejectIfPossible: any;
+  rejectIfPossible: boolean;
   /**
    * Should the app be automatically released once it's approved? (Can not be used together with `auto_release_date`)
    */
@@ -9990,11 +10002,11 @@ type UploadToAppStoreOptions = {
   /**
    * Enable the phased release feature of iTC
    */
-  phasedRelease?: any;
+  phasedRelease?: boolean;
   /**
    * Reset the summary rating when you release a new version of the application
    */
-  resetRatings?: any;
+  resetRatings?: boolean;
   /**
    * The price tier of this application
    */
@@ -10010,7 +10022,7 @@ type UploadToAppStoreOptions = {
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
-  teamId?: any;
+  teamId?: string;
   /**
    * The name of your App Store Connect team if you're in multiple teams
    */
@@ -10030,7 +10042,7 @@ type UploadToAppStoreOptions = {
   /**
    * Run precheck before submitting to app review
    */
-  runPrecheckBeforeSubmit: any;
+  runPrecheckBeforeSubmit: boolean;
   /**
    * The default precheck rule level unless otherwise configured
    */
@@ -10076,7 +10088,7 @@ type UploadToAppStoreOptions = {
    */
   secondarySecondSubCategory?: string;
   /**
-   * Metadata: A hash containing the trade representative contact information
+   * **DEPRECATED!** This is no longer used by App Store Connect - Metadata: A hash containing the trade representative contact information
    */
   tradeRepresentativeContactInformation?: { string: string };
   /**
@@ -10090,11 +10102,11 @@ type UploadToAppStoreOptions = {
   /**
    * Metadata: The localised app description
    */
-  description?: any;
+  description?: { string: string };
   /**
    * Metadata: The localised app name
    */
-  name?: any;
+  name?: { string: string };
   /**
    * Metadata: The localised app subtitle
    */
@@ -10110,23 +10122,23 @@ type UploadToAppStoreOptions = {
   /**
    * Metadata: Localised release notes for this version
    */
-  releaseNotes?: any;
+  releaseNotes?: { string: string };
   /**
    * Metadata: Localised privacy url
    */
-  privacyUrl?: any;
+  privacyUrl?: { string: string };
   /**
    * Metadata: Localised Apple TV privacy policy text
    */
-  appleTvPrivacyPolicy?: any;
+  appleTvPrivacyPolicy?: { string: string };
   /**
    * Metadata: Localised support url
    */
-  supportUrl?: any;
+  supportUrl?: { string: string };
   /**
    * Metadata: Localised marketing url
    */
-  marketingUrl?: any;
+  marketingUrl?: { string: string };
   /**
    * Metadata: List of languages to activate
    */
@@ -10134,15 +10146,15 @@ type UploadToAppStoreOptions = {
   /**
    * Ignore errors when invalid languages are found in metadata and screenshot directories
    */
-  ignoreLanguageDirectoryValidation: any;
+  ignoreLanguageDirectoryValidation: boolean;
   /**
    * Should precheck check in-app purchases?
    */
-  precheckIncludeInAppPurchases?: any;
+  precheckIncludeInAppPurchases?: boolean;
   /**
    * The (spaceship) app ID of the app you want to use/modify
    */
-  app: any;
+  app?: any;
 };
 
 /** Shape for [[uploadToPlayStore]] options argument
@@ -10477,6 +10489,10 @@ type UploadToTestflightOptions = {
    * Interval in seconds to wait for App Store Connect processing
    */
   waitProcessingInterval: any;
+  /**
+   * Timeout duration in seconds to wait for App Store Connect processing. If set, after exceeding timeout duration, this will `force stop` to wait for App Store Connect processing and exit with exception
+   */
+  waitProcessingTimeoutDuration?: any;
   /**
    * **DEPRECATED!** No longer needed with the transition over to the App Store Connect API - Use version info from uploaded ipa file to determine what build to use for distribution. If set to false, latest processing or any latest build will be used
    */
@@ -10871,7 +10887,8 @@ type convertedAppStoreConnectApiKeyOptions = {
   key_content?: string;
   is_key_content_base64: boolean;
   duration?: any;
-  in_house?: boolean;
+  in_house: boolean;
+  set_spaceship_token: boolean;
 };
 /** @ignore Convert AppStoreConnectApiKeyOptions to the shape used by the Fastlane service
  */
@@ -10882,6 +10899,8 @@ function convertAppStoreConnectApiKeyOptions(
     key_id: options.keyId,
     issuer_id: options.issuerId,
     is_key_content_base64: options.isKeyContentBase64,
+    in_house: options.inHouse,
+    set_spaceship_token: options.setSpaceshipToken,
   };
   if (typeof options.keyFilepath !== "undefined")
     temp["key_filepath"] = options.keyFilepath;
@@ -10889,8 +10908,6 @@ function convertAppStoreConnectApiKeyOptions(
     temp["key_content"] = options.keyContent;
   if (typeof options.duration !== "undefined")
     temp["duration"] = options.duration;
-  if (typeof options.inHouse !== "undefined")
-    temp["in_house"] = options.inHouse;
   return temp;
 }
 
@@ -11174,31 +11191,31 @@ type convertedAppstoreOptions = {
   pkg?: string;
   build_number?: string;
   platform?: string;
-  edit_live?: any;
-  use_live_version: any;
+  edit_live?: boolean;
+  use_live_version: boolean;
   metadata_path?: string;
   screenshots_path?: string;
-  skip_binary_upload: any;
-  skip_screenshots: any;
-  skip_metadata: any;
-  skip_app_version_update: any;
-  force: any;
-  overwrite_screenshots: any;
-  submit_for_review: any;
-  reject_if_possible: any;
+  skip_binary_upload: boolean;
+  skip_screenshots: boolean;
+  skip_metadata: boolean;
+  skip_app_version_update: boolean;
+  force: boolean;
+  overwrite_screenshots: boolean;
+  submit_for_review: boolean;
+  reject_if_possible: boolean;
   automatic_release?: boolean;
   auto_release_date?: any;
-  phased_release?: any;
-  reset_ratings?: any;
+  phased_release?: boolean;
+  reset_ratings?: boolean;
   price_tier?: any;
   app_rating_config_path?: string;
   submission_information?: { string: string };
-  team_id?: any;
+  team_id?: string;
   team_name?: string;
   dev_portal_team_id?: string;
   dev_portal_team_name?: string;
   itc_provider?: string;
-  run_precheck_before_submit: any;
+  run_precheck_before_submit: boolean;
   precheck_default_rule_level: any;
   individual_metadata_items?: string[];
   app_icon?: string;
@@ -11213,20 +11230,20 @@ type convertedAppstoreOptions = {
   trade_representative_contact_information?: { string: string };
   app_review_information?: { string: string };
   app_review_attachment_file?: string;
-  description?: any;
-  name?: any;
+  description?: { string: string };
+  name?: { string: string };
   subtitle?: { string: string };
   keywords?: { string: string };
   promotional_text?: { string: string };
-  release_notes?: any;
-  privacy_url?: any;
-  apple_tv_privacy_policy?: any;
-  support_url?: any;
-  marketing_url?: any;
+  release_notes?: { string: string };
+  privacy_url?: { string: string };
+  apple_tv_privacy_policy?: { string: string };
+  support_url?: { string: string };
+  marketing_url?: { string: string };
   languages?: string[];
-  ignore_language_directory_validation: any;
-  precheck_include_in_app_purchases?: any;
-  app: any;
+  ignore_language_directory_validation: boolean;
+  precheck_include_in_app_purchases?: boolean;
+  app?: any;
 };
 /** @ignore Convert AppstoreOptions to the shape used by the Fastlane service
  */
@@ -11247,7 +11264,6 @@ function convertAppstoreOptions(
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
     ignore_language_directory_validation:
       options.ignoreLanguageDirectoryValidation,
-    app: options.app,
   };
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
@@ -11344,6 +11360,7 @@ function convertAppstoreOptions(
   if (typeof options.precheckIncludeInAppPurchases !== "undefined")
     temp["precheck_include_in_app_purchases"] =
       options.precheckIncludeInAppPurchases;
+  if (typeof options.app !== "undefined") temp["app"] = options.app;
   return temp;
 }
 
@@ -13190,31 +13207,31 @@ type convertedDeliverOptions = {
   pkg?: string;
   build_number?: string;
   platform?: string;
-  edit_live?: any;
-  use_live_version: any;
+  edit_live?: boolean;
+  use_live_version: boolean;
   metadata_path?: string;
   screenshots_path?: string;
-  skip_binary_upload: any;
-  skip_screenshots: any;
-  skip_metadata: any;
-  skip_app_version_update: any;
-  force: any;
-  overwrite_screenshots: any;
-  submit_for_review: any;
-  reject_if_possible: any;
+  skip_binary_upload: boolean;
+  skip_screenshots: boolean;
+  skip_metadata: boolean;
+  skip_app_version_update: boolean;
+  force: boolean;
+  overwrite_screenshots: boolean;
+  submit_for_review: boolean;
+  reject_if_possible: boolean;
   automatic_release?: boolean;
   auto_release_date?: any;
-  phased_release?: any;
-  reset_ratings?: any;
+  phased_release?: boolean;
+  reset_ratings?: boolean;
   price_tier?: any;
   app_rating_config_path?: string;
   submission_information?: { string: string };
-  team_id?: any;
+  team_id?: string;
   team_name?: string;
   dev_portal_team_id?: string;
   dev_portal_team_name?: string;
   itc_provider?: string;
-  run_precheck_before_submit: any;
+  run_precheck_before_submit: boolean;
   precheck_default_rule_level: any;
   individual_metadata_items?: string[];
   app_icon?: string;
@@ -13229,20 +13246,20 @@ type convertedDeliverOptions = {
   trade_representative_contact_information?: { string: string };
   app_review_information?: { string: string };
   app_review_attachment_file?: string;
-  description?: any;
-  name?: any;
+  description?: { string: string };
+  name?: { string: string };
   subtitle?: { string: string };
   keywords?: { string: string };
   promotional_text?: { string: string };
-  release_notes?: any;
-  privacy_url?: any;
-  apple_tv_privacy_policy?: any;
-  support_url?: any;
-  marketing_url?: any;
+  release_notes?: { string: string };
+  privacy_url?: { string: string };
+  apple_tv_privacy_policy?: { string: string };
+  support_url?: { string: string };
+  marketing_url?: { string: string };
   languages?: string[];
-  ignore_language_directory_validation: any;
-  precheck_include_in_app_purchases?: any;
-  app: any;
+  ignore_language_directory_validation: boolean;
+  precheck_include_in_app_purchases?: boolean;
+  app?: any;
 };
 /** @ignore Convert DeliverOptions to the shape used by the Fastlane service
  */
@@ -13263,7 +13280,6 @@ function convertDeliverOptions(
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
     ignore_language_directory_validation:
       options.ignoreLanguageDirectoryValidation,
-    app: options.app,
   };
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
@@ -13360,6 +13376,7 @@ function convertDeliverOptions(
   if (typeof options.precheckIncludeInAppPurchases !== "undefined")
     temp["precheck_include_in_app_purchases"] =
       options.precheckIncludeInAppPurchases;
+  if (typeof options.app !== "undefined") temp["app"] = options.app;
   return temp;
 }
 
@@ -15828,6 +15845,7 @@ type convertedPilotOptions = {
   dev_portal_team_id?: string;
   itc_provider?: string;
   wait_processing_interval: any;
+  wait_processing_timeout_duration?: any;
   wait_for_uploaded_build?: any;
   reject_build_waiting_for_review: any;
 };
@@ -15893,6 +15911,9 @@ function convertPilotOptions(options: PilotOptions): convertedPilotOptions {
     temp["dev_portal_team_id"] = options.devPortalTeamId;
   if (typeof options.itcProvider !== "undefined")
     temp["itc_provider"] = options.itcProvider;
+  if (typeof options.waitProcessingTimeoutDuration !== "undefined")
+    temp["wait_processing_timeout_duration"] =
+      options.waitProcessingTimeoutDuration;
   if (typeof options.waitForUploadedBuild !== "undefined")
     temp["wait_for_uploaded_build"] = options.waitForUploadedBuild;
   return temp;
@@ -18291,6 +18312,7 @@ type convertedTestflightOptions = {
   dev_portal_team_id?: string;
   itc_provider?: string;
   wait_processing_interval: any;
+  wait_processing_timeout_duration?: any;
   wait_for_uploaded_build?: any;
   reject_build_waiting_for_review: any;
 };
@@ -18358,6 +18380,9 @@ function convertTestflightOptions(
     temp["dev_portal_team_id"] = options.devPortalTeamId;
   if (typeof options.itcProvider !== "undefined")
     temp["itc_provider"] = options.itcProvider;
+  if (typeof options.waitProcessingTimeoutDuration !== "undefined")
+    temp["wait_processing_timeout_duration"] =
+      options.waitProcessingTimeoutDuration;
   if (typeof options.waitForUploadedBuild !== "undefined")
     temp["wait_for_uploaded_build"] = options.waitForUploadedBuild;
   return temp;
@@ -18855,31 +18880,31 @@ type convertedUploadToAppStoreOptions = {
   pkg?: string;
   build_number?: string;
   platform?: string;
-  edit_live?: any;
-  use_live_version: any;
+  edit_live?: boolean;
+  use_live_version: boolean;
   metadata_path?: string;
   screenshots_path?: string;
-  skip_binary_upload: any;
-  skip_screenshots: any;
-  skip_metadata: any;
-  skip_app_version_update: any;
-  force: any;
-  overwrite_screenshots: any;
-  submit_for_review: any;
-  reject_if_possible: any;
+  skip_binary_upload: boolean;
+  skip_screenshots: boolean;
+  skip_metadata: boolean;
+  skip_app_version_update: boolean;
+  force: boolean;
+  overwrite_screenshots: boolean;
+  submit_for_review: boolean;
+  reject_if_possible: boolean;
   automatic_release?: boolean;
   auto_release_date?: any;
-  phased_release?: any;
-  reset_ratings?: any;
+  phased_release?: boolean;
+  reset_ratings?: boolean;
   price_tier?: any;
   app_rating_config_path?: string;
   submission_information?: { string: string };
-  team_id?: any;
+  team_id?: string;
   team_name?: string;
   dev_portal_team_id?: string;
   dev_portal_team_name?: string;
   itc_provider?: string;
-  run_precheck_before_submit: any;
+  run_precheck_before_submit: boolean;
   precheck_default_rule_level: any;
   individual_metadata_items?: string[];
   app_icon?: string;
@@ -18894,20 +18919,20 @@ type convertedUploadToAppStoreOptions = {
   trade_representative_contact_information?: { string: string };
   app_review_information?: { string: string };
   app_review_attachment_file?: string;
-  description?: any;
-  name?: any;
+  description?: { string: string };
+  name?: { string: string };
   subtitle?: { string: string };
   keywords?: { string: string };
   promotional_text?: { string: string };
-  release_notes?: any;
-  privacy_url?: any;
-  apple_tv_privacy_policy?: any;
-  support_url?: any;
-  marketing_url?: any;
+  release_notes?: { string: string };
+  privacy_url?: { string: string };
+  apple_tv_privacy_policy?: { string: string };
+  support_url?: { string: string };
+  marketing_url?: { string: string };
   languages?: string[];
-  ignore_language_directory_validation: any;
-  precheck_include_in_app_purchases?: any;
-  app: any;
+  ignore_language_directory_validation: boolean;
+  precheck_include_in_app_purchases?: boolean;
+  app?: any;
 };
 /** @ignore Convert UploadToAppStoreOptions to the shape used by the Fastlane service
  */
@@ -18928,7 +18953,6 @@ function convertUploadToAppStoreOptions(
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
     ignore_language_directory_validation:
       options.ignoreLanguageDirectoryValidation,
-    app: options.app,
   };
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
@@ -19025,6 +19049,7 @@ function convertUploadToAppStoreOptions(
   if (typeof options.precheckIncludeInAppPurchases !== "undefined")
     temp["precheck_include_in_app_purchases"] =
       options.precheckIncludeInAppPurchases;
+  if (typeof options.app !== "undefined") temp["app"] = options.app;
   return temp;
 }
 
@@ -19213,6 +19238,7 @@ type convertedUploadToTestflightOptions = {
   dev_portal_team_id?: string;
   itc_provider?: string;
   wait_processing_interval: any;
+  wait_processing_timeout_duration?: any;
   wait_for_uploaded_build?: any;
   reject_build_waiting_for_review: any;
 };
@@ -19280,6 +19306,9 @@ function convertUploadToTestflightOptions(
     temp["dev_portal_team_id"] = options.devPortalTeamId;
   if (typeof options.itcProvider !== "undefined")
     temp["itc_provider"] = options.itcProvider;
+  if (typeof options.waitProcessingTimeoutDuration !== "undefined")
+    temp["wait_processing_timeout_duration"] =
+      options.waitProcessingTimeoutDuration;
   if (typeof options.waitForUploadedBuild !== "undefined")
     temp["wait_for_uploaded_build"] = options.waitForUploadedBuild;
   return temp;
