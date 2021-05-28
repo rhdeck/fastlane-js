@@ -8981,7 +8981,7 @@ type SwiftlintOptions = {
   /**
    * List of files to process
    */
-  files?: any;
+  files?: string[];
   /**
    * Ignore the exit status of the SwiftLint command, so that serious violations                                                     don't fail the build (true/false)
    */
@@ -18046,7 +18046,7 @@ type convertedSwiftlintOptions = {
   output_file?: string;
   config_file?: string;
   strict?: boolean;
-  files?: any;
+  files?: string[];
   ignore_exit_status?: boolean;
   raise_if_swiftlint_error?: boolean;
   reporter?: string;
