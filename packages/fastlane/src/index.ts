@@ -53,7 +53,7 @@ type AddGitTagOptions = {
   /**
    * Whether the current lane should be included in the tag and message composition, e.g. '<grouping>/<lane>/<prefix><build_number><postfix>'
    */
-  includesLane: any;
+  includesLane: boolean;
   /**
    * Anything you want to put in front of the version number (e.g. 'v')
    */
@@ -65,7 +65,7 @@ type AddGitTagOptions = {
   /**
    * The build number. Defaults to the result of increment_build_number if you're using it
    */
-  buildNumber?: any;
+  buildNumber?: string;
   /**
    * The tag message. Defaults to the tag's name
    */
@@ -77,11 +77,11 @@ type AddGitTagOptions = {
   /**
    * Force adding the tag
    */
-  force?: any;
+  force?: boolean;
   /**
    * Make a GPG-signed tag, using the default e-mail address's key
    */
-  sign?: any;
+  sign?: boolean;
 };
 
 /** Shape for [[appStoreBuildNumber]] options argument
@@ -99,7 +99,7 @@ type AppStoreBuildNumberOptions = {
   /**
    * sets the build number to given value if no build is in current train
    */
-  initialBuildNumber: any;
+  initialBuildNumber: string;
   /**
    * The bundle identifier of your app
    */
@@ -111,11 +111,11 @@ type AppStoreBuildNumberOptions = {
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
-  teamId?: any;
+  teamId?: string;
   /**
    * Query the live version (ready-for-sale)
    */
-  live?: any;
+  live?: boolean;
   /**
    * The version number whose latest build number we want
    */
@@ -6236,7 +6236,7 @@ type PilotOptions = {
    */
   usesNonExemptEncryption: boolean;
   /**
-   * Should the build be distributed to external testers?
+   * Should the build be distributed to external testers? If set to true, use of `groups` option is required
    */
   distributeExternal: any;
   /**
@@ -6272,7 +6272,7 @@ type PilotOptions = {
    */
   testersFilePath?: string;
   /**
-   * Associate tester to one group or more by group name / group id. E.g. `-g "Team 1","Team 2"`
+   * Associate tester to one group or more by group name / group id. E.g. `-g "Team 1","Team 2"` This is required when `distribute_external` option is set to true or when we want to add a tester to one or more external testing groups
    */
   groups?: string[];
   /**
@@ -9347,7 +9347,7 @@ type TestflightOptions = {
    */
   usesNonExemptEncryption: boolean;
   /**
-   * Should the build be distributed to external testers?
+   * Should the build be distributed to external testers? If set to true, use of `groups` option is required
    */
   distributeExternal: any;
   /**
@@ -9383,7 +9383,7 @@ type TestflightOptions = {
    */
   testersFilePath?: string;
   /**
-   * Associate tester to one group or more by group name / group id. E.g. `-g "Team 1","Team 2"`
+   * Associate tester to one group or more by group name / group id. E.g. `-g "Team 1","Team 2"` This is required when `distribute_external` option is set to true or when we want to add a tester to one or more external testing groups
    */
   groups?: string[];
   /**
@@ -10430,7 +10430,7 @@ type UploadToTestflightOptions = {
    */
   usesNonExemptEncryption: boolean;
   /**
-   * Should the build be distributed to external testers?
+   * Should the build be distributed to external testers? If set to true, use of `groups` option is required
    */
   distributeExternal: any;
   /**
@@ -10466,7 +10466,7 @@ type UploadToTestflightOptions = {
    */
   testersFilePath?: string;
   /**
-   * Associate tester to one group or more by group name / group id. E.g. `-g "Team 1","Team 2"`
+   * Associate tester to one group or more by group name / group id. E.g. `-g "Team 1","Team 2"` This is required when `distribute_external` option is set to true or when we want to add a tester to one or more external testing groups
    */
   groups?: string[];
   /**
@@ -10812,14 +10812,14 @@ function convertAddExtraPlatformsOptions(
 type convertedAddGitTagOptions = {
   tag?: string;
   grouping: string;
-  includes_lane: any;
+  includes_lane: boolean;
   prefix: string;
   postfix: string;
-  build_number?: any;
+  build_number?: string;
   message?: string;
   commit?: string;
-  force?: any;
-  sign?: any;
+  force?: boolean;
+  sign?: boolean;
 };
 /** @ignore Convert AddGitTagOptions to the shape used by the Fastlane service
  */
@@ -10846,11 +10846,11 @@ function convertAddGitTagOptions(
 type convertedAppStoreBuildNumberOptions = {
   api_key_path?: string;
   api_key?: { string: string };
-  initial_build_number: any;
+  initial_build_number: string;
   app_identifier: string;
   username?: string;
-  team_id?: any;
-  live?: any;
+  team_id?: string;
+  live?: boolean;
   version?: string;
   platform?: string;
   team_name?: string;
