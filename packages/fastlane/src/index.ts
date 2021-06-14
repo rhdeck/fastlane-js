@@ -317,7 +317,7 @@ type AppiumOptions = {
   /**
    * Use local Appium server with invoke automatically
    */
-  invokeAppiumServer?: any;
+  invokeAppiumServer?: boolean;
   /**
    * Hostname of Appium server
    */
@@ -833,7 +833,7 @@ type ArtifactoryOptions = {
   /**
    * Artifact properties hash
    */
-  properties?: any;
+  properties?: { string: string };
   /**
    * Location of pem file to use for ssl verification
    */
@@ -841,7 +841,7 @@ type ArtifactoryOptions = {
   /**
    * Verify SSL
    */
-  sslVerify?: any;
+  sslVerify?: boolean;
   /**
    * Proxy username
    */
@@ -875,7 +875,7 @@ type AutomaticCodeSigningOptions = {
   /**
    * Defines if project should use automatic signing
    */
-  useAutomaticSigning: any;
+  useAutomaticSigning: boolean;
   /**
    * Team ID, is used when upgrading project
    */
@@ -927,7 +927,7 @@ type BackupXcarchiveOptions = {
   /**
    * Enable compression of the archive
    */
-  zip?: any;
+  zip?: boolean;
   /**
    * Filename of the compressed archive. Will be appended by `.xcarchive.zip`. Default value is the output xcarchive filename
    */
@@ -935,7 +935,7 @@ type BackupXcarchiveOptions = {
   /**
    * Create a versioned (date and app version) subfolder where to put the archive
    */
-  versioned?: any;
+  versioned?: boolean;
 };
 
 /** Shape for [[badge]] options argument
@@ -945,7 +945,7 @@ type BadgeOptions = {
   /**
    * Adds a dark flavored badge ontop of your icon
    */
-  dark?: any;
+  dark?: boolean;
   /**
    * Add your custom overlay/badge image
    */
@@ -953,7 +953,7 @@ type BadgeOptions = {
   /**
    * Hides the beta badge
    */
-  noBadge?: any;
+  noBadge?: boolean;
   /**
    * Add a shield to your app icon from shields.io
    */
@@ -961,7 +961,7 @@ type BadgeOptions = {
   /**
    * Adds and alpha badge instead of the default beta one
    */
-  alpha?: any;
+  alpha?: boolean;
   /**
    * Sets the root path to look for AppIcons
    */
@@ -977,7 +977,7 @@ type BadgeOptions = {
   /**
    * Keeps/adds an alpha channel to the icon (useful for android icons)
    */
-  alphaChannel?: any;
+  alphaChannel?: boolean;
   /**
    * Position of shield on icon. Default: North - Choices include: NorthWest, North, NorthEast, West, Center, East, SouthWest, South, SouthEast
    */
@@ -985,7 +985,7 @@ type BadgeOptions = {
   /**
    * Shield image will no longer be resized to aspect fill the full icon. Instead it will only be shrunk to not exceed the icon graphic
    */
-  shieldNoResize?: any;
+  shieldNoResize?: boolean;
 };
 
 /** Shape for [[buildAndUploadToAppetize]] options argument
@@ -1645,11 +1645,11 @@ type BundleInstallOptions = {
   /**
    * Run bundle clean automatically after install
    */
-  clean: any;
+  clean: boolean;
   /**
    * Use the rubygems modern index instead of the API endpoint
    */
-  fullIndex: any;
+  fullIndex: boolean;
   /**
    * Use the specified gemfile instead of Gemfile
    */
@@ -1661,19 +1661,19 @@ type BundleInstallOptions = {
   /**
    * Do not attempt to fetch gems remotely and use the gem cache instead
    */
-  local: any;
+  local: boolean;
   /**
    * Install using defaults tuned for deployment and CI environments
    */
-  deployment: any;
+  deployment: boolean;
   /**
    * Don't update the existing gem cache
    */
-  noCache: any;
+  noCache: boolean;
   /**
    * Don't remove stale gems from the cache
    */
-  noPrune: any;
+  noPrune: boolean;
   /**
    * Specify a different path than the system default ($BUNDLE_PATH or $GEM_HOME). Bundler will remember this value for future installs on this machine
    */
@@ -1681,11 +1681,11 @@ type BundleInstallOptions = {
   /**
    * Install to the system location ($BUNDLE_PATH or $GEM_HOME) even if the bundle was previously installed somewhere else for this application
    */
-  system: any;
+  system: boolean;
   /**
    * Only output warnings and errors
    */
-  quiet: any;
+  quiet: boolean;
   /**
    * Retry network and git requests that have failed
    */
@@ -2257,7 +2257,7 @@ type CarthageOptions = {
   /**
    * By default Carthage will rebuild a dependency regardless of whether it's the same resolved version as before. Passing the --cache-builds will cause carthage to avoid rebuilding a dependency if it can
    */
-  cacheBuilds: any;
+  cacheBuilds: boolean;
   /**
    * Framework name or names to archive, could be applied only along with the archive command
    */
@@ -2373,7 +2373,7 @@ type ChangelogFromGitCommitsOptions = {
   /**
    * Array containing two Git revision values between which to collect messages, you mustn't use it with :commits_count key at the same time
    */
-  between?: any;
+  between?: string[];
   /**
    * Number of commits to include in changelog, you mustn't use it with :between key at the same time
    */
@@ -2393,7 +2393,7 @@ type ChangelogFromGitCommitsOptions = {
   /**
    * Whether or not to use ancestry-path param
    */
-  ancestryPath?: any;
+  ancestryPath?: boolean;
   /**
    * A glob(7) pattern to match against when finding the last git tag
    */
@@ -2401,11 +2401,11 @@ type ChangelogFromGitCommitsOptions = {
   /**
    * Whether or not to match a lightweight tag when searching for the last one
    */
-  matchLightweightTag?: any;
+  matchLightweightTag?: boolean;
   /**
    * Whether or not to disable changelog output
    */
-  quiet?: any;
+  quiet?: boolean;
   /**
    * **DEPRECATED!** Use `:merge_commit_filtering` instead - Whether or not to include any commits that are merges
    */
@@ -2435,7 +2435,7 @@ type ChatworkOptions = {
   /**
    * Was this build successful? (true/false)
    */
-  success?: any;
+  success?: boolean;
 };
 
 /** Shape for [[checkAppStoreMetadata]] options argument
@@ -2587,7 +2587,7 @@ type ClocOptions = {
   /**
    * Should we generate an XML File (if false, it will generate a plain text file)?
    */
-  xml: any;
+  xml: boolean;
 };
 
 /** Shape for [[cocoapods]] options argument
@@ -2597,27 +2597,27 @@ type CocoapodsOptions = {
   /**
    * Add `--repo-update` flag to `pod install` command
    */
-  repoUpdate: any;
+  repoUpdate: boolean;
   /**
    * Execute a full pod installation ignoring the content of the project cache
    */
-  cleanInstall: any;
+  cleanInstall: boolean;
   /**
    * Execute command without logging output
    */
-  silent: any;
+  silent: boolean;
   /**
    * Show more debugging information
    */
-  verbose: any;
+  verbose: boolean;
   /**
    * Show output with ANSI codes
    */
-  ansi: any;
+  ansi: boolean;
   /**
    * Use bundle exec when there is a Gemfile presented
    */
-  useBundleExec: any;
+  useBundleExec: boolean;
   /**
    * Explicitly specify the path to the Cocoapods' Podfile. You can either set it to the Podfile's path or to the folder containing the Podfile file
    */
@@ -2641,11 +2641,11 @@ type CocoapodsOptions = {
   /**
    * **DEPRECATED!** (Option renamed as clean_install) Remove SCM directories
    */
-  clean?: any;
+  clean?: boolean;
   /**
    * **DEPRECATED!** (Option removed from cocoapods) Integrate the Pods libraries into the Xcode project(s)
    */
-  integrate?: any;
+  integrate?: boolean;
 };
 
 /** Shape for [[commitGithubFile]] options argument
@@ -2683,7 +2683,7 @@ type CommitGithubFileOptions = {
   /**
    * Optionally disable secure requests (ssl_verify_peer)
    */
-  secure?: any;
+  secure?: boolean;
 };
 
 /** Shape for [[commitVersionBump]] options argument
@@ -2701,15 +2701,15 @@ type CommitVersionBumpOptions = {
   /**
    * Forces the commit, even if other files than the ones containing the version number have been modified
    */
-  force?: any;
+  force?: boolean;
   /**
    * Include Settings.bundle/Root.plist with version bump
    */
-  settings?: any;
+  settings?: string;
   /**
    * A regular expression used to filter matched plist files to be modified
    */
-  ignore?: any;
+  ignore?: string;
   /**
    * A list of extra files to be included in the version bump (string array or comma-separated string)
    */
@@ -2727,19 +2727,19 @@ type CopyArtifactsOptions = {
   /**
    * Set this to false if you want move, rather than copy, the found artifacts
    */
-  keepOriginal?: any;
+  keepOriginal?: boolean;
   /**
    * The directory in which you want your artifacts placed
    */
-  targetPath: any;
+  targetPath: string;
   /**
    * An array of file patterns of the files/folders you want to preserve
    */
-  artifacts: any;
+  artifacts: string[];
   /**
    * Fail when a source file isn't found
    */
-  failOnMissing?: any;
+  failOnMissing?: boolean;
 };
 
 /** Shape for [[crashlytics]] options argument
@@ -2777,19 +2777,19 @@ type CrashlyticsOptions = {
   /**
    * The groups used for distribution, separated by commas
    */
-  groups?: any;
+  groups?: string[];
   /**
    * Pass email addresses of testers, separated by commas
    */
-  emails?: any;
+  emails?: string[];
   /**
    * Crashlytics notification option (true/false)
    */
-  notifications: any;
+  notifications: boolean;
   /**
    * Crashlytics debug option (true/false)
    */
-  debug: any;
+  debug: boolean;
 };
 
 /** Shape for [[createAppOnManagedPlayStore]] options argument
@@ -2931,31 +2931,31 @@ type CreateKeychainOptions = {
   /**
    * Should the newly created Keychain be the new system default keychain
    */
-  defaultKeychain: any;
+  defaultKeychain: boolean;
   /**
    * Unlock keychain after create
    */
-  unlock: any;
+  unlock: boolean;
   /**
-   * timeout interval in seconds. Set `false` if you want to specify "no time-out"
+   * timeout interval in seconds
    */
   timeout: any;
   /**
    * Lock keychain when the system sleeps
    */
-  lockWhenSleeps: any;
+  lockWhenSleeps: boolean;
   /**
    * Lock keychain after timeout interval
    */
-  lockAfterTimeout: any;
+  lockAfterTimeout: boolean;
   /**
    * Add keychain to search list
    */
-  addToSearchList: any;
+  addToSearchList: boolean;
   /**
    * Fail the action if the Keychain already exists
    */
-  requireCreate: any;
+  requireCreate: boolean;
 };
 
 /** Shape for [[createPullRequest]] options argument
@@ -3049,11 +3049,11 @@ type DangerOptions = {
   /**
    * Use bundle exec when there is a Gemfile presented
    */
-  useBundleExec: any;
+  useBundleExec: boolean;
   /**
    * Show more debugging information
    */
-  verbose: any;
+  verbose: boolean;
   /**
    * The identifier of this Danger instance
    */
@@ -3069,15 +3069,15 @@ type DangerOptions = {
   /**
    * Should always fail the build process, defaults to false
    */
-  failOnErrors?: any;
+  failOnErrors?: boolean;
   /**
    * Makes Danger post a new comment instead of editing its previous one
    */
-  newComment?: any;
+  newComment?: boolean;
   /**
    * Makes Danger remove all previous comment and create a new one in the end of the list
    */
-  removePreviousComments?: any;
+  removePreviousComments?: boolean;
   /**
    * A branch/tag/commit to use as the base of the diff. [master|dev|stable]
    */
@@ -11019,7 +11019,7 @@ type convertedAppiumOptions = {
   platform: string;
   spec_path: string;
   app_path: string;
-  invoke_appium_server?: any;
+  invoke_appium_server?: boolean;
   host?: string;
   port?: any;
   appium_path?: string;
@@ -11392,9 +11392,9 @@ type convertedArtifactoryOptions = {
   username?: string;
   password?: string;
   api_key?: string;
-  properties?: any;
+  properties?: { string: string };
   ssl_pem_file?: string;
-  ssl_verify?: any;
+  ssl_verify?: boolean;
   proxy_username?: string;
   proxy_password?: string;
   proxy_address?: string;
@@ -11439,7 +11439,7 @@ function convertArtifactoryOptions(
 /** @ignore */
 type convertedAutomaticCodeSigningOptions = {
   path: string;
-  use_automatic_signing: any;
+  use_automatic_signing: boolean;
   team_id?: string;
   targets?: string[];
   code_sign_identity?: string;
@@ -11489,9 +11489,9 @@ function convertBackupFileOptions(
 type convertedBackupXcarchiveOptions = {
   xcarchive: string;
   destination: string;
-  zip?: any;
+  zip?: boolean;
   zip_filename?: string;
-  versioned?: any;
+  versioned?: boolean;
 };
 /** @ignore Convert BackupXcarchiveOptions to the shape used by the Fastlane service
  */
@@ -11512,17 +11512,17 @@ function convertBackupXcarchiveOptions(
 
 /** @ignore */
 type convertedBadgeOptions = {
-  dark?: any;
+  dark?: boolean;
   custom?: string;
-  no_badge?: any;
+  no_badge?: boolean;
   shield?: string;
-  alpha?: any;
+  alpha?: boolean;
   path?: string;
   shield_io_timeout?: any;
   glob?: string;
-  alpha_channel?: any;
+  alpha_channel?: boolean;
   shield_gravity?: string;
-  shield_no_resize?: any;
+  shield_no_resize?: boolean;
 };
 /** @ignore Convert BadgeOptions to the shape used by the Fastlane service
  */
@@ -12034,17 +12034,17 @@ function convertBuildMacAppOptions(
 /** @ignore */
 type convertedBundleInstallOptions = {
   binstubs?: string;
-  clean: any;
-  full_index: any;
+  clean: boolean;
+  full_index: boolean;
   gemfile?: string;
   jobs?: boolean;
-  local: any;
-  deployment: any;
-  no_cache: any;
-  no_prune: any;
+  local: boolean;
+  deployment: boolean;
+  no_cache: boolean;
+  no_prune: boolean;
   path?: string;
-  system: any;
-  quiet: any;
+  system: boolean;
+  quiet: boolean;
   retry?: boolean;
   shebang?: string;
   standalone?: string;
@@ -12434,7 +12434,7 @@ type convertedCarthageOptions = {
   derived_data?: string;
   verbose?: boolean;
   platform?: string;
-  cache_builds: any;
+  cache_builds: boolean;
   frameworks: string[];
   output?: string;
   configuration?: string;
@@ -12540,15 +12540,15 @@ function convertCertOptions(options: CertOptions): convertedCertOptions {
 
 /** @ignore */
 type convertedChangelogFromGitCommitsOptions = {
-  between?: any;
+  between?: string[];
   commits_count?: any;
   path?: string;
   pretty?: string;
   date_format?: string;
-  ancestry_path?: any;
+  ancestry_path?: boolean;
   tag_match_pattern?: string;
-  match_lightweight_tag?: any;
-  quiet?: any;
+  match_lightweight_tag?: boolean;
+  quiet?: boolean;
   include_merges?: boolean;
   merge_commit_filtering?: string;
 };
@@ -12584,7 +12584,7 @@ type convertedChatworkOptions = {
   api_token: string;
   message: string;
   roomid: any;
-  success?: any;
+  success?: boolean;
 };
 /** @ignore Convert ChatworkOptions to the shape used by the Fastlane service
  */
@@ -12735,7 +12735,7 @@ type convertedClocOptions = {
   exclude_dir?: string;
   output_directory: string;
   source_directory: string;
-  xml: any;
+  xml: boolean;
 };
 /** @ignore Convert ClocOptions to the shape used by the Fastlane service
  */
@@ -12754,19 +12754,19 @@ function convertClocOptions(options: ClocOptions): convertedClocOptions {
 
 /** @ignore */
 type convertedCocoapodsOptions = {
-  repo_update: any;
-  clean_install: any;
-  silent: any;
-  verbose: any;
-  ansi: any;
-  use_bundle_exec: any;
+  repo_update: boolean;
+  clean_install: boolean;
+  silent: boolean;
+  verbose: boolean;
+  ansi: boolean;
+  use_bundle_exec: boolean;
   podfile?: string;
   error_callback?: any;
   try_repo_update_on_error?: boolean;
   deployment?: boolean;
   allow_root?: boolean;
-  clean?: any;
-  integrate?: any;
+  clean?: boolean;
+  integrate?: boolean;
 };
 /** @ignore Convert CocoapodsOptions to the shape used by the Fastlane service
  */
@@ -12805,7 +12805,7 @@ type convertedCommitGithubFileOptions = {
   branch?: string;
   path: string;
   message?: string;
-  secure?: any;
+  secure?: boolean;
 };
 /** @ignore Convert CommitGithubFileOptions to the shape used by the Fastlane service
  */
@@ -12832,9 +12832,9 @@ function convertCommitGithubFileOptions(
 type convertedCommitVersionBumpOptions = {
   message?: string;
   xcodeproj?: string;
-  force?: any;
-  settings?: any;
-  ignore?: any;
+  force?: boolean;
+  settings?: string;
+  ignore?: string;
   include?: string[];
   no_verify: boolean;
 };
@@ -12859,10 +12859,10 @@ function convertCommitVersionBumpOptions(
 
 /** @ignore */
 type convertedCopyArtifactsOptions = {
-  keep_original?: any;
-  target_path: any;
-  artifacts: any;
-  fail_on_missing?: any;
+  keep_original?: boolean;
+  target_path: string;
+  artifacts: string[];
+  fail_on_missing?: boolean;
 };
 /** @ignore Convert CopyArtifactsOptions to the shape used by the Fastlane service
  */
@@ -12889,10 +12889,10 @@ type convertedCrashlyticsOptions = {
   build_secret: string;
   notes_path?: string;
   notes?: string;
-  groups?: any;
-  emails?: any;
-  notifications: any;
-  debug: any;
+  groups?: string[];
+  emails?: string[];
+  notifications: boolean;
+  debug: boolean;
 };
 /** @ignore Convert CrashlyticsOptions to the shape used by the Fastlane service
  */
@@ -13017,13 +13017,13 @@ type convertedCreateKeychainOptions = {
   name?: string;
   path?: string;
   password: string;
-  default_keychain: any;
-  unlock: any;
+  default_keychain: boolean;
+  unlock: boolean;
   timeout: any;
-  lock_when_sleeps: any;
-  lock_after_timeout: any;
-  add_to_search_list: any;
-  require_create: any;
+  lock_when_sleeps: boolean;
+  lock_after_timeout: boolean;
+  add_to_search_list: boolean;
+  require_create: boolean;
 };
 /** @ignore Convert CreateKeychainOptions to the shape used by the Fastlane service
  */
@@ -13118,14 +13118,14 @@ function convertCreateXcframeworkOptions(
 
 /** @ignore */
 type convertedDangerOptions = {
-  use_bundle_exec: any;
-  verbose: any;
+  use_bundle_exec: boolean;
+  verbose: boolean;
   danger_id?: string;
   dangerfile?: string;
   github_api_token?: string;
-  fail_on_errors?: any;
-  new_comment?: any;
-  remove_previous_comments?: any;
+  fail_on_errors?: boolean;
+  new_comment?: boolean;
+  remove_previous_comments?: boolean;
   base?: string;
   head?: string;
   pr?: string;
