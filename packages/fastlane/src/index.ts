@@ -1053,11 +1053,11 @@ type BuildAndroidAppOptions = {
   /**
    * Gradle properties to be exposed to the gradle script
    */
-  properties?: any;
+  properties?: { string: string };
   /**
    * Gradle system properties to be exposed to the gradle script
    */
-  systemProperties?: any;
+  systemProperties?: { string: string };
   /**
    * Android serial, which device should be used for this command
    */
@@ -1065,11 +1065,11 @@ type BuildAndroidAppOptions = {
   /**
    * Control whether the generated Gradle command is printed as output before running it (true/false)
    */
-  printCommand: any;
+  printCommand: boolean;
   /**
    * Control whether the output produced by given Gradle command is printed while running (true/false)
    */
-  printCommandOutput: any;
+  printCommandOutput: boolean;
 };
 
 /** Shape for [[buildApp]] options argument
@@ -3409,7 +3409,7 @@ type DeploygateOptions = {
   /**
    * Disables Push notification emails
    */
-  disableNotify?: any;
+  disableNotify?: boolean;
   /**
    * Target Distribution Name
    */
@@ -3451,7 +3451,7 @@ type DownloadAppPrivacyDetailsFromAppStoreOptions = {
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
-  teamId?: any;
+  teamId?: string;
   /**
    * The name of your App Store Connect team if you're in multiple teams
    */
@@ -3477,7 +3477,7 @@ type DownloadDsymsOptions = {
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
-  teamId?: any;
+  teamId?: string;
   /**
    * The name of your App Store Connect team if you're in multiple teams
    */
@@ -3493,7 +3493,7 @@ type DownloadDsymsOptions = {
   /**
    * The app build_number for dSYMs you wish to download
    */
-  buildNumber?: any;
+  buildNumber?: string;
   /**
    * The minimum app version for dSYMs you wish to download
    */
@@ -3577,7 +3577,7 @@ type DsymZipOptions = {
   /**
    * Whether or not all dSYM files are to be included. Optional, default is false in which only your app dSYM is included
    */
-  all?: any;
+  all?: boolean;
 };
 
 /** Shape for [[echo]] options argument
@@ -3622,11 +3622,11 @@ type EnsureGitStatusCleanOptions = {
   /**
    * The flag whether to show uncommitted changes if the repo is dirty
    */
-  showUncommittedChanges?: any;
+  showUncommittedChanges?: boolean;
   /**
    * The flag whether to show the git diff if the repo is dirty
    */
-  showDiff?: any;
+  showDiff?: boolean;
   /**
    * The flag whether to ignore file the git status if the repo is dirty
    */
@@ -3652,7 +3652,7 @@ type EnsureNoDebugCodeOptions = {
   /**
    * An array of file extensions that should be searched for
    */
-  extensions?: any;
+  extensions?: string[];
   /**
    * Exclude a certain pattern from the search
    */
@@ -3914,7 +3914,7 @@ type GetBuildNumberRepositoryOptions = {
   /**
    * Use hg revision number instead of hash (ignored for non-hg repos)
    */
-  useHgRevisionNumber?: any;
+  useHgRevisionNumber?: boolean;
 };
 
 /** Shape for [[getCertificates]] options argument
@@ -4236,11 +4236,11 @@ type GitAddOptions = {
   /**
    * The file(s) and path(s) you want to add
    */
-  path?: any;
+  path?: string[];
   /**
    * Shell escapes paths (set to false if using wildcards or manually escaping spaces in :path)
    */
-  shellEscape?: any;
+  shellEscape?: boolean;
   /**
    * **DEPRECATED!** Use `--path` instead - The pathspec you want to add files from
    */
@@ -4259,7 +4259,7 @@ type GitCommitOptions = {
   /**
    * The file(s) or directory(ies) you want to commit. You can pass an array of multiple file-paths or fileglobs "*.txt" to commit all matching files. The files already staged but not specified and untracked files won't be committed
    */
-  path: any;
+  path: string[];
   /**
    * The commit message that should be used
    */
@@ -4286,6 +4286,16 @@ type GitPullOptions = {
    * Rebase on top of the remote branch instead of merge
    */
   rebase?: boolean;
+};
+
+/** Shape for [[gitRemoteBranch]] options argument
+ */
+
+type GitRemoteBranchOptions = {
+  /**
+   * The remote repository to check
+   */
+  remoteName?: string;
 };
 
 /** Shape for [[gitSubmoduleUpdate]] options argument
@@ -4343,7 +4353,7 @@ type GithubApiOptions = {
   /**
    * The request body in JSON or hash format
    */
-  body?: any;
+  body?: string;
   /**
    * The request body taken verbatim instead of as JSON, useful for file uploads
    */
@@ -4359,7 +4369,7 @@ type GithubApiOptions = {
   /**
    * Optional error handling hash based on status code, or pass '*' to handle all errors
    */
-  errorHandlers?: any;
+  errorHandlers?: { string: string };
   /**
    * Optional headers to apply
    */
@@ -4481,11 +4491,11 @@ type GradleOptions = {
   /**
    * Gradle properties to be exposed to the gradle script
    */
-  properties?: any;
+  properties?: { string: string };
   /**
    * Gradle system properties to be exposed to the gradle script
    */
-  systemProperties?: any;
+  systemProperties?: { string: string };
   /**
    * Android serial, which device should be used for this command
    */
@@ -4493,11 +4503,11 @@ type GradleOptions = {
   /**
    * Control whether the generated Gradle command is printed as output before running it (true/false)
    */
-  printCommand: any;
+  printCommand: boolean;
   /**
    * Control whether the output produced by given Gradle command is printed while running (true/false)
    */
-  printCommandOutput: any;
+  printCommandOutput: boolean;
 };
 
 /** Shape for [[gym]] options argument
@@ -4719,7 +4729,7 @@ type HgCommitVersionBumpOptions = {
   /**
    * Forces the commit, even if other files than the ones containing the version number have been modified
    */
-  force?: any;
+  force?: boolean;
   /**
    * A list of dirty files passed in for testing
    */
@@ -4742,7 +4752,7 @@ type HgPushOptions = {
   /**
    * Force push to remote
    */
-  force: any;
+  force: boolean;
   /**
    * The destination to push to
    */
@@ -4772,7 +4782,7 @@ type HipchatOptions = {
   /**
    * Was this build successful? (true/false)
    */
-  success?: any;
+  success?: boolean;
   /**
    * Version of the Hipchat API. Must be 1 or 2
    */
@@ -4780,7 +4790,7 @@ type HipchatOptions = {
   /**
    * Should the people in the room be notified? (true/false)
    */
-  notifyRoom?: any;
+  notifyRoom?: boolean;
   /**
    * The host of the HipChat-Server API
    */
@@ -4792,7 +4802,7 @@ type HipchatOptions = {
   /**
    * Should html formatted messages include a preformatted header? (true/false)
    */
-  includeHtmlHeader?: any;
+  includeHtmlHeader?: boolean;
   /**
    * Name the message will appear to be sent from
    */
@@ -4822,7 +4832,7 @@ type HockeyOptions = {
   /**
    * Set true if you want to create then update your app as opposed to just upload it. You will need the 'public_identifier', 'bundle_version' and 'bundle_short_version'
    */
-  createUpdate: any;
+  createUpdate: boolean;
   /**
    * Beta Notes
    */
@@ -4890,7 +4900,7 @@ type HockeyOptions = {
   /**
    * Flag to upload only the dSYM file to hockey app
    */
-  uploadDsymOnly: any;
+  uploadDsymOnly: boolean;
   /**
    * ID for the owner of the app
    */
@@ -4906,7 +4916,7 @@ type HockeyOptions = {
   /**
    * Flag to bypass Hockey CDN when it uploads successfully but reports error
    */
-  bypassCdn: any;
+  bypassCdn: boolean;
   /**
    * DSA signature for sparkle updates for macOS
    */
@@ -4981,7 +4991,7 @@ type ImportFromGitOptions = {
   /**
    * The URL of the repository to import the Fastfile from
    */
-  url: string;
+  url?: string;
   /**
    * The branch or tag to check-out on the repository
    */
@@ -4997,7 +5007,7 @@ type ImportFromGitOptions = {
   /**
    * The version to checkout on the repository. Optimistic match operator or multiple conditions can be used to select the latest version within constraints
    */
-  version?: any;
+  version?: string[];
   /**
    * The path to a directory where the repository should be cloned into. Defaults to `nil`, which causes the repository to be cloned on every call, to a temporary directory
    */
@@ -5011,7 +5021,7 @@ type IncrementBuildNumberOptions = {
   /**
    * Change to a specific version. When you provide this parameter, Apple Generic Versioning does not have to be enabled
    */
-  buildNumber?: any;
+  buildNumber?: string;
   /**
    * Don't update Info.plist files when updating the build version
    */
@@ -5055,7 +5065,7 @@ type InstallOnDeviceOptions = {
   /**
    * Do not search for devices via WiFi
    */
-  skipWifi?: any;
+  skipWifi?: boolean;
   /**
    * The IPA file to put on the device
    */
@@ -5135,11 +5145,11 @@ type IpaOptions = {
   /**
    * Clean project before building
    */
-  clean?: any;
+  clean?: boolean;
   /**
    * Archive project after building
    */
-  archive?: any;
+  archive?: boolean;
   /**
    * Build destination. Defaults to current directory
    */
@@ -11583,11 +11593,11 @@ type convertedBuildAndroidAppOptions = {
   flags?: string;
   project_dir: string;
   gradle_path?: string;
-  properties?: any;
-  system_properties?: any;
+  properties?: { string: string };
+  system_properties?: { string: string };
   serial: string;
-  print_command: any;
-  print_command_output: any;
+  print_command: boolean;
+  print_command_output: boolean;
 };
 /** @ignore Convert BuildAndroidAppOptions to the shape used by the Fastlane service
  */
@@ -13389,7 +13399,7 @@ type convertedDeploygateOptions = {
   message: string;
   distribution_key?: string;
   release_note?: string;
-  disable_notify?: any;
+  disable_notify?: boolean;
   distribution_name?: string;
 };
 /** @ignore Convert DeploygateOptions to the shape used by the Fastlane service
@@ -13451,7 +13461,7 @@ function convertDownloadOptions(
 type convertedDownloadAppPrivacyDetailsFromAppStoreOptions = {
   username: string;
   app_identifier: string;
-  team_id?: any;
+  team_id?: string;
   team_name?: string;
   output_json_path: string;
 };
@@ -13475,11 +13485,11 @@ function convertDownloadAppPrivacyDetailsFromAppStoreOptions(
 type convertedDownloadDsymsOptions = {
   username: string;
   app_identifier: string;
-  team_id?: any;
+  team_id?: string;
   team_name?: string;
   platform: string;
   version?: string;
-  build_number?: any;
+  build_number?: string;
   min_version?: string;
   after_uploaded_date?: string;
   output_directory?: string;
@@ -13557,7 +13567,7 @@ function convertDownloadFromPlayStoreOptions(
 type convertedDsymZipOptions = {
   archive_path?: string;
   dsym_path?: string;
-  all?: any;
+  all?: boolean;
 };
 /** @ignore Convert DsymZipOptions to the shape used by the Fastlane service
  */
@@ -13631,8 +13641,8 @@ function convertEnsureGitBranchOptions(
 
 /** @ignore */
 type convertedEnsureGitStatusCleanOptions = {
-  show_uncommitted_changes?: any;
-  show_diff?: any;
+  show_uncommitted_changes?: boolean;
+  show_diff?: boolean;
   ignored?: string;
 };
 /** @ignore Convert EnsureGitStatusCleanOptions to the shape used by the Fastlane service
@@ -13654,7 +13664,7 @@ type convertedEnsureNoDebugCodeOptions = {
   text: string;
   path: string;
   extension?: string;
-  extensions?: any;
+  extensions?: string[];
   exclude?: string;
   exclude_dirs?: string[];
 };
@@ -13896,7 +13906,7 @@ function convertGetBuildNumberOptions(
 
 /** @ignore */
 type convertedGetBuildNumberRepositoryOptions = {
-  use_hg_revision_number?: any;
+  use_hg_revision_number?: boolean;
 };
 /** @ignore Convert GetBuildNumberRepositoryOptions to the shape used by the Fastlane service
  */
@@ -14173,8 +14183,8 @@ function convertGetVersionNumberOptions(
 
 /** @ignore */
 type convertedGitAddOptions = {
-  path?: any;
-  shell_escape?: any;
+  path?: string[];
+  shell_escape?: boolean;
   pathspec?: string;
 };
 /** @ignore Convert GitAddOptions to the shape used by the Fastlane service
@@ -14203,7 +14213,7 @@ function convertGitBranchOptions(
 
 /** @ignore */
 type convertedGitCommitOptions = {
-  path: any;
+  path: string[];
   message: string;
   skip_git_hooks?: boolean;
   allow_nothing_to_commit?: boolean;
@@ -14238,6 +14248,21 @@ function convertGitPullOptions(
   if (typeof options.onlyTags !== "undefined")
     temp["only_tags"] = options.onlyTags;
   if (typeof options.rebase !== "undefined") temp["rebase"] = options.rebase;
+  return temp;
+}
+
+/** @ignore */
+type convertedGitRemoteBranchOptions = {
+  remote_name?: string;
+};
+/** @ignore Convert GitRemoteBranchOptions to the shape used by the Fastlane service
+ */
+function convertGitRemoteBranchOptions(
+  options: GitRemoteBranchOptions
+): convertedGitRemoteBranchOptions {
+  const temp: convertedGitRemoteBranchOptions = {};
+  if (typeof options.remoteName !== "undefined")
+    temp["remote_name"] = options.remoteName;
   return temp;
 }
 
@@ -14285,11 +14310,11 @@ type convertedGithubApiOptions = {
   api_token?: string;
   api_bearer?: string;
   http_method?: string;
-  body?: any;
+  body?: string;
   raw_body?: string;
   path?: string;
   url?: string;
-  error_handlers?: any;
+  error_handlers?: { string: string };
   headers?: { string: string };
   secure?: boolean;
 };
@@ -14392,11 +14417,11 @@ type convertedGradleOptions = {
   flags?: string;
   project_dir: string;
   gradle_path?: string;
-  properties?: any;
-  system_properties?: any;
+  properties?: { string: string };
+  system_properties?: { string: string };
   serial: string;
-  print_command: any;
-  print_command_output: any;
+  print_command: boolean;
+  print_command_output: boolean;
 };
 /** @ignore Convert GradleOptions to the shape used by the Fastlane service
  */
@@ -14583,7 +14608,7 @@ function convertHgAddTagOptions(
 type convertedHgCommitVersionBumpOptions = {
   message: string;
   xcodeproj?: string;
-  force?: any;
+  force?: boolean;
   test_dirty_files?: string;
   test_expected_files?: string;
 };
@@ -14619,7 +14644,7 @@ function convertHgEnsureCleanStatusOptions(
 
 /** @ignore */
 type convertedHgPushOptions = {
-  force: any;
+  force: boolean;
   destination?: string;
 };
 /** @ignore Convert HgPushOptions to the shape used by the Fastlane service
@@ -14639,12 +14664,12 @@ type convertedHipchatOptions = {
   channel: string;
   api_token: string;
   custom_color?: string;
-  success?: any;
+  success?: boolean;
   version: string;
-  notify_room?: any;
+  notify_room?: boolean;
   api_host?: string;
   message_format?: string;
-  include_html_header?: any;
+  include_html_header?: boolean;
   from?: string;
 };
 /** @ignore Convert HipchatOptions to the shape used by the Fastlane service
@@ -14679,7 +14704,7 @@ type convertedHockeyOptions = {
   api_token: string;
   ipa?: string;
   dsym?: string;
-  create_update: any;
+  create_update: boolean;
   notes: string;
   notify: string;
   status: string;
@@ -14696,11 +14721,11 @@ type convertedHockeyOptions = {
   commit_sha?: string;
   repository_url?: string;
   build_server_url?: string;
-  upload_dsym_only: any;
+  upload_dsym_only: boolean;
   owner_id?: string;
   strategy: string;
   timeout?: any;
-  bypass_cdn: any;
+  bypass_cdn: boolean;
   dsa_signature?: string;
 };
 /** @ignore Convert HockeyOptions to the shape used by the Fastlane service
@@ -14808,11 +14833,11 @@ function convertImportCertificateOptions(
 
 /** @ignore */
 type convertedImportFromGitOptions = {
-  url: string;
+  url?: string;
   branch?: string;
   dependencies?: string;
   path?: string;
-  version?: any;
+  version?: string[];
   cache_path?: string;
 };
 /** @ignore Convert ImportFromGitOptions to the shape used by the Fastlane service
@@ -14820,9 +14845,8 @@ type convertedImportFromGitOptions = {
 function convertImportFromGitOptions(
   options: ImportFromGitOptions
 ): convertedImportFromGitOptions {
-  const temp: convertedImportFromGitOptions = {
-    url: options.url,
-  };
+  const temp: convertedImportFromGitOptions = {};
+  if (typeof options.url !== "undefined") temp["url"] = options.url;
   if (typeof options.branch !== "undefined") temp["branch"] = options.branch;
   if (typeof options.dependencies !== "undefined")
     temp["dependencies"] = options.dependencies;
@@ -14835,7 +14859,7 @@ function convertImportFromGitOptions(
 
 /** @ignore */
 type convertedIncrementBuildNumberOptions = {
-  build_number?: any;
+  build_number?: string;
   skip_info_plist: boolean;
   xcodeproj?: string;
 };
@@ -14879,7 +14903,7 @@ function convertIncrementVersionNumberOptions(
 type convertedInstallOnDeviceOptions = {
   extra?: string;
   device_id?: string;
-  skip_wifi?: any;
+  skip_wifi?: boolean;
   ipa?: string;
 };
 /** @ignore Convert InstallOnDeviceOptions to the shape used by the Fastlane service
@@ -14959,8 +14983,8 @@ type convertedIpaOptions = {
   project?: string;
   configuration?: string;
   scheme?: string;
-  clean?: any;
-  archive?: any;
+  clean?: boolean;
+  archive?: boolean;
   destination?: string;
   embed?: string;
   identity?: string;
@@ -20571,6 +20595,15 @@ get_push_certificate(|
    */
   async gitPull(options: GitPullOptions): Promise<any> {
     const out = await this.doAction("git_pull", convertGitPullOptions(options));
+    return out;
+  }
+  /** If no default remote branch could be found, this action will return nil. This is a wrapper for the internal action Actions.git_default_remote_branch_name
+   */
+  async gitRemoteBranch(options: GitRemoteBranchOptions): Promise<string> {
+    const out = await this.doAction(
+      "git_remote_branch",
+      convertGitRemoteBranchOptions(options)
+    );
     return out;
   }
   /** Executes a git submodule update command
