@@ -1721,7 +1721,7 @@ type CaptureAndroidScreenshotsOptions = {
    */
   androidHome?: string;
   /**
-   * The Android build tools version to use, e.g. '23.0.2'
+   * **DEPRECATED!** The Android build tools version to use, e.g. '23.0.2'
    */
   buildToolsVersion?: string;
   /**
@@ -1765,13 +1765,13 @@ type CaptureAndroidScreenshotsOptions = {
    */
   testInstrumentationRunner?: string;
   /**
-   * Return the device to this locale after running tests
+   * **DEPRECATED!** Return the device to this locale after running tests
    */
   endingLocale?: string;
   /**
-   * Restarts the adb daemon using `adb root` to allow access to screenshots directories on device. Use if getting 'Permission denied' errors
+   * **DEPRECATED!** Restarts the adb daemon using `adb root` to allow access to screenshots directories on device. Use if getting 'Permission denied' errors
    */
-  useAdbRoot: boolean;
+  useAdbRoot?: boolean;
   /**
    * The path to the APK for the app under test
    */
@@ -2871,7 +2871,7 @@ type CreateAppOnlineOptions = {
    */
   language: string;
   /**
-   * The name of your company. Only required if it's the first app you create
+   * The name of your company. It's used to set company name on App Store Connect team's app pages. Only required if it's the first app you create
    */
   companyName?: string;
   /**
@@ -2887,7 +2887,7 @@ type CreateAppOnlineOptions = {
    */
   enabledFeatures?: any;
   /**
-   * Array with Spaceship App Services (e.g. access_wifi: (on|off), app_group: (on|off), apple_pay: (on|off), associated_domains: (on|off), auto_fill_credential: (on|off), data_protection: (complete|unlessopen|untilfirstauth), game_center: (on|off), health_kit: (on|off), home_kit: (on|off), hotspot: (on|off), icloud: (legacy|cloudkit), in_app_purchase: (on|off), inter_app_audio: (on|off), multipath: (on|off), network_extension: (on|off), nfc_tag_reading: (on|off), personal_vpn: (on|off), passbook: (on|off), push_notification: (on|off), siri_kit: (on|off), vpn_configuration: (on|off), wallet: (on|off), wireless_accessory: (on|off))
+   * Array with Spaceship App Services (e.g. access_wifi: (on|off), app_attest: (on|off), app_group: (on|off), apple_pay: (on|off), associated_domains: (on|off), auto_fill_credential: (on|off), class_kit: (on|off), icloud: (legacy|cloudkit), custom_network_protocol: (on|off), data_protection: (complete|unlessopen|untilfirstauth), extended_virtual_address_space: (on|off), family_controls: (on|off), file_provider_testing_mode: (on|off), fonts: (on|off), game_center: (ios|mac), health_kit: (on|off), hls_interstitial_preview: (on|off), home_kit: (on|off), hotspot: (on|off), in_app_purchase: (on|off), inter_app_audio: (on|off), low_latency_hls: (on|off), managed_associated_domains: (on|off), maps: (on|off), multipath: (on|off), network_extension: (on|off), nfc_tag_reading: (on|off), personal_vpn: (on|off), passbook: (on|off), push_notification: (on|off), sign_in_with_apple: (on), siri_kit: (on|off), system_extension: (on|off), user_management: (on|off), vpn_configuration: (on|off), wallet: (on|off), wireless_accessory: (on|off), car_play_audio_app: (on|off), car_play_messaging_app: (on|off), car_play_navigation_app: (on|off), car_play_voip_calling_app: (on|off), critical_alerts: (on|off), hotspot_helper: (on|off), driver_kit: (on|off), driver_kit_endpoint_security: (on|off), driver_kit_family_hid_device: (on|off), driver_kit_family_networking: (on|off), driver_kit_family_serial: (on|off), driver_kit_hid_event_service: (on|off), driver_kit_transport_hid: (on|off), multitasking_camera_access: (on|off), sf_universal_link_api: (on|off), vp9_decoder: (on|off), music_kit: (on|off), shazam_kit: (on|off), communication_notifications: (on|off), group_activities: (on|off), health_kit_estimate_recalibration: (on|off), time_sensitive_notifications: (on|off))
    */
   enableServices: any;
   /**
@@ -2937,7 +2937,7 @@ type CreateKeychainOptions = {
    */
   unlock: boolean;
   /**
-   * timeout interval in seconds
+   * timeout interval in seconds. Set `0` if you want to specify "no time-out"
    */
   timeout: any;
   /**
@@ -5268,7 +5268,7 @@ type LatestTestflightBuildNumberOptions = {
   /**
    * Query the live version (ready-for-sale)
    */
-  live?: any;
+  live?: boolean;
   /**
    * The bundle identifier of your app
    */
@@ -5288,11 +5288,11 @@ type LatestTestflightBuildNumberOptions = {
   /**
    * sets the build number to given value if no build is in current train
    */
-  initialBuildNumber: any;
+  initialBuildNumber: string;
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
-  teamId?: any;
+  teamId?: string;
   /**
    * The name of your App Store Connect team if you're in multiple teams
    */
@@ -5364,7 +5364,7 @@ type MailgunOptions = {
   /**
    * Was this build successful? (true/false)
    */
-  success?: any;
+  success?: boolean;
   /**
    * App Release link
    */
@@ -5384,7 +5384,7 @@ type MailgunOptions = {
   /**
    * Mail Attachment filenames, either an array or just one string
    */
-  attachment?: any;
+  attachment?: string[];
   /**
    * Placeholders for template given as a hash
    */
@@ -5402,7 +5402,7 @@ type MakeChangelogFromJenkinsOptions = {
   /**
    * Include the commit body along with the summary
    */
-  includeCommitBody?: any;
+  includeCommitBody?: boolean;
 };
 
 /** Shape for [[match]] options argument
@@ -5787,7 +5787,7 @@ type ModifyServicesOptions = {
    */
   appIdentifier: string;
   /**
-   * Array with Spaceship App Services (e.g. access_wifi: (on|off)(:on|:off)(true|false), app_group: (on|off)(:on|:off)(true|false), apple_pay: (on|off)(:on|:off)(true|false), associated_domains: (on|off)(:on|:off)(true|false), auto_fill_credential: (on|off)(:on|:off)(true|false), data_protection: (complete|unlessopen|untilfirstauth)(:on|:off)(true|false), game_center: (on|off)(:on|:off)(true|false), health_kit: (on|off)(:on|:off)(true|false), home_kit: (on|off)(:on|:off)(true|false), hotspot: (on|off)(:on|:off)(true|false), icloud: (legacy|cloudkit)(:on|:off)(true|false), in_app_purchase: (on|off)(:on|:off)(true|false), inter_app_audio: (on|off)(:on|:off)(true|false), multipath: (on|off)(:on|:off)(true|false), network_extension: (on|off)(:on|:off)(true|false), nfc_tag_reading: (on|off)(:on|:off)(true|false), personal_vpn: (on|off)(:on|:off)(true|false), passbook: (on|off)(:on|:off)(true|false), push_notification: (on|off)(:on|:off)(true|false), siri_kit: (on|off)(:on|:off)(true|false), vpn_configuration: (on|off)(:on|:off)(true|false), wallet: (on|off)(:on|:off)(true|false), wireless_accessory: (on|off)(:on|:off)(true|false))
+   * Array with Spaceship App Services (e.g. access_wifi: (on|off)(:on|:off)(true|false), app_attest: (on|off)(:on|:off)(true|false), app_group: (on|off)(:on|:off)(true|false), apple_pay: (on|off)(:on|:off)(true|false), associated_domains: (on|off)(:on|:off)(true|false), auto_fill_credential: (on|off)(:on|:off)(true|false), class_kit: (on|off)(:on|:off)(true|false), icloud: (legacy|cloudkit)(:on|:off)(true|false), custom_network_protocol: (on|off)(:on|:off)(true|false), data_protection: (complete|unlessopen|untilfirstauth)(:on|:off)(true|false), extended_virtual_address_space: (on|off)(:on|:off)(true|false), family_controls: (on|off)(:on|:off)(true|false), file_provider_testing_mode: (on|off)(:on|:off)(true|false), fonts: (on|off)(:on|:off)(true|false), game_center: (ios|mac)(:on|:off)(true|false), health_kit: (on|off)(:on|:off)(true|false), hls_interstitial_preview: (on|off)(:on|:off)(true|false), home_kit: (on|off)(:on|:off)(true|false), hotspot: (on|off)(:on|:off)(true|false), in_app_purchase: (on|off)(:on|:off)(true|false), inter_app_audio: (on|off)(:on|:off)(true|false), low_latency_hls: (on|off)(:on|:off)(true|false), managed_associated_domains: (on|off)(:on|:off)(true|false), maps: (on|off)(:on|:off)(true|false), multipath: (on|off)(:on|:off)(true|false), network_extension: (on|off)(:on|:off)(true|false), nfc_tag_reading: (on|off)(:on|:off)(true|false), personal_vpn: (on|off)(:on|:off)(true|false), passbook: (on|off)(:on|:off)(true|false), push_notification: (on|off)(:on|:off)(true|false), sign_in_with_apple: (on)(:on|:off)(true|false), siri_kit: (on|off)(:on|:off)(true|false), system_extension: (on|off)(:on|:off)(true|false), user_management: (on|off)(:on|:off)(true|false), vpn_configuration: (on|off)(:on|:off)(true|false), wallet: (on|off)(:on|:off)(true|false), wireless_accessory: (on|off)(:on|:off)(true|false), car_play_audio_app: (on|off)(:on|:off)(true|false), car_play_messaging_app: (on|off)(:on|:off)(true|false), car_play_navigation_app: (on|off)(:on|:off)(true|false), car_play_voip_calling_app: (on|off)(:on|:off)(true|false), critical_alerts: (on|off)(:on|:off)(true|false), hotspot_helper: (on|off)(:on|:off)(true|false), driver_kit: (on|off)(:on|:off)(true|false), driver_kit_endpoint_security: (on|off)(:on|:off)(true|false), driver_kit_family_hid_device: (on|off)(:on|:off)(true|false), driver_kit_family_networking: (on|off)(:on|:off)(true|false), driver_kit_family_serial: (on|off)(:on|:off)(true|false), driver_kit_hid_event_service: (on|off)(:on|:off)(true|false), driver_kit_transport_hid: (on|off)(:on|:off)(true|false), multitasking_camera_access: (on|off)(:on|:off)(true|false), sf_universal_link_api: (on|off)(:on|:off)(true|false), vp9_decoder: (on|off)(:on|:off)(true|false), music_kit: (on|off)(:on|:off)(true|false), shazam_kit: (on|off)(:on|:off)(true|false), communication_notifications: (on|off)(:on|:off)(true|false), group_activities: (on|off)(:on|:off)(true|false), health_kit_estimate_recalibration: (on|off)(:on|:off)(true|false), time_sensitive_notifications: (on|off)(:on|:off)(true|false))
    */
   services: { string: string };
   /**
@@ -5847,7 +5847,7 @@ type NexusUploadOptions = {
   /**
    * Verify SSL
    */
-  sslVerify?: any;
+  sslVerify?: boolean;
   /**
    * Nexus major version
    */
@@ -5855,7 +5855,7 @@ type NexusUploadOptions = {
   /**
    * Make detailed output
    */
-  verbose?: any;
+  verbose?: boolean;
   /**
    * Proxy username
    */
@@ -5966,7 +5966,7 @@ type NumberOfCommitsOptions = {
   /**
    * Returns number of all commits instead of current branch
    */
-  all?: any;
+  all?: boolean;
 };
 
 /** Shape for [[oclint]] options argument
@@ -5982,17 +5982,17 @@ type OclintOptions = {
    */
   compileCommands?: string;
   /**
-   * Select all files matching this reqex
+   * **DEPRECATED!** Use `:select_regex` instead - Select all files matching this reqex
    */
-  selectReqex?: any;
+  selectReqex?: string;
   /**
    * Select all files matching this regex
    */
-  selectRegex?: any;
+  selectRegex?: string;
   /**
    * Exclude all files matching this regex
    */
-  excludeRegex?: any;
+  excludeRegex?: string;
   /**
    * The type of the report (default: html)
    */
@@ -6004,7 +6004,7 @@ type OclintOptions = {
   /**
    * List enabled rules
    */
-  listEnabledRules: any;
+  listEnabledRules: boolean;
   /**
    * Override the default behavior of rules
    */
@@ -6012,15 +6012,15 @@ type OclintOptions = {
   /**
    * List of rule thresholds to override the default behavior of rules
    */
-  thresholds?: any;
+  thresholds?: string[];
   /**
    * List of rules to pick explicitly
    */
-  enableRules?: any;
+  enableRules?: string[];
   /**
    * List of rules to disable
    */
-  disableRules?: any;
+  disableRules?: string[];
   /**
    * The max allowed number of priority 1 violations
    */
@@ -6036,15 +6036,15 @@ type OclintOptions = {
   /**
    * Enable Clang Static Analyzer, and integrate results into OCLint report
    */
-  enableClangStaticAnalyzer: any;
+  enableClangStaticAnalyzer: boolean;
   /**
    * Compile every source, and analyze across global contexts (depends on number of source files, could results in high memory load)
    */
-  enableGlobalAnalysis: any;
+  enableGlobalAnalysis: boolean;
   /**
    * Allow duplicated violations in the OCLint report
    */
-  allowDuplicatedViolations: any;
+  allowDuplicatedViolations: boolean;
   /**
    * Additional argument to append to the compiler command line
    */
@@ -6634,7 +6634,7 @@ type ProduceOptions = {
    */
   language: string;
   /**
-   * The name of your company. Only required if it's the first app you create
+   * The name of your company. It's used to set company name on App Store Connect team's app pages. Only required if it's the first app you create
    */
   companyName?: string;
   /**
@@ -6650,7 +6650,7 @@ type ProduceOptions = {
    */
   enabledFeatures?: any;
   /**
-   * Array with Spaceship App Services (e.g. access_wifi: (on|off), app_group: (on|off), apple_pay: (on|off), associated_domains: (on|off), auto_fill_credential: (on|off), data_protection: (complete|unlessopen|untilfirstauth), game_center: (on|off), health_kit: (on|off), home_kit: (on|off), hotspot: (on|off), icloud: (legacy|cloudkit), in_app_purchase: (on|off), inter_app_audio: (on|off), multipath: (on|off), network_extension: (on|off), nfc_tag_reading: (on|off), personal_vpn: (on|off), passbook: (on|off), push_notification: (on|off), siri_kit: (on|off), vpn_configuration: (on|off), wallet: (on|off), wireless_accessory: (on|off))
+   * Array with Spaceship App Services (e.g. access_wifi: (on|off), app_attest: (on|off), app_group: (on|off), apple_pay: (on|off), associated_domains: (on|off), auto_fill_credential: (on|off), class_kit: (on|off), icloud: (legacy|cloudkit), custom_network_protocol: (on|off), data_protection: (complete|unlessopen|untilfirstauth), extended_virtual_address_space: (on|off), family_controls: (on|off), file_provider_testing_mode: (on|off), fonts: (on|off), game_center: (ios|mac), health_kit: (on|off), hls_interstitial_preview: (on|off), home_kit: (on|off), hotspot: (on|off), in_app_purchase: (on|off), inter_app_audio: (on|off), low_latency_hls: (on|off), managed_associated_domains: (on|off), maps: (on|off), multipath: (on|off), network_extension: (on|off), nfc_tag_reading: (on|off), personal_vpn: (on|off), passbook: (on|off), push_notification: (on|off), sign_in_with_apple: (on), siri_kit: (on|off), system_extension: (on|off), user_management: (on|off), vpn_configuration: (on|off), wallet: (on|off), wireless_accessory: (on|off), car_play_audio_app: (on|off), car_play_messaging_app: (on|off), car_play_navigation_app: (on|off), car_play_voip_calling_app: (on|off), critical_alerts: (on|off), hotspot_helper: (on|off), driver_kit: (on|off), driver_kit_endpoint_security: (on|off), driver_kit_family_hid_device: (on|off), driver_kit_family_networking: (on|off), driver_kit_family_serial: (on|off), driver_kit_hid_event_service: (on|off), driver_kit_transport_hid: (on|off), multitasking_camera_access: (on|off), sf_universal_link_api: (on|off), vp9_decoder: (on|off), music_kit: (on|off), shazam_kit: (on|off), communication_notifications: (on|off), group_activities: (on|off), health_kit_estimate_recalibration: (on|off), time_sensitive_notifications: (on|off))
    */
   enableServices: any;
   /**
@@ -6690,11 +6690,11 @@ type PromptOptions = {
   /**
    * Is that a boolean question (yes/no)? This will add (y/n) at the end
    */
-  boolean: any;
+  boolean: boolean;
   /**
    * Is that a secure text (yes/no)?
    */
-  secureText: any;
+  secureText: boolean;
   /**
    * Enable multi-line inputs by providing an end text (e.g. 'END') which will stop the user input
    */
@@ -6708,7 +6708,7 @@ type PushGitTagsOptions = {
   /**
    * Force push to remote
    */
-  force?: any;
+  force?: boolean;
   /**
    * The remote to push tags to
    */
@@ -6874,23 +6874,23 @@ type ResetGitRepoOptions = {
   /**
    * Array of files the changes should be discarded. If not given, all files will be discarded
    */
-  files?: any;
+  files?: string[];
   /**
    * Skip verifying of previously clean state of repo. Only recommended in combination with `files` option
    */
-  force: any;
+  force: boolean;
   /**
    * Skip 'git clean' to avoid removing untracked files like `.env`
    */
-  skipClean: any;
+  skipClean: boolean;
   /**
    * Setting this to true will clean the whole repository, ignoring anything in your local .gitignore. Set this to true if you want the equivalent of a fresh clone, and for all untracked and ignore files to also be removed
    */
-  disregardGitignore?: any;
+  disregardGitignore?: boolean;
   /**
    * You can pass a string, or array of, file pattern(s) here which you want to have survive the cleaning process, and remain on disk, e.g. to leave the `artifacts` directory you would specify `exclude: 'artifacts'`. Make sure this pattern is also in your gitignore! See the gitignore documentation for info on patterns
    */
-  exclude?: any;
+  exclude?: string;
 };
 
 /** Shape for [[resetSimulatorContents]] options argument
@@ -6926,7 +6926,7 @@ type ResignOptions = {
   /**
    * Path to your provisioning_profile. Optional if you use _sigh_
    */
-  provisioningProfile: any;
+  provisioningProfile: string;
   /**
    * Version number to force resigned ipa to use. Updates both `CFBundleShortVersionString` and `CFBundleVersion` values in `Info.plist`. Applies for main app and all nested apps or extensions
    */
@@ -6950,7 +6950,7 @@ type ResignOptions = {
   /**
    * Extract app bundle codesigning entitlements and combine with entitlements from new provisioning profile
    */
-  useAppEntitlements?: any;
+  useAppEntitlements?: boolean;
   /**
    * Provide a path to a keychain file that should be used by `/usr/bin/codesign`
    */
@@ -7282,7 +7282,7 @@ type RunTestsOptions = {
   /**
    * Should this step stop the build if the tests fail? Set this to false if you're using trainer
    */
-  failBuild: any;
+  failBuild: boolean;
 };
 
 /** Shape for [[s3]] options argument
@@ -7300,7 +7300,7 @@ type S3Options = {
   /**
    * Upload relevant metadata for this build
    */
-  uploadMetadata?: any;
+  uploadMetadata?: boolean;
   /**
    * plist template path
    */
@@ -7362,7 +7362,7 @@ type SayOptions = {
   /**
    * Text to be spoken out loud (as string or array of strings)
    */
-  text: any;
+  text: string[];
   /**
    * If say should be muted with text printed out
    */
@@ -7656,7 +7656,7 @@ type ScanOptions = {
   /**
    * Should this step stop the build if the tests fail? Set this to false if you're using trainer
    */
-  failBuild: any;
+  failBuild: boolean;
 };
 
 /** Shape for [[scp]] options argument
@@ -7698,7 +7698,7 @@ type ScreengrabOptions = {
    */
   androidHome?: string;
   /**
-   * The Android build tools version to use, e.g. '23.0.2'
+   * **DEPRECATED!** The Android build tools version to use, e.g. '23.0.2'
    */
   buildToolsVersion?: string;
   /**
@@ -7742,13 +7742,13 @@ type ScreengrabOptions = {
    */
   testInstrumentationRunner?: string;
   /**
-   * Return the device to this locale after running tests
+   * **DEPRECATED!** Return the device to this locale after running tests
    */
   endingLocale?: string;
   /**
-   * Restarts the adb daemon using `adb root` to allow access to screenshots directories on device. Use if getting 'Permission denied' errors
+   * **DEPRECATED!** Restarts the adb daemon using `adb root` to allow access to screenshots directories on device. Use if getting 'Permission denied' errors
    */
-  useAdbRoot: boolean;
+  useAdbRoot?: boolean;
   /**
    * The path to the APK for the app under test
    */
@@ -7790,7 +7790,7 @@ type SetBuildNumberRepositoryOptions = {
   /**
    * Use hg revision number instead of hash (ignored for non-hg repos)
    */
-  useHgRevisionNumber?: any;
+  useHgRevisionNumber?: boolean;
   /**
    * explicitly specify which xcodeproj to use
    */
@@ -7828,7 +7828,7 @@ type SetChangelogOptions = {
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
-  teamId?: any;
+  teamId?: string;
   /**
    * The name of your App Store Connect team if you're in multiple teams
    */
@@ -7878,11 +7878,11 @@ type SetGithubReleaseOptions = {
   /**
    * Whether the release should be marked as draft
    */
-  isDraft?: any;
+  isDraft?: boolean;
   /**
    * Whether the release should be marked as prerelease
    */
-  isPrerelease?: any;
+  isPrerelease?: boolean;
   /**
    * Path to assets to be uploaded with the release
    */
@@ -7904,7 +7904,7 @@ type SetInfoPlistValueOptions = {
   /**
    * Value to setup
    */
-  value: any;
+  value: string;
   /**
    * Path to plist file you want to update
    */
@@ -7922,7 +7922,7 @@ type SetPodKeyOptions = {
   /**
    * Use bundle exec when there is a Gemfile presented
    */
-  useBundleExec: any;
+  useBundleExec: boolean;
   /**
    * The key to be saved with cocoapods-keys
    */
@@ -7944,7 +7944,7 @@ type SetupCiOptions = {
   /**
    * Force setup, even if not executed by CI
    */
-  force: any;
+  force: boolean;
   /**
    * CI provider. If none is set, the provider is detected automatically
    */
@@ -7958,7 +7958,7 @@ type SetupCircleCiOptions = {
   /**
    * Force setup, even if not executed by CircleCI
    */
-  force: any;
+  force: boolean;
 };
 
 /** Shape for [[setupJenkins]] options argument
@@ -7968,19 +7968,19 @@ type SetupJenkinsOptions = {
   /**
    * Force setup, even if not executed by Jenkins
    */
-  force: any;
+  force: boolean;
   /**
    * Unlocks keychain
    */
-  unlockKeychain: any;
+  unlockKeychain: boolean;
   /**
-   * Add to keychain search list
+   * Add to keychain search list, valid values are true, false, :add, and :replace
    */
-  addKeychainToSearchList: any;
+  addKeychainToSearchList: string;
   /**
    * Set keychain as default
    */
-  setDefaultKeychain: any;
+  setDefaultKeychain: boolean;
   /**
    * Path to keychain
    */
@@ -7992,7 +7992,7 @@ type SetupJenkinsOptions = {
   /**
    * Set code signing identity from CODE_SIGNING_IDENTITY environment
    */
-  setCodeSigningIdentity: any;
+  setCodeSigningIdentity: boolean;
   /**
    * Code signing identity
    */
@@ -8008,7 +8008,7 @@ type SetupJenkinsOptions = {
   /**
    * Produce the result bundle describing what occurred will be placed
    */
-  resultBundle: any;
+  resultBundle: boolean;
 };
 
 /** Shape for [[setupTravis]] options argument
@@ -8018,7 +8018,7 @@ type SetupTravisOptions = {
   /**
    * Force setup, even if not executed by travis
    */
-  force: any;
+  force: boolean;
 };
 
 /** Shape for [[sh]] options argument
@@ -8032,7 +8032,7 @@ type ShOptions = {
   /**
    * Determines whether fastlane should print out the executed command itself and output of the executed command. If command line option --troubleshoot is used, then it overrides this option to true
    */
-  log?: any;
+  log?: boolean;
   /**
    * A callback invoked with the command output if there is a non-zero exit status
    */
@@ -8161,7 +8161,7 @@ type SlackOptions = {
   /**
    * Use webhook's default username and icon settings? (true/false)
    */
-  useWebhookConfiguredUsernameAndIcon?: any;
+  useWebhookConfiguredUsernameAndIcon?: boolean;
   /**
    * Create an Incoming WebHook for your Slack group
    */
@@ -8177,7 +8177,7 @@ type SlackOptions = {
   /**
    * Add additional information to this post. payload must be a hash containing any key with any value
    */
-  payload: any;
+  payload: { string: string };
   /**
    * Specifies default payloads to include. Pass an empty array to suppress all the default payloads
    */
@@ -8185,19 +8185,19 @@ type SlackOptions = {
   /**
    * Merge additional properties in the slack attachment, see https://api.slack.com/docs/attachments
    */
-  attachmentProperties: any;
+  attachmentProperties: { string: string };
   /**
    * Was this build successful? (true/false)
    */
-  success?: any;
+  success?: boolean;
   /**
    * Should an error sending the slack notification cause a failure? (true/false)
    */
-  failOnError?: any;
+  failOnError?: boolean;
   /**
    * Find and link channel names and usernames (true/false)
    */
-  linkNames?: any;
+  linkNames?: boolean;
 };
 
 /** Shape for [[slather]] options argument
@@ -8275,7 +8275,7 @@ type SlatherOptions = {
   /**
    * Tell slather that it should output results as llvm-cov show format
    */
-  llvmCov?: any;
+  llvmCov?: boolean;
   /**
    * Tell slather that it should output results as static JSON report
    */
@@ -8323,11 +8323,11 @@ type SlatherOptions = {
   /**
    * A Dir.glob compatible pattern used to limit the lookup to specific source files. Ignored in gcov mode
    */
-  sourceFiles?: any;
+  sourceFiles?: string;
   /**
    * The amount of decimals to use for % coverage reporting
    */
-  decimals?: any;
+  decimals?: string;
 };
 
 /** Shape for [[snapshot]] options argument
@@ -8715,11 +8715,11 @@ type SplunkmintOptions = {
   /**
    * Make detailed output
    */
-  verbose?: any;
+  verbose?: boolean;
   /**
    * Show upload progress
    */
-  uploadProgress?: any;
+  uploadProgress?: boolean;
   /**
    * Proxy username
    */
@@ -8749,7 +8749,7 @@ type SpmOptions = {
   /**
    * Enables code coverage for the generated Xcode project when using the 'generate-xcodeproj' and the 'test' command
    */
-  enableCodeCoverage?: any;
+  enableCodeCoverage?: boolean;
   /**
    * Specify build/cache directory [default: ./.build]
    */
@@ -8769,7 +8769,7 @@ type SpmOptions = {
   /**
    * Disable using the sandbox when executing subprocesses
    */
-  disableSandbox?: any;
+  disableSandbox?: boolean;
   /**
    * Specifies the output type for xcpretty. eg. 'test', or 'simple'
    */
@@ -8781,7 +8781,7 @@ type SpmOptions = {
   /**
    * Increase verbosity of informational output
    */
-  verbose: any;
+  verbose: boolean;
 };
 
 /** Shape for [[ssh]] options argument
@@ -8811,7 +8811,7 @@ type SshOptions = {
   /**
    * Log commands and output
    */
-  log?: any;
+  log?: boolean;
 };
 
 /** Shape for [[supply]] options argument
@@ -9508,13 +9508,13 @@ type UnlockKeychainOptions = {
    */
   password: string;
   /**
-   * Add to keychain search list
+   * Add to keychain search list, valid values are true, false, :add, and :replace
    */
-  addToSearchList: any;
+  addToSearchList: string;
   /**
    * Set as default keychain
    */
-  setDefault: any;
+  setDefault: boolean;
 };
 
 /** Shape for [[updateAppGroupIdentifiers]] options argument
@@ -9528,7 +9528,7 @@ type UpdateAppGroupIdentifiersOptions = {
   /**
    * An Array of unique identifiers for the app groups. Eg. ['group.com.test.testapp']
    */
-  appGroupIdentifiers: any;
+  appGroupIdentifiers: string[];
 };
 
 /** Shape for [[updateAppIdentifier]] options argument
@@ -9560,7 +9560,7 @@ type UpdateCodeSigningSettingsOptions = {
   /**
    * Defines if project should use automatic signing
    */
-  useAutomaticSigning: any;
+  useAutomaticSigning: boolean;
   /**
    * Team ID, is used when upgrading project
    */
@@ -9598,11 +9598,11 @@ type UpdateFastlaneOptions = {
   /**
    * Don't update during this run. This is used internally
    */
-  noUpdate: any;
+  noUpdate: boolean;
   /**
    * **DEPRECATED!** Nightly builds are no longer being made available - Opt-in to install and use nightly fastlane builds
    */
-  nightly?: any;
+  nightly?: boolean;
 };
 
 /** Shape for [[updateIcloudContainerIdentifiers]] options argument
@@ -12108,7 +12108,7 @@ type convertedCaptureAndroidScreenshotsOptions = {
   launch_arguments?: string[];
   test_instrumentation_runner?: string;
   ending_locale?: string;
-  use_adb_root: boolean;
+  use_adb_root?: boolean;
   app_apk_path?: string;
   tests_apk_path?: string;
   specific_device?: string;
@@ -12129,7 +12129,6 @@ function convertCaptureAndroidScreenshotsOptions(
     output_directory: options.outputDirectory,
     skip_open_summary: options.skipOpenSummary,
     app_package_name: options.appPackageName,
-    use_adb_root: options.useAdbRoot,
     device_type: options.deviceType,
     exit_on_test_failure: options.exitOnTestFailure,
     reinstall_app: options.reinstallApp,
@@ -12151,6 +12150,8 @@ function convertCaptureAndroidScreenshotsOptions(
     temp["test_instrumentation_runner"] = options.testInstrumentationRunner;
   if (typeof options.endingLocale !== "undefined")
     temp["ending_locale"] = options.endingLocale;
+  if (typeof options.useAdbRoot !== "undefined")
+    temp["use_adb_root"] = options.useAdbRoot;
   if (typeof options.appApkPath !== "undefined")
     temp["app_apk_path"] = options.appApkPath;
   if (typeof options.testsApkPath !== "undefined")
@@ -15112,13 +15113,13 @@ function convertLastGitTagOptions(
 type convertedLatestTestflightBuildNumberOptions = {
   api_key_path?: string;
   api_key?: { string: string };
-  live?: any;
+  live?: boolean;
   app_identifier: string;
   username?: string;
   version?: string;
   platform?: string;
-  initial_build_number: any;
-  team_id?: any;
+  initial_build_number: string;
+  team_id?: string;
   team_name?: string;
 };
 /** @ignore Convert LatestTestflightBuildNumberOptions to the shape used by the Fastlane service
@@ -15176,12 +15177,12 @@ type convertedMailgunOptions = {
   from?: string;
   message: string;
   subject?: string;
-  success?: any;
+  success?: boolean;
   app_link: string;
   ci_build_link?: string;
   template_path?: string;
   reply_to?: string;
-  attachment?: any;
+  attachment?: string[];
   custom_placeholders: { string: string };
 };
 /** @ignore Convert MailgunOptions to the shape used by the Fastlane service
@@ -15220,7 +15221,7 @@ function convertMailgunOptions(
 /** @ignore */
 type convertedMakeChangelogFromJenkinsOptions = {
   fallback_changelog?: string;
-  include_commit_body?: any;
+  include_commit_body?: boolean;
 };
 /** @ignore Convert MakeChangelogFromJenkinsOptions to the shape used by the Fastlane service
  */
@@ -15529,9 +15530,9 @@ type convertedNexusUploadOptions = {
   mount_path?: string;
   username: string;
   password: string;
-  ssl_verify?: any;
+  ssl_verify?: boolean;
   nexus_version?: any;
-  verbose?: any;
+  verbose?: boolean;
   proxy_username?: string;
   proxy_password?: string;
   proxy_address?: string;
@@ -15654,7 +15655,7 @@ function convertNotifyOptions(options: NotifyOptions): convertedNotifyOptions {
 
 /** @ignore */
 type convertedNumberOfCommitsOptions = {
-  all?: any;
+  all?: boolean;
 };
 /** @ignore Convert NumberOfCommitsOptions to the shape used by the Fastlane service
  */
@@ -15670,22 +15671,22 @@ function convertNumberOfCommitsOptions(
 type convertedOclintOptions = {
   oclint_path?: string;
   compile_commands?: string;
-  select_reqex?: any;
-  select_regex?: any;
-  exclude_regex?: any;
+  select_reqex?: string;
+  select_regex?: string;
+  exclude_regex?: string;
   report_type?: string;
   report_path?: string;
-  list_enabled_rules: any;
+  list_enabled_rules: boolean;
   rc?: string;
-  thresholds?: any;
-  enable_rules?: any;
-  disable_rules?: any;
+  thresholds?: string[];
+  enable_rules?: string[];
+  disable_rules?: string[];
   max_priority_1?: any;
   max_priority_2?: any;
   max_priority_3?: any;
-  enable_clang_static_analyzer: any;
-  enable_global_analysis: any;
-  allow_duplicated_violations: any;
+  enable_clang_static_analyzer: boolean;
+  enable_global_analysis: boolean;
+  allow_duplicated_violations: boolean;
   extra_arg?: string;
 };
 /** @ignore Convert OclintOptions to the shape used by the Fastlane service
@@ -16223,8 +16224,8 @@ function convertProduceOptions(
 type convertedPromptOptions = {
   text: string;
   ci_input: string;
-  boolean: any;
-  secure_text: any;
+  boolean: boolean;
+  secure_text: boolean;
   multi_line_end_keyword?: string;
 };
 /** @ignore Convert PromptOptions to the shape used by the Fastlane service
@@ -16243,7 +16244,7 @@ function convertPromptOptions(options: PromptOptions): convertedPromptOptions {
 
 /** @ignore */
 type convertedPushGitTagsOptions = {
-  force?: any;
+  force?: boolean;
   remote?: string;
   tag?: string;
 };
@@ -16404,11 +16405,11 @@ function convertRegisterDevicesOptions(
 
 /** @ignore */
 type convertedResetGitRepoOptions = {
-  files?: any;
-  force: any;
-  skip_clean: any;
-  disregard_gitignore?: any;
-  exclude?: any;
+  files?: string[];
+  force: boolean;
+  skip_clean: boolean;
+  disregard_gitignore?: boolean;
+  exclude?: string;
 };
 /** @ignore Convert ResetGitRepoOptions to the shape used by the Fastlane service
  */
@@ -16448,13 +16449,13 @@ type convertedResignOptions = {
   ipa: string;
   signing_identity: string;
   entitlements?: string;
-  provisioning_profile: any;
+  provisioning_profile: string;
   version?: string;
   display_name?: string;
   short_version?: string;
   bundle_version?: string;
   bundle_id?: string;
-  use_app_entitlements?: any;
+  use_app_entitlements?: boolean;
   keychain_path?: string;
 };
 /** @ignore Convert ResignOptions to the shape used by the Fastlane service
@@ -16610,7 +16611,7 @@ type convertedRunTestsOptions = {
   disable_package_automatic_updates: boolean;
   use_system_scm?: boolean;
   number_of_retries: any;
-  fail_build: any;
+  fail_build: boolean;
 };
 /** @ignore Convert RunTestsOptions to the shape used by the Fastlane service
  */
@@ -16746,7 +16747,7 @@ function convertRunTestsOptions(
 type convertedS3Options = {
   ipa?: string;
   dsym?: string;
-  upload_metadata?: any;
+  upload_metadata?: boolean;
   plist_template_path?: string;
   plist_file_name?: string;
   html_template_path?: string;
@@ -16795,7 +16796,7 @@ function convertS3Options(options: S3Options): convertedS3Options {
 
 /** @ignore */
 type convertedSayOptions = {
-  text: any;
+  text: string[];
   mute: boolean;
 };
 /** @ignore Convert SayOptions to the shape used by the Fastlane service
@@ -16881,7 +16882,7 @@ type convertedScanOptions = {
   disable_package_automatic_updates: boolean;
   use_system_scm?: boolean;
   number_of_retries: any;
-  fail_build: any;
+  fail_build: boolean;
 };
 /** @ignore Convert ScanOptions to the shape used by the Fastlane service
  */
@@ -17051,7 +17052,7 @@ type convertedScreengrabOptions = {
   launch_arguments?: string[];
   test_instrumentation_runner?: string;
   ending_locale?: string;
-  use_adb_root: boolean;
+  use_adb_root?: boolean;
   app_apk_path?: string;
   tests_apk_path?: string;
   specific_device?: string;
@@ -17072,7 +17073,6 @@ function convertScreengrabOptions(
     output_directory: options.outputDirectory,
     skip_open_summary: options.skipOpenSummary,
     app_package_name: options.appPackageName,
-    use_adb_root: options.useAdbRoot,
     device_type: options.deviceType,
     exit_on_test_failure: options.exitOnTestFailure,
     reinstall_app: options.reinstallApp,
@@ -17094,6 +17094,8 @@ function convertScreengrabOptions(
     temp["test_instrumentation_runner"] = options.testInstrumentationRunner;
   if (typeof options.endingLocale !== "undefined")
     temp["ending_locale"] = options.endingLocale;
+  if (typeof options.useAdbRoot !== "undefined")
+    temp["use_adb_root"] = options.useAdbRoot;
   if (typeof options.appApkPath !== "undefined")
     temp["app_apk_path"] = options.appApkPath;
   if (typeof options.testsApkPath !== "undefined")
@@ -17107,7 +17109,7 @@ function convertScreengrabOptions(
 
 /** @ignore */
 type convertedSetBuildNumberRepositoryOptions = {
-  use_hg_revision_number?: any;
+  use_hg_revision_number?: boolean;
   xcodeproj?: string;
 };
 /** @ignore Convert SetBuildNumberRepositoryOptions to the shape used by the Fastlane service
@@ -17131,7 +17133,7 @@ type convertedSetChangelogOptions = {
   username?: string;
   version?: string;
   changelog?: string;
-  team_id?: any;
+  team_id?: string;
   team_name?: string;
   platform: string;
 };
@@ -17168,8 +17170,8 @@ type convertedSetGithubReleaseOptions = {
   name?: string;
   commitish?: string;
   description?: string;
-  is_draft?: any;
-  is_prerelease?: any;
+  is_draft?: boolean;
+  is_prerelease?: boolean;
   upload_assets?: string[];
 };
 /** @ignore Convert SetGithubReleaseOptions to the shape used by the Fastlane service
@@ -17205,7 +17207,7 @@ function convertSetGithubReleaseOptions(
 type convertedSetInfoPlistValueOptions = {
   key: string;
   subkey?: string;
-  value: any;
+  value: string;
   path: string;
   output_file_name?: string;
 };
@@ -17227,7 +17229,7 @@ function convertSetInfoPlistValueOptions(
 
 /** @ignore */
 type convertedSetPodKeyOptions = {
-  use_bundle_exec: any;
+  use_bundle_exec: boolean;
   key: string;
   value: string;
   project?: string;
@@ -17248,7 +17250,7 @@ function convertSetPodKeyOptions(
 
 /** @ignore */
 type convertedSetupCiOptions = {
-  force: any;
+  force: boolean;
   provider?: string;
 };
 /** @ignore Convert SetupCiOptions to the shape used by the Fastlane service
@@ -17266,7 +17268,7 @@ function convertSetupCiOptions(
 
 /** @ignore */
 type convertedSetupCircleCiOptions = {
-  force: any;
+  force: boolean;
 };
 /** @ignore Convert SetupCircleCiOptions to the shape used by the Fastlane service
  */
@@ -17282,17 +17284,17 @@ function convertSetupCircleCiOptions(
 
 /** @ignore */
 type convertedSetupJenkinsOptions = {
-  force: any;
-  unlock_keychain: any;
-  add_keychain_to_search_list: any;
-  set_default_keychain: any;
+  force: boolean;
+  unlock_keychain: boolean;
+  add_keychain_to_search_list: string;
+  set_default_keychain: boolean;
   keychain_path?: string;
   keychain_password: string;
-  set_code_signing_identity: any;
+  set_code_signing_identity: boolean;
   code_signing_identity?: string;
   output_directory: string;
   derived_data_path: string;
-  result_bundle: any;
+  result_bundle: boolean;
 };
 /** @ignore Convert SetupJenkinsOptions to the shape used by the Fastlane service
  */
@@ -17319,7 +17321,7 @@ function convertSetupJenkinsOptions(
 
 /** @ignore */
 type convertedSetupTravisOptions = {
-  force: any;
+  force: boolean;
 };
 /** @ignore Convert SetupTravisOptions to the shape used by the Fastlane service
  */
@@ -17336,7 +17338,7 @@ function convertSetupTravisOptions(
 /** @ignore */
 type convertedShOptions = {
   command: string;
-  log?: any;
+  log?: boolean;
   error_callback?: any;
 };
 /** @ignore Convert ShOptions to the shape used by the Fastlane service
@@ -17436,16 +17438,16 @@ type convertedSlackOptions = {
   message?: string;
   pretext?: string;
   channel?: string;
-  use_webhook_configured_username_and_icon?: any;
+  use_webhook_configured_username_and_icon?: boolean;
   slack_url: string;
   username?: string;
   icon_url?: string;
-  payload: any;
+  payload: { string: string };
   default_payloads: string[];
-  attachment_properties: any;
-  success?: any;
-  fail_on_error?: any;
-  link_names?: any;
+  attachment_properties: { string: string };
+  success?: boolean;
+  fail_on_error?: boolean;
+  link_names?: boolean;
 };
 /** @ignore Convert SlackOptions to the shape used by the Fastlane service
  */
@@ -17493,7 +17495,7 @@ type convertedSlatherOptions = {
   gutter_json?: boolean;
   cobertura_xml?: boolean;
   sonarqube_xml?: boolean;
-  llvm_cov?: any;
+  llvm_cov?: boolean;
   json?: boolean;
   html?: boolean;
   show: boolean;
@@ -17505,8 +17507,8 @@ type convertedSlatherOptions = {
   binary_basename?: string[];
   binary_file?: string[];
   arch?: string;
-  source_files?: any;
-  decimals?: any;
+  source_files?: string;
+  decimals?: string;
 };
 /** @ignore Convert SlatherOptions to the shape used by the Fastlane service
  */
@@ -17857,8 +17859,8 @@ type convertedSplunkmintOptions = {
   dsym?: string;
   api_key: string;
   api_token: string;
-  verbose?: any;
-  upload_progress?: any;
+  verbose?: boolean;
+  upload_progress?: boolean;
   proxy_username?: string;
   proxy_password?: string;
   proxy_address?: string;
@@ -17891,15 +17893,15 @@ function convertSplunkmintOptions(
 /** @ignore */
 type convertedSpmOptions = {
   command: string;
-  enable_code_coverage?: any;
+  enable_code_coverage?: boolean;
   build_path?: string;
   package_path?: string;
   xcconfig?: string;
   configuration?: string;
-  disable_sandbox?: any;
+  disable_sandbox?: boolean;
   xcpretty_output?: string;
   xcpretty_args?: string;
-  verbose: any;
+  verbose: boolean;
 };
 /** @ignore Convert SpmOptions to the shape used by the Fastlane service
  */
@@ -17934,7 +17936,7 @@ type convertedSshOptions = {
   host: string;
   port?: string;
   commands?: string[];
-  log?: any;
+  log?: boolean;
 };
 /** @ignore Convert SshOptions to the shape used by the Fastlane service
  */
@@ -18480,8 +18482,8 @@ function convertTypetalkOptions(
 type convertedUnlockKeychainOptions = {
   path: string;
   password: string;
-  add_to_search_list: any;
-  set_default: any;
+  add_to_search_list: string;
+  set_default: boolean;
 };
 /** @ignore Convert UnlockKeychainOptions to the shape used by the Fastlane service
  */
@@ -18501,7 +18503,7 @@ function convertUnlockKeychainOptions(
 /** @ignore */
 type convertedUpdateAppGroupIdentifiersOptions = {
   entitlements_file: string;
-  app_group_identifiers: any;
+  app_group_identifiers: string[];
 };
 /** @ignore Convert UpdateAppGroupIdentifiersOptions to the shape used by the Fastlane service
  */
@@ -18539,7 +18541,7 @@ function convertUpdateAppIdentifierOptions(
 /** @ignore */
 type convertedUpdateCodeSigningSettingsOptions = {
   path: string;
-  use_automatic_signing: any;
+  use_automatic_signing: boolean;
   team_id?: string;
   targets?: string[];
   build_configurations?: string[];
@@ -18574,8 +18576,8 @@ function convertUpdateCodeSigningSettingsOptions(
 
 /** @ignore */
 type convertedUpdateFastlaneOptions = {
-  no_update: any;
-  nightly?: any;
+  no_update: boolean;
+  nightly?: boolean;
 };
 /** @ignore Convert UpdateFastlaneOptions to the shape used by the Fastlane service
  */
