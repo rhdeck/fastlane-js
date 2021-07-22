@@ -347,7 +347,7 @@ type AppledocOptions = {
   /**
    * Path(s) to source file directories or individual source files. Accepts a single path or an array of paths
    */
-  input: any;
+  input: string[];
   /**
    * Output path
    */
@@ -367,11 +367,11 @@ type AppledocOptions = {
   /**
    * Ignore given path
    */
-  ignore?: any;
+  ignore?: string[];
   /**
    * Exclude given path from output
    */
-  excludeOutput?: any;
+  excludeOutput?: string[];
   /**
    * File including main index description
    */
@@ -395,23 +395,23 @@ type AppledocOptions = {
   /**
    * Create HTML
    */
-  createHtml: any;
+  createHtml: boolean;
   /**
    * Create documentation set
    */
-  createDocset: any;
+  createDocset: boolean;
   /**
    * Install documentation set to Xcode
    */
-  installDocset: any;
+  installDocset: boolean;
   /**
    * Prepare DocSet for publishing
    */
-  publishDocset: any;
+  publishDocset: boolean;
   /**
    * Create HTML and skip creating a DocSet
    */
-  noCreateDocset: any;
+  noCreateDocset: boolean;
   /**
    * The html anchor format to use in DocSet HTML
    */
@@ -419,7 +419,7 @@ type AppledocOptions = {
   /**
    * Remove contents of output path before starting
    */
-  cleanOutput: any;
+  cleanOutput: boolean;
   /**
    * DocSet bundle identifier
    */
@@ -523,7 +523,7 @@ type AppledocOptions = {
   /**
    * Log verbosity level [0-6,xcode]
    */
-  verbose?: any;
+  verbose?: string;
 };
 
 /** Shape for [[appstore]] options argument
@@ -9616,7 +9616,7 @@ type UpdateIcloudContainerIdentifiersOptions = {
   /**
    * An Array of unique identifiers for the iCloud containers. Eg. ['iCloud.com.test.testapp']
    */
-  icloudContainerIdentifiers: any;
+  icloudContainerIdentifiers: string[];
 };
 
 /** Shape for [[updateInfoPlist]] options argument
@@ -9660,7 +9660,7 @@ type UpdateKeychainAccessGroupsOptions = {
   /**
    * An Array of unique identifiers for the keychain access groups. Eg. ['your.keychain.access.groups.identifiers']
    */
-  identifiers: any;
+  identifiers: string[];
 };
 
 /** Shape for [[updatePlist]] options argument
@@ -9710,7 +9710,7 @@ type UpdateProjectProvisioningOptions = {
   /**
    * A filter for the target name. Use a standard regex
    */
-  targetFilter?: any;
+  targetFilter?: string;
   /**
    * Legacy option, use 'target_filter' instead
    */
@@ -9718,7 +9718,7 @@ type UpdateProjectProvisioningOptions = {
   /**
    * A filter for the build configuration name. Use a standard regex. Applied to all configurations if not specified
    */
-  buildConfiguration?: any;
+  buildConfiguration?: string;
   /**
    * Path to apple root certificate
    */
@@ -9788,7 +9788,7 @@ type UpdateUrlSchemesOptions = {
   /**
    * The new URL schemes
    */
-  urlSchemes?: any;
+  urlSchemes?: string[];
   /**
    * Block that is called to update schemes with current schemes passed in as parameter
    */
@@ -9810,7 +9810,7 @@ type UploadAppPrivacyDetailsToAppStoreOptions = {
   /**
    * The ID of your App Store Connect team if you're in multiple teams
    */
-  teamId?: any;
+  teamId?: string;
   /**
    * The name of your App Store Connect team if you're in multiple teams
    */
@@ -9910,7 +9910,7 @@ type UploadSymbolsToSentryOptions = {
   /**
    * Path to an array of your symbols file. For iOS and Mac provide path to app.dSYM.zip
    */
-  dsymPaths?: any;
+  dsymPaths?: string[];
 };
 
 /** Shape for [[uploadToAppStore]] options argument
@@ -10625,7 +10625,7 @@ type VersionGetPodspecOptions = {
   /**
    * true by default, this is used for non CocoaPods version bumps only
    */
-  requireVariablePrefix: any;
+  requireVariablePrefix: boolean;
 };
 
 /** Shape for [[xcarchive]] options argument
@@ -10706,11 +10706,11 @@ type XcodeServerGetAssetsOptions = {
   /**
    * Whether to keep all assets or let the script delete everything except for the .xcarchive
    */
-  keepAllAssets?: any;
+  keepAllAssets?: boolean;
   /**
    * Whether to trust self-signed certs on your Xcode Server
    */
-  trustSelfSignedCerts?: any;
+  trustSelfSignedCerts?: boolean;
 };
 
 /** Shape for [[xcodebuild]] options argument
@@ -11058,25 +11058,25 @@ function convertAppiumOptions(options: AppiumOptions): convertedAppiumOptions {
 
 /** @ignore */
 type convertedAppledocOptions = {
-  input: any;
+  input: string[];
   output?: string;
   templates?: string;
   docset_install_path?: string;
   include?: string;
-  ignore?: any;
-  exclude_output?: any;
+  ignore?: string[];
+  exclude_output?: string[];
   index_desc?: string;
   project_name: string;
   project_version?: string;
   project_company: string;
   company_id?: string;
-  create_html: any;
-  create_docset: any;
-  install_docset: any;
-  publish_docset: any;
-  no_create_docset: any;
+  create_html: boolean;
+  create_docset: boolean;
+  install_docset: boolean;
+  publish_docset: boolean;
+  no_create_docset: boolean;
   html_anchors?: string;
-  clean_output: any;
+  clean_output: boolean;
   docset_bundle_id?: string;
   docset_bundle_name?: string;
   docset_desc?: string;
@@ -11102,7 +11102,7 @@ type convertedAppledocOptions = {
   docs_section_title?: string;
   warnings?: string;
   logformat?: any;
-  verbose?: any;
+  verbose?: string;
 };
 /** @ignore Convert AppledocOptions to the shape used by the Fastlane service
  */
@@ -18594,7 +18594,7 @@ function convertUpdateFastlaneOptions(
 /** @ignore */
 type convertedUpdateIcloudContainerIdentifiersOptions = {
   entitlements_file: string;
-  icloud_container_identifiers: any;
+  icloud_container_identifiers: string[];
 };
 /** @ignore Convert UpdateIcloudContainerIdentifiersOptions to the shape used by the Fastlane service
  */
@@ -18640,7 +18640,7 @@ function convertUpdateInfoPlistOptions(
 /** @ignore */
 type convertedUpdateKeychainAccessGroupsOptions = {
   entitlements_file: string;
-  identifiers: any;
+  identifiers: string[];
 };
 /** @ignore Convert UpdateKeychainAccessGroupsOptions to the shape used by the Fastlane service
  */
@@ -18696,9 +18696,9 @@ function convertUpdateProjectCodeSigningOptions(
 type convertedUpdateProjectProvisioningOptions = {
   xcodeproj?: string;
   profile: string;
-  target_filter?: any;
+  target_filter?: string;
   build_configuration_filter?: string;
-  build_configuration?: any;
+  build_configuration?: string;
   certificate: string;
   code_signing_identity?: string;
 };
@@ -18776,7 +18776,7 @@ function convertUpdateUrbanAirshipConfigurationOptions(
 /** @ignore */
 type convertedUpdateUrlSchemesOptions = {
   path: string;
-  url_schemes?: any;
+  url_schemes?: string[];
   update_url_schemes?: any;
 };
 /** @ignore Convert UpdateUrlSchemesOptions to the shape used by the Fastlane service
@@ -18798,7 +18798,7 @@ function convertUpdateUrlSchemesOptions(
 type convertedUploadAppPrivacyDetailsToAppStoreOptions = {
   username: string;
   app_identifier: string;
-  team_id?: any;
+  team_id?: string;
   team_name?: string;
   json_path?: string;
   output_json_path: string;
@@ -18872,7 +18872,7 @@ type convertedUploadSymbolsToSentryOptions = {
   org_slug: string;
   project_slug: string;
   dsym_path?: string;
-  dsym_paths?: any;
+  dsym_paths?: string[];
 };
 /** @ignore Convert UploadSymbolsToSentryOptions to the shape used by the Fastlane service
  */
@@ -19455,7 +19455,7 @@ function convertVersionBumpPodspecOptions(
 /** @ignore */
 type convertedVersionGetPodspecOptions = {
   path: string;
-  require_variable_prefix: any;
+  require_variable_prefix: boolean;
 };
 /** @ignore Convert VersionGetPodspecOptions to the shape used by the Fastlane service
  */
@@ -19559,8 +19559,8 @@ type convertedXcodeServerGetAssetsOptions = {
   username?: string;
   password?: string;
   target_folder?: string;
-  keep_all_assets?: any;
-  trust_self_signed_certs?: any;
+  keep_all_assets?: boolean;
+  trust_self_signed_certs?: boolean;
 };
 /** @ignore Convert XcodeServerGetAssetsOptions to the shape used by the Fastlane service
  */
