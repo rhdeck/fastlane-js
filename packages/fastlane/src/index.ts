@@ -2477,11 +2477,11 @@ type CheckAppStoreMetadataOptions = {
   /**
    * Should check in-app purchases?
    */
-  includeInAppPurchases?: any;
+  includeInAppPurchases?: boolean;
   /**
    * Should force check live app?
    */
-  useLive: any;
+  useLive: boolean;
   /**
    * mentioning  in a way that could be considered negative
    */
@@ -6536,11 +6536,11 @@ type PrecheckOptions = {
   /**
    * Should check in-app purchases?
    */
-  includeInAppPurchases?: any;
+  includeInAppPurchases?: boolean;
   /**
    * Should force check live app?
    */
-  useLive: any;
+  useLive: boolean;
   /**
    * mentioning  in a way that could be considered negative
    */
@@ -7008,6 +7008,10 @@ type RunTestsOptions = {
    */
   project?: string;
   /**
+   * Path to the Swift Package
+   */
+  packagePath?: string;
+  /**
    * The project's scheme. Make sure it's marked as `Shared`
    */
   scheme?: string;
@@ -7381,6 +7385,10 @@ type ScanOptions = {
    * Path to the project file
    */
   project?: string;
+  /**
+   * Path to the Swift Package
+   */
+  packagePath?: string;
   /**
    * The project's scheme. Make sure it's marked as `Shared`
    */
@@ -8939,6 +8947,10 @@ type SupplyOptions = {
    */
   versionCodesToRetain?: string[];
   /**
+   * Indicates that the changes in this edit will not be reviewed until they are explicitly sent for review from the Google Play Console UI
+   */
+  changesNotSentForReview: boolean;
+  /**
    * In-app update priority for all the newly added apks in the release. Can take values between [0,5]
    */
   inAppUpdatePriority?: any;
@@ -10291,6 +10303,10 @@ type UploadToPlayStoreOptions = {
    * An array of version codes to retain when publishing a new APK
    */
   versionCodesToRetain?: string[];
+  /**
+   * Indicates that the changes in this edit will not be reviewed until they are explicitly sent for review from the Google Play Console UI
+   */
+  changesNotSentForReview: boolean;
   /**
    * In-app update priority for all the newly added apks in the release. Can take values between [0,5]
    */
@@ -12621,8 +12637,8 @@ type convertedCheckAppStoreMetadataOptions = {
   team_name?: string;
   platform?: string;
   default_rule_level: any;
-  include_in_app_purchases?: any;
-  use_live: any;
+  include_in_app_purchases?: boolean;
+  use_live: boolean;
   negative_apple_sentiment?: any;
   placeholder_text?: any;
   other_platforms?: any;
@@ -16087,8 +16103,8 @@ type convertedPrecheckOptions = {
   team_name?: string;
   platform?: string;
   default_rule_level: any;
-  include_in_app_purchases?: any;
-  use_live: any;
+  include_in_app_purchases?: boolean;
+  use_live: boolean;
   negative_apple_sentiment?: any;
   placeholder_text?: any;
   other_platforms?: any;
@@ -16543,6 +16559,7 @@ function convertRubyVersionOptions(
 type convertedRunTestsOptions = {
   workspace?: string;
   project?: string;
+  package_path?: string;
   scheme?: string;
   device?: string;
   devices?: string[];
@@ -16642,6 +16659,8 @@ function convertRunTestsOptions(
   if (typeof options.workspace !== "undefined")
     temp["workspace"] = options.workspace;
   if (typeof options.project !== "undefined") temp["project"] = options.project;
+  if (typeof options.packagePath !== "undefined")
+    temp["package_path"] = options.packagePath;
   if (typeof options.scheme !== "undefined") temp["scheme"] = options.scheme;
   if (typeof options.device !== "undefined") temp["device"] = options.device;
   if (typeof options.devices !== "undefined") temp["devices"] = options.devices;
@@ -16814,6 +16833,7 @@ function convertSayOptions(options: SayOptions): convertedSayOptions {
 type convertedScanOptions = {
   workspace?: string;
   project?: string;
+  package_path?: string;
   scheme?: string;
   device?: string;
   devices?: string[];
@@ -16911,6 +16931,8 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
   if (typeof options.workspace !== "undefined")
     temp["workspace"] = options.workspace;
   if (typeof options.project !== "undefined") temp["project"] = options.project;
+  if (typeof options.packagePath !== "undefined")
+    temp["package_path"] = options.packagePath;
   if (typeof options.scheme !== "undefined") temp["scheme"] = options.scheme;
   if (typeof options.device !== "undefined") temp["device"] = options.device;
   if (typeof options.devices !== "undefined") temp["devices"] = options.devices;
@@ -17986,6 +18008,7 @@ type convertedSupplyOptions = {
   timeout?: any;
   deactivate_on_promote?: boolean;
   version_codes_to_retain?: string[];
+  changes_not_sent_for_review: boolean;
   in_app_update_priority?: any;
   obb_main_references_version?: any;
   obb_main_file_size?: any;
@@ -17999,6 +18022,7 @@ function convertSupplyOptions(options: SupplyOptions): convertedSupplyOptions {
   const temp: convertedSupplyOptions = {
     package_name: options.packageName,
     track: options.track,
+    changes_not_sent_for_review: options.changesNotSentForReview,
   };
   if (typeof options.versionName !== "undefined")
     temp["version_name"] = options.versionName;
@@ -19111,6 +19135,7 @@ type convertedUploadToPlayStoreOptions = {
   timeout?: any;
   deactivate_on_promote?: boolean;
   version_codes_to_retain?: string[];
+  changes_not_sent_for_review: boolean;
   in_app_update_priority?: any;
   obb_main_references_version?: any;
   obb_main_file_size?: any;
@@ -19126,6 +19151,7 @@ function convertUploadToPlayStoreOptions(
   const temp: convertedUploadToPlayStoreOptions = {
     package_name: options.packageName,
     track: options.track,
+    changes_not_sent_for_review: options.changesNotSentForReview,
   };
   if (typeof options.versionName !== "undefined")
     temp["version_name"] = options.versionName;
