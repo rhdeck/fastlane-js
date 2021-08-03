@@ -1710,6 +1710,14 @@ type BundleInstallOptions = {
    * Include gems that are part of the specified named group
    */
   with?: string;
+  /**
+   * Don't allow the Gemfile.lock to be updated after install
+   */
+  frozen: boolean;
+  /**
+   * Force download every gem, even if the required versions are already available locally
+   */
+  redownload: boolean;
 };
 
 /** Shape for [[captureAndroidScreenshots]] options argument
@@ -2542,6 +2550,22 @@ type CleanCocoapodsCacheOptions = {
    * Pod name to be removed from cache
    */
   name?: string;
+  /**
+   * Show output without ANSI codes
+   */
+  noAnsi: boolean;
+  /**
+   * Show more debugging information
+   */
+  verbose: boolean;
+  /**
+   * Show nothing
+   */
+  silent: boolean;
+  /**
+   * Allows CocoaPods to run as root
+   */
+  allowRoot: boolean;
 };
 
 /** Shape for [[clearDerivedData]] options argument
@@ -10783,6 +10807,14 @@ type ZipOptions = {
    * Store symbolic links as such in the zip archive
    */
   symlinks?: boolean;
+  /**
+   * Array of paths or patterns to include
+   */
+  include?: string[];
+  /**
+   * Array of paths or patterns to exclude
+   */
+  exclude?: string[];
 };
 
 /** @ignore */
@@ -12077,6 +12109,8 @@ type convertedBundleInstallOptions = {
   trust_policy?: string;
   without?: string;
   with?: string;
+  frozen: boolean;
+  redownload: boolean;
 };
 /** @ignore Convert BundleInstallOptions to the shape used by the Fastlane service
  */
@@ -12092,6 +12126,8 @@ function convertBundleInstallOptions(
     no_prune: options.noPrune,
     system: options.system,
     quiet: options.quiet,
+    frozen: options.frozen,
+    redownload: options.redownload,
   };
   if (typeof options.binstubs !== "undefined")
     temp["binstubs"] = options.binstubs;
@@ -12713,13 +12749,22 @@ function convertCleanBuildArtifactsOptions(
 /** @ignore */
 type convertedCleanCocoapodsCacheOptions = {
   name?: string;
+  no_ansi: boolean;
+  verbose: boolean;
+  silent: boolean;
+  allow_root: boolean;
 };
 /** @ignore Convert CleanCocoapodsCacheOptions to the shape used by the Fastlane service
  */
 function convertCleanCocoapodsCacheOptions(
   options: CleanCocoapodsCacheOptions
 ): convertedCleanCocoapodsCacheOptions {
-  const temp: convertedCleanCocoapodsCacheOptions = {};
+  const temp: convertedCleanCocoapodsCacheOptions = {
+    no_ansi: options.noAnsi,
+    verbose: options.verbose,
+    silent: options.silent,
+    allow_root: options.allowRoot,
+  };
   if (typeof options.name !== "undefined") temp["name"] = options.name;
   return temp;
 }
@@ -19677,6 +19722,8 @@ type convertedZipOptions = {
   verbose?: boolean;
   password?: string;
   symlinks?: boolean;
+  include?: string[];
+  exclude?: string[];
 };
 /** @ignore Convert ZipOptions to the shape used by the Fastlane service
  */
@@ -19691,6 +19738,8 @@ function convertZipOptions(options: ZipOptions): convertedZipOptions {
     temp["password"] = options.password;
   if (typeof options.symlinks !== "undefined")
     temp["symlinks"] = options.symlinks;
+  if (typeof options.include !== "undefined") temp["include"] = options.include;
+  if (typeof options.exclude !== "undefined") temp["exclude"] = options.exclude;
   return temp;
 }
 /** Main Class
