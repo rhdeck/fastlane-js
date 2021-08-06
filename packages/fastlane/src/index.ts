@@ -607,6 +607,10 @@ type AppstoreOptions = {
    */
   overwriteScreenshots: boolean;
   /**
+   * Sync screenshots with local ones. This is currently beta optionso set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well
+   */
+  syncScreenshots: boolean;
+  /**
    * Submit the new version for Review after uploading everything
    */
   submitForReview: boolean;
@@ -3224,6 +3228,10 @@ type DeliverOptions = {
    * Clear all previously uploaded screenshots before uploading the new ones
    */
   overwriteScreenshots: boolean;
+  /**
+   * Sync screenshots with local ones. This is currently beta optionso set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well
+   */
+  syncScreenshots: boolean;
   /**
    * Submit the new version for Review after uploading everything
    */
@@ -10030,6 +10038,10 @@ type UploadToAppStoreOptions = {
    */
   overwriteScreenshots: boolean;
   /**
+   * Sync screenshots with local ones. This is currently beta optionso set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well
+   */
+  syncScreenshots: boolean;
+  /**
    * Submit the new version for Review after uploading everything
    */
   submitForReview: boolean;
@@ -11259,6 +11271,7 @@ type convertedAppstoreOptions = {
   skip_app_version_update: boolean;
   force: boolean;
   overwrite_screenshots: boolean;
+  sync_screenshots: boolean;
   submit_for_review: boolean;
   reject_if_possible: boolean;
   automatic_release?: boolean;
@@ -11316,6 +11329,7 @@ function convertAppstoreOptions(
     skip_app_version_update: options.skipAppVersionUpdate,
     force: options.force,
     overwrite_screenshots: options.overwriteScreenshots,
+    sync_screenshots: options.syncScreenshots,
     submit_for_review: options.submitForReview,
     reject_if_possible: options.rejectIfPossible,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
@@ -13289,6 +13303,7 @@ type convertedDeliverOptions = {
   skip_app_version_update: boolean;
   force: boolean;
   overwrite_screenshots: boolean;
+  sync_screenshots: boolean;
   submit_for_review: boolean;
   reject_if_possible: boolean;
   automatic_release?: boolean;
@@ -13346,6 +13361,7 @@ function convertDeliverOptions(
     skip_app_version_update: options.skipAppVersionUpdate,
     force: options.force,
     overwrite_screenshots: options.overwriteScreenshots,
+    sync_screenshots: options.syncScreenshots,
     submit_for_review: options.submitForReview,
     reject_if_possible: options.rejectIfPossible,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
@@ -18985,6 +19001,7 @@ type convertedUploadToAppStoreOptions = {
   skip_app_version_update: boolean;
   force: boolean;
   overwrite_screenshots: boolean;
+  sync_screenshots: boolean;
   submit_for_review: boolean;
   reject_if_possible: boolean;
   automatic_release?: boolean;
@@ -19042,6 +19059,7 @@ function convertUploadToAppStoreOptions(
     skip_app_version_update: options.skipAppVersionUpdate,
     force: options.force,
     overwrite_screenshots: options.overwriteScreenshots,
+    sync_screenshots: options.syncScreenshots,
     submit_for_review: options.submitForReview,
     reject_if_possible: options.rejectIfPossible,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
