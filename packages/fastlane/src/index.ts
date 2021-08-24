@@ -3053,13 +3053,21 @@ type CreatePullRequestOptions = {
 
 type CreateXcframeworkOptions = {
   /**
-   * Frameworks to add to the target xcframework
+   * Frameworks (without dSYMs) to add to the target xcframework
    */
   frameworks?: string[];
   /**
-   * Libraries to add to the target xcframework, with their corresponding headers
+   * Frameworks (with dSYMs) to add to the target xcframework
    */
-  libraries?: { string: string };
+  frameworksWithDsyms?: { string: string };
+  /**
+   * Libraries (without headers or dSYMs) to add to the target xcframework
+   */
+  libraries?: string[];
+  /**
+   * Libraries (with headers or dSYMs) to add to the target xcframework
+   */
+  librariesWithHeadersOrDsyms?: { string: string };
   /**
    * The path to write the xcframework to
    */
@@ -5914,6 +5922,10 @@ type NotarizeOptions = {
    * Path to package to notarize, e.g. .app bundle or disk image
    */
   package: string;
+  /**
+   * Whether to `xcrun notarytool` or `xcrun altool`
+   */
+  useNotarytool: boolean;
   /**
    * Whether to try early stapling while the notarization request is in progress
    */
@@ -8983,6 +8995,10 @@ type SupplyOptions = {
    */
   changesNotSentForReview: boolean;
   /**
+   * Catches changes_not_sent_for_review errors when an edit is committed and retries with the configuration that the error message recommended
+   */
+  rescueChangesNotSentForReview: boolean;
+  /**
    * In-app update priority for all the newly added apks in the release. Can take values between [0,5]
    */
   inAppUpdatePriority?: any;
@@ -10343,6 +10359,10 @@ type UploadToPlayStoreOptions = {
    * Indicates that the changes in this edit will not be reviewed until they are explicitly sent for review from the Google Play Console UI
    */
   changesNotSentForReview: boolean;
+  /**
+   * Catches changes_not_sent_for_review errors when an edit is committed and retries with the configuration that the error message recommended
+   */
+  rescueChangesNotSentForReview: boolean;
   /**
    * In-app update priority for all the newly added apks in the release. Can take values between [0,5]
    */
@@ -13181,7 +13201,9 @@ function convertCreatePullRequestOptions(
 /** @ignore */
 type convertedCreateXcframeworkOptions = {
   frameworks?: string[];
-  libraries?: { string: string };
+  frameworks_with_dsyms?: { string: string };
+  libraries?: string[];
+  libraries_with_headers_or_dsyms?: { string: string };
   output: string;
   allow_internal_distribution?: boolean;
 };
@@ -13195,8 +13217,13 @@ function convertCreateXcframeworkOptions(
   };
   if (typeof options.frameworks !== "undefined")
     temp["frameworks"] = options.frameworks;
+  if (typeof options.frameworksWithDsyms !== "undefined")
+    temp["frameworks_with_dsyms"] = options.frameworksWithDsyms;
   if (typeof options.libraries !== "undefined")
     temp["libraries"] = options.libraries;
+  if (typeof options.librariesWithHeadersOrDsyms !== "undefined")
+    temp["libraries_with_headers_or_dsyms"] =
+      options.librariesWithHeadersOrDsyms;
   if (typeof options.allowInternalDistribution !== "undefined")
     temp["allow_internal_distribution"] = options.allowInternalDistribution;
   return temp;
@@ -15653,6 +15680,7 @@ function convertNexusUploadOptions(
 /** @ignore */
 type convertedNotarizeOptions = {
   package: string;
+  use_notarytool: boolean;
   try_early_stapling?: boolean;
   bundle_id?: string;
   username?: string;
@@ -15668,6 +15696,7 @@ function convertNotarizeOptions(
 ): convertedNotarizeOptions {
   const temp: convertedNotarizeOptions = {
     package: options.package,
+    use_notarytool: options.useNotarytool,
   };
   if (typeof options.tryEarlyStapling !== "undefined")
     temp["try_early_stapling"] = options.tryEarlyStapling;
@@ -18070,6 +18099,7 @@ type convertedSupplyOptions = {
   deactivate_on_promote?: boolean;
   version_codes_to_retain?: string[];
   changes_not_sent_for_review: boolean;
+  rescue_changes_not_sent_for_review: boolean;
   in_app_update_priority?: any;
   obb_main_references_version?: any;
   obb_main_file_size?: any;
@@ -18084,6 +18114,7 @@ function convertSupplyOptions(options: SupplyOptions): convertedSupplyOptions {
     package_name: options.packageName,
     track: options.track,
     changes_not_sent_for_review: options.changesNotSentForReview,
+    rescue_changes_not_sent_for_review: options.rescueChangesNotSentForReview,
   };
   if (typeof options.versionName !== "undefined")
     temp["version_name"] = options.versionName;
@@ -19199,6 +19230,7 @@ type convertedUploadToPlayStoreOptions = {
   deactivate_on_promote?: boolean;
   version_codes_to_retain?: string[];
   changes_not_sent_for_review: boolean;
+  rescue_changes_not_sent_for_review: boolean;
   in_app_update_priority?: any;
   obb_main_references_version?: any;
   obb_main_file_size?: any;
@@ -19215,6 +19247,7 @@ function convertUploadToPlayStoreOptions(
     package_name: options.packageName,
     track: options.track,
     changes_not_sent_for_review: options.changesNotSentForReview,
+    rescue_changes_not_sent_for_review: options.rescueChangesNotSentForReview,
   };
   if (typeof options.versionName !== "undefined")
     temp["version_name"] = options.versionName;
@@ -20238,13 +20271,31 @@ For more information about _produce_, visit its documentation page: [https://doc
   /** Utility for packaging multiple build configurations of a given library
 or framework into a single xcframework.
 
-If you want to package several frameworks just provide an array containing
-the list of frameworks to be packaged using the :frameworks parameter.
+If you want to package several frameworks just provide one of:
 
-If you want to package several libraries with their corresponding headers
-provide a hash containing the library as the key and the directory containing
-its headers as the value (or an empty string if there are no headers associated
-with the provided library).
+  * An array containing the list of frameworks using the :frameworks parameter
+    (if they have no associated dSYMs):
+      ['FrameworkA.framework', 'FrameworkB.framework']
+
+  * A hash containing the list of frameworks with their dSYMs using the
+    :frameworks_with_dsyms parameter:
+      {
+        'FrameworkA.framework' => {},
+        'FrameworkB.framework' => { dsyms: 'FrameworkB.framework.dSYM' }
+      }
+
+If you want to package several libraries just provide one of:
+
+  * An array containing the list of libraries using the :libraries parameter
+    (if they have no associated headers or dSYMs):
+      ['LibraryA.so', 'LibraryB.so']
+
+  * A hash containing the list of libraries with their headers and dSYMs
+    using the :libraries_with_headers_or_dsyms parameter:
+      {
+        'LibraryA.so' => { dsyms: 'libraryA.so.dSYM' },
+        'LibraryB.so' => { headers: 'headers' }
+      }
 
 Finally specify the location of the xcframework to be generated using the :output
 parameter.
