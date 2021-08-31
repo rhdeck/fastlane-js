@@ -6242,6 +6242,10 @@ type PilotOptions = {
    */
   ipa?: string;
   /**
+   * Path to your pkg file
+   */
+  pkg?: string;
+  /**
    * Do you need a demo account when Apple does review?
    */
   demoAccountRequired?: boolean;
@@ -9369,6 +9373,10 @@ type TestflightOptions = {
    */
   ipa?: string;
   /**
+   * Path to your pkg file
+   */
+  pkg?: string;
+  /**
    * Do you need a demo account when Apple does review?
    */
   demoAccountRequired?: boolean;
@@ -10463,6 +10471,10 @@ type UploadToTestflightOptions = {
    * Path to the ipa file to upload
    */
   ipa?: string;
+  /**
+   * Path to your pkg file
+   */
+  pkg?: string;
   /**
    * Do you need a demo account when Apple does review?
    */
@@ -15949,6 +15961,7 @@ type convertedPilotOptions = {
   app_platform?: string;
   apple_id?: string;
   ipa?: string;
+  pkg?: string;
   demo_account_required?: boolean;
   beta_app_review_info?: { string: string };
   localized_app_info?: { string: string };
@@ -16005,6 +16018,7 @@ function convertPilotOptions(options: PilotOptions): convertedPilotOptions {
   if (typeof options.appleId !== "undefined")
     temp["apple_id"] = options.appleId;
   if (typeof options.ipa !== "undefined") temp["ipa"] = options.ipa;
+  if (typeof options.pkg !== "undefined") temp["pkg"] = options.pkg;
   if (typeof options.demoAccountRequired !== "undefined")
     temp["demo_account_required"] = options.demoAccountRequired;
   if (typeof options.betaAppReviewInfo !== "undefined")
@@ -18427,6 +18441,7 @@ type convertedTestflightOptions = {
   app_platform?: string;
   apple_id?: string;
   ipa?: string;
+  pkg?: string;
   demo_account_required?: boolean;
   beta_app_review_info?: { string: string };
   localized_app_info?: { string: string };
@@ -18485,6 +18500,7 @@ function convertTestflightOptions(
   if (typeof options.appleId !== "undefined")
     temp["apple_id"] = options.appleId;
   if (typeof options.ipa !== "undefined") temp["ipa"] = options.ipa;
+  if (typeof options.pkg !== "undefined") temp["pkg"] = options.pkg;
   if (typeof options.demoAccountRequired !== "undefined")
     temp["demo_account_required"] = options.demoAccountRequired;
   if (typeof options.betaAppReviewInfo !== "undefined")
@@ -19359,6 +19375,7 @@ type convertedUploadToTestflightOptions = {
   app_platform?: string;
   apple_id?: string;
   ipa?: string;
+  pkg?: string;
   demo_account_required?: boolean;
   beta_app_review_info?: { string: string };
   localized_app_info?: { string: string };
@@ -19417,6 +19434,7 @@ function convertUploadToTestflightOptions(
   if (typeof options.appleId !== "undefined")
     temp["apple_id"] = options.appleId;
   if (typeof options.ipa !== "undefined") temp["ipa"] = options.ipa;
+  if (typeof options.pkg !== "undefined") temp["pkg"] = options.pkg;
   if (typeof options.demoAccountRequired !== "undefined")
     temp["demo_account_required"] = options.demoAccountRequired;
   if (typeof options.betaAppReviewInfo !== "undefined")
