@@ -5578,7 +5578,7 @@ type MatchOptions = {
    */
   force: boolean;
   /**
-   * Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile type 'appstore'
+   * Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile types 'appstore' and 'developer_id'
    */
   forceForNewDevices: boolean;
   /**
@@ -5760,7 +5760,7 @@ type MatchNukeOptions = {
    */
   force: boolean;
   /**
-   * Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile type 'appstore'
+   * Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile types 'appstore' and 'developer_id'
    */
   forceForNewDevices: boolean;
   /**
@@ -9223,7 +9223,7 @@ type SyncCodeSigningOptions = {
    */
   force: boolean;
   /**
-   * Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile type 'appstore'
+   * Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile types 'appstore' and 'developer_id'
    */
   forceForNewDevices: boolean;
   /**
