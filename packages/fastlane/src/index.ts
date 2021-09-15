@@ -93,7 +93,7 @@ type AppStoreBuildNumberOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -535,7 +535,7 @@ type AppstoreOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -2337,7 +2337,7 @@ type CertOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -2459,7 +2459,7 @@ type CheckAppStoreMetadataOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -3165,7 +3165,7 @@ type DeliverOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -3982,7 +3982,7 @@ type GetCertificatesOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -4124,7 +4124,7 @@ type GetProvisioningProfileOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -5302,7 +5302,7 @@ type LatestTestflightBuildNumberOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -5478,7 +5478,7 @@ type MatchOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -5660,7 +5660,7 @@ type MatchNukeOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -5951,9 +5951,13 @@ type NotarizeOptions = {
    */
   verbose?: boolean;
   /**
-   * Path to AppStore Connect API key
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
    */
   apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
+   */
+  apiKey?: { string: string };
 };
 
 /** Shape for [[notification]] options argument
@@ -6218,7 +6222,7 @@ type PilotOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -6554,7 +6558,7 @@ type PrecheckOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -6860,7 +6864,7 @@ type RegisterDeviceOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -6894,7 +6898,7 @@ type RegisterDevicesOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -7862,7 +7866,7 @@ type SetChangelogOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -8128,7 +8132,7 @@ type SighOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -8284,6 +8288,10 @@ type SlatherOptions = {
    * The input format that slather should look for
    */
   inputFormat?: string;
+  /**
+   * Tell slather that it is running on Github Actions
+   */
+  github?: boolean;
   /**
    * Tell slather that it is running on Buildkite
    */
@@ -9123,7 +9131,7 @@ type SyncCodeSigningOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -9349,7 +9357,7 @@ type TestflightOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -9990,7 +9998,7 @@ type UploadToAppStoreOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -10448,7 +10456,7 @@ type UploadToTestflightOptions = {
    */
   apiKeyPath?: string;
   /**
-   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-hash-option)
    */
   apiKey?: { string: string };
   /**
@@ -15700,6 +15708,7 @@ type convertedNotarizeOptions = {
   print_log?: boolean;
   verbose?: boolean;
   api_key_path?: string;
+  api_key?: { string: string };
 };
 /** @ignore Convert NotarizeOptions to the shape used by the Fastlane service
  */
@@ -15723,6 +15732,7 @@ function convertNotarizeOptions(
   if (typeof options.verbose !== "undefined") temp["verbose"] = options.verbose;
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   return temp;
 }
 
@@ -17610,6 +17620,7 @@ type convertedSlatherOptions = {
   scheme?: string;
   configuration?: string;
   input_format?: string;
+  github?: boolean;
   buildkite?: boolean;
   teamcity?: boolean;
   jenkins?: boolean;
@@ -17655,6 +17666,7 @@ function convertSlatherOptions(
     temp["configuration"] = options.configuration;
   if (typeof options.inputFormat !== "undefined")
     temp["input_format"] = options.inputFormat;
+  if (typeof options.github !== "undefined") temp["github"] = options.github;
   if (typeof options.buildkite !== "undefined")
     temp["buildkite"] = options.buildkite;
   if (typeof options.teamcity !== "undefined")
