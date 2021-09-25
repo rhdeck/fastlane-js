@@ -1887,7 +1887,7 @@ type CaptureIosScreenshotsOptions = {
    */
   headless: boolean;
   /**
-   * Enabling this option will automatically override the status bar to show 9:41 AM, full battery, and full reception
+   * Enabling this option will automatically override the status bar to show 9:41 AM, full battery, and full reception (Adjust 'SNAPSHOT_SIMULATOR_WAIT_FOR_BOOT_TIMEOUT' environment variable if override status bar is not working. Might be because simulator is not fully booted. Defaults to 10 seconds)
    */
   overrideStatusBar: any;
   /**
@@ -2085,7 +2085,7 @@ type CaptureScreenshotsOptions = {
    */
   headless: boolean;
   /**
-   * Enabling this option will automatically override the status bar to show 9:41 AM, full battery, and full reception
+   * Enabling this option will automatically override the status bar to show 9:41 AM, full battery, and full reception (Adjust 'SNAPSHOT_SIMULATOR_WAIT_FOR_BOOT_TIMEOUT' environment variable if override status bar is not working. Might be because simulator is not fully booted. Defaults to 10 seconds)
    */
   overrideStatusBar: any;
   /**
@@ -2768,56 +2768,6 @@ type CopyArtifactsOptions = {
    * Fail when a source file isn't found
    */
   failOnMissing?: boolean;
-};
-
-/** Shape for [[crashlytics]] options argument
- */
-
-type CrashlyticsOptions = {
-  /**
-   * Path to your IPA file. Optional if you use the _gym_ or _xcodebuild_ action
-   */
-  ipaPath?: string;
-  /**
-   * Path to your APK file
-   */
-  apkPath?: string;
-  /**
-   * Path to the submit binary in the Crashlytics bundle (iOS) or `crashlytics-devtools.jar` file (Android)
-   */
-  crashlyticsPath?: string;
-  /**
-   * Crashlytics API Key
-   */
-  apiToken: string;
-  /**
-   * Crashlytics Build Secret
-   */
-  buildSecret: string;
-  /**
-   * Path to the release notes
-   */
-  notesPath?: string;
-  /**
-   * The release notes as string - uses :notes_path under the hood
-   */
-  notes?: string;
-  /**
-   * The groups used for distribution, separated by commas
-   */
-  groups?: string[];
-  /**
-   * Pass email addresses of testers, separated by commas
-   */
-  emails?: string[];
-  /**
-   * Crashlytics notification option (true/false)
-   */
-  notifications: boolean;
-  /**
-   * Crashlytics debug option (true/false)
-   */
-  debug: boolean;
 };
 
 /** Shape for [[createAppOnManagedPlayStore]] options argument
@@ -4167,6 +4117,10 @@ type GetProvisioningProfileOptions = {
    * Skips the verification of existing profiles which is useful if you have thousands of profiles
    */
   skipFetchProfiles: any;
+  /**
+   * Include all matching certificates in the provisioning profile. Works only for the 'development' provisioning profile type
+   */
+  includeAllCertificates: any;
   /**
    * Skips the verification of the certificates for every existing profiles. This will make sure the provisioning profile can be used on the local machine
    */
@@ -5582,6 +5536,14 @@ type MatchOptions = {
    */
   forceForNewDevices: boolean;
   /**
+   * Include all matching certificates in the provisioning profile. Works only for the 'development' provisioning profile type
+   */
+  includeAllCertificates: boolean;
+  /**
+   * Renew the provisioning profiles if the device count on the developer portal has changed. Works only for the 'development' provisioning profile type. Requires 'include_all_certificates' option to be 'true'
+   */
+  forceForNewCertificates: boolean;
+  /**
    * Disables confirmation prompts during nuke, answering them with yes
    */
   skipConfirmation: boolean;
@@ -5763,6 +5725,14 @@ type MatchNukeOptions = {
    * Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile types 'appstore' and 'developer_id'
    */
   forceForNewDevices: boolean;
+  /**
+   * Include all matching certificates in the provisioning profile. Works only for the 'development' provisioning profile type
+   */
+  includeAllCertificates: boolean;
+  /**
+   * Renew the provisioning profiles if the device count on the developer portal has changed. Works only for the 'development' provisioning profile type. Requires 'include_all_certificates' option to be 'true'
+   */
+  forceForNewCertificates: boolean;
   /**
    * Disables confirmation prompts during nuke, answering them with yes
    */
@@ -8176,6 +8146,10 @@ type SighOptions = {
    */
   skipFetchProfiles: any;
   /**
+   * Include all matching certificates in the provisioning profile. Works only for the 'development' provisioning profile type
+   */
+  includeAllCertificates: any;
+  /**
    * Skips the verification of the certificates for every existing profiles. This will make sure the provisioning profile can be used on the local machine
    */
   skipCertificateVerification: any;
@@ -8463,7 +8437,7 @@ type SnapshotOptions = {
    */
   headless: boolean;
   /**
-   * Enabling this option will automatically override the status bar to show 9:41 AM, full battery, and full reception
+   * Enabling this option will automatically override the status bar to show 9:41 AM, full battery, and full reception (Adjust 'SNAPSHOT_SIMULATOR_WAIT_FOR_BOOT_TIMEOUT' environment variable if override status bar is not working. Might be because simulator is not fully booted. Defaults to 10 seconds)
    */
   overrideStatusBar: any;
   /**
@@ -9234,6 +9208,14 @@ type SyncCodeSigningOptions = {
    * Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile types 'appstore' and 'developer_id'
    */
   forceForNewDevices: boolean;
+  /**
+   * Include all matching certificates in the provisioning profile. Works only for the 'development' provisioning profile type
+   */
+  includeAllCertificates: boolean;
+  /**
+   * Renew the provisioning profiles if the device count on the developer portal has changed. Works only for the 'development' provisioning profile type. Requires 'include_all_certificates' option to be 'true'
+   */
+  forceForNewCertificates: boolean;
   /**
    * Disables confirmation prompts during nuke, answering them with yes
    */
@@ -13007,45 +12989,6 @@ function convertCopyArtifactsOptions(
 }
 
 /** @ignore */
-type convertedCrashlyticsOptions = {
-  ipa_path?: string;
-  apk_path?: string;
-  crashlytics_path?: string;
-  api_token: string;
-  build_secret: string;
-  notes_path?: string;
-  notes?: string;
-  groups?: string[];
-  emails?: string[];
-  notifications: boolean;
-  debug: boolean;
-};
-/** @ignore Convert CrashlyticsOptions to the shape used by the Fastlane service
- */
-function convertCrashlyticsOptions(
-  options: CrashlyticsOptions
-): convertedCrashlyticsOptions {
-  const temp: convertedCrashlyticsOptions = {
-    api_token: options.apiToken,
-    build_secret: options.buildSecret,
-    notifications: options.notifications,
-    debug: options.debug,
-  };
-  if (typeof options.ipaPath !== "undefined")
-    temp["ipa_path"] = options.ipaPath;
-  if (typeof options.apkPath !== "undefined")
-    temp["apk_path"] = options.apkPath;
-  if (typeof options.crashlyticsPath !== "undefined")
-    temp["crashlytics_path"] = options.crashlyticsPath;
-  if (typeof options.notesPath !== "undefined")
-    temp["notes_path"] = options.notesPath;
-  if (typeof options.notes !== "undefined") temp["notes"] = options.notes;
-  if (typeof options.groups !== "undefined") temp["groups"] = options.groups;
-  if (typeof options.emails !== "undefined") temp["emails"] = options.emails;
-  return temp;
-}
-
-/** @ignore */
 type convertedCreateAppOnManagedPlayStoreOptions = {
   json_key?: string;
   json_key_data?: string;
@@ -14192,6 +14135,7 @@ type convertedGetProvisioningProfileOptions = {
   cert_owner_name?: string;
   filename?: string;
   skip_fetch_profiles: any;
+  include_all_certificates: any;
   skip_certificate_verification: any;
   platform: any;
   readonly?: any;
@@ -14212,6 +14156,7 @@ function convertGetProvisioningProfileOptions(
     app_identifier: options.appIdentifier,
     output_path: options.outputPath,
     skip_fetch_profiles: options.skipFetchProfiles,
+    include_all_certificates: options.includeAllCertificates,
     skip_certificate_verification: options.skipCertificateVerification,
     platform: options.platform,
   };
@@ -15395,6 +15340,8 @@ type convertedMatchOptions = {
   keychain_password?: string;
   force: boolean;
   force_for_new_devices: boolean;
+  include_all_certificates: boolean;
+  force_for_new_certificates: boolean;
   skip_confirmation: boolean;
   skip_docs: boolean;
   platform: string;
@@ -15424,6 +15371,8 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     keychain_name: options.keychainName,
     force: options.force,
     force_for_new_devices: options.forceForNewDevices,
+    include_all_certificates: options.includeAllCertificates,
+    force_for_new_certificates: options.forceForNewCertificates,
     skip_confirmation: options.skipConfirmation,
     skip_docs: options.skipDocs,
     platform: options.platform,
@@ -15517,6 +15466,8 @@ type convertedMatchNukeOptions = {
   keychain_password?: string;
   force: boolean;
   force_for_new_devices: boolean;
+  include_all_certificates: boolean;
+  force_for_new_certificates: boolean;
   skip_confirmation: boolean;
   skip_docs: boolean;
   platform: string;
@@ -15548,6 +15499,8 @@ function convertMatchNukeOptions(
     keychain_name: options.keychainName,
     force: options.force,
     force_for_new_devices: options.forceForNewDevices,
+    include_all_certificates: options.includeAllCertificates,
+    force_for_new_certificates: options.forceForNewCertificates,
     skip_confirmation: options.skipConfirmation,
     skip_docs: options.skipDocs,
     platform: options.platform,
@@ -17509,6 +17462,7 @@ type convertedSighOptions = {
   cert_owner_name?: string;
   filename?: string;
   skip_fetch_profiles: any;
+  include_all_certificates: any;
   skip_certificate_verification: any;
   platform: any;
   readonly?: any;
@@ -17527,6 +17481,7 @@ function convertSighOptions(options: SighOptions): convertedSighOptions {
     app_identifier: options.appIdentifier,
     output_path: options.outputPath,
     skip_fetch_profiles: options.skipFetchProfiles,
+    include_all_certificates: options.includeAllCertificates,
     skip_certificate_verification: options.skipCertificateVerification,
     platform: options.platform,
   };
@@ -18290,6 +18245,8 @@ type convertedSyncCodeSigningOptions = {
   keychain_password?: string;
   force: boolean;
   force_for_new_devices: boolean;
+  include_all_certificates: boolean;
+  force_for_new_certificates: boolean;
   skip_confirmation: boolean;
   skip_docs: boolean;
   platform: string;
@@ -18321,6 +18278,8 @@ function convertSyncCodeSigningOptions(
     keychain_name: options.keychainName,
     force: options.force,
     force_for_new_devices: options.forceForNewDevices,
+    include_all_certificates: options.includeAllCertificates,
+    force_for_new_certificates: options.forceForNewCertificates,
     skip_confirmation: options.skipConfirmation,
     skip_docs: options.skipDocs,
     platform: options.platform,
@@ -20243,17 +20202,6 @@ Make sure your `:target_path` is ignored from git, and if you use `reset_git_rep
     const out = await this.doAction(
       "copy_artifacts",
       convertCopyArtifactsOptions(options)
-    );
-    return out;
-  }
-  /** Additionally, you can specify `notes`, `emails`, `groups` and `notifications`.
-Distributing to Groups: When using the `groups` parameter, it's important to use the group **alias** names for each group you'd like to distribute to. A group's alias can be found in the web UI. If you're viewing the Beta page, you can open the groups dialog by clicking the 'Manage Groups' button.
-This action uses the `submit` binary provided by the Crashlytics framework. If the binary is not found in its usual path, you'll need to specify the path manually by using the `crashlytics_path` option.
-    */
-  async crashlytics(options: CrashlyticsOptions): Promise<any> {
-    const out = await this.doAction(
-      "crashlytics",
-      convertCrashlyticsOptions(options)
     );
     return out;
   }
