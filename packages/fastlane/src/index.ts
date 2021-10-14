@@ -1789,7 +1789,7 @@ type CaptureAndroidScreenshotsOptions = {
    */
   appApkPath?: string;
   /**
-   * The path to the APK for the the tests bundle
+   * The path to the APK for the tests bundle
    */
   testsApkPath?: string;
   /**
@@ -1801,7 +1801,7 @@ type CaptureAndroidScreenshotsOptions = {
    */
   deviceType: string;
   /**
-   * Whether or not to exit Screengrab on test failure. Exiting on failure will not copy sceenshots to local machine nor open sceenshots summary
+   * Whether or not to exit Screengrab on test failure. Exiting on failure will not copy screenshots to local machine nor open screenshots summary
    */
   exitOnTestFailure: boolean;
   /**
@@ -4190,7 +4190,7 @@ type GetPushCertificateOptions = {
   /**
    * The password that is used for your p12 file
    */
-  p12Password: string;
+  p12Password?: string;
   /**
    * The file name of the generated .pem file
    */
@@ -6168,7 +6168,7 @@ type PemOptions = {
   /**
    * The password that is used for your p12 file
    */
-  p12Password: string;
+  p12Password?: string;
   /**
    * The file name of the generated .pem file
    */
@@ -7784,7 +7784,7 @@ type ScreengrabOptions = {
    */
   appApkPath?: string;
   /**
-   * The path to the APK for the the tests bundle
+   * The path to the APK for the tests bundle
    */
   testsApkPath?: string;
   /**
@@ -7796,7 +7796,7 @@ type ScreengrabOptions = {
    */
   deviceType: string;
   /**
-   * Whether or not to exit Screengrab on test failure. Exiting on failure will not copy sceenshots to local machine nor open sceenshots summary
+   * Whether or not to exit Screengrab on test failure. Exiting on failure will not copy screenshots to local machine nor open screenshots summary
    */
   exitOnTestFailure: boolean;
   /**
@@ -14199,7 +14199,7 @@ type convertedGetPushCertificateOptions = {
   username: string;
   team_id?: string;
   team_name?: string;
-  p12_password: string;
+  p12_password?: string;
   pem_name?: string;
   output_path: string;
   new_profile?: any;
@@ -14218,12 +14218,13 @@ function convertGetPushCertificateOptions(
     save_private_key: options.savePrivateKey,
     app_identifier: options.appIdentifier,
     username: options.username,
-    p12_password: options.p12Password,
     output_path: options.outputPath,
   };
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
+  if (typeof options.p12Password !== "undefined")
+    temp["p12_password"] = options.p12Password;
   if (typeof options.pemName !== "undefined")
     temp["pem_name"] = options.pemName;
   if (typeof options.newProfile !== "undefined")
@@ -15885,7 +15886,7 @@ type convertedPemOptions = {
   username: string;
   team_id?: string;
   team_name?: string;
-  p12_password: string;
+  p12_password?: string;
   pem_name?: string;
   output_path: string;
   new_profile?: any;
@@ -15902,12 +15903,13 @@ function convertPemOptions(options: PemOptions): convertedPemOptions {
     save_private_key: options.savePrivateKey,
     app_identifier: options.appIdentifier,
     username: options.username,
-    p12_password: options.p12Password,
     output_path: options.outputPath,
   };
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
+  if (typeof options.p12Password !== "undefined")
+    temp["p12_password"] = options.p12Password;
   if (typeof options.pemName !== "undefined")
     temp["pem_name"] = options.pemName;
   if (typeof options.newProfile !== "undefined")
