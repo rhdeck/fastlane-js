@@ -3457,6 +3457,14 @@ type DownloadAppPrivacyDetailsFromAppStoreOptions = {
 
 type DownloadDsymsOptions = {
   /**
+   * Path to your App Store Connect API Key JSON file (https://docs.fastlane.tools/app-store-connect-api/#using-fastlane-api-key-json-file)
+   */
+  apiKeyPath?: string;
+  /**
+   * Your App Store Connect API Key information (https://docs.fastlane.tools/app-store-connect-api/#use-return-value-and-pass-in-as-an-option)
+   */
+  apiKey?: { string: string };
+  /**
    * Your Apple ID Username for App Store Connect
    */
   username: string;
@@ -13551,6 +13559,8 @@ function convertDownloadAppPrivacyDetailsFromAppStoreOptions(
 
 /** @ignore */
 type convertedDownloadDsymsOptions = {
+  api_key_path?: string;
+  api_key?: { string: string };
   username: string;
   app_identifier: string;
   team_id?: string;
@@ -13574,6 +13584,9 @@ function convertDownloadDsymsOptions(
     app_identifier: options.appIdentifier,
     platform: options.platform,
   };
+  if (typeof options.apiKeyPath !== "undefined")
+    temp["api_key_path"] = options.apiKeyPath;
+  if (typeof options.apiKey !== "undefined") temp["api_key"] = options.apiKey;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.teamName !== "undefined")
     temp["team_name"] = options.teamName;
