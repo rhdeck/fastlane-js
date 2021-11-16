@@ -4156,6 +4156,10 @@ type GetProvisioningProfileOptions = {
 
 type GetPushCertificateOptions = {
   /**
+   * Set certificate's platform. Used for creation of production & development certificates. Supported platforms: ios, macos
+   */
+  platform: string;
+  /**
    * Renew the development push certificate instead of the production one
    */
   development: any;
@@ -5909,6 +5913,10 @@ type NotarizeOptions = {
    */
   tryEarlyStapling?: boolean;
   /**
+   * Do not staple the notarization ticket to the artifact; useful for single file executables and ZIP archives
+   */
+  skipStapling?: boolean;
+  /**
    * Bundle identifier to uniquely identify the package
    */
   bundleId?: string;
@@ -6133,6 +6141,10 @@ type OptOutUsageOptions = {};
  */
 
 type PemOptions = {
+  /**
+   * Set certificate's platform. Used for creation of production & development certificates. Supported platforms: ios, macos
+   */
+  platform: string;
   /**
    * Renew the development push certificate instead of the production one
    */
@@ -7921,6 +7933,10 @@ type SetGithubReleaseOptions = {
    * Whether the release should be marked as prerelease
    */
   isPrerelease?: boolean;
+  /**
+   * Whether the name and body of this release should be generated automatically
+   */
+  isGenerateReleaseNotes?: boolean;
   /**
    * Path to assets to be uploaded with the release
    */
@@ -14202,6 +14218,7 @@ function convertGetProvisioningProfileOptions(
 
 /** @ignore */
 type convertedGetPushCertificateOptions = {
+  platform: string;
   development: any;
   website_push: any;
   generate_p12: any;
@@ -14223,6 +14240,7 @@ function convertGetPushCertificateOptions(
   options: GetPushCertificateOptions
 ): convertedGetPushCertificateOptions {
   const temp: convertedGetPushCertificateOptions = {
+    platform: options.platform,
     development: options.development,
     website_push: options.websitePush,
     generate_p12: options.generateP12,
@@ -15669,6 +15687,7 @@ type convertedNotarizeOptions = {
   package: string;
   use_notarytool: boolean;
   try_early_stapling?: boolean;
+  skip_stapling?: boolean;
   bundle_id?: string;
   username?: string;
   asc_provider?: string;
@@ -15688,6 +15707,8 @@ function convertNotarizeOptions(
   };
   if (typeof options.tryEarlyStapling !== "undefined")
     temp["try_early_stapling"] = options.tryEarlyStapling;
+  if (typeof options.skipStapling !== "undefined")
+    temp["skip_stapling"] = options.skipStapling;
   if (typeof options.bundleId !== "undefined")
     temp["bundle_id"] = options.bundleId;
   if (typeof options.username !== "undefined")
@@ -15889,6 +15910,7 @@ function convertOptOutUsageOptions(
 
 /** @ignore */
 type convertedPemOptions = {
+  platform: string;
   development: any;
   website_push: any;
   generate_p12: any;
@@ -15908,6 +15930,7 @@ type convertedPemOptions = {
  */
 function convertPemOptions(options: PemOptions): convertedPemOptions {
   const temp: convertedPemOptions = {
+    platform: options.platform,
     development: options.development,
     website_push: options.websitePush,
     generate_p12: options.generateP12,
@@ -17276,6 +17299,7 @@ type convertedSetGithubReleaseOptions = {
   description?: string;
   is_draft?: boolean;
   is_prerelease?: boolean;
+  is_generate_release_notes?: boolean;
   upload_assets?: string[];
 };
 /** @ignore Convert SetGithubReleaseOptions to the shape used by the Fastlane service
@@ -17302,6 +17326,8 @@ function convertSetGithubReleaseOptions(
     temp["is_draft"] = options.isDraft;
   if (typeof options.isPrerelease !== "undefined")
     temp["is_prerelease"] = options.isPrerelease;
+  if (typeof options.isGenerateReleaseNotes !== "undefined")
+    temp["is_generate_release_notes"] = options.isGenerateReleaseNotes;
   if (typeof options.uploadAssets !== "undefined")
     temp["upload_assets"] = options.uploadAssets;
   return temp;
@@ -20697,7 +20723,7 @@ get_push_certificate(|
     );
     return out;
   }
-  /** This action will return the current version number set on your project.
+  /** This action will return the current version number set on your project. It first looks in the plist and then for '$(MARKETING_VERSION)' in the build settings.
    */
   async getVersionNumber(options: GetVersionNumberOptions): Promise<string> {
     const out = await this.doAction(
