@@ -1253,6 +1253,10 @@ type BuildAppOptions = {
    */
   skipProfileDetection?: boolean;
   /**
+   * Allows for override of the default `xcodebuild` command
+   */
+  xcodebuildCommand?: string;
+  /**
    * Sets a custom path for Swift Package Manager dependencies
    */
   clonedSourcePackagesPath?: string;
@@ -1434,6 +1438,10 @@ type BuildIosAppOptions = {
    * Do not try to build a profile mapping from the xcodeproj. Match or a manually provided mapping should be used
    */
   skipProfileDetection?: boolean;
+  /**
+   * Allows for override of the default `xcodebuild` command
+   */
+  xcodebuildCommand?: string;
   /**
    * Sets a custom path for Swift Package Manager dependencies
    */
@@ -1620,6 +1628,10 @@ type BuildMacAppOptions = {
    * Do not try to build a profile mapping from the xcodeproj. Match or a manually provided mapping should be used
    */
   skipProfileDetection?: boolean;
+  /**
+   * Allows for override of the default `xcodebuild` command
+   */
+  xcodebuildCommand?: string;
   /**
    * Sets a custom path for Swift Package Manager dependencies
    */
@@ -4692,6 +4704,10 @@ type GymOptions = {
    * Do not try to build a profile mapping from the xcodeproj. Match or a manually provided mapping should be used
    */
   skipProfileDetection?: boolean;
+  /**
+   * Allows for override of the default `xcodebuild` command
+   */
+  xcodebuildCommand?: string;
   /**
    * Sets a custom path for Swift Package Manager dependencies
    */
@@ -11778,6 +11794,7 @@ type convertedBuildAppOptions = {
   analyze_build_time?: boolean;
   xcpretty_utf?: boolean;
   skip_profile_detection?: boolean;
+  xcodebuild_command?: string;
   cloned_source_packages_path?: string;
   skip_package_dependencies_resolution: boolean;
   disable_package_automatic_updates: boolean;
@@ -11869,6 +11886,8 @@ function convertBuildAppOptions(
     temp["xcpretty_utf"] = options.xcprettyUtf;
   if (typeof options.skipProfileDetection !== "undefined")
     temp["skip_profile_detection"] = options.skipProfileDetection;
+  if (typeof options.xcodebuildCommand !== "undefined")
+    temp["xcodebuild_command"] = options.xcodebuildCommand;
   if (typeof options.clonedSourcePackagesPath !== "undefined")
     temp["cloned_source_packages_path"] = options.clonedSourcePackagesPath;
   if (typeof options.useSystemScm !== "undefined")
@@ -11918,6 +11937,7 @@ type convertedBuildIosAppOptions = {
   analyze_build_time?: boolean;
   xcpretty_utf?: boolean;
   skip_profile_detection?: boolean;
+  xcodebuild_command?: string;
   cloned_source_packages_path?: string;
   skip_package_dependencies_resolution: boolean;
   disable_package_automatic_updates: boolean;
@@ -12004,6 +12024,8 @@ function convertBuildIosAppOptions(
     temp["xcpretty_utf"] = options.xcprettyUtf;
   if (typeof options.skipProfileDetection !== "undefined")
     temp["skip_profile_detection"] = options.skipProfileDetection;
+  if (typeof options.xcodebuildCommand !== "undefined")
+    temp["xcodebuild_command"] = options.xcodebuildCommand;
   if (typeof options.clonedSourcePackagesPath !== "undefined")
     temp["cloned_source_packages_path"] = options.clonedSourcePackagesPath;
   if (typeof options.useSystemScm !== "undefined")
@@ -12054,6 +12076,7 @@ type convertedBuildMacAppOptions = {
   analyze_build_time?: boolean;
   xcpretty_utf?: boolean;
   skip_profile_detection?: boolean;
+  xcodebuild_command?: string;
   cloned_source_packages_path?: string;
   skip_package_dependencies_resolution: boolean;
   disable_package_automatic_updates: boolean;
@@ -12142,6 +12165,8 @@ function convertBuildMacAppOptions(
     temp["xcpretty_utf"] = options.xcprettyUtf;
   if (typeof options.skipProfileDetection !== "undefined")
     temp["skip_profile_detection"] = options.skipProfileDetection;
+  if (typeof options.xcodebuildCommand !== "undefined")
+    temp["xcodebuild_command"] = options.xcodebuildCommand;
   if (typeof options.clonedSourcePackagesPath !== "undefined")
     temp["cloned_source_packages_path"] = options.clonedSourcePackagesPath;
   if (typeof options.useSystemScm !== "undefined")
@@ -14594,6 +14619,7 @@ type convertedGymOptions = {
   analyze_build_time?: boolean;
   xcpretty_utf?: boolean;
   skip_profile_detection?: boolean;
+  xcodebuild_command?: string;
   cloned_source_packages_path?: string;
   skip_package_dependencies_resolution: boolean;
   disable_package_automatic_updates: boolean;
@@ -14683,6 +14709,8 @@ function convertGymOptions(options: GymOptions): convertedGymOptions {
     temp["xcpretty_utf"] = options.xcprettyUtf;
   if (typeof options.skipProfileDetection !== "undefined")
     temp["skip_profile_detection"] = options.skipProfileDetection;
+  if (typeof options.xcodebuildCommand !== "undefined")
+    temp["xcodebuild_command"] = options.xcodebuildCommand;
   if (typeof options.clonedSourcePackagesPath !== "undefined")
     temp["cloned_source_packages_path"] = options.clonedSourcePackagesPath;
   if (typeof options.useSystemScm !== "undefined")
