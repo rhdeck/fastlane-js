@@ -7074,11 +7074,11 @@ type RunTestsOptions = {
    */
   scheme?: string;
   /**
-   * The name of the simulator type you want to run tests on (e.g. 'iPhone 6')
+   * The name of the simulator type you want to run tests on (e.g. 'iPhone 6' or 'iPhone SE (2nd generation) (14.5)')
    */
   device?: string;
   /**
-   * Array of devices to run the tests on (e.g. ['iPhone 6', 'iPad Air'])
+   * Array of devices to run the tests on (e.g. ['iPhone 6', 'iPad Air', 'iPhone SE (2nd generation) (14.5)'])
    */
   devices?: string[];
   /**
@@ -7452,11 +7452,11 @@ type ScanOptions = {
    */
   scheme?: string;
   /**
-   * The name of the simulator type you want to run tests on (e.g. 'iPhone 6')
+   * The name of the simulator type you want to run tests on (e.g. 'iPhone 6' or 'iPhone SE (2nd generation) (14.5)')
    */
   device?: string;
   /**
-   * Array of devices to run the tests on (e.g. ['iPhone 6', 'iPad Air'])
+   * Array of devices to run the tests on (e.g. ['iPhone 6', 'iPad Air', 'iPhone SE (2nd generation) (14.5)'])
    */
   devices?: string[];
   /**
@@ -9675,6 +9675,10 @@ type UpdateCodeSigningSettingsOptions = {
    * Code signing identity type (iPhone Developer, iPhone Distribution)
    */
   codeSignIdentity?: string;
+  /**
+   * Path to your entitlements file
+   */
+  entitlementsFilePath?: string;
   /**
    * Provisioning profile name to use for code signing
    */
@@ -18718,6 +18722,7 @@ type convertedUpdateCodeSigningSettingsOptions = {
   targets?: string[];
   build_configurations?: string[];
   code_sign_identity?: string;
+  entitlements_file_path?: string;
   profile_name?: string;
   profile_uuid?: string;
   bundle_identifier?: string;
@@ -18737,6 +18742,8 @@ function convertUpdateCodeSigningSettingsOptions(
     temp["build_configurations"] = options.buildConfigurations;
   if (typeof options.codeSignIdentity !== "undefined")
     temp["code_sign_identity"] = options.codeSignIdentity;
+  if (typeof options.entitlementsFilePath !== "undefined")
+    temp["entitlements_file_path"] = options.entitlementsFilePath;
   if (typeof options.profileName !== "undefined")
     temp["profile_name"] = options.profileName;
   if (typeof options.profileUuid !== "undefined")
@@ -20533,7 +20540,7 @@ This can be used to check if there is any debug code still in your codebase or i
   }
   /** If building your app requires a specific version of Xcode, you can invoke this command before using gym.
 For example, to ensure that a beta version of Xcode is not accidentally selected to build, which would make uploading to TestFlight fail.
-You can either manually provide a specific version using `version: ` or you make use of the `.xcode-version` file.
+You can either manually provide a specific version using `version:` or you make use of the `.xcode-version` file.
 Using the `strict` parameter, you can either verify the full set of version numbers strictly (i.e. `11.3.1`) or only a subset of them (i.e. `11.3` or `11`).
     */
   async ensureXcodeVersion(options: EnsureXcodeVersionOptions): Promise<any> {
@@ -22171,7 +22178,8 @@ More information: [https://docs.fastlane.tools/actions/xctool/](https://docs.fas
     return out;
   }
   /** Finds and selects a version of an installed Xcode that best matches the provided [`Gem::Version` requirement specifier](http://www.rubydoc.info/github/rubygems/rubygems/Gem/Version)
-   */
+You can either manually provide a specific version using `version:` or you make use of the `.xcode-version` file.
+    */
   async xcversion(options: XcversionOptions): Promise<any> {
     const out = await this.doAction(
       "xcversion",
