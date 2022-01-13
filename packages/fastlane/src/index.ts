@@ -8985,6 +8985,10 @@ type SupplyOptions = {
    */
   trackPromoteTo?: string;
   /**
+   * Promoted track release status (used when promoting a track) - valid values are completed, draft, halted, inProgress
+   */
+  trackPromoteReleaseStatus?: string;
+  /**
    * Only validate changes with Google Play rather than actually publish
    */
   validateOnly?: boolean;
@@ -10365,6 +10369,10 @@ type UploadToPlayStoreOptions = {
    * The track to promote to. The default available tracks are: production, beta, alpha, internal
    */
   trackPromoteTo?: string;
+  /**
+   * Promoted track release status (used when promoting a track) - valid values are completed, draft, halted, inProgress
+   */
+  trackPromoteReleaseStatus?: string;
   /**
    * Only validate changes with Google Play rather than actually publish
    */
@@ -18144,6 +18152,7 @@ type convertedSupplyOptions = {
   skip_upload_images?: boolean;
   skip_upload_screenshots?: boolean;
   track_promote_to?: string;
+  track_promote_release_status?: string;
   validate_only?: boolean;
   mapping?: string;
   mapping_paths?: string[];
@@ -18205,6 +18214,8 @@ function convertSupplyOptions(options: SupplyOptions): convertedSupplyOptions {
     temp["skip_upload_screenshots"] = options.skipUploadScreenshots;
   if (typeof options.trackPromoteTo !== "undefined")
     temp["track_promote_to"] = options.trackPromoteTo;
+  if (typeof options.trackPromoteReleaseStatus !== "undefined")
+    temp["track_promote_release_status"] = options.trackPromoteReleaseStatus;
   if (typeof options.validateOnly !== "undefined")
     temp["validate_only"] = options.validateOnly;
   if (typeof options.mapping !== "undefined") temp["mapping"] = options.mapping;
@@ -19284,6 +19295,7 @@ type convertedUploadToPlayStoreOptions = {
   skip_upload_images?: boolean;
   skip_upload_screenshots?: boolean;
   track_promote_to?: string;
+  track_promote_release_status?: string;
   validate_only?: boolean;
   mapping?: string;
   mapping_paths?: string[];
@@ -19347,6 +19359,8 @@ function convertUploadToPlayStoreOptions(
     temp["skip_upload_screenshots"] = options.skipUploadScreenshots;
   if (typeof options.trackPromoteTo !== "undefined")
     temp["track_promote_to"] = options.trackPromoteTo;
+  if (typeof options.trackPromoteReleaseStatus !== "undefined")
+    temp["track_promote_release_status"] = options.trackPromoteReleaseStatus;
   if (typeof options.validateOnly !== "undefined")
     temp["validate_only"] = options.validateOnly;
   if (typeof options.mapping !== "undefined") temp["mapping"] = options.mapping;
