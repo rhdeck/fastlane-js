@@ -1217,7 +1217,11 @@ type BuildAppOptions = {
    */
   suppressXcodeOutput?: boolean;
   /**
-   * Disable xcpretty formatting of build output
+   * xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)
+   */
+  xcodebuildFormatter: string;
+  /**
+   * **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Disable xcpretty formatting of build output
    */
   disableXcpretty?: boolean;
   /**
@@ -1241,13 +1245,13 @@ type BuildAppOptions = {
    */
   xcprettyReportJson?: string;
   /**
-   * Analyze the project build time and store the output in 'culprits.txt' file
-   */
-  analyzeBuildTime?: boolean;
-  /**
    * Have xcpretty use unicode encoding when reporting builds
    */
   xcprettyUtf?: boolean;
+  /**
+   * Analyze the project build time and store the output in 'culprits.txt' file
+   */
+  analyzeBuildTime?: boolean;
   /**
    * Do not try to build a profile mapping from the xcodeproj. Match or a manually provided mapping should be used
    */
@@ -1403,7 +1407,11 @@ type BuildIosAppOptions = {
    */
   suppressXcodeOutput?: boolean;
   /**
-   * Disable xcpretty formatting of build output
+   * xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)
+   */
+  xcodebuildFormatter: string;
+  /**
+   * **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Disable xcpretty formatting of build output
    */
   disableXcpretty?: boolean;
   /**
@@ -1427,13 +1435,13 @@ type BuildIosAppOptions = {
    */
   xcprettyReportJson?: string;
   /**
-   * Analyze the project build time and store the output in 'culprits.txt' file
-   */
-  analyzeBuildTime?: boolean;
-  /**
    * Have xcpretty use unicode encoding when reporting builds
    */
   xcprettyUtf?: boolean;
+  /**
+   * Analyze the project build time and store the output in 'culprits.txt' file
+   */
+  analyzeBuildTime?: boolean;
   /**
    * Do not try to build a profile mapping from the xcodeproj. Match or a manually provided mapping should be used
    */
@@ -1593,7 +1601,11 @@ type BuildMacAppOptions = {
    */
   suppressXcodeOutput?: boolean;
   /**
-   * Disable xcpretty formatting of build output
+   * xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)
+   */
+  xcodebuildFormatter: string;
+  /**
+   * **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Disable xcpretty formatting of build output
    */
   disableXcpretty?: boolean;
   /**
@@ -1617,13 +1629,13 @@ type BuildMacAppOptions = {
    */
   xcprettyReportJson?: string;
   /**
-   * Analyze the project build time and store the output in 'culprits.txt' file
-   */
-  analyzeBuildTime?: boolean;
-  /**
    * Have xcpretty use unicode encoding when reporting builds
    */
   xcprettyUtf?: boolean;
+  /**
+   * Analyze the project build time and store the output in 'culprits.txt' file
+   */
+  analyzeBuildTime?: boolean;
   /**
    * Do not try to build a profile mapping from the xcodeproj. Match or a manually provided mapping should be used
    */
@@ -1947,10 +1959,6 @@ type CaptureIosScreenshotsOptions = {
    */
   configuration?: string;
   /**
-   * Additional xcpretty arguments
-   */
-  xcprettyArgs?: string;
-  /**
    * The SDK that should be used for building the application
    */
   sdk?: string;
@@ -2014,6 +2022,14 @@ type CaptureIosScreenshotsOptions = {
    * Array of strings matching Test Bundle/Test Suite/Test Cases to skip
    */
   skipTesting?: any;
+  /**
+   * xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)
+   */
+  xcodebuildFormatter: string;
+  /**
+   * **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Additional xcpretty arguments
+   */
+  xcprettyArgs?: string;
   /**
    * Disable xcpretty formatting of build
    */
@@ -2145,10 +2161,6 @@ type CaptureScreenshotsOptions = {
    */
   configuration?: string;
   /**
-   * Additional xcpretty arguments
-   */
-  xcprettyArgs?: string;
-  /**
    * The SDK that should be used for building the application
    */
   sdk?: string;
@@ -2212,6 +2224,14 @@ type CaptureScreenshotsOptions = {
    * Array of strings matching Test Bundle/Test Suite/Test Cases to skip
    */
   skipTesting?: any;
+  /**
+   * xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)
+   */
+  xcodebuildFormatter: string;
+  /**
+   * **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Additional xcpretty arguments
+   */
+  xcprettyArgs?: string;
   /**
    * Disable xcpretty formatting of build
    */
@@ -4669,7 +4689,11 @@ type GymOptions = {
    */
   suppressXcodeOutput?: boolean;
   /**
-   * Disable xcpretty formatting of build output
+   * xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)
+   */
+  xcodebuildFormatter: string;
+  /**
+   * **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Disable xcpretty formatting of build output
    */
   disableXcpretty?: boolean;
   /**
@@ -4693,13 +4717,13 @@ type GymOptions = {
    */
   xcprettyReportJson?: string;
   /**
-   * Analyze the project build time and store the output in 'culprits.txt' file
-   */
-  analyzeBuildTime?: boolean;
-  /**
    * Have xcpretty use unicode encoding when reporting builds
    */
   xcprettyUtf?: boolean;
+  /**
+   * Analyze the project build time and store the output in 'culprits.txt' file
+   */
+  analyzeBuildTime?: boolean;
   /**
    * Do not try to build a profile mapping from the xcodeproj. Match or a manually provided mapping should be used
    */
@@ -7162,10 +7186,6 @@ type RunTestsOptions = {
    */
   openReport: any;
   /**
-   * Disable xcpretty formatting of build, similar to `output_style='raw'` but this will also skip the test results table
-   */
-  disableXcpretty?: boolean;
-  /**
    * The directory in which all reports will be stored
    */
   outputDirectory: string;
@@ -7194,9 +7214,25 @@ type RunTestsOptions = {
    */
   suppressXcodeOutput?: boolean;
   /**
-   * A custom xcpretty formatter to use
+   * xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)
+   */
+  xcodebuildFormatter: string;
+  /**
+   * Remove retry attempts from test results table and the JUnit report (if not using xcpretty)
+   */
+  outputRemoveRetryAttempts: boolean;
+  /**
+   * **DEPRECATED!** Use `output_style: 'raw'` instead - Disable xcpretty formatting of build, similar to `output_style='raw'` but this will also skip the test results table
+   */
+  disableXcpretty?: boolean;
+  /**
+   * **DEPRECATED!** Use 'xcpretty_formatter' instead - A custom xcpretty formatter to use
    */
   formatter?: string;
+  /**
+   * A custom xcpretty formatter to use
+   */
+  xcprettyFormatter?: string;
   /**
    * Pass in xcpretty additional command line arguments (e.g. '--test --no-color' or '--tap --no-utf')
    */
@@ -7540,10 +7576,6 @@ type ScanOptions = {
    */
   openReport: any;
   /**
-   * Disable xcpretty formatting of build, similar to `output_style='raw'` but this will also skip the test results table
-   */
-  disableXcpretty?: boolean;
-  /**
    * The directory in which all reports will be stored
    */
   outputDirectory: string;
@@ -7572,9 +7604,25 @@ type ScanOptions = {
    */
   suppressXcodeOutput?: boolean;
   /**
-   * A custom xcpretty formatter to use
+   * xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)
+   */
+  xcodebuildFormatter: string;
+  /**
+   * Remove retry attempts from test results table and the JUnit report (if not using xcpretty)
+   */
+  outputRemoveRetryAttempts: boolean;
+  /**
+   * **DEPRECATED!** Use `output_style: 'raw'` instead - Disable xcpretty formatting of build, similar to `output_style='raw'` but this will also skip the test results table
+   */
+  disableXcpretty?: boolean;
+  /**
+   * **DEPRECATED!** Use 'xcpretty_formatter' instead - A custom xcpretty formatter to use
    */
   formatter?: string;
+  /**
+   * A custom xcpretty formatter to use
+   */
+  xcprettyFormatter?: string;
   /**
    * Pass in xcpretty additional command line arguments (e.g. '--test --no-color' or '--tap --no-utf')
    */
@@ -8525,10 +8573,6 @@ type SnapshotOptions = {
    */
   configuration?: string;
   /**
-   * Additional xcpretty arguments
-   */
-  xcprettyArgs?: string;
-  /**
    * The SDK that should be used for building the application
    */
   sdk?: string;
@@ -8592,6 +8636,14 @@ type SnapshotOptions = {
    * Array of strings matching Test Bundle/Test Suite/Test Cases to skip
    */
   skipTesting?: any;
+  /**
+   * xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)
+   */
+  xcodebuildFormatter: string;
+  /**
+   * **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Additional xcpretty arguments
+   */
+  xcprettyArgs?: string;
   /**
    * Disable xcpretty formatting of build
    */
@@ -9530,6 +9582,36 @@ type TestflightOptions = {
    * Expire previous if it's 'waiting for review'
    */
   rejectBuildWaitingForReview: any;
+};
+
+/** Shape for [[trainer]] options argument
+ */
+
+type TrainerOptions = {
+  /**
+   * Path to the directory that should be converted
+   */
+  path: string;
+  /**
+   * The extension for the newly created file. Usually .xml or .junit
+   */
+  extension: string;
+  /**
+   * Directoy in which the xml files should be written to. Same directory as source by default
+   */
+  outputDirectory?: string;
+  /**
+   * Should this step stop the build if the tests fail? Set this to false if you're handling this with a test reporter
+   */
+  failBuild: any;
+  /**
+   * Produces class name and test name identical to xcpretty naming in junit file
+   */
+  xcprettyNaming: any;
+  /**
+   * Silences all output
+   */
+  silent: any;
 };
 
 /** Shape for [[tryouts]] options argument
@@ -11797,14 +11879,15 @@ type convertedBuildAppOptions = {
   xcargs?: string;
   xcconfig?: string;
   suppress_xcode_output?: boolean;
+  xcodebuild_formatter: string;
   disable_xcpretty?: boolean;
   xcpretty_test_format?: boolean;
   xcpretty_formatter?: string;
   xcpretty_report_junit?: string;
   xcpretty_report_html?: string;
   xcpretty_report_json?: string;
-  analyze_build_time?: boolean;
   xcpretty_utf?: boolean;
+  analyze_build_time?: boolean;
   skip_profile_detection?: boolean;
   xcodebuild_command?: string;
   cloned_source_packages_path?: string;
@@ -11824,6 +11907,7 @@ function convertBuildAppOptions(
     skip_package_ipa: options.skipPackageIpa,
     skip_package_pkg: options.skipPackagePkg,
     buildlog_path: options.buildlogPath,
+    xcodebuild_formatter: options.xcodebuildFormatter,
     skip_package_dependencies_resolution:
       options.skipPackageDependenciesResolution,
     disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
@@ -11892,10 +11976,10 @@ function convertBuildAppOptions(
     temp["xcpretty_report_html"] = options.xcprettyReportHtml;
   if (typeof options.xcprettyReportJson !== "undefined")
     temp["xcpretty_report_json"] = options.xcprettyReportJson;
-  if (typeof options.analyzeBuildTime !== "undefined")
-    temp["analyze_build_time"] = options.analyzeBuildTime;
   if (typeof options.xcprettyUtf !== "undefined")
     temp["xcpretty_utf"] = options.xcprettyUtf;
+  if (typeof options.analyzeBuildTime !== "undefined")
+    temp["analyze_build_time"] = options.analyzeBuildTime;
   if (typeof options.skipProfileDetection !== "undefined")
     temp["skip_profile_detection"] = options.skipProfileDetection;
   if (typeof options.xcodebuildCommand !== "undefined")
@@ -11940,14 +12024,15 @@ type convertedBuildIosAppOptions = {
   xcargs?: string;
   xcconfig?: string;
   suppress_xcode_output?: boolean;
+  xcodebuild_formatter: string;
   disable_xcpretty?: boolean;
   xcpretty_test_format?: boolean;
   xcpretty_formatter?: string;
   xcpretty_report_junit?: string;
   xcpretty_report_html?: string;
   xcpretty_report_json?: string;
-  analyze_build_time?: boolean;
   xcpretty_utf?: boolean;
+  analyze_build_time?: boolean;
   skip_profile_detection?: boolean;
   xcodebuild_command?: string;
   cloned_source_packages_path?: string;
@@ -11966,6 +12051,7 @@ function convertBuildIosAppOptions(
     silent: options.silent,
     skip_package_ipa: options.skipPackageIpa,
     buildlog_path: options.buildlogPath,
+    xcodebuild_formatter: options.xcodebuildFormatter,
     skip_package_dependencies_resolution:
       options.skipPackageDependenciesResolution,
     disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
@@ -12030,10 +12116,10 @@ function convertBuildIosAppOptions(
     temp["xcpretty_report_html"] = options.xcprettyReportHtml;
   if (typeof options.xcprettyReportJson !== "undefined")
     temp["xcpretty_report_json"] = options.xcprettyReportJson;
-  if (typeof options.analyzeBuildTime !== "undefined")
-    temp["analyze_build_time"] = options.analyzeBuildTime;
   if (typeof options.xcprettyUtf !== "undefined")
     temp["xcpretty_utf"] = options.xcprettyUtf;
+  if (typeof options.analyzeBuildTime !== "undefined")
+    temp["analyze_build_time"] = options.analyzeBuildTime;
   if (typeof options.skipProfileDetection !== "undefined")
     temp["skip_profile_detection"] = options.skipProfileDetection;
   if (typeof options.xcodebuildCommand !== "undefined")
@@ -12079,14 +12165,15 @@ type convertedBuildMacAppOptions = {
   xcargs?: string;
   xcconfig?: string;
   suppress_xcode_output?: boolean;
+  xcodebuild_formatter: string;
   disable_xcpretty?: boolean;
   xcpretty_test_format?: boolean;
   xcpretty_formatter?: string;
   xcpretty_report_junit?: string;
   xcpretty_report_html?: string;
   xcpretty_report_json?: string;
-  analyze_build_time?: boolean;
   xcpretty_utf?: boolean;
+  analyze_build_time?: boolean;
   skip_profile_detection?: boolean;
   xcodebuild_command?: string;
   cloned_source_packages_path?: string;
@@ -12105,6 +12192,7 @@ function convertBuildMacAppOptions(
     silent: options.silent,
     skip_package_pkg: options.skipPackagePkg,
     buildlog_path: options.buildlogPath,
+    xcodebuild_formatter: options.xcodebuildFormatter,
     skip_package_dependencies_resolution:
       options.skipPackageDependenciesResolution,
     disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
@@ -12171,10 +12259,10 @@ function convertBuildMacAppOptions(
     temp["xcpretty_report_html"] = options.xcprettyReportHtml;
   if (typeof options.xcprettyReportJson !== "undefined")
     temp["xcpretty_report_json"] = options.xcprettyReportJson;
-  if (typeof options.analyzeBuildTime !== "undefined")
-    temp["analyze_build_time"] = options.analyzeBuildTime;
   if (typeof options.xcprettyUtf !== "undefined")
     temp["xcpretty_utf"] = options.xcprettyUtf;
+  if (typeof options.analyzeBuildTime !== "undefined")
+    temp["analyze_build_time"] = options.analyzeBuildTime;
   if (typeof options.skipProfileDetection !== "undefined")
     temp["skip_profile_detection"] = options.skipProfileDetection;
   if (typeof options.xcodebuildCommand !== "undefined")
@@ -12342,7 +12430,6 @@ type convertedCaptureIosScreenshotsOptions = {
   clean: any;
   test_without_building?: boolean;
   configuration?: string;
-  xcpretty_args?: string;
   sdk?: string;
   scheme?: string;
   number_of_retries: any;
@@ -12359,6 +12446,8 @@ type convertedCaptureIosScreenshotsOptions = {
   testplan?: string;
   only_testing?: any;
   skip_testing?: any;
+  xcodebuild_formatter: string;
+  xcpretty_args?: string;
   disable_xcpretty?: boolean;
   suppress_xcode_output?: boolean;
   use_system_scm: boolean;
@@ -12388,6 +12477,7 @@ function convertCaptureIosScreenshotsOptions(
     skip_package_dependencies_resolution:
       options.skipPackageDependenciesResolution,
     disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
+    xcodebuild_formatter: options.xcodebuildFormatter,
     use_system_scm: options.useSystemScm,
   };
   if (typeof options.workspace !== "undefined")
@@ -12417,8 +12507,6 @@ function convertCaptureIosScreenshotsOptions(
     temp["test_without_building"] = options.testWithoutBuilding;
   if (typeof options.configuration !== "undefined")
     temp["configuration"] = options.configuration;
-  if (typeof options.xcprettyArgs !== "undefined")
-    temp["xcpretty_args"] = options.xcprettyArgs;
   if (typeof options.sdk !== "undefined") temp["sdk"] = options.sdk;
   if (typeof options.scheme !== "undefined") temp["scheme"] = options.scheme;
   if (typeof options.derivedDataPath !== "undefined")
@@ -12439,6 +12527,8 @@ function convertCaptureIosScreenshotsOptions(
     temp["only_testing"] = options.onlyTesting;
   if (typeof options.skipTesting !== "undefined")
     temp["skip_testing"] = options.skipTesting;
+  if (typeof options.xcprettyArgs !== "undefined")
+    temp["xcpretty_args"] = options.xcprettyArgs;
   if (typeof options.disableXcpretty !== "undefined")
     temp["disable_xcpretty"] = options.disableXcpretty;
   if (typeof options.suppressXcodeOutput !== "undefined")
@@ -12476,7 +12566,6 @@ type convertedCaptureScreenshotsOptions = {
   clean: any;
   test_without_building?: boolean;
   configuration?: string;
-  xcpretty_args?: string;
   sdk?: string;
   scheme?: string;
   number_of_retries: any;
@@ -12493,6 +12582,8 @@ type convertedCaptureScreenshotsOptions = {
   testplan?: string;
   only_testing?: any;
   skip_testing?: any;
+  xcodebuild_formatter: string;
+  xcpretty_args?: string;
   disable_xcpretty?: boolean;
   suppress_xcode_output?: boolean;
   use_system_scm: boolean;
@@ -12522,6 +12613,7 @@ function convertCaptureScreenshotsOptions(
     skip_package_dependencies_resolution:
       options.skipPackageDependenciesResolution,
     disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
+    xcodebuild_formatter: options.xcodebuildFormatter,
     use_system_scm: options.useSystemScm,
   };
   if (typeof options.workspace !== "undefined")
@@ -12551,8 +12643,6 @@ function convertCaptureScreenshotsOptions(
     temp["test_without_building"] = options.testWithoutBuilding;
   if (typeof options.configuration !== "undefined")
     temp["configuration"] = options.configuration;
-  if (typeof options.xcprettyArgs !== "undefined")
-    temp["xcpretty_args"] = options.xcprettyArgs;
   if (typeof options.sdk !== "undefined") temp["sdk"] = options.sdk;
   if (typeof options.scheme !== "undefined") temp["scheme"] = options.scheme;
   if (typeof options.derivedDataPath !== "undefined")
@@ -12573,6 +12663,8 @@ function convertCaptureScreenshotsOptions(
     temp["only_testing"] = options.onlyTesting;
   if (typeof options.skipTesting !== "undefined")
     temp["skip_testing"] = options.skipTesting;
+  if (typeof options.xcprettyArgs !== "undefined")
+    temp["xcpretty_args"] = options.xcprettyArgs;
   if (typeof options.disableXcpretty !== "undefined")
     temp["disable_xcpretty"] = options.disableXcpretty;
   if (typeof options.suppressXcodeOutput !== "undefined")
@@ -14622,14 +14714,15 @@ type convertedGymOptions = {
   xcargs?: string;
   xcconfig?: string;
   suppress_xcode_output?: boolean;
+  xcodebuild_formatter: string;
   disable_xcpretty?: boolean;
   xcpretty_test_format?: boolean;
   xcpretty_formatter?: string;
   xcpretty_report_junit?: string;
   xcpretty_report_html?: string;
   xcpretty_report_json?: string;
-  analyze_build_time?: boolean;
   xcpretty_utf?: boolean;
+  analyze_build_time?: boolean;
   skip_profile_detection?: boolean;
   xcodebuild_command?: string;
   cloned_source_packages_path?: string;
@@ -14647,6 +14740,7 @@ function convertGymOptions(options: GymOptions): convertedGymOptions {
     skip_package_ipa: options.skipPackageIpa,
     skip_package_pkg: options.skipPackagePkg,
     buildlog_path: options.buildlogPath,
+    xcodebuild_formatter: options.xcodebuildFormatter,
     skip_package_dependencies_resolution:
       options.skipPackageDependenciesResolution,
     disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
@@ -14715,10 +14809,10 @@ function convertGymOptions(options: GymOptions): convertedGymOptions {
     temp["xcpretty_report_html"] = options.xcprettyReportHtml;
   if (typeof options.xcprettyReportJson !== "undefined")
     temp["xcpretty_report_json"] = options.xcprettyReportJson;
-  if (typeof options.analyzeBuildTime !== "undefined")
-    temp["analyze_build_time"] = options.analyzeBuildTime;
   if (typeof options.xcprettyUtf !== "undefined")
     temp["xcpretty_utf"] = options.xcprettyUtf;
+  if (typeof options.analyzeBuildTime !== "undefined")
+    temp["analyze_build_time"] = options.analyzeBuildTime;
   if (typeof options.skipProfileDetection !== "undefined")
     temp["skip_profile_detection"] = options.skipProfileDetection;
   if (typeof options.xcodebuildCommand !== "undefined")
@@ -16728,7 +16822,6 @@ type convertedRunTestsOptions = {
   address_sanitizer?: boolean;
   thread_sanitizer?: boolean;
   open_report: any;
-  disable_xcpretty?: boolean;
   output_directory: string;
   output_style?: string;
   output_types: string;
@@ -16736,7 +16829,11 @@ type convertedRunTestsOptions = {
   buildlog_path: string;
   include_simulator_logs?: boolean;
   suppress_xcode_output?: boolean;
+  xcodebuild_formatter: string;
+  output_remove_retry_attempts: boolean;
+  disable_xcpretty?: boolean;
   formatter?: string;
+  xcpretty_formatter?: string;
   xcpretty_args?: string;
   derived_data_path?: string;
   should_zip_build_products?: any;
@@ -16790,6 +16887,8 @@ function convertRunTestsOptions(
     output_directory: options.outputDirectory,
     output_types: options.outputTypes,
     buildlog_path: options.buildlogPath,
+    xcodebuild_formatter: options.xcodebuildFormatter,
+    output_remove_retry_attempts: options.outputRemoveRetryAttempts,
     output_xctestrun: options.outputXctestrun,
     use_clang_report_name: options.useClangReportName,
     skip_build: options.skipBuild,
@@ -16837,8 +16936,6 @@ function convertRunTestsOptions(
     temp["address_sanitizer"] = options.addressSanitizer;
   if (typeof options.threadSanitizer !== "undefined")
     temp["thread_sanitizer"] = options.threadSanitizer;
-  if (typeof options.disableXcpretty !== "undefined")
-    temp["disable_xcpretty"] = options.disableXcpretty;
   if (typeof options.outputStyle !== "undefined")
     temp["output_style"] = options.outputStyle;
   if (typeof options.outputFiles !== "undefined")
@@ -16847,8 +16944,12 @@ function convertRunTestsOptions(
     temp["include_simulator_logs"] = options.includeSimulatorLogs;
   if (typeof options.suppressXcodeOutput !== "undefined")
     temp["suppress_xcode_output"] = options.suppressXcodeOutput;
+  if (typeof options.disableXcpretty !== "undefined")
+    temp["disable_xcpretty"] = options.disableXcpretty;
   if (typeof options.formatter !== "undefined")
     temp["formatter"] = options.formatter;
+  if (typeof options.xcprettyFormatter !== "undefined")
+    temp["xcpretty_formatter"] = options.xcprettyFormatter;
   if (typeof options.xcprettyArgs !== "undefined")
     temp["xcpretty_args"] = options.xcprettyArgs;
   if (typeof options.derivedDataPath !== "undefined")
@@ -17002,7 +17103,6 @@ type convertedScanOptions = {
   address_sanitizer?: boolean;
   thread_sanitizer?: boolean;
   open_report: any;
-  disable_xcpretty?: boolean;
   output_directory: string;
   output_style?: string;
   output_types: string;
@@ -17010,7 +17110,11 @@ type convertedScanOptions = {
   buildlog_path: string;
   include_simulator_logs?: boolean;
   suppress_xcode_output?: boolean;
+  xcodebuild_formatter: string;
+  output_remove_retry_attempts: boolean;
+  disable_xcpretty?: boolean;
   formatter?: string;
+  xcpretty_formatter?: string;
   xcpretty_args?: string;
   derived_data_path?: string;
   should_zip_build_products?: any;
@@ -17062,6 +17166,8 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
     output_directory: options.outputDirectory,
     output_types: options.outputTypes,
     buildlog_path: options.buildlogPath,
+    xcodebuild_formatter: options.xcodebuildFormatter,
+    output_remove_retry_attempts: options.outputRemoveRetryAttempts,
     output_xctestrun: options.outputXctestrun,
     use_clang_report_name: options.useClangReportName,
     skip_build: options.skipBuild,
@@ -17109,8 +17215,6 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
     temp["address_sanitizer"] = options.addressSanitizer;
   if (typeof options.threadSanitizer !== "undefined")
     temp["thread_sanitizer"] = options.threadSanitizer;
-  if (typeof options.disableXcpretty !== "undefined")
-    temp["disable_xcpretty"] = options.disableXcpretty;
   if (typeof options.outputStyle !== "undefined")
     temp["output_style"] = options.outputStyle;
   if (typeof options.outputFiles !== "undefined")
@@ -17119,8 +17223,12 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
     temp["include_simulator_logs"] = options.includeSimulatorLogs;
   if (typeof options.suppressXcodeOutput !== "undefined")
     temp["suppress_xcode_output"] = options.suppressXcodeOutput;
+  if (typeof options.disableXcpretty !== "undefined")
+    temp["disable_xcpretty"] = options.disableXcpretty;
   if (typeof options.formatter !== "undefined")
     temp["formatter"] = options.formatter;
+  if (typeof options.xcprettyFormatter !== "undefined")
+    temp["xcpretty_formatter"] = options.xcprettyFormatter;
   if (typeof options.xcprettyArgs !== "undefined")
     temp["xcpretty_args"] = options.xcprettyArgs;
   if (typeof options.derivedDataPath !== "undefined")
@@ -17775,7 +17883,6 @@ type convertedSnapshotOptions = {
   clean: any;
   test_without_building?: boolean;
   configuration?: string;
-  xcpretty_args?: string;
   sdk?: string;
   scheme?: string;
   number_of_retries: any;
@@ -17792,6 +17899,8 @@ type convertedSnapshotOptions = {
   testplan?: string;
   only_testing?: any;
   skip_testing?: any;
+  xcodebuild_formatter: string;
+  xcpretty_args?: string;
   disable_xcpretty?: boolean;
   suppress_xcode_output?: boolean;
   use_system_scm: boolean;
@@ -17821,6 +17930,7 @@ function convertSnapshotOptions(
     skip_package_dependencies_resolution:
       options.skipPackageDependenciesResolution,
     disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
+    xcodebuild_formatter: options.xcodebuildFormatter,
     use_system_scm: options.useSystemScm,
   };
   if (typeof options.workspace !== "undefined")
@@ -17850,8 +17960,6 @@ function convertSnapshotOptions(
     temp["test_without_building"] = options.testWithoutBuilding;
   if (typeof options.configuration !== "undefined")
     temp["configuration"] = options.configuration;
-  if (typeof options.xcprettyArgs !== "undefined")
-    temp["xcpretty_args"] = options.xcprettyArgs;
   if (typeof options.sdk !== "undefined") temp["sdk"] = options.sdk;
   if (typeof options.scheme !== "undefined") temp["scheme"] = options.scheme;
   if (typeof options.derivedDataPath !== "undefined")
@@ -17872,6 +17980,8 @@ function convertSnapshotOptions(
     temp["only_testing"] = options.onlyTesting;
   if (typeof options.skipTesting !== "undefined")
     temp["skip_testing"] = options.skipTesting;
+  if (typeof options.xcprettyArgs !== "undefined")
+    temp["xcpretty_args"] = options.xcprettyArgs;
   if (typeof options.disableXcpretty !== "undefined")
     temp["disable_xcpretty"] = options.disableXcpretty;
   if (typeof options.suppressXcodeOutput !== "undefined")
@@ -18598,6 +18708,32 @@ function convertTestflightOptions(
       options.waitProcessingTimeoutDuration;
   if (typeof options.waitForUploadedBuild !== "undefined")
     temp["wait_for_uploaded_build"] = options.waitForUploadedBuild;
+  return temp;
+}
+
+/** @ignore */
+type convertedTrainerOptions = {
+  path: string;
+  extension: string;
+  output_directory?: string;
+  fail_build: any;
+  xcpretty_naming: any;
+  silent: any;
+};
+/** @ignore Convert TrainerOptions to the shape used by the Fastlane service
+ */
+function convertTrainerOptions(
+  options: TrainerOptions
+): convertedTrainerOptions {
+  const temp: convertedTrainerOptions = {
+    path: options.path,
+    extension: options.extension,
+    fail_build: options.failBuild,
+    xcpretty_naming: options.xcprettyNaming,
+    silent: options.silent,
+  };
+  if (typeof options.outputDirectory !== "undefined")
+    temp["output_directory"] = options.outputDirectory;
   return temp;
 }
 
@@ -21774,6 +21910,13 @@ This integration will only do the TestFlight upload.
       "testflight",
       convertTestflightOptions(options)
     );
+    return out;
+  }
+  /** Convert the Xcode plist log to a JUnit report
+   * @return A hash with the key being the path of the generated file, the value being if the tests were successful
+   */
+  async trainer(options: TrainerOptions): Promise<any> {
+    const out = await this.doAction("trainer", convertTrainerOptions(options));
     return out;
   }
   /** More information: [http://tryouts.readthedocs.org/en/latest/releases.html#create-release](http://tryouts.readthedocs.org/en/latest/releases.html#create-release)
