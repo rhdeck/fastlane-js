@@ -9601,6 +9601,10 @@ type TrainerOptions = {
    */
   outputDirectory?: string;
   /**
+   * Filename the xml file should be written to. Defaults to name of input file. (Only works if one input file is used)
+   */
+  outputFilename?: string;
+  /**
    * Should this step stop the build if the tests fail? Set this to false if you're handling this with a test reporter
    */
   failBuild: any;
@@ -9612,6 +9616,10 @@ type TrainerOptions = {
    * Silences all output
    */
   silent: any;
+  /**
+   * Doesn't include retry attempts in the output
+   */
+  outputRemoveRetryAttempts: any;
 };
 
 /** Shape for [[tryouts]] options argument
@@ -18716,9 +18724,11 @@ type convertedTrainerOptions = {
   path: string;
   extension: string;
   output_directory?: string;
+  output_filename?: string;
   fail_build: any;
   xcpretty_naming: any;
   silent: any;
+  output_remove_retry_attempts: any;
 };
 /** @ignore Convert TrainerOptions to the shape used by the Fastlane service
  */
@@ -18731,9 +18741,12 @@ function convertTrainerOptions(
     fail_build: options.failBuild,
     xcpretty_naming: options.xcprettyNaming,
     silent: options.silent,
+    output_remove_retry_attempts: options.outputRemoveRetryAttempts,
   };
   if (typeof options.outputDirectory !== "undefined")
     temp["output_directory"] = options.outputDirectory;
+  if (typeof options.outputFilename !== "undefined")
+    temp["output_filename"] = options.outputFilename;
   return temp;
 }
 
