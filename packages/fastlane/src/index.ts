@@ -7374,7 +7374,7 @@ type RunTestsOptions = {
    */
   useSystemScm?: boolean;
   /**
-   * The number of times a test can fail before scan should stop retrying
+   * The number of times a test can fail
    */
   numberOfRetries: any;
   /**
@@ -7764,7 +7764,7 @@ type ScanOptions = {
    */
   useSystemScm?: boolean;
   /**
-   * The number of times a test can fail before scan should stop retrying
+   * The number of times a test can fail
    */
   numberOfRetries: any;
   /**
