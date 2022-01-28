@@ -7258,6 +7258,10 @@ type RunTestsOptions = {
    */
   useClangReportName: any;
   /**
+   * Optionally override the per-target setting in the scheme for running tests in parallel. Equivalent to -parallel-testing-enabled
+   */
+  parallelTesting?: boolean;
+  /**
    * Specify the exact number of test runners that will be spawned during parallel testing. Equivalent to -parallel-testing-worker-count
    */
   concurrentWorkers?: any;
@@ -7647,6 +7651,10 @@ type ScanOptions = {
    * Generate the json compilation database with clang naming convention (compile_commands.json)
    */
   useClangReportName: any;
+  /**
+   * Optionally override the per-target setting in the scheme for running tests in parallel. Equivalent to -parallel-testing-enabled
+   */
+  parallelTesting?: boolean;
   /**
    * Specify the exact number of test runners that will be spawned during parallel testing. Equivalent to -parallel-testing-worker-count
    */
@@ -16848,6 +16856,7 @@ type convertedRunTestsOptions = {
   output_xctestrun: boolean;
   result_bundle?: any;
   use_clang_report_name: any;
+  parallel_testing?: boolean;
   concurrent_workers?: any;
   max_concurrent_simulators?: any;
   disable_concurrent_testing?: boolean;
@@ -16966,6 +16975,8 @@ function convertRunTestsOptions(
     temp["should_zip_build_products"] = options.shouldZipBuildProducts;
   if (typeof options.resultBundle !== "undefined")
     temp["result_bundle"] = options.resultBundle;
+  if (typeof options.parallelTesting !== "undefined")
+    temp["parallel_testing"] = options.parallelTesting;
   if (typeof options.concurrentWorkers !== "undefined")
     temp["concurrent_workers"] = options.concurrentWorkers;
   if (typeof options.maxConcurrentSimulators !== "undefined")
@@ -17129,6 +17140,7 @@ type convertedScanOptions = {
   output_xctestrun: boolean;
   result_bundle?: any;
   use_clang_report_name: any;
+  parallel_testing?: boolean;
   concurrent_workers?: any;
   max_concurrent_simulators?: any;
   disable_concurrent_testing?: boolean;
@@ -17245,6 +17257,8 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
     temp["should_zip_build_products"] = options.shouldZipBuildProducts;
   if (typeof options.resultBundle !== "undefined")
     temp["result_bundle"] = options.resultBundle;
+  if (typeof options.parallelTesting !== "undefined")
+    temp["parallel_testing"] = options.parallelTesting;
   if (typeof options.concurrentWorkers !== "undefined")
     temp["concurrent_workers"] = options.concurrentWorkers;
   if (typeof options.maxConcurrentSimulators !== "undefined")
@@ -21612,6 +21626,7 @@ Put it at the top of your `Fastfile` to ensure that _fastlane_ is executed appro
     return out;
   }
   /** More information: https://docs.fastlane.tools/actions/scan/
+   * @return Outputs has of results with :number_of_tests, :number_of_failures, :number_of_retries, :number_of_tests_excluding_retries, :number_of_failures_excluding_retries
    */
   async runTests(options: RunTestsOptions): Promise<any> {
     const out = await this.doAction(
@@ -21635,6 +21650,7 @@ It is recommended to **not** store the AWS access keys in the `Fastfile`. The up
     return out;
   }
   /** More information: https://docs.fastlane.tools/actions/scan/
+   * @return Outputs has of results with :number_of_tests, :number_of_failures, :number_of_retries, :number_of_tests_excluding_retries, :number_of_failures_excluding_retries
    */
   async scan(options: ScanOptions): Promise<any> {
     const out = await this.doAction("scan", convertScanOptions(options));
