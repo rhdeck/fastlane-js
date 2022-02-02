@@ -5600,6 +5600,10 @@ type MatchOptions = {
    */
   skipConfirmation: boolean;
   /**
+   * Remove certs from repository during nuke without revoking them on the developer portal
+   */
+  safeRemoveCerts: boolean;
+  /**
    * Skip generation of a README.md for the created git repository
    */
   skipDocs: boolean;
@@ -5789,6 +5793,10 @@ type MatchNukeOptions = {
    * Disables confirmation prompts during nuke, answering them with yes
    */
   skipConfirmation: boolean;
+  /**
+   * Remove certs from repository during nuke without revoking them on the developer portal
+   */
+  safeRemoveCerts: boolean;
   /**
    * Skip generation of a README.md for the created git repository
    */
@@ -6399,6 +6407,10 @@ type PilotOptions = {
    * Expire previous if it's 'waiting for review'
    */
   rejectBuildWaitingForReview: any;
+  /**
+   * Send the build for a beta review
+   */
+  submitBetaReview: boolean;
 };
 
 /** Shape for [[podLibLint]] options argument
@@ -9325,6 +9337,10 @@ type SyncCodeSigningOptions = {
    */
   skipConfirmation: boolean;
   /**
+   * Remove certs from repository during nuke without revoking them on the developer portal
+   */
+  safeRemoveCerts: boolean;
+  /**
    * Skip generation of a README.md for the created git repository
    */
   skipDocs: boolean;
@@ -9590,6 +9606,10 @@ type TestflightOptions = {
    * Expire previous if it's 'waiting for review'
    */
   rejectBuildWaitingForReview: any;
+  /**
+   * Send the build for a beta review
+   */
+  submitBetaReview: boolean;
 };
 
 /** Shape for [[trainer]] options argument
@@ -10735,6 +10755,10 @@ type UploadToTestflightOptions = {
    * Expire previous if it's 'waiting for review'
    */
   rejectBuildWaitingForReview: any;
+  /**
+   * Send the build for a beta review
+   */
+  submitBetaReview: boolean;
 };
 
 /** Shape for [[validatePlayStoreJsonKey]] options argument
@@ -15525,6 +15549,7 @@ type convertedMatchOptions = {
   include_all_certificates: boolean;
   force_for_new_certificates: boolean;
   skip_confirmation: boolean;
+  safe_remove_certs: boolean;
   skip_docs: boolean;
   platform: string;
   derive_catalyst_app_identifier: boolean;
@@ -15556,6 +15581,7 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     include_all_certificates: options.includeAllCertificates,
     force_for_new_certificates: options.forceForNewCertificates,
     skip_confirmation: options.skipConfirmation,
+    safe_remove_certs: options.safeRemoveCerts,
     skip_docs: options.skipDocs,
     platform: options.platform,
     derive_catalyst_app_identifier: options.deriveCatalystAppIdentifier,
@@ -15651,6 +15677,7 @@ type convertedMatchNukeOptions = {
   include_all_certificates: boolean;
   force_for_new_certificates: boolean;
   skip_confirmation: boolean;
+  safe_remove_certs: boolean;
   skip_docs: boolean;
   platform: string;
   derive_catalyst_app_identifier: boolean;
@@ -15684,6 +15711,7 @@ function convertMatchNukeOptions(
     include_all_certificates: options.includeAllCertificates,
     force_for_new_certificates: options.forceForNewCertificates,
     skip_confirmation: options.skipConfirmation,
+    safe_remove_certs: options.safeRemoveCerts,
     skip_docs: options.skipDocs,
     platform: options.platform,
     derive_catalyst_app_identifier: options.deriveCatalystAppIdentifier,
@@ -16143,6 +16171,7 @@ type convertedPilotOptions = {
   wait_processing_timeout_duration?: any;
   wait_for_uploaded_build?: any;
   reject_build_waiting_for_review: any;
+  submit_beta_review: boolean;
 };
 /** @ignore Convert PilotOptions to the shape used by the Fastlane service
  */
@@ -16156,6 +16185,7 @@ function convertPilotOptions(options: PilotOptions): convertedPilotOptions {
     expire_previous_builds: options.expirePreviousBuilds,
     wait_processing_interval: options.waitProcessingInterval,
     reject_build_waiting_for_review: options.rejectBuildWaitingForReview,
+    submit_beta_review: options.submitBetaReview,
   };
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
@@ -18464,6 +18494,7 @@ type convertedSyncCodeSigningOptions = {
   include_all_certificates: boolean;
   force_for_new_certificates: boolean;
   skip_confirmation: boolean;
+  safe_remove_certs: boolean;
   skip_docs: boolean;
   platform: string;
   derive_catalyst_app_identifier: boolean;
@@ -18497,6 +18528,7 @@ function convertSyncCodeSigningOptions(
     include_all_certificates: options.includeAllCertificates,
     force_for_new_certificates: options.forceForNewCertificates,
     skip_confirmation: options.skipConfirmation,
+    safe_remove_certs: options.safeRemoveCerts,
     skip_docs: options.skipDocs,
     platform: options.platform,
     derive_catalyst_app_identifier: options.deriveCatalystAppIdentifier,
@@ -18659,6 +18691,7 @@ type convertedTestflightOptions = {
   wait_processing_timeout_duration?: any;
   wait_for_uploaded_build?: any;
   reject_build_waiting_for_review: any;
+  submit_beta_review: boolean;
 };
 /** @ignore Convert TestflightOptions to the shape used by the Fastlane service
  */
@@ -18674,6 +18707,7 @@ function convertTestflightOptions(
     expire_previous_builds: options.expirePreviousBuilds,
     wait_processing_interval: options.waitProcessingInterval,
     reject_build_waiting_for_review: options.rejectBuildWaitingForReview,
+    submit_beta_review: options.submitBetaReview,
   };
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
@@ -19630,6 +19664,7 @@ type convertedUploadToTestflightOptions = {
   wait_processing_timeout_duration?: any;
   wait_for_uploaded_build?: any;
   reject_build_waiting_for_review: any;
+  submit_beta_review: boolean;
 };
 /** @ignore Convert UploadToTestflightOptions to the shape used by the Fastlane service
  */
@@ -19645,6 +19680,7 @@ function convertUploadToTestflightOptions(
     expire_previous_builds: options.expirePreviousBuilds,
     wait_processing_interval: options.waitProcessingInterval,
     reject_build_waiting_for_review: options.rejectBuildWaitingForReview,
+    submit_beta_review: options.submitBetaReview,
   };
   if (typeof options.apiKeyPath !== "undefined")
     temp["api_key_path"] = options.apiKeyPath;
