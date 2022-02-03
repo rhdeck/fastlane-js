@@ -1,6 +1,6 @@
 {
   "name": "fastlanejs",
-  "version": "2.204.0",
+  "version": "2.204.1",
   "description": "typed interface to Fastlane",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
