@@ -5592,7 +5592,7 @@ type MatchOptions = {
    */
   includeAllCertificates: boolean;
   /**
-   * Renew the provisioning profiles if the device count on the developer portal has changed. Works only for the 'development' provisioning profile type. Requires 'include_all_certificates' option to be 'true'
+   * Renew the provisioning profiles if the certificate count on the developer portal has changed. Works only for the 'development' provisioning profile type. Requires 'include_all_certificates' option to be 'true'
    */
   forceForNewCertificates: boolean;
   /**
@@ -5786,7 +5786,7 @@ type MatchNukeOptions = {
    */
   includeAllCertificates: boolean;
   /**
-   * Renew the provisioning profiles if the device count on the developer portal has changed. Works only for the 'development' provisioning profile type. Requires 'include_all_certificates' option to be 'true'
+   * Renew the provisioning profiles if the certificate count on the developer portal has changed. Works only for the 'development' provisioning profile type. Requires 'include_all_certificates' option to be 'true'
    */
   forceForNewCertificates: boolean;
   /**
@@ -9329,7 +9329,7 @@ type SyncCodeSigningOptions = {
    */
   includeAllCertificates: boolean;
   /**
-   * Renew the provisioning profiles if the device count on the developer portal has changed. Works only for the 'development' provisioning profile type. Requires 'include_all_certificates' option to be 'true'
+   * Renew the provisioning profiles if the certificate count on the developer portal has changed. Works only for the 'development' provisioning profile type. Requires 'include_all_certificates' option to be 'true'
    */
   forceForNewCertificates: boolean;
   /**
