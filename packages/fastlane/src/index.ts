@@ -947,7 +947,7 @@ type BackupXcarchiveOptions = {
 
 type BadgeOptions = {
   /**
-   * Adds a dark flavored badge ontop of your icon
+   * Adds a dark flavored badge on top of your icon
    */
   dark?: boolean;
   /**
@@ -4254,7 +4254,7 @@ type GetPushCertificateOptions = {
 
 type GetVersionNumberOptions = {
   /**
-   * Path to the Xcode project to read version number from, or its containing directory, optional. If ommitted, or if a directory is passed instead, it will use the first Xcode project found within the given directory, or the project root directory if none is passed
+   * Path to the Xcode project to read version number from, or its containing directory, optional. If omitted, or if a directory is passed instead, it will use the first Xcode project found within the given directory, or the project root directory if none is passed
    */
   xcodeproj?: string;
   /**
@@ -9625,7 +9625,7 @@ type TrainerOptions = {
    */
   extension: string;
   /**
-   * Directoy in which the xml files should be written to. Same directory as source by default
+   * Directory in which the xml files should be written to. Same directory as source by default
    */
   outputDirectory?: string;
   /**
