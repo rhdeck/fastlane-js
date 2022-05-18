@@ -615,6 +615,10 @@ type AppstoreOptions = {
    */
   submitForReview: boolean;
   /**
+   * Verifies archive with App Store Connect without uploading
+   */
+  verifyOnly: boolean;
+  /**
    * Rejects the previously submitted build if it's in a state where it's possible
    */
   rejectIfPossible: boolean;
@@ -3085,6 +3089,14 @@ type DangerOptions = {
    */
   githubApiToken?: string;
   /**
+   * GitHub host URL for GitHub Enterprise
+   */
+  githubEnterpriseHost?: string;
+  /**
+   * GitHub API base URL for GitHub Enterprise
+   */
+  githubEnterpriseApiBaseUrl?: string;
+  /**
    * Should always fail the build process, defaults to false
    */
   failOnErrors?: boolean;
@@ -3226,6 +3238,10 @@ type DeliverOptions = {
    * Submit the new version for Review after uploading everything
    */
   submitForReview: boolean;
+  /**
+   * Verifies archive with App Store Connect without uploading
+   */
+  verifyOnly: boolean;
   /**
    * Rejects the previously submitted build if it's in a state where it's possible
    */
@@ -5552,6 +5568,10 @@ type MatchOptions = {
    */
   googleCloudProjectId?: string;
   /**
+   * Skips confirming to use the system google account
+   */
+  skipGoogleCloudAccountConfirmation: boolean;
+  /**
    * Name of the S3 region
    */
   s3Region?: string;
@@ -5745,6 +5765,10 @@ type MatchNukeOptions = {
    * ID of the Google Cloud project to use for authentication
    */
   googleCloudProjectId?: string;
+  /**
+   * Skips confirming to use the system google account
+   */
+  skipGoogleCloudAccountConfirmation: boolean;
   /**
    * Name of the S3 region
    */
@@ -8087,6 +8111,10 @@ type SetupCiOptions = {
    * CI provider. If none is set, the provider is detected automatically
    */
   provider?: string;
+  /**
+   * Set a custom timeout in seconds for keychain.  Set `0` if you want to specify 'no time-out'
+   */
+  timeout: any;
 };
 
 /** Shape for [[setupCircleCi]] options argument
@@ -9289,6 +9317,10 @@ type SyncCodeSigningOptions = {
    */
   googleCloudProjectId?: string;
   /**
+   * Skips confirming to use the system google account
+   */
+  skipGoogleCloudAccountConfirmation: boolean;
+  /**
    * Name of the S3 region
    */
   s3Region?: string;
@@ -10225,6 +10257,10 @@ type UploadToAppStoreOptions = {
    * Submit the new version for Review after uploading everything
    */
   submitForReview: boolean;
+  /**
+   * Verifies archive with App Store Connect without uploading
+   */
+  verifyOnly: boolean;
   /**
    * Rejects the previously submitted build if it's in a state where it's possible
    */
@@ -11469,6 +11505,7 @@ type convertedAppstoreOptions = {
   overwrite_screenshots: boolean;
   sync_screenshots: boolean;
   submit_for_review: boolean;
+  verify_only: boolean;
   reject_if_possible: boolean;
   automatic_release?: boolean;
   auto_release_date?: any;
@@ -11527,6 +11564,7 @@ function convertAppstoreOptions(
     overwrite_screenshots: options.overwriteScreenshots,
     sync_screenshots: options.syncScreenshots,
     submit_for_review: options.submitForReview,
+    verify_only: options.verifyOnly,
     reject_if_possible: options.rejectIfPossible,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
@@ -13392,6 +13430,8 @@ type convertedDangerOptions = {
   danger_id?: string;
   dangerfile?: string;
   github_api_token?: string;
+  github_enterprise_host?: string;
+  github_enterprise_api_base_url?: string;
   fail_on_errors?: boolean;
   new_comment?: boolean;
   remove_previous_comments?: boolean;
@@ -13414,6 +13454,10 @@ function convertDangerOptions(options: DangerOptions): convertedDangerOptions {
     temp["dangerfile"] = options.dangerfile;
   if (typeof options.githubApiToken !== "undefined")
     temp["github_api_token"] = options.githubApiToken;
+  if (typeof options.githubEnterpriseHost !== "undefined")
+    temp["github_enterprise_host"] = options.githubEnterpriseHost;
+  if (typeof options.githubEnterpriseApiBaseUrl !== "undefined")
+    temp["github_enterprise_api_base_url"] = options.githubEnterpriseApiBaseUrl;
   if (typeof options.failOnErrors !== "undefined")
     temp["fail_on_errors"] = options.failOnErrors;
   if (typeof options.newComment !== "undefined")
@@ -13488,6 +13532,7 @@ type convertedDeliverOptions = {
   overwrite_screenshots: boolean;
   sync_screenshots: boolean;
   submit_for_review: boolean;
+  verify_only: boolean;
   reject_if_possible: boolean;
   automatic_release?: boolean;
   auto_release_date?: any;
@@ -13546,6 +13591,7 @@ function convertDeliverOptions(
     overwrite_screenshots: options.overwriteScreenshots,
     sync_screenshots: options.syncScreenshots,
     submit_for_review: options.submitForReview,
+    verify_only: options.verifyOnly,
     reject_if_possible: options.rejectIfPossible,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
@@ -15537,6 +15583,7 @@ type convertedMatchOptions = {
   google_cloud_bucket_name?: string;
   google_cloud_keys_file?: string;
   google_cloud_project_id?: string;
+  skip_google_cloud_account_confirmation: boolean;
   s3_region?: string;
   s3_access_key?: string;
   s3_secret_access_key?: string;
@@ -15575,6 +15622,8 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     git_branch: options.gitBranch,
     shallow_clone: options.shallowClone,
     clone_branch_directly: options.cloneBranchDirectly,
+    skip_google_cloud_account_confirmation:
+      options.skipGoogleCloudAccountConfirmation,
     keychain_name: options.keychainName,
     force: options.force,
     force_for_new_devices: options.forceForNewDevices,
@@ -15665,6 +15714,7 @@ type convertedMatchNukeOptions = {
   google_cloud_bucket_name?: string;
   google_cloud_keys_file?: string;
   google_cloud_project_id?: string;
+  skip_google_cloud_account_confirmation: boolean;
   s3_region?: string;
   s3_access_key?: string;
   s3_secret_access_key?: string;
@@ -15705,6 +15755,8 @@ function convertMatchNukeOptions(
     git_branch: options.gitBranch,
     shallow_clone: options.shallowClone,
     clone_branch_directly: options.cloneBranchDirectly,
+    skip_google_cloud_account_confirmation:
+      options.skipGoogleCloudAccountConfirmation,
     keychain_name: options.keychainName,
     force: options.force,
     force_for_new_devices: options.forceForNewDevices,
@@ -17582,6 +17634,7 @@ function convertSetPodKeyOptions(
 type convertedSetupCiOptions = {
   force: boolean;
   provider?: string;
+  timeout: any;
 };
 /** @ignore Convert SetupCiOptions to the shape used by the Fastlane service
  */
@@ -17590,6 +17643,7 @@ function convertSetupCiOptions(
 ): convertedSetupCiOptions {
   const temp: convertedSetupCiOptions = {
     force: options.force,
+    timeout: options.timeout,
   };
   if (typeof options.provider !== "undefined")
     temp["provider"] = options.provider;
@@ -18482,6 +18536,7 @@ type convertedSyncCodeSigningOptions = {
   google_cloud_bucket_name?: string;
   google_cloud_keys_file?: string;
   google_cloud_project_id?: string;
+  skip_google_cloud_account_confirmation: boolean;
   s3_region?: string;
   s3_access_key?: string;
   s3_secret_access_key?: string;
@@ -18522,6 +18577,8 @@ function convertSyncCodeSigningOptions(
     git_branch: options.gitBranch,
     shallow_clone: options.shallowClone,
     clone_branch_directly: options.cloneBranchDirectly,
+    skip_google_cloud_account_confirmation:
+      options.skipGoogleCloudAccountConfirmation,
     keychain_name: options.keychainName,
     force: options.force,
     force_for_new_devices: options.forceForNewDevices,
@@ -19305,6 +19362,7 @@ type convertedUploadToAppStoreOptions = {
   overwrite_screenshots: boolean;
   sync_screenshots: boolean;
   submit_for_review: boolean;
+  verify_only: boolean;
   reject_if_possible: boolean;
   automatic_release?: boolean;
   auto_release_date?: any;
@@ -19363,6 +19421,7 @@ function convertUploadToAppStoreOptions(
     overwrite_screenshots: options.overwriteScreenshots,
     sync_screenshots: options.syncScreenshots,
     submit_for_review: options.submitForReview,
+    verify_only: options.verifyOnly,
     reject_if_possible: options.rejectIfPossible,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
