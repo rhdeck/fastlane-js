@@ -5592,6 +5592,10 @@ type MatchOptions = {
    */
   s3ObjectPrefix?: string;
   /**
+   * GitLab Project Path (i.e. 'gitlab-org/gitlab')
+   */
+  gitlabProject?: string;
+  /**
    * Keychain the items should be imported to
    */
   keychainName: string;
@@ -5789,6 +5793,10 @@ type MatchNukeOptions = {
    * Prefix to be used on all objects uploaded to S3
    */
   s3ObjectPrefix?: string;
+  /**
+   * GitLab Project Path (i.e. 'gitlab-org/gitlab')
+   */
+  gitlabProject?: string;
   /**
    * Keychain the items should be imported to
    */
@@ -9340,6 +9348,10 @@ type SyncCodeSigningOptions = {
    * Prefix to be used on all objects uploaded to S3
    */
   s3ObjectPrefix?: string;
+  /**
+   * GitLab Project Path (i.e. 'gitlab-org/gitlab')
+   */
+  gitlabProject?: string;
   /**
    * Keychain the items should be imported to
    */
@@ -15589,6 +15601,7 @@ type convertedMatchOptions = {
   s3_secret_access_key?: string;
   s3_bucket?: string;
   s3_object_prefix?: string;
+  gitlab_project?: string;
   keychain_name: string;
   keychain_password?: string;
   force: boolean;
@@ -15673,6 +15686,8 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     temp["s3_bucket"] = options.s3Bucket;
   if (typeof options.s3ObjectPrefix !== "undefined")
     temp["s3_object_prefix"] = options.s3ObjectPrefix;
+  if (typeof options.gitlabProject !== "undefined")
+    temp["gitlab_project"] = options.gitlabProject;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
   if (typeof options.templateName !== "undefined")
@@ -15720,6 +15735,7 @@ type convertedMatchNukeOptions = {
   s3_secret_access_key?: string;
   s3_bucket?: string;
   s3_object_prefix?: string;
+  gitlab_project?: string;
   keychain_name: string;
   keychain_password?: string;
   force: boolean;
@@ -15806,6 +15822,8 @@ function convertMatchNukeOptions(
     temp["s3_bucket"] = options.s3Bucket;
   if (typeof options.s3ObjectPrefix !== "undefined")
     temp["s3_object_prefix"] = options.s3ObjectPrefix;
+  if (typeof options.gitlabProject !== "undefined")
+    temp["gitlab_project"] = options.gitlabProject;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
   if (typeof options.templateName !== "undefined")
@@ -18542,6 +18560,7 @@ type convertedSyncCodeSigningOptions = {
   s3_secret_access_key?: string;
   s3_bucket?: string;
   s3_object_prefix?: string;
+  gitlab_project?: string;
   keychain_name: string;
   keychain_password?: string;
   force: boolean;
@@ -18628,6 +18647,8 @@ function convertSyncCodeSigningOptions(
     temp["s3_bucket"] = options.s3Bucket;
   if (typeof options.s3ObjectPrefix !== "undefined")
     temp["s3_object_prefix"] = options.s3ObjectPrefix;
+  if (typeof options.gitlabProject !== "undefined")
+    temp["gitlab_project"] = options.gitlabProject;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
   if (typeof options.templateName !== "undefined")
