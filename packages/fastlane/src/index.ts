@@ -1919,7 +1919,7 @@ type CaptureIosScreenshotsOptions = {
    */
   overrideStatusBar: any;
   /**
-   * Fully customize the status bar by setting each option here. See `xcrun simctl status_bar --help`
+   * Fully customize the status bar by setting each option here. Requires `override_status_bar` to be set to `true`. See `xcrun simctl status_bar --help`
    */
   overrideStatusBarArguments?: string;
   /**
@@ -2121,7 +2121,7 @@ type CaptureScreenshotsOptions = {
    */
   overrideStatusBar: any;
   /**
-   * Fully customize the status bar by setting each option here. See `xcrun simctl status_bar --help`
+   * Fully customize the status bar by setting each option here. Requires `override_status_bar` to be set to `true`. See `xcrun simctl status_bar --help`
    */
   overrideStatusBarArguments?: string;
   /**
@@ -2459,7 +2459,7 @@ type ChangelogFromGitCommitsOptions = {
    */
   includeMerges?: boolean;
   /**
-   * Controls inclusion of merge commits when collecting the changelog. Valid values: `:include_merges`, `:exclude_merges`, `:only_include_merges`
+   * Controls inclusion of merge commits when collecting the changelog. Valid values: 'include_merges', 'exclude_merges', 'only_include_merges'
    */
   mergeCommitFiltering?: string;
 };
@@ -8585,7 +8585,7 @@ type SnapshotOptions = {
    */
   overrideStatusBar: any;
   /**
-   * Fully customize the status bar by setting each option here. See `xcrun simctl status_bar --help`
+   * Fully customize the status bar by setting each option here. Requires `override_status_bar` to be set to `true`. See `xcrun simctl status_bar --help`
    */
   overrideStatusBarArguments?: string;
   /**
