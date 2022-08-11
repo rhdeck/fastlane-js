@@ -607,7 +607,7 @@ type AppstoreOptions = {
    */
   overwriteScreenshots: boolean;
   /**
-   * Sync screenshots with local ones. This is currently beta optionso set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well
+   * Sync screenshots with local ones. This is currently beta option so set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well
    */
   syncScreenshots: boolean;
   /**
@@ -3231,7 +3231,7 @@ type DeliverOptions = {
    */
   overwriteScreenshots: boolean;
   /**
-   * Sync screenshots with local ones. This is currently beta optionso set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well
+   * Sync screenshots with local ones. This is currently beta option so set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well
    */
   syncScreenshots: boolean;
   /**
@@ -6587,6 +6587,14 @@ type PodPushOptions = {
    * If validation depends on other recently pushed pods, synchronize
    */
   synchronous?: boolean;
+  /**
+   * Disallow pushing that would overwrite an existing spec
+   */
+  noOverwrite?: boolean;
+  /**
+   * Does not perform the step of pushing REPO to its remote
+   */
+  localOnly?: boolean;
 };
 
 /** Shape for [[podioItem]] options argument
@@ -10262,7 +10270,7 @@ type UploadToAppStoreOptions = {
    */
   overwriteScreenshots: boolean;
   /**
-   * Sync screenshots with local ones. This is currently beta optionso set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well
+   * Sync screenshots with local ones. This is currently beta option so set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well
    */
   syncScreenshots: boolean;
   /**
@@ -16388,6 +16396,8 @@ type convertedPodPushOptions = {
   verbose?: boolean;
   use_modular_headers?: boolean;
   synchronous?: boolean;
+  no_overwrite?: boolean;
+  local_only?: boolean;
 };
 /** @ignore Convert PodPushOptions to the shape used by the Fastlane service
  */
@@ -16417,6 +16427,10 @@ function convertPodPushOptions(
     temp["use_modular_headers"] = options.useModularHeaders;
   if (typeof options.synchronous !== "undefined")
     temp["synchronous"] = options.synchronous;
+  if (typeof options.noOverwrite !== "undefined")
+    temp["no_overwrite"] = options.noOverwrite;
+  if (typeof options.localOnly !== "undefined")
+    temp["local_only"] = options.localOnly;
   return temp;
 }
 
