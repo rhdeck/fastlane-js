@@ -21756,7 +21756,7 @@ Put it at the top of your `Fastfile` to ensure that _fastlane_ is executed appro
     return out;
   }
   /** More information: https://docs.fastlane.tools/actions/scan/
-   * @return Outputs has of results with :number_of_tests, :number_of_failures, :number_of_retries, :number_of_tests_excluding_retries, :number_of_failures_excluding_retries
+   * @return Outputs hash of results with the following keys: :number_of_tests, :number_of_failures, :number_of_retries, :number_of_tests_excluding_retries, :number_of_failures_excluding_retries
    */
   async runTests(options: RunTestsOptions): Promise<any> {
     const out = await this.doAction(
@@ -21780,7 +21780,7 @@ It is recommended to **not** store the AWS access keys in the `Fastfile`. The up
     return out;
   }
   /** More information: https://docs.fastlane.tools/actions/scan/
-   * @return Outputs has of results with :number_of_tests, :number_of_failures, :number_of_retries, :number_of_tests_excluding_retries, :number_of_failures_excluding_retries
+   * @return Outputs hash of results with the following keys: :number_of_tests, :number_of_failures, :number_of_retries, :number_of_tests_excluding_retries, :number_of_failures_excluding_retries
    */
   async scan(options: ScanOptions): Promise<any> {
     const out = await this.doAction("scan", convertScanOptions(options));
