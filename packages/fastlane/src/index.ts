@@ -4122,6 +4122,10 @@ type GetProvisioningProfileOptions = {
    */
   force: any;
   /**
+   * Include Apple Silicon Mac devices in provisioning profiles for iOS/iPadOS apps
+   */
+  includeMacInProfiles: any;
+  /**
    * The bundle identifier of your app
    */
   appIdentifier: string;
@@ -5612,6 +5616,10 @@ type MatchOptions = {
    */
   forceForNewDevices: boolean;
   /**
+   * Include Apple Silicon Mac devices in provisioning profiles for iOS/iPadOS apps
+   */
+  includeMacInProfiles: boolean;
+  /**
    * Include all matching certificates in the provisioning profile. Works only for the 'development' provisioning profile type
    */
   includeAllCertificates: boolean;
@@ -5813,6 +5821,10 @@ type MatchNukeOptions = {
    * Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile types 'appstore' and 'developer_id'
    */
   forceForNewDevices: boolean;
+  /**
+   * Include Apple Silicon Mac devices in provisioning profiles for iOS/iPadOS apps
+   */
+  includeMacInProfiles: boolean;
   /**
    * Include all matching certificates in the provisioning profile. Works only for the 'development' provisioning profile type
    */
@@ -8246,6 +8258,10 @@ type SighOptions = {
    */
   force: any;
   /**
+   * Include Apple Silicon Mac devices in provisioning profiles for iOS/iPadOS apps
+   */
+  includeMacInProfiles: any;
+  /**
    * The bundle identifier of your app
    */
   appIdentifier: string;
@@ -9377,6 +9393,10 @@ type SyncCodeSigningOptions = {
    */
   forceForNewDevices: boolean;
   /**
+   * Include Apple Silicon Mac devices in provisioning profiles for iOS/iPadOS apps
+   */
+  includeMacInProfiles: boolean;
+  /**
    * Include all matching certificates in the provisioning profile. Works only for the 'development' provisioning profile type
    */
   includeAllCertificates: boolean;
@@ -9833,6 +9853,10 @@ type UpdateCodeSigningSettingsOptions = {
    * Defines if project should use automatic signing
    */
   useAutomaticSigning: boolean;
+  /**
+   * Build target SDKs (iphoneos*, macosx*, iphonesimulator*)
+   */
+  sdk?: string;
   /**
    * Team ID, is used when upgrading project
    */
@@ -11022,6 +11046,32 @@ type XcodeServerGetAssetsOptions = {
 
 type XcodebuildOptions = {};
 
+/** Shape for [[xcodes]] options argument
+ */
+
+type XcodesOptions = {
+  /**
+   * The version number of the version of Xcode to install. Defaults to the value specified in the .xcode-version file
+   */
+  version: string;
+  /**
+   * Whether the list of available Xcode versions should be updated before running the install command
+   */
+  updateList: boolean;
+  /**
+   * When true, it won't attempt to install an Xcode version, just find the installed Xcode version that best matches the passed version argument, and select it for the current build steps. It doesn't change the global Xcode version (e.g. via 'xcrun xcode-select'), which would require sudo permissions — when this option is true, this action doesn't require sudo permissions
+   */
+  selectForCurrentBuildOnly: boolean;
+  /**
+   * Where the xcodes binary lives on your system (full path)
+   */
+  binaryPath: string;
+  /**
+   * Pass in xcodes command line arguments directly. When present, other parameters are ignored and only this parameter is used to build the command to be executed
+   */
+  xcodesArgs?: string;
+};
+
 /** Shape for [[xcov]] options argument
  */
 
@@ -11042,7 +11092,7 @@ type XctoolOptions = {};
 
 type XcversionOptions = {
   /**
-   * The version of Xcode to select specified as a Gem::Version requirement string (e.g. '~> 7.1.0')
+   * The version of Xcode to select specified as a Gem::Version requirement string (e.g. '~> 7.1.0'). Defaults to the value specified in the .xcode-version file
    */
   version: string;
 };
@@ -14386,6 +14436,7 @@ type convertedGetProvisioningProfileOptions = {
   development: any;
   skip_install: any;
   force: any;
+  include_mac_in_profiles: any;
   app_identifier: string;
   api_key_path?: string;
   api_key?: { string: string };
@@ -14417,6 +14468,7 @@ function convertGetProvisioningProfileOptions(
     development: options.development,
     skip_install: options.skipInstall,
     force: options.force,
+    include_mac_in_profiles: options.includeMacInProfiles,
     app_identifier: options.appIdentifier,
     output_path: options.outputPath,
     skip_fetch_profiles: options.skipFetchProfiles,
@@ -15614,6 +15666,7 @@ type convertedMatchOptions = {
   keychain_password?: string;
   force: boolean;
   force_for_new_devices: boolean;
+  include_mac_in_profiles: boolean;
   include_all_certificates: boolean;
   force_for_new_certificates: boolean;
   skip_confirmation: boolean;
@@ -15648,6 +15701,7 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     keychain_name: options.keychainName,
     force: options.force,
     force_for_new_devices: options.forceForNewDevices,
+    include_mac_in_profiles: options.includeMacInProfiles,
     include_all_certificates: options.includeAllCertificates,
     force_for_new_certificates: options.forceForNewCertificates,
     skip_confirmation: options.skipConfirmation,
@@ -15748,6 +15802,7 @@ type convertedMatchNukeOptions = {
   keychain_password?: string;
   force: boolean;
   force_for_new_devices: boolean;
+  include_mac_in_profiles: boolean;
   include_all_certificates: boolean;
   force_for_new_certificates: boolean;
   skip_confirmation: boolean;
@@ -15784,6 +15839,7 @@ function convertMatchNukeOptions(
     keychain_name: options.keychainName,
     force: options.force,
     force_for_new_devices: options.forceForNewDevices,
+    include_mac_in_profiles: options.includeMacInProfiles,
     include_all_certificates: options.includeAllCertificates,
     force_for_new_certificates: options.forceForNewCertificates,
     skip_confirmation: options.skipConfirmation,
@@ -17776,6 +17832,7 @@ type convertedSighOptions = {
   development: any;
   skip_install: any;
   force: any;
+  include_mac_in_profiles: any;
   app_identifier: string;
   api_key_path?: string;
   api_key?: { string: string };
@@ -17805,6 +17862,7 @@ function convertSighOptions(options: SighOptions): convertedSighOptions {
     development: options.development,
     skip_install: options.skipInstall,
     force: options.force,
+    include_mac_in_profiles: options.includeMacInProfiles,
     app_identifier: options.appIdentifier,
     output_path: options.outputPath,
     skip_fetch_profiles: options.skipFetchProfiles,
@@ -18579,6 +18637,7 @@ type convertedSyncCodeSigningOptions = {
   keychain_password?: string;
   force: boolean;
   force_for_new_devices: boolean;
+  include_mac_in_profiles: boolean;
   include_all_certificates: boolean;
   force_for_new_certificates: boolean;
   skip_confirmation: boolean;
@@ -18615,6 +18674,7 @@ function convertSyncCodeSigningOptions(
     keychain_name: options.keychainName,
     force: options.force,
     force_for_new_devices: options.forceForNewDevices,
+    include_mac_in_profiles: options.includeMacInProfiles,
     include_all_certificates: options.includeAllCertificates,
     force_for_new_certificates: options.forceForNewCertificates,
     skip_confirmation: options.skipConfirmation,
@@ -19018,6 +19078,7 @@ function convertUpdateAppIdentifierOptions(
 type convertedUpdateCodeSigningSettingsOptions = {
   path: string;
   use_automatic_signing: boolean;
+  sdk?: string;
   team_id?: string;
   targets?: string[];
   build_configurations?: string[];
@@ -19036,6 +19097,7 @@ function convertUpdateCodeSigningSettingsOptions(
     path: options.path,
     use_automatic_signing: options.useAutomaticSigning,
   };
+  if (typeof options.sdk !== "undefined") temp["sdk"] = options.sdk;
   if (typeof options.teamId !== "undefined") temp["team_id"] = options.teamId;
   if (typeof options.targets !== "undefined") temp["targets"] = options.targets;
   if (typeof options.buildConfigurations !== "undefined")
@@ -20089,6 +20151,28 @@ function convertXcodebuildOptions(
 ): convertedXcodebuildOptions {
   const temp: convertedXcodebuildOptions = {};
 
+  return temp;
+}
+
+/** @ignore */
+type convertedXcodesOptions = {
+  version: string;
+  update_list: boolean;
+  select_for_current_build_only: boolean;
+  binary_path: string;
+  xcodes_args?: string;
+};
+/** @ignore Convert XcodesOptions to the shape used by the Fastlane service
+ */
+function convertXcodesOptions(options: XcodesOptions): convertedXcodesOptions {
+  const temp: convertedXcodesOptions = {
+    version: options.version,
+    update_list: options.updateList,
+    select_for_current_build_only: options.selectForCurrentBuildOnly,
+    binary_path: options.binaryPath,
+  };
+  if (typeof options.xcodesArgs !== "undefined")
+    temp["xcodes_args"] = options.xcodesArgs;
   return temp;
 }
 
@@ -22439,7 +22523,7 @@ For such versions, there is an option to change the appendix (e.g. `4.1`).
     return out;
   }
   /** Select and build with the Xcode installed at the provided path.
-Use the `xcversion` action if you want to select an Xcode:
+Use the `xcodes` action if you want to select an Xcode:
 - Based on a version specifier or
 - You don't have known, stable paths, as may happen in a CI environment.
     */
@@ -22470,6 +22554,15 @@ This action returns the path to the downloaded assets folder and puts into share
       "xcodebuild",
       convertXcodebuildOptions(options)
     );
+    return out;
+  }
+  /** Makes sure a specific version of Xcode is installed. If that's not the case, it will automatically be downloaded by [xcodes](https://github.com/RobotsAndPencils/xcodes).
+This will make sure to use the correct Xcode version for later actions.
+Note that this action depends on [xcodes](https://github.com/RobotsAndPencils/xcodes) CLI, so make sure you have it installed in your environment. For the installation guide, see: https://github.com/RobotsAndPencils/xcodes#installation
+    * @return The path to the newly installed Xcode version 
+    */
+  async xcodes(options: XcodesOptions): Promise<string> {
+    const out = await this.doAction("xcodes", convertXcodesOptions(options));
     return out;
   }
   /** Create nice code coverage reports and post coverage summaries on Slack *(xcov gem is required)*.
