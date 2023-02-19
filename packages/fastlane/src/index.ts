@@ -1225,6 +1225,10 @@ type BuildAppOptions = {
    */
   xcodebuildFormatter: string;
   /**
+   * Create a build timing summary
+   */
+  buildTimingSummary?: boolean;
+  /**
    * **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Disable xcpretty formatting of build output
    */
   disableXcpretty?: boolean;
@@ -1414,6 +1418,10 @@ type BuildIosAppOptions = {
    * xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)
    */
   xcodebuildFormatter: string;
+  /**
+   * Create a build timing summary
+   */
+  buildTimingSummary?: boolean;
   /**
    * **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Disable xcpretty formatting of build output
    */
@@ -1608,6 +1616,10 @@ type BuildMacAppOptions = {
    * xcodebuild formatter to use (ex: 'xcbeautify', 'xcbeautify --quieter', 'xcpretty', 'xcpretty -test'). Use empty string (ex: '') to disable any formatter (More information: https://docs.fastlane.tools/best-practices/xcodebuild-formatters/)
    */
   xcodebuildFormatter: string;
+  /**
+   * Create a build timing summary
+   */
+  buildTimingSummary?: boolean;
   /**
    * **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Disable xcpretty formatting of build output
    */
@@ -4713,6 +4725,10 @@ type GymOptions = {
    */
   xcodebuildFormatter: string;
   /**
+   * Create a build timing summary
+   */
+  buildTimingSummary?: boolean;
+  /**
    * **DEPRECATED!** Use `xcodebuild_formatter: ''` instead - Disable xcpretty formatting of build output
    */
   disableXcpretty?: boolean;
@@ -5476,7 +5492,7 @@ type MakeChangelogFromJenkinsOptions = {
 
 type MatchOptions = {
   /**
-   * Define the profile type, can be appstore, adhoc, development, enterprise, developer_id, mac_installer_distribution
+   * Define the profile type, can be appstore, adhoc, development, enterprise, developer_id, mac_installer_distribution, developer_id_installer
    */
   type: string;
   /**
@@ -5682,7 +5698,7 @@ type MatchOptions = {
 
 type MatchNukeOptions = {
   /**
-   * Define the profile type, can be appstore, adhoc, development, enterprise, developer_id, mac_installer_distribution
+   * Define the profile type, can be appstore, adhoc, development, enterprise, developer_id, mac_installer_distribution, developer_id_installer
    */
   type: string;
   /**
@@ -7314,6 +7330,10 @@ type RunTestsOptions = {
    */
   outputXctestrun: boolean;
   /**
+   * Custom path for the result bundle, overrides result_bundle
+   */
+  resultBundlePath?: string;
+  /**
    * Should an Xcode result bundle be generated in the output directory
    */
   resultBundle?: any;
@@ -7707,6 +7727,10 @@ type ScanOptions = {
    * Should provide additional copy of .xctestrun file (settings.xctestrun) and place in output path?
    */
   outputXctestrun: boolean;
+  /**
+   * Custom path for the result bundle, overrides result_bundle
+   */
+  resultBundlePath?: string;
   /**
    * Should an Xcode result bundle be generated in the output directory
    */
@@ -9253,7 +9277,7 @@ type SwiftlintOptions = {
 
 type SyncCodeSigningOptions = {
   /**
-   * Define the profile type, can be appstore, adhoc, development, enterprise, developer_id, mac_installer_distribution
+   * Define the profile type, can be appstore, adhoc, development, enterprise, developer_id, mac_installer_distribution, developer_id_installer
    */
   type: string;
   /**
@@ -12028,6 +12052,7 @@ type convertedBuildAppOptions = {
   xcconfig?: string;
   suppress_xcode_output?: boolean;
   xcodebuild_formatter: string;
+  build_timing_summary?: boolean;
   disable_xcpretty?: boolean;
   xcpretty_test_format?: boolean;
   xcpretty_formatter?: string;
@@ -12112,6 +12137,8 @@ function convertBuildAppOptions(
     temp["xcconfig"] = options.xcconfig;
   if (typeof options.suppressXcodeOutput !== "undefined")
     temp["suppress_xcode_output"] = options.suppressXcodeOutput;
+  if (typeof options.buildTimingSummary !== "undefined")
+    temp["build_timing_summary"] = options.buildTimingSummary;
   if (typeof options.disableXcpretty !== "undefined")
     temp["disable_xcpretty"] = options.disableXcpretty;
   if (typeof options.xcprettyTestFormat !== "undefined")
@@ -12173,6 +12200,7 @@ type convertedBuildIosAppOptions = {
   xcconfig?: string;
   suppress_xcode_output?: boolean;
   xcodebuild_formatter: string;
+  build_timing_summary?: boolean;
   disable_xcpretty?: boolean;
   xcpretty_test_format?: boolean;
   xcpretty_formatter?: string;
@@ -12252,6 +12280,8 @@ function convertBuildIosAppOptions(
     temp["xcconfig"] = options.xcconfig;
   if (typeof options.suppressXcodeOutput !== "undefined")
     temp["suppress_xcode_output"] = options.suppressXcodeOutput;
+  if (typeof options.buildTimingSummary !== "undefined")
+    temp["build_timing_summary"] = options.buildTimingSummary;
   if (typeof options.disableXcpretty !== "undefined")
     temp["disable_xcpretty"] = options.disableXcpretty;
   if (typeof options.xcprettyTestFormat !== "undefined")
@@ -12314,6 +12344,7 @@ type convertedBuildMacAppOptions = {
   xcconfig?: string;
   suppress_xcode_output?: boolean;
   xcodebuild_formatter: string;
+  build_timing_summary?: boolean;
   disable_xcpretty?: boolean;
   xcpretty_test_format?: boolean;
   xcpretty_formatter?: string;
@@ -12395,6 +12426,8 @@ function convertBuildMacAppOptions(
     temp["xcconfig"] = options.xcconfig;
   if (typeof options.suppressXcodeOutput !== "undefined")
     temp["suppress_xcode_output"] = options.suppressXcodeOutput;
+  if (typeof options.buildTimingSummary !== "undefined")
+    temp["build_timing_summary"] = options.buildTimingSummary;
   if (typeof options.disableXcpretty !== "undefined")
     temp["disable_xcpretty"] = options.disableXcpretty;
   if (typeof options.xcprettyTestFormat !== "undefined")
@@ -14873,6 +14906,7 @@ type convertedGymOptions = {
   xcconfig?: string;
   suppress_xcode_output?: boolean;
   xcodebuild_formatter: string;
+  build_timing_summary?: boolean;
   disable_xcpretty?: boolean;
   xcpretty_test_format?: boolean;
   xcpretty_formatter?: string;
@@ -14955,6 +14989,8 @@ function convertGymOptions(options: GymOptions): convertedGymOptions {
     temp["xcconfig"] = options.xcconfig;
   if (typeof options.suppressXcodeOutput !== "undefined")
     temp["suppress_xcode_output"] = options.suppressXcodeOutput;
+  if (typeof options.buildTimingSummary !== "undefined")
+    temp["build_timing_summary"] = options.buildTimingSummary;
   if (typeof options.disableXcpretty !== "undefined")
     temp["disable_xcpretty"] = options.disableXcpretty;
   if (typeof options.xcprettyTestFormat !== "undefined")
@@ -17024,6 +17060,7 @@ type convertedRunTestsOptions = {
   derived_data_path?: string;
   should_zip_build_products?: any;
   output_xctestrun: boolean;
+  result_bundle_path?: string;
   result_bundle?: any;
   use_clang_report_name: any;
   parallel_testing?: boolean;
@@ -17143,6 +17180,8 @@ function convertRunTestsOptions(
     temp["derived_data_path"] = options.derivedDataPath;
   if (typeof options.shouldZipBuildProducts !== "undefined")
     temp["should_zip_build_products"] = options.shouldZipBuildProducts;
+  if (typeof options.resultBundlePath !== "undefined")
+    temp["result_bundle_path"] = options.resultBundlePath;
   if (typeof options.resultBundle !== "undefined")
     temp["result_bundle"] = options.resultBundle;
   if (typeof options.parallelTesting !== "undefined")
@@ -17308,6 +17347,7 @@ type convertedScanOptions = {
   derived_data_path?: string;
   should_zip_build_products?: any;
   output_xctestrun: boolean;
+  result_bundle_path?: string;
   result_bundle?: any;
   use_clang_report_name: any;
   parallel_testing?: boolean;
@@ -17425,6 +17465,8 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
     temp["derived_data_path"] = options.derivedDataPath;
   if (typeof options.shouldZipBuildProducts !== "undefined")
     temp["should_zip_build_products"] = options.shouldZipBuildProducts;
+  if (typeof options.resultBundlePath !== "undefined")
+    temp["result_bundle_path"] = options.resultBundlePath;
   if (typeof options.resultBundle !== "undefined")
     temp["result_bundle"] = options.resultBundle;
   if (typeof options.parallelTesting !== "undefined")
