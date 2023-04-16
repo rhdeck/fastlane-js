@@ -3686,7 +3686,7 @@ type EnsureGitStatusCleanOptions = {
    */
   showDiff?: boolean;
   /**
-   * The flag whether to ignore file the git status if the repo is dirty
+   * The handling mode of the ignored files. The available options are: `'traditional'`, `'none'` (default) and `'matching'`. Specifying `'none'` to this parameter is the same as not specifying the parameter at all, which means that no ignored file will be used to check if the repo is dirty or not. Specifying `'traditional'` or `'matching'` causes some ignored files to be used to check if the repo is dirty or not (more info in the official docs: https://git-scm.com/docs/git-status#Documentation/git-status.txt---ignoredltmodegt)
    */
   ignored?: string;
 };
