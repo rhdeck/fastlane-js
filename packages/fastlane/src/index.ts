@@ -3689,6 +3689,10 @@ type EnsureGitStatusCleanOptions = {
    * The handling mode of the ignored files. The available options are: `'traditional'`, `'none'` (default) and `'matching'`. Specifying `'none'` to this parameter is the same as not specifying the parameter at all, which means that no ignored file will be used to check if the repo is dirty or not. Specifying `'traditional'` or `'matching'` causes some ignored files to be used to check if the repo is dirty or not (more info in the official docs: https://git-scm.com/docs/git-status#Documentation/git-status.txt---ignoredltmodegt)
    */
   ignored?: string;
+  /**
+   * Array of files to ignore
+   */
+  ignoreFiles?: string[];
 };
 
 /** Shape for [[ensureNoDebugCode]] options argument
@@ -5616,6 +5620,10 @@ type MatchOptions = {
    */
   gitlabProject?: string;
   /**
+   * GitLab Host (i.e. 'https://gitlab.com')
+   */
+  gitlabHost?: string;
+  /**
    * Keychain the items should be imported to
    */
   keychainName: string;
@@ -5821,6 +5829,10 @@ type MatchNukeOptions = {
    * GitLab Project Path (i.e. 'gitlab-org/gitlab')
    */
   gitlabProject?: string;
+  /**
+   * GitLab Host (i.e. 'https://gitlab.com')
+   */
+  gitlabHost?: string;
   /**
    * Keychain the items should be imported to
    */
@@ -7434,6 +7446,10 @@ type RunTestsOptions = {
    */
   destination?: any;
   /**
+   * Adds arch=x86_64 to the xcodebuild 'destination' argument to run simulator in a Rosetta mode
+   */
+  runRosettaSimulator: boolean;
+  /**
    * Platform to build when using a Catalyst enabled app. Valid values are: ios, macos
    */
   catalystPlatform?: string;
@@ -7831,6 +7847,10 @@ type ScanOptions = {
    * Use only if you're a pro, use the other options instead
    */
   destination?: any;
+  /**
+   * Adds arch=x86_64 to the xcodebuild 'destination' argument to run simulator in a Rosetta mode
+   */
+  runRosettaSimulator: boolean;
   /**
    * Platform to build when using a Catalyst enabled app. Valid values are: ios, macos
    */
@@ -9400,6 +9420,10 @@ type SyncCodeSigningOptions = {
    * GitLab Project Path (i.e. 'gitlab-org/gitlab')
    */
   gitlabProject?: string;
+  /**
+   * GitLab Host (i.e. 'https://gitlab.com')
+   */
+  gitlabHost?: string;
   /**
    * Keychain the items should be imported to
    */
@@ -14059,6 +14083,7 @@ type convertedEnsureGitStatusCleanOptions = {
   show_uncommitted_changes?: boolean;
   show_diff?: boolean;
   ignored?: string;
+  ignore_files?: string[];
 };
 /** @ignore Convert EnsureGitStatusCleanOptions to the shape used by the Fastlane service
  */
@@ -14071,6 +14096,8 @@ function convertEnsureGitStatusCleanOptions(
   if (typeof options.showDiff !== "undefined")
     temp["show_diff"] = options.showDiff;
   if (typeof options.ignored !== "undefined") temp["ignored"] = options.ignored;
+  if (typeof options.ignoreFiles !== "undefined")
+    temp["ignore_files"] = options.ignoreFiles;
   return temp;
 }
 
@@ -15698,6 +15725,7 @@ type convertedMatchOptions = {
   s3_bucket?: string;
   s3_object_prefix?: string;
   gitlab_project?: string;
+  gitlab_host?: string;
   keychain_name: string;
   keychain_password?: string;
   force: boolean;
@@ -15786,6 +15814,8 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     temp["s3_object_prefix"] = options.s3ObjectPrefix;
   if (typeof options.gitlabProject !== "undefined")
     temp["gitlab_project"] = options.gitlabProject;
+  if (typeof options.gitlabHost !== "undefined")
+    temp["gitlab_host"] = options.gitlabHost;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
   if (typeof options.templateName !== "undefined")
@@ -15834,6 +15864,7 @@ type convertedMatchNukeOptions = {
   s3_bucket?: string;
   s3_object_prefix?: string;
   gitlab_project?: string;
+  gitlab_host?: string;
   keychain_name: string;
   keychain_password?: string;
   force: boolean;
@@ -15924,6 +15955,8 @@ function convertMatchNukeOptions(
     temp["s3_object_prefix"] = options.s3ObjectPrefix;
   if (typeof options.gitlabProject !== "undefined")
     temp["gitlab_project"] = options.gitlabProject;
+  if (typeof options.gitlabHost !== "undefined")
+    temp["gitlab_host"] = options.gitlabHost;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
   if (typeof options.templateName !== "undefined")
@@ -17086,6 +17119,7 @@ type convertedRunTestsOptions = {
   slack_only_on_failure: any;
   slack_default_payloads?: string[];
   destination?: any;
+  run_rosetta_simulator: boolean;
   catalyst_platform?: string;
   custom_report_file_name?: string;
   xcodebuild_command?: string;
@@ -17118,6 +17152,7 @@ function convertRunTestsOptions(
     skip_build: options.skipBuild,
     skip_slack: options.skipSlack,
     slack_only_on_failure: options.slackOnlyOnFailure,
+    run_rosetta_simulator: options.runRosettaSimulator,
     skip_package_dependencies_resolution:
       options.skipPackageDependenciesResolution,
     disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
@@ -17373,6 +17408,7 @@ type convertedScanOptions = {
   slack_only_on_failure: any;
   slack_default_payloads?: string[];
   destination?: any;
+  run_rosetta_simulator: boolean;
   catalyst_platform?: string;
   custom_report_file_name?: string;
   xcodebuild_command?: string;
@@ -17403,6 +17439,7 @@ function convertScanOptions(options: ScanOptions): convertedScanOptions {
     skip_build: options.skipBuild,
     skip_slack: options.skipSlack,
     slack_only_on_failure: options.slackOnlyOnFailure,
+    run_rosetta_simulator: options.runRosettaSimulator,
     skip_package_dependencies_resolution:
       options.skipPackageDependenciesResolution,
     disable_package_automatic_updates: options.disablePackageAutomaticUpdates,
@@ -18675,6 +18712,7 @@ type convertedSyncCodeSigningOptions = {
   s3_bucket?: string;
   s3_object_prefix?: string;
   gitlab_project?: string;
+  gitlab_host?: string;
   keychain_name: string;
   keychain_password?: string;
   force: boolean;
@@ -18765,6 +18803,8 @@ function convertSyncCodeSigningOptions(
     temp["s3_object_prefix"] = options.s3ObjectPrefix;
   if (typeof options.gitlabProject !== "undefined")
     temp["gitlab_project"] = options.gitlabProject;
+  if (typeof options.gitlabHost !== "undefined")
+    temp["gitlab_host"] = options.gitlabHost;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
   if (typeof options.templateName !== "undefined")
