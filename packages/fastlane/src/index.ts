@@ -5654,6 +5654,10 @@ type MatchOptions = {
    */
   s3ObjectPrefix?: string;
   /**
+   * Skip encryption of all objects uploaded to S3. WARNING: only enable this on S3 buckets with sufficiently restricted permissions and server-side encryption enabled. See https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html
+   */
+  s3SkipEncryption: boolean;
+  /**
    * GitLab Project Path (i.e. 'gitlab-org/gitlab')
    */
   gitlabProject?: string;
@@ -5863,6 +5867,10 @@ type MatchNukeOptions = {
    * Prefix to be used on all objects uploaded to S3
    */
   s3ObjectPrefix?: string;
+  /**
+   * Skip encryption of all objects uploaded to S3. WARNING: only enable this on S3 buckets with sufficiently restricted permissions and server-side encryption enabled. See https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html
+   */
+  s3SkipEncryption: boolean;
   /**
    * GitLab Project Path (i.e. 'gitlab-org/gitlab')
    */
@@ -9195,6 +9203,10 @@ type SupplyOptions = {
    */
   skipUploadScreenshots?: boolean;
   /**
+   * Whether to use sha256 comparison to skip upload of images and screenshots that are already in Play Store
+   */
+  syncImageUpload: boolean;
+  /**
    * The track to promote to. The default available tracks are: production, beta, alpha, internal
    */
   trackPromoteTo?: string;
@@ -9454,6 +9466,10 @@ type SyncCodeSigningOptions = {
    * Prefix to be used on all objects uploaded to S3
    */
   s3ObjectPrefix?: string;
+  /**
+   * Skip encryption of all objects uploaded to S3. WARNING: only enable this on S3 buckets with sufficiently restricted permissions and server-side encryption enabled. See https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html
+   */
+  s3SkipEncryption: boolean;
   /**
    * GitLab Project Path (i.e. 'gitlab-org/gitlab')
    */
@@ -10649,6 +10665,10 @@ type UploadToPlayStoreOptions = {
    * Whether to skip uploading SCREENSHOTS
    */
   skipUploadScreenshots?: boolean;
+  /**
+   * Whether to use sha256 comparison to skip upload of images and screenshots that are already in Play Store
+   */
+  syncImageUpload: boolean;
   /**
    * The track to promote to. The default available tracks are: production, beta, alpha, internal
    */
@@ -15796,6 +15816,7 @@ type convertedMatchOptions = {
   s3_secret_access_key?: string;
   s3_bucket?: string;
   s3_object_prefix?: string;
+  s3_skip_encryption: boolean;
   gitlab_project?: string;
   gitlab_host?: string;
   keychain_name: string;
@@ -15834,6 +15855,7 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     clone_branch_directly: options.cloneBranchDirectly,
     skip_google_cloud_account_confirmation:
       options.skipGoogleCloudAccountConfirmation,
+    s3_skip_encryption: options.s3SkipEncryption,
     keychain_name: options.keychainName,
     force: options.force,
     force_for_new_devices: options.forceForNewDevices,
@@ -15935,6 +15957,7 @@ type convertedMatchNukeOptions = {
   s3_secret_access_key?: string;
   s3_bucket?: string;
   s3_object_prefix?: string;
+  s3_skip_encryption: boolean;
   gitlab_project?: string;
   gitlab_host?: string;
   keychain_name: string;
@@ -15975,6 +15998,7 @@ function convertMatchNukeOptions(
     clone_branch_directly: options.cloneBranchDirectly,
     skip_google_cloud_account_confirmation:
       options.skipGoogleCloudAccountConfirmation,
+    s3_skip_encryption: options.s3SkipEncryption,
     keychain_name: options.keychainName,
     force: options.force,
     force_for_new_devices: options.forceForNewDevices,
@@ -18608,6 +18632,7 @@ type convertedSupplyOptions = {
   skip_upload_changelogs?: boolean;
   skip_upload_images?: boolean;
   skip_upload_screenshots?: boolean;
+  sync_image_upload: boolean;
   track_promote_to?: string;
   track_promote_release_status?: string;
   validate_only?: boolean;
@@ -18633,6 +18658,7 @@ function convertSupplyOptions(options: SupplyOptions): convertedSupplyOptions {
   const temp: convertedSupplyOptions = {
     package_name: options.packageName,
     track: options.track,
+    sync_image_upload: options.syncImageUpload,
     changes_not_sent_for_review: options.changesNotSentForReview,
     rescue_changes_not_sent_for_review: options.rescueChangesNotSentForReview,
   };
@@ -18783,6 +18809,7 @@ type convertedSyncCodeSigningOptions = {
   s3_secret_access_key?: string;
   s3_bucket?: string;
   s3_object_prefix?: string;
+  s3_skip_encryption: boolean;
   gitlab_project?: string;
   gitlab_host?: string;
   keychain_name: string;
@@ -18823,6 +18850,7 @@ function convertSyncCodeSigningOptions(
     clone_branch_directly: options.cloneBranchDirectly,
     skip_google_cloud_account_confirmation:
       options.skipGoogleCloudAccountConfirmation,
+    s3_skip_encryption: options.s3SkipEncryption,
     keychain_name: options.keychainName,
     force: options.force,
     force_for_new_devices: options.forceForNewDevices,
@@ -19801,6 +19829,7 @@ type convertedUploadToPlayStoreOptions = {
   skip_upload_changelogs?: boolean;
   skip_upload_images?: boolean;
   skip_upload_screenshots?: boolean;
+  sync_image_upload: boolean;
   track_promote_to?: string;
   track_promote_release_status?: string;
   validate_only?: boolean;
@@ -19828,6 +19857,7 @@ function convertUploadToPlayStoreOptions(
   const temp: convertedUploadToPlayStoreOptions = {
     package_name: options.packageName,
     track: options.track,
+    sync_image_upload: options.syncImageUpload,
     changes_not_sent_for_review: options.changesNotSentForReview,
     rescue_changes_not_sent_for_review: options.rescueChangesNotSentForReview,
   };
@@ -21021,7 +21051,7 @@ end|
   }
   /** Download the universal APK of a given version code from the Google Play Console.
 
-This uses fastlane `Supply` (and the `AndroidPublisher` Google API) to download the Universal APK
+This uses _fastlane_ `supply` (and the `AndroidPublisher` Google API) to download the Universal APK
 generated by Google after you uploaded an `.aab` bundle to the Play Console.
 
 See https://developers.google.com/android-publisher/api-ref/rest/v3/generatedapks/list
