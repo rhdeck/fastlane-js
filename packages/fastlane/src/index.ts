@@ -5666,6 +5666,14 @@ type MatchOptions = {
    */
   gitlabHost?: string;
   /**
+   * GitLab CI_JOB_TOKEN
+   */
+  jobToken?: string;
+  /**
+   * GitLab Access Token
+   */
+  privateToken?: string;
+  /**
    * Keychain the items should be imported to
    */
   keychainName: string;
@@ -5879,6 +5887,14 @@ type MatchNukeOptions = {
    * GitLab Host (i.e. 'https://gitlab.com')
    */
   gitlabHost?: string;
+  /**
+   * GitLab CI_JOB_TOKEN
+   */
+  jobToken?: string;
+  /**
+   * GitLab Access Token
+   */
+  privateToken?: string;
   /**
    * Keychain the items should be imported to
    */
@@ -9478,6 +9494,14 @@ type SyncCodeSigningOptions = {
    * GitLab Host (i.e. 'https://gitlab.com')
    */
   gitlabHost?: string;
+  /**
+   * GitLab CI_JOB_TOKEN
+   */
+  jobToken?: string;
+  /**
+   * GitLab Access Token
+   */
+  privateToken?: string;
   /**
    * Keychain the items should be imported to
    */
@@ -15819,6 +15843,8 @@ type convertedMatchOptions = {
   s3_skip_encryption: boolean;
   gitlab_project?: string;
   gitlab_host?: string;
+  job_token?: string;
+  private_token?: string;
   keychain_name: string;
   keychain_password?: string;
   force: boolean;
@@ -15910,6 +15936,10 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     temp["gitlab_project"] = options.gitlabProject;
   if (typeof options.gitlabHost !== "undefined")
     temp["gitlab_host"] = options.gitlabHost;
+  if (typeof options.jobToken !== "undefined")
+    temp["job_token"] = options.jobToken;
+  if (typeof options.privateToken !== "undefined")
+    temp["private_token"] = options.privateToken;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
   if (typeof options.templateName !== "undefined")
@@ -15960,6 +15990,8 @@ type convertedMatchNukeOptions = {
   s3_skip_encryption: boolean;
   gitlab_project?: string;
   gitlab_host?: string;
+  job_token?: string;
+  private_token?: string;
   keychain_name: string;
   keychain_password?: string;
   force: boolean;
@@ -16053,6 +16085,10 @@ function convertMatchNukeOptions(
     temp["gitlab_project"] = options.gitlabProject;
   if (typeof options.gitlabHost !== "undefined")
     temp["gitlab_host"] = options.gitlabHost;
+  if (typeof options.jobToken !== "undefined")
+    temp["job_token"] = options.jobToken;
+  if (typeof options.privateToken !== "undefined")
+    temp["private_token"] = options.privateToken;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
   if (typeof options.templateName !== "undefined")
@@ -18812,6 +18848,8 @@ type convertedSyncCodeSigningOptions = {
   s3_skip_encryption: boolean;
   gitlab_project?: string;
   gitlab_host?: string;
+  job_token?: string;
+  private_token?: string;
   keychain_name: string;
   keychain_password?: string;
   force: boolean;
@@ -18905,6 +18943,10 @@ function convertSyncCodeSigningOptions(
     temp["gitlab_project"] = options.gitlabProject;
   if (typeof options.gitlabHost !== "undefined")
     temp["gitlab_host"] = options.gitlabHost;
+  if (typeof options.jobToken !== "undefined")
+    temp["job_token"] = options.jobToken;
+  if (typeof options.privateToken !== "undefined")
+    temp["private_token"] = options.privateToken;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
   if (typeof options.templateName !== "undefined")
