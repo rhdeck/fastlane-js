@@ -5698,6 +5698,10 @@ type MatchOptions = {
    */
   includeAllCertificates: boolean;
   /**
+   * Select certificate by id. Useful if multiple certificates are stored in one place
+   */
+  certificateId?: string;
+  /**
    * Renew the provisioning profiles if the certificate count on the developer portal has changed. Works only for the 'development' provisioning profile type. Requires 'include_all_certificates' option to be 'true'
    */
   forceForNewCertificates: boolean;
@@ -5919,6 +5923,10 @@ type MatchNukeOptions = {
    * Include all matching certificates in the provisioning profile. Works only for the 'development' provisioning profile type
    */
   includeAllCertificates: boolean;
+  /**
+   * Select certificate by id. Useful if multiple certificates are stored in one place
+   */
+  certificateId?: string;
   /**
    * Renew the provisioning profiles if the certificate count on the developer portal has changed. Works only for the 'development' provisioning profile type. Requires 'include_all_certificates' option to be 'true'
    */
@@ -8640,6 +8648,10 @@ type SlatherOptions = {
    * The amount of decimals to use for % coverage reporting
    */
   decimals?: string;
+  /**
+   * Relative path to a file used in place of '.slather.yml'
+   */
+  ymlfile?: string;
 };
 
 /** Shape for [[snapshot]] options argument
@@ -9526,6 +9538,10 @@ type SyncCodeSigningOptions = {
    * Include all matching certificates in the provisioning profile. Works only for the 'development' provisioning profile type
    */
   includeAllCertificates: boolean;
+  /**
+   * Select certificate by id. Useful if multiple certificates are stored in one place
+   */
+  certificateId?: string;
   /**
    * Renew the provisioning profiles if the certificate count on the developer portal has changed. Works only for the 'development' provisioning profile type. Requires 'include_all_certificates' option to be 'true'
    */
@@ -15851,6 +15867,7 @@ type convertedMatchOptions = {
   force_for_new_devices: boolean;
   include_mac_in_profiles: boolean;
   include_all_certificates: boolean;
+  certificate_id?: string;
   force_for_new_certificates: boolean;
   skip_confirmation: boolean;
   safe_remove_certs: boolean;
@@ -15942,6 +15959,8 @@ function convertMatchOptions(options: MatchOptions): convertedMatchOptions {
     temp["private_token"] = options.privateToken;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
+  if (typeof options.certificateId !== "undefined")
+    temp["certificate_id"] = options.certificateId;
   if (typeof options.templateName !== "undefined")
     temp["template_name"] = options.templateName;
   if (typeof options.profileName !== "undefined")
@@ -15998,6 +16017,7 @@ type convertedMatchNukeOptions = {
   force_for_new_devices: boolean;
   include_mac_in_profiles: boolean;
   include_all_certificates: boolean;
+  certificate_id?: string;
   force_for_new_certificates: boolean;
   skip_confirmation: boolean;
   safe_remove_certs: boolean;
@@ -16091,6 +16111,8 @@ function convertMatchNukeOptions(
     temp["private_token"] = options.privateToken;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
+  if (typeof options.certificateId !== "undefined")
+    temp["certificate_id"] = options.certificateId;
   if (typeof options.templateName !== "undefined")
     temp["template_name"] = options.templateName;
   if (typeof options.profileName !== "undefined")
@@ -18197,6 +18219,7 @@ type convertedSlatherOptions = {
   arch?: string;
   source_files?: string;
   decimals?: string;
+  ymlfile?: string;
 };
 /** @ignore Convert SlatherOptions to the shape used by the Fastlane service
  */
@@ -18257,6 +18280,7 @@ function convertSlatherOptions(
     temp["source_files"] = options.sourceFiles;
   if (typeof options.decimals !== "undefined")
     temp["decimals"] = options.decimals;
+  if (typeof options.ymlfile !== "undefined") temp["ymlfile"] = options.ymlfile;
   return temp;
 }
 
@@ -18856,6 +18880,7 @@ type convertedSyncCodeSigningOptions = {
   force_for_new_devices: boolean;
   include_mac_in_profiles: boolean;
   include_all_certificates: boolean;
+  certificate_id?: string;
   force_for_new_certificates: boolean;
   skip_confirmation: boolean;
   safe_remove_certs: boolean;
@@ -18949,6 +18974,8 @@ function convertSyncCodeSigningOptions(
     temp["private_token"] = options.privateToken;
   if (typeof options.keychainPassword !== "undefined")
     temp["keychain_password"] = options.keychainPassword;
+  if (typeof options.certificateId !== "undefined")
+    temp["certificate_id"] = options.certificateId;
   if (typeof options.templateName !== "undefined")
     temp["template_name"] = options.templateName;
   if (typeof options.profileName !== "undefined")
@@ -21408,7 +21435,7 @@ get_push_certificate(|
     const out = await this.doAction("git_add", convertGitAddOptions(options));
     return out;
   }
-  /** If no branch could be found, this action will return an empty string. This is a wrapper for the internal action Actions.git_branch
+  /** If no branch could be found, this action will return an empty string. If `FL_GIT_BRANCH_DONT_USE_ENV_VARS` is `true`, it'll ignore CI ENV vars. This is a wrapper for the internal action Actions.git_branch
    */
   async gitBranch(options: GitBranchOptions): Promise<string> {
     const out = await this.doAction(
@@ -21623,7 +21650,7 @@ You first have to set up your Xcode project, if you haven't done it already: [ht
     );
     return out;
   }
-  /** Installs the ipa on the device. If no id is given, the first found iOS device will be used. Works via USB or Wi-Fi. This requires `ios-deploy` to be installed. Please have a look at [ios-deploy](https://github.com/ios-control/ios-deploy). To quickly install it, use `npm -g i ios-deploy`
+  /** Installs the ipa on the device. If no id is given, the first found iOS device will be used. Works via USB or Wi-Fi. This requires `ios-deploy` to be installed. Please have a look at [ios-deploy](https://github.com/ios-control/ios-deploy). To quickly install it, use `brew install ios-deploy`
    */
   async installOnDevice(options: InstallOnDeviceOptions): Promise<any> {
     const out = await this.doAction(
