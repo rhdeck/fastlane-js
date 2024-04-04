@@ -607,6 +607,10 @@ type AppstoreOptions = {
    */
   overwriteScreenshots: boolean;
   /**
+   * Timeout in seconds to wait before considering screenshot processing as failed, used to handle cases where uploads to the App Store are stuck in processing
+   */
+  screenshotProcessingTimeout: any;
+  /**
    * Sync screenshots with local ones. This is currently beta option so set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well
    */
   syncScreenshots: boolean;
@@ -622,6 +626,10 @@ type AppstoreOptions = {
    * Rejects the previously submitted build if it's in a state where it's possible
    */
   rejectIfPossible: boolean;
+  /**
+   * After submitting a new version, App Store Connect takes some time to recognize the new version and we must wait until it's available before attempting to upload metadata for it. There is a mechanism that will check if it's available and retry with an exponential backoff if it's not available yet. This option specifies how many times we should retry before giving up. Setting this to a value below 5 is not recommended and will likely cause failures. Increase this parameter when Apple servers seem to be degraded or slow
+   */
+  versionCheckWaitRetryLimit: any;
   /**
    * Should the app be automatically released once it's approved? (Cannot be used together with `auto_release_date`)
    */
@@ -1863,11 +1871,11 @@ type CaptureAndroidScreenshotsOptions = {
 
 type CaptureIosScreenshotsOptions = {
   /**
-   * Path the workspace file
+   * Path to the workspace file
    */
   workspace?: string;
   /**
-   * Path the project file
+   * Path to the project file
    */
   project?: string;
   /**
@@ -2065,11 +2073,11 @@ type CaptureIosScreenshotsOptions = {
 
 type CaptureScreenshotsOptions = {
   /**
-   * Path the workspace file
+   * Path to the workspace file
    */
   workspace?: string;
   /**
-   * Path the project file
+   * Path to the project file
    */
   project?: string;
   /**
@@ -3243,6 +3251,10 @@ type DeliverOptions = {
    */
   overwriteScreenshots: boolean;
   /**
+   * Timeout in seconds to wait before considering screenshot processing as failed, used to handle cases where uploads to the App Store are stuck in processing
+   */
+  screenshotProcessingTimeout: any;
+  /**
    * Sync screenshots with local ones. This is currently beta option so set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well
    */
   syncScreenshots: boolean;
@@ -3258,6 +3270,10 @@ type DeliverOptions = {
    * Rejects the previously submitted build if it's in a state where it's possible
    */
   rejectIfPossible: boolean;
+  /**
+   * After submitting a new version, App Store Connect takes some time to recognize the new version and we must wait until it's available before attempting to upload metadata for it. There is a mechanism that will check if it's available and retry with an exponential backoff if it's not available yet. This option specifies how many times we should retry before giving up. Setting this to a value below 5 is not recommended and will likely cause failures. Increase this parameter when Apple servers seem to be degraded or slow
+   */
+  versionCheckWaitRetryLimit: any;
   /**
    * Should the app be automatically released once it's approved? (Cannot be used together with `auto_release_date`)
    */
@@ -4369,6 +4385,10 @@ type GitAddOptions = {
    * Shell escapes paths (set to false if using wildcards or manually escaping spaces in :path)
    */
   shellEscape?: boolean;
+  /**
+   * Allow adding otherwise ignored files
+   */
+  force?: boolean;
   /**
    * **DEPRECATED!** Use `--path` instead - The pathspec you want to add files from
    */
@@ -6315,6 +6335,10 @@ type OnesignalOptions = {
    * GCM SENDER ID
    */
   androidGcmSenderId?: string;
+  /**
+   * FCM Service Account JSON File (in .json format)
+   */
+  fcmJson?: string;
   /**
    * APNS P12 File (in .p12 format)
    */
@@ -8691,11 +8715,11 @@ type SlatherOptions = {
 
 type SnapshotOptions = {
   /**
-   * Path the workspace file
+   * Path to the workspace file
    */
   workspace?: string;
   /**
-   * Path the project file
+   * Path to the project file
    */
   project?: string;
   /**
@@ -10488,6 +10512,10 @@ type UploadToAppStoreOptions = {
    */
   overwriteScreenshots: boolean;
   /**
+   * Timeout in seconds to wait before considering screenshot processing as failed, used to handle cases where uploads to the App Store are stuck in processing
+   */
+  screenshotProcessingTimeout: any;
+  /**
    * Sync screenshots with local ones. This is currently beta option so set true to 'FASTLANE_ENABLE_BETA_DELIVER_SYNC_SCREENSHOTS' environment variable as well
    */
   syncScreenshots: boolean;
@@ -10503,6 +10531,10 @@ type UploadToAppStoreOptions = {
    * Rejects the previously submitted build if it's in a state where it's possible
    */
   rejectIfPossible: boolean;
+  /**
+   * After submitting a new version, App Store Connect takes some time to recognize the new version and we must wait until it's available before attempting to upload metadata for it. There is a mechanism that will check if it's available and retry with an exponential backoff if it's not available yet. This option specifies how many times we should retry before giving up. Setting this to a value below 5 is not recommended and will likely cause failures. Increase this parameter when Apple servers seem to be degraded or slow
+   */
+  versionCheckWaitRetryLimit: any;
   /**
    * Should the app be automatically released once it's approved? (Cannot be used together with `auto_release_date`)
    */
@@ -11771,10 +11803,12 @@ type convertedAppstoreOptions = {
   skip_app_version_update: boolean;
   force: boolean;
   overwrite_screenshots: boolean;
+  screenshot_processing_timeout: any;
   sync_screenshots: boolean;
   submit_for_review: boolean;
   verify_only: boolean;
   reject_if_possible: boolean;
+  version_check_wait_retry_limit: any;
   automatic_release?: boolean;
   auto_release_date?: any;
   phased_release?: boolean;
@@ -11830,10 +11864,12 @@ function convertAppstoreOptions(
     skip_app_version_update: options.skipAppVersionUpdate,
     force: options.force,
     overwrite_screenshots: options.overwriteScreenshots,
+    screenshot_processing_timeout: options.screenshotProcessingTimeout,
     sync_screenshots: options.syncScreenshots,
     submit_for_review: options.submitForReview,
     verify_only: options.verifyOnly,
     reject_if_possible: options.rejectIfPossible,
+    version_check_wait_retry_limit: options.versionCheckWaitRetryLimit,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
     ignore_language_directory_validation:
@@ -13807,10 +13843,12 @@ type convertedDeliverOptions = {
   skip_app_version_update: boolean;
   force: boolean;
   overwrite_screenshots: boolean;
+  screenshot_processing_timeout: any;
   sync_screenshots: boolean;
   submit_for_review: boolean;
   verify_only: boolean;
   reject_if_possible: boolean;
+  version_check_wait_retry_limit: any;
   automatic_release?: boolean;
   auto_release_date?: any;
   phased_release?: boolean;
@@ -13866,10 +13904,12 @@ function convertDeliverOptions(
     skip_app_version_update: options.skipAppVersionUpdate,
     force: options.force,
     overwrite_screenshots: options.overwriteScreenshots,
+    screenshot_processing_timeout: options.screenshotProcessingTimeout,
     sync_screenshots: options.syncScreenshots,
     submit_for_review: options.submitForReview,
     verify_only: options.verifyOnly,
     reject_if_possible: options.rejectIfPossible,
+    version_check_wait_retry_limit: options.versionCheckWaitRetryLimit,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
     ignore_language_directory_validation:
@@ -14830,6 +14870,7 @@ function convertGetVersionNumberOptions(
 type convertedGitAddOptions = {
   path?: string[];
   shell_escape?: boolean;
+  force?: boolean;
   pathspec?: string;
 };
 /** @ignore Convert GitAddOptions to the shape used by the Fastlane service
@@ -14839,6 +14880,7 @@ function convertGitAddOptions(options: GitAddOptions): convertedGitAddOptions {
   if (typeof options.path !== "undefined") temp["path"] = options.path;
   if (typeof options.shellEscape !== "undefined")
     temp["shell_escape"] = options.shellEscape;
+  if (typeof options.force !== "undefined") temp["force"] = options.force;
   if (typeof options.pathspec !== "undefined")
     temp["pathspec"] = options.pathspec;
   return temp;
@@ -16452,6 +16494,7 @@ type convertedOnesignalOptions = {
   app_name?: string;
   android_token?: string;
   android_gcm_sender_id?: string;
+  fcm_json?: string;
   apns_p12?: string;
   apns_p12_password?: string;
   apns_env?: string;
@@ -16472,6 +16515,8 @@ function convertOnesignalOptions(
     temp["android_token"] = options.androidToken;
   if (typeof options.androidGcmSenderId !== "undefined")
     temp["android_gcm_sender_id"] = options.androidGcmSenderId;
+  if (typeof options.fcmJson !== "undefined")
+    temp["fcm_json"] = options.fcmJson;
   if (typeof options.apnsP12 !== "undefined")
     temp["apns_p12"] = options.apnsP12;
   if (typeof options.apnsP12Password !== "undefined")
@@ -19797,10 +19842,12 @@ type convertedUploadToAppStoreOptions = {
   skip_app_version_update: boolean;
   force: boolean;
   overwrite_screenshots: boolean;
+  screenshot_processing_timeout: any;
   sync_screenshots: boolean;
   submit_for_review: boolean;
   verify_only: boolean;
   reject_if_possible: boolean;
+  version_check_wait_retry_limit: any;
   automatic_release?: boolean;
   auto_release_date?: any;
   phased_release?: boolean;
@@ -19856,10 +19903,12 @@ function convertUploadToAppStoreOptions(
     skip_app_version_update: options.skipAppVersionUpdate,
     force: options.force,
     overwrite_screenshots: options.overwriteScreenshots,
+    screenshot_processing_timeout: options.screenshotProcessingTimeout,
     sync_screenshots: options.syncScreenshots,
     submit_for_review: options.submitForReview,
     verify_only: options.verifyOnly,
     reject_if_possible: options.rejectIfPossible,
+    version_check_wait_retry_limit: options.versionCheckWaitRetryLimit,
     run_precheck_before_submit: options.runPrecheckBeforeSubmit,
     precheck_default_rule_level: options.precheckDefaultRuleLevel,
     ignore_language_directory_validation:
